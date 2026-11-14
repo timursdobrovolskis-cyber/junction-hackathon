@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { account, accountPlan } from './account.mjs';
+import { buildLiveBudget } from './budget-live.mjs';
 export const activity = JSON.parse(readFileSync(new URL('./budget/activity.json', import.meta.url)));
 const spendingTypes = new Set(['purchase', 'housing_payment', 'utilities_payment']);
 
@@ -110,5 +111,6 @@ export function getBudgetView(selection='plan') {
   const largePayment=view.categories.flatMap(c=>c.transactions).filter(t=>t.amountCents<0).sort((a,b)=>a.amountCents-b.amountCents)[0];
   const paymentInsight=view.mode==='history'&&view.spentCents>0&&largePayment&&-largePayment.amountCents/view.spentCents>=0.4?
     {category:largePayment.category,text:`One ${largePayment.category.toLowerCase()} payment of ${money(-largePayment.amountCents)} represents ${Math.round(-largePayment.amountCents/view.spentCents*100)}% of this month’s spending. Check whether it was a one-off before planning the same amount again.`}:null;
-  return {...view,selectedMonth:month,catalog,comparison,series,explanation,paymentInsight,accountLabel:account.label};
+  const live=view.mode==='plan'?buildLiveBudget(accountPlan,activity):null;
+  return {...view,selectedMonth:month,catalog,comparison,series,explanation,paymentInsight,accountLabel:account.label,live};
 }

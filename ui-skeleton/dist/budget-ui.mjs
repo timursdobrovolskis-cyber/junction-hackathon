@@ -13,16 +13,48 @@ function ring(target,rows,key) {
   target.setAttribute('aria-label',rows.filter(c=>c[key]>0).map(c=>`${c.category}: ${money(c[key])}`).join('; ') || 'No spending recorded');
 }
 function paintHome(data) {
-  el('home-budget-total').textContent=money(data.totalPlannedCents);
+  const live=data.live;
+  document.querySelectorAll('.pace-note,.budget-demo-label').forEach(n=>n.remove());
   ring(el('home-budget-ring'),data.categories,'plannedCents');
   el('home-budget-categories').replaceChildren();
-  for(const c of data.categories.slice(0,3)){
-    const row=node('a',undefined,'home-budget-row');row.href='#budget';
-    const dot=node('span',undefined,'category-dot');dot.style.background=color(c.category);dot.setAttribute('aria-hidden','true');
-    row.append(dot,node('span',c.category),node('strong',money(c.plannedCents)));el('home-budget-categories').append(row);
+  if(!live){
+    el('home-budget-total').textContent=money(data.totalPlannedCents);
+    for(const c of data.categories.slice(0,3)){
+      const row=node('a',undefined,'home-budget-row');row.href='#budget';
+      const dot=node('span',undefined,'category-dot');dot.style.background=color(c.category);dot.setAttribute('aria-hidden','true');
+      row.append(dot,node('span',c.category),node('strong',money(c.plannedCents)));el('home-budget-categories').append(row);
+    }
+    el('home-budget-status').textContent=data.explanation.label;
+    el('home-budget-note').textContent=data.activityAvailable?'Review your category limits and planned costs.':'Confirm upcoming costs. Spending for this period is not available yet.';
+    return;
   }
-  el('home-budget-status').textContent=data.explanation.label;
-  el('home-budget-note').textContent=data.activityAvailable?'Review your category limits and planned costs.':'Confirm upcoming costs. Spending for this period is not available yet.';
+  const eyebrow=document.querySelector('.home-budget-overview .budget-eyebrow');
+  if(eyebrow)eyebrow.textContent=`SAFE TO SPEND · ${live.daysLeft} DAYS LEFT`;
+  el('home-budget-total').innerHTML='';
+  el('home-budget-total').append(document.createTextNode(money(live.safePerDayCents)),node('small',' / day','per-day'));
+  const sub=document.querySelector('.home-budget-overview p:last-child');
+  if(sub)sub.textContent=`${money(live.everydayLeftCents)} everyday money left after bills and savings`;
+  for(const b of live.baskets){
+    const row=node('a',undefined,'home-basket');row.href='#budget';
+    const pct=b.plannedCents?Math.min(100,Math.round(b.spentCents/b.plannedCents*100)):0;
+    const top=node('div',undefined,'home-basket-top');
+    top.append(node('span',b.label),node('strong',b.id==='setAside'?`${money(b.plannedCents)} reserved`:`${money(Math.max(0,b.remainingCents))} left`));
+    const bar=node('div',undefined,'home-basket-bar');const fill=node('span');fill.style.width=(b.id==='setAside'?100:pct)+'%';fill.className='fill-'+b.id;bar.append(fill);
+    row.append(top,bar,node('small',b.id==='setAside'?b.note:`${money(b.spentCents)} of ${money(b.plannedCents)} used · ${b.note}`));
+    el('home-budget-categories').append(row);
+  }
+  const status=el('home-budget-status'), note=el('home-budget-note');
+  const o=live.overspend, p=live.pace;
+  if(o){
+    status.textContent=`${o.category} is ${money(o.overCents)} over`;
+    note.textContent=o.move?`Cover it from ${o.move.from} (${money(o.move.fromRemainingCents)} left)? Your total stays the same.`:'Review this category before the month ends.';
+  } else {status.textContent='On track so far';note.textContent='Every category is within its limit.';}
+  if(p.driver){
+    const pace=node('p',`At this pace ${p.driver.category.toLowerCase()} ends ~${money(p.driver.overCents)} over, leaving ${money(p.savingsAfterPaceCents)} of your ${money(p.savingsTargetCents)} savings target.`,'budget-caption pace-note');
+    note.after(pace);
+  }
+  const demo=node('p',live.replayLabel,'budget-demo-label');
+  el('home-budget-categories').after(demo);
 }
 function render(data) {
   currentData=data;
