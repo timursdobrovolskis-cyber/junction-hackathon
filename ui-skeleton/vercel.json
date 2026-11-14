@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": "dist",
+  "functions": {"api/coach.js": {"includeFiles": "server/**", "maxDuration": 30}},
+  "redirects": [{ "source": "/", "destination": "/preview.html", "permanent": false }]
+}
