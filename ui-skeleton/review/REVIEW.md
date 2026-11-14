@@ -23,3 +23,11 @@ Added an interactive iframe inside a CSS phone frame, device-size and zoom contr
 ## Customer-facing copy and narrow-screen preview
 
 Replaced repeated illustrative/demo copy with direct plan language, while keeping a persistent Sample data label and a data-information panel. Simplified the coach context and instructions to avoid unsolicited demo reminders. Purchase-impact integration is documented in `IMPLEMENTATION_PLAN.md`; the UI does not yet show calculated purchase impacts. At 320px, preview controls now use two rows and the page has no horizontal overflow at fit zoom. Device/zoom selections survive reloads and are included in copied preview links. Existing five API tests pass.
+
+## Structured conversation integration
+
+Integrated the teammate's conversation mechanism with Gemini. Verified a €400 monthly request corrected to €300 before confirmation, preservation of the gym priority, reload persistence and isolation from the October profile. Forty-seven automated tests cover upstream conversations and adapter behavior, including exact dated expenses, retries, confirmation boundaries and failed Gemini calls. The compact Your draft disclosure keeps choices inspectable without adding dashboard cards. Financial-engine and backend-save integration remains outstanding.
+
+## Team feature integration
+
+Short/long-term goals and Calendar now sit beside Home and Coach in the same iPhone frame. Browser checks verified the €210→€240 recovery preview, zero-return long-term arithmetic, yearly filtering and payment evidence. 56 automated tests pass. Captures: 06-integrated-goals.jpg, 07-long-term-goals.jpg, 08-integrated-calendar.jpg. Browser instrumentation continues to report the previously observed MutationObserver error; the checked app flows work and app source does not construct a MutationObserver.

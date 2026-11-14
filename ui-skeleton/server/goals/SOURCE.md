@@ -1,0 +1,1 @@
+Adapted from short/long-term goals on main at d92fa78. Original calculateGoalPlan and fixture preserved. Presentation ported into existing static app so there is one navigation and phone frame. Long-term rates are editable assumptions, not product forecasts or confirmed safe contributions. No transfers, investments or round-ups are executed.
