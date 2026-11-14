@@ -31,3 +31,15 @@ A chat draft does not recalculate Home, change the goal fixture or save to Pytho
 ## Checks
 
 56 automated tests pass across conversation behavior, Gemini/API boundaries, calendar fixtures/filtering/errors and goal arithmetic. Browser checks cover corrected-goal confirmation, local reloads, profile isolation, live Gemini explanations, short-term recovery and a 0% long-term illustration (€50/month for 10 years = €6,000), calendar yearly filtering and transaction evidence.
+
+## Account-backed coach update
+
+Home, Coach and the main Calendar now share synthetic customer CUST00005 and the existing financial-engine snapshot. Home displays the observed account balance (€6,466.14, last observed 28 September), not an invented safe-to-spend amount. The October spending plan and unconfirmed savings target are shown separately. Goals and the optional recurring calendar remain separate samples. The coach is not connected to a live bank feed.
+
+Four suggestion cards open server-grounded spending, bills and savings answers or the expense capture flow. Account answers use the supplied calculation figures and evidence, with no language-model arithmetic. Open-ended Gemini responses use a validated JSON structure: title, summary, up to three bullets, nextQuestion. The UI renders these as text blocks; numeric account metrics come from server data. The Ideas button reopens suggestions without clearing state.
+
+Available: read the account snapshot, explain forecast/payment evidence, draft goals/expenses/priorities, confirm draft changes. Unavailable: live bank synchronization, recalculation from chat, backend plan saves, transfers and subscription cancellation. Drafts remain browser-local. Account cards and structured draft flows work even when Gemini is unavailable; open-ended replies then show an explicit error.
+
+Verification: 61 automated tests and live structured Gemini output. Home/Coach identity and observed balance match; payment evidence resolves to the account fixture; pending confirmations survive account questions; malformed structured replies are rejected. Browser checks include card replies, Ideas reopening, restored conversation layouts and compact-phone overflow.
+
+Structured output reference: https://ai.google.dev/gemini-api/docs/structured-output ; the configured generateContent responseMimeType/responseJsonSchema was verified with the live provider.

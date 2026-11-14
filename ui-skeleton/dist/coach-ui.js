@@ -1,9 +1,9 @@
 (() => {
   const el = id => document.getElementById(id);
   const profileIds = { design: 'home-sample', engine: 'CUST00005' };
-  const sourceText = { design: 'Until 28 November · expected payday', engine: 'Another profile · 1–30 October' };
+  const sourceText = { design: 'Layout sample', engine: 'History through 30 Sep · plan for October' };
   const money = cents => new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' }).format(cents / 100);
-  let contexts, scenario = 'design', session, turns = [], busy = false, ready = false, generation = 0, controller;
+  let contexts, scenario = 'engine', session, turns = [], busy = false, ready = false, generation = 0, controller;
   const storageKey = () => `s-pankki:coach:v1:${profileIds[scenario]}`;
   function persist() {
     try { if (session) localStorage.setItem(storageKey(), JSON.stringify(session)); return true; }
@@ -28,10 +28,20 @@
     el('clear-chat').disabled = value;
     el('clear-draft').disabled = value;
   }
-  function addMessage(role, text, sources = []) {
+  function addMessage(role, text, sources = [], presentation) {
     const article = document.createElement('article'); article.className = `message message-${role}`;
     const label = document.createElement('span'); label.className = 'message-label'; label.textContent = role === 'user' ? 'You' : 'Your coach';
-    const p = document.createElement('p'); p.textContent = text; article.append(label, p);
+    article.append(label);
+    const node = (tag, text, cls) => { const n=document.createElement(tag); n.textContent=text; if(cls)n.className=cls; return n; };
+    if (role === 'assistant' && presentation && typeof presentation.summary === 'string') {
+      if(presentation.title)article.append(node('h3',presentation.title,'reply-title'));
+      article.append(node('p',presentation.summary,'reply-summary'));
+      if(Array.isArray(presentation.metrics)&&presentation.metrics.length){const grid=node('div','','reply-metrics');for(const m of presentation.metrics.slice(0,3)){const cell=node('div','');cell.append(node('span',m.label),node('strong',m.value));grid.append(cell);}article.append(grid);}
+      if(Array.isArray(presentation.bullets)&&presentation.bullets.length){const list=node('ul','','reply-points');for(const t of presentation.bullets.slice(0,3))list.append(node('li',t));article.append(list);}
+      if(presentation.nextQuestion)article.append(node('p',presentation.nextQuestion,'reply-question'));
+      if(Array.isArray(presentation.evidence)&&presentation.evidence.length){const details=node('details','','reply-evidence');details.append(node('summary','View the basis'));for(const e of presentation.evidence.slice(0,12)){const row=node('div','','reply-evidence-row');row.append(node('span',e.label),node('strong',e.value));if(e.id)row.append(node('small',e.id));details.append(row);}article.append(details);}
+    } else article.append(node('p',text));
+
     if (sources.length) {
       const details = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = 'Guidance sources'; details.append(summary);
       for (const source of sources) {
@@ -45,8 +55,12 @@
     el('chat-log').append(article); el('chat-log').scrollTop = el('chat-log').scrollHeight; return article;
   }
   function renderPrompts() {
-    const defaults = ['Explain my plan', 'I want to save more', 'I have an expense coming up'];
+    const defaults = [];
     const prompts = session?.messages.at(-1)?.suggestions ?? defaults;
+    const hasConversation=Boolean(session?.messages.some(m=>m.role==='user'));
+    el('coach-starters').hidden = hasConversation;
+    el('coach-more-ideas').hidden=!hasConversation;
+    el('coach-more-ideas').setAttribute('aria-expanded','false');
     el('coach-prompts').replaceChildren();
     for (const text of prompts.slice(0, 4)) {
       const button = document.createElement('button'); button.type = 'button'; button.dataset.prompt = text; button.textContent = text;
@@ -76,13 +90,14 @@
     el('chat-log').replaceChildren(); el('chat-input').value = ''; el('chat-error').hidden = true; el('chat-retry').hidden = true;
     const c = contexts?.[scenario]; if (!c) return;
     document.querySelectorAll('[data-scenario]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.scenario === scenario)));
-    el('coach-source').textContent = sourceText[scenario]; el('coach-summary-title').textContent = c.title; el('coach-explanation').textContent = c.explanation;
+    el('coach-source').textContent = sourceText[scenario]; el('coach-summary-title').textContent = c.title;
+    if(c.account){el('coach-account-label').textContent=c.account.label;el('coach-account-balance').textContent=c.account.balance;} el('coach-explanation').textContent = c.explanation;
     el('coach-facts').replaceChildren();
     for (const f of c.facts) { const d = document.createElement('div'); const label = document.createElement('span'); label.textContent = f.label; const value = document.createElement('strong'); value.textContent = f.value; d.append(label, value); el('coach-facts').append(d); }
     el('coach-details').replaceChildren();
     for (const text of [c.source, ...c.details]) { const p = document.createElement('p'); p.textContent = text; el('coach-details').append(p); }
     el('chat-input').placeholder = scenario === 'engine' ? 'Ask about this October plan…' : 'What’s on your mind?';
-    for (const message of session?.messages ?? []) addMessage(message.role, message.text, message.sources);
+    for (const message of session?.messages ?? []) addMessage(message.role, message.text, message.sources, message.presentation);
     turns = (session?.messages ?? []).map(m => ({ role: m.role, text: m.text.slice(0, 2400) }));
     setBusy(false); renderDraft(); renderPrompts();
     el('chat-status').textContent = session ? 'Conversation restored on this device' : ready ? 'Ready to talk' : 'Chat is not connected yet.';
@@ -100,7 +115,7 @@
       const data = await response.json(); if (requestGeneration !== generation) return;
       if (!response.ok || typeof data.reply !== 'string') throw new Error(data.error || 'The coach couldn’t reply. Try again.');
       if (!data.session || data.session.customerId !== profileIds[scenario]) throw new Error('The reply did not match this profile. Please try again.');
-      pending.remove(); addMessage('assistant', data.reply, data.sources);
+      pending.remove(); addMessage('assistant', data.reply, data.sources, data.presentation);
       session = data.session; turns = session.messages.map(m => ({ role: m.role, text: m.text.slice(0, 2400) }));
       const stored = persist(); el('chat-input').value = ''; renderDraft();
       el('chat-status').textContent = stored ? (data.source === 'planning' ? 'Draft kept on this device · forecast unchanged' : 'Your coach has replied') : 'Keep this tab open—device storage is unavailable.';
@@ -115,17 +130,35 @@
   el('chat-input').addEventListener('keydown', event => { if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) { event.preventDefault(); el('chat-form').requestSubmit(); } });
   el('chat-retry').addEventListener('click', () => submit(el('chat-input').value.trim()));
   el('clear-chat').addEventListener('click', clearMessages);
+  el('coach-more-ideas').addEventListener('click',()=>{el('coach-starters').hidden=!el('coach-starters').hidden;el('coach-more-ideas').setAttribute('aria-expanded',String(!el('coach-starters').hidden));if(!el('coach-starters').hidden)el('coach-starters').scrollIntoView({block:'center',behavior:'smooth'});});
   el('clear-draft').addEventListener('click', () => el('draft-reset-dialog').showModal());
   el('confirm-draft-reset').addEventListener('click', () => {
     try { localStorage.removeItem(storageKey()); } catch { /* In-memory reset still works. */ }
     session = undefined; clearMessages(); renderDraft(); el('draft-reset-dialog').close(); el('chat-status').textContent = 'Draft and conversation cleared.';
   });
   document.querySelectorAll('[data-scenario]').forEach(button => button.addEventListener('click', () => showScenario(button.dataset.scenario)));
+  function connectHome(account) {
+    const [whole, decimal] = money(account.balanceCents).split('.');
+    const amount=document.querySelector('.hero-amount');amount.replaceChildren(document.createTextNode(whole));
+    const decimals=document.createElement('span');decimals.className='amount-decimals';decimals.textContent='.'+decimal;amount.append(decimals);amount.setAttribute('aria-label',account.balance+' observed account balance');
+    document.querySelector('.payday-pill').textContent='Observed 28 Sep · '+account.label;
+    const billCents=account.payments.filter(p=>p.direction==='outflow'&&['Housing','Utilities'].includes(p.category)).reduce((sum,p)=>sum+p.expectedTotalCents,0);
+    const values=document.querySelectorAll('.set-aside strong');values[0].textContent=money(billCents);values[1].textContent=money(account.savingsTargetCents);
+    const rows=el('account-plan-rows');rows.replaceChildren();
+    for(const [label,value] of [['Category spending plan',money(account.spendingPlanCents)],['Savings target',money(account.savingsTargetCents)],['Cash buffer',money(account.bufferCents)],['Forecast period','1–30 October']]){const row=document.createElement('div');const dt=document.createElement('dt');dt.textContent=label;const dd=document.createElement('dd');dd.textContent=value;row.append(dt,dd);rows.append(row);}
+  }
+  const starters=[
+    ['Spending plan','See your category limits','Show my spending plan','↗'],
+    ['Upcoming bills','Know what’s due next','Show upcoming bills','▦'],
+    ['Saving room','Understand your options','Show my saving room','＋'],
+    ['Plan a cost','Add an upcoming expense','I have an expense coming up','↳'],
+  ];
+  for(const [title,detail,prompt,icon] of starters){const button=document.createElement('button');button.type='button';button.dataset.prompt=prompt;button.className='coach-starter';const mark=document.createElement('span');mark.className='starter-icon';mark.textContent=icon;mark.setAttribute('aria-hidden','true');const strong=document.createElement('strong');strong.textContent=title;const small=document.createElement('span');small.textContent=detail;button.append(mark,strong,small);button.addEventListener('click',()=>{el('chat-input').value=prompt;submit(prompt);});el('coach-starters').append(button);}
   async function load() {
     setBusy(true);
     try { const response = await fetch('/api/coach'); if (!response.ok) throw new Error(); const data = await response.json();
-      if (!data.contexts?.design || !data.contexts?.engine) throw new Error(); contexts = data.contexts; ready = data.ready; showScenario(scenario);
-    } catch { ready = false; el('coach-source').textContent = 'Your plan couldn’t load.'; el('chat-status').textContent = 'Please reload to reconnect.'; setBusy(false); }
+      if (!data.contexts?.design || !data.contexts?.engine) throw new Error(); contexts = data.contexts; ready = data.ready || data.planningReady; connectHome(data.account); showScenario(scenario);
+    } catch { ready = false; el('coach-source').textContent = 'Your plan couldn’t load.'; el('chat-status').textContent = 'Please reload to reconnect.'; document.querySelector('.payday-pill').textContent='Account data unavailable · reload to retry'; setBusy(false); }
   }
   load();
 })();

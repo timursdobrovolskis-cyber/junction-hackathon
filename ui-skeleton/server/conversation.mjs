@@ -1,3 +1,5 @@
+import { accountAnswer } from './account.mjs';
+import { formatPlanning, presentationText, validatePresentation } from './reply-format.mjs';
 import { createChatSession, respondToChat, validateChatSession } from './conversation/chat-coach.mjs';
 
 export const profileIds = { design: 'home-sample', engine: 'CUST00005' };
@@ -30,14 +32,21 @@ export function prepareConversation(input) {
 export async function conversationReply(input, generate) {
   const { previous, next, structured } = prepareConversation(input);
   let source = 'planning';
-  if (!structured) {
-    const reply = await generate({ ...input, draft: previous.draft, pending: previous.awaiting });
+  const answer = input.scenario === 'engine' ? accountAnswer(input.message) : null;
+  if (answer) {
+    next.draft = previous.draft; next.awaiting = previous.awaiting; next.context = previous.context;
+    next.messages[next.messages.length-1] = {id:next.messages.at(-1).id,role:'assistant',text:presentationText(answer),presentation:answer,suggestions:previous.awaiting?['Continue','Cancel']:answer.suggestions};
+    source = 'account';
+  } else if (!structured) {
+    const generated = await generate({ ...input, draft: previous.draft, pending: previous.awaiting });
+    const presentation = typeof generated === 'string' ? {summary:generated,bullets:[],nextQuestion:''} : validatePresentation(generated);
+    const reply = presentationText(presentation);
     // LLM output is text only: it has no authority to change the draft or confirm an action.
     next.draft = previous.draft;
     next.awaiting = previous.awaiting;
     next.context = previous.context;
     next.messages[next.messages.length - 1] = {
-      id: next.messages.at(-1).id, role: 'assistant', text: reply,
+      id: next.messages.at(-1).id, role: 'assistant', text: reply, presentation,
       suggestions: previous.awaiting ? ['Continue', 'Cancel'] : ['I want to save more', 'I have an expense coming up', 'Show my draft'],
     };
     source = 'gemini';
@@ -50,10 +59,11 @@ export async function conversationReply(input, generate) {
     .replaceAll('This prototype uses euros.', 'Your plan uses euros.')
     .replaceAll('For this prototype, choose', 'Choose')
     .replaceAll('We still need your financial data to check whether it fits.', 'We’ll need to check it against your forecast before changing your plan.');
+  if (!message.presentation) message.presentation = formatPlanning(next);
   next.messages = next.messages.slice(-40);
   next.messages.forEach((m, i) => { m.id = `m${i + 1}`; });
   validateConversation(next, input.scenario);
   return { reply: message.text, source, scenario: input.scenario, session: next,
-    suggestions: message.suggestions ?? [], sources: message.sources ?? [],
+    presentation: message.presentation, suggestions: message.suggestions ?? [], sources: message.sources ?? [],
     movesMoney: false, planChanged: false, draftOnly: true };
 }

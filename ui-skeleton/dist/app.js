@@ -89,7 +89,7 @@ $('purchase-form').addEventListener('submit', (event) => {
 
 const defaultInfo = {
   title: 'A little space for your money.',
-  copy: document.body.classList.contains('vest-theme') ? 'This is a hackathon concept, not an official banking service. Home and Goals use separate sample plans. Calendar offers a historical customer and a separate recurring-payment sample. The Coach offers historical transaction context, draft planning and Gemini explanations. Chat messages go to Google Gemini; no bank account is connected. Chat and draft preferences are kept in this browser, separately for each sample profile; no financial plan is recalculated or saved to a bank.' : 'This is an interactive design sketch. All figures and dates are illustrative. It isn’t connected to an account, and no information is saved or sent.',
+  copy: document.body.classList.contains('vest-theme') ? 'This is a hackathon concept, not an official banking service. Home, Coach and the transaction Calendar use the same bank-provided sample customer CUST00005, with history through 30 September 2026. Goals and the optional recurring-payment calendar use separate samples. The account snapshot is not a live bank feed. Chat messages go to Google Gemini; no bank account is connected. Chat and draft preferences are kept in this browser, separately for each sample profile; no financial plan is recalculated or saved to a bank.' : 'This is an interactive design sketch. All figures and dates are illustrative. It isn’t connected to an account, and no information is saved or sent.',
 };
 $('about-preview').addEventListener('click', () => {
   $('info-title').textContent = defaultInfo.title;

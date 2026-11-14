@@ -31,3 +31,7 @@ Integrated the teammate's conversation mechanism with Gemini. Verified a €400 
 ## Team feature integration
 
 Short/long-term goals and Calendar now sit beside Home and Coach in the same iPhone frame. Browser checks verified the €210→€240 recovery preview, zero-return long-term arithmetic, yearly filtering and payment evidence. 56 automated tests pass. Captures: 06-integrated-goals.jpg, 07-long-term-goals.jpg, 08-integrated-calendar.jpg. Browser instrumentation continues to report the previously observed MutationObserver error; the checked app flows work and app source does not construct a MutationObserver.
+
+## Account-backed coach and structured replies
+
+Added four compact suggestion cards, an Ideas toggle, a shared account header and structured response blocks with metrics, bullets and expandable evidence. Home and Coach now share CUST00005’s observed account snapshot; no live bank connection is claimed. Verified Home balance €6,466.14, bills €926.13, savings target €100, account-based payment replies and live structured Gemini output. Compact coach width and scroll width both measured 331px. 61 automated tests pass. Screenshots: 09-coach-suggestion-cards.jpg and 10-structured-account-answer.jpg.

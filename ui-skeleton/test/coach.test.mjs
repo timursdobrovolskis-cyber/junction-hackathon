@@ -17,8 +17,9 @@ test('transaction example comes from the existing coach',()=>{
 });
 test('Gemini receives server facts; key is header-only; thought text is excluded',async()=>{
   let seen;
-  const reply=await generateReply(validateInput({scenario:'design',message:'Explain'}),{key:'test-key',fetcher:async(url,options)=>{seen={url,options,body:JSON.parse(options.body)};return {ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{thought:true,text:'hidden'},{text:'A grounded explanation.'}]}}]})};}});
-  assert.equal(reply,'A grounded explanation.');
+  const reply=await generateReply(validateInput({scenario:'design',message:'Explain'}),{key:'test-key',fetcher:async(url,options)=>{seen={url,options,body:JSON.parse(options.body)};return {ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{thought:true,text:'hidden'},{text:JSON.stringify({title:'Your plan',summary:'A grounded explanation.',bullets:[],nextQuestion:''})}]}}]})};}});
+  assert.equal(reply.summary,'A grounded explanation.');
+  assert.equal(seen.body.generationConfig.responseMimeType,'application/json');
   assert.equal(seen.options.headers['x-goog-api-key'],'test-key');
   assert.ok(!seen.url.includes('test-key'));
   assert.match(seen.body.systemInstruction.parts[0].text,/Never invent or recalculate/);
