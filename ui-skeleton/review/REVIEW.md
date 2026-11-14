@@ -47,3 +47,8 @@ Added a compact Home budget entry and a separate category page, with October pro
 ## Budget-first Home
 
 Moved the category budget into the main green card and removed the duplicate balance-led hero. The purchase action stays immediately below the card, with bills and savings beneath it. Removed the coach loader's Home balance writes so it cannot overwrite the budget or fail on deleted elements; account balance remains in Coach's account context. Verified budget navigation, purchase dialog opening, populated coach account data, and compact layout (331px content and scroll width; budget overview 289px for both). Screenshot: 15-budget-first-home.jpg.
+
+
+## Interpreted budget history and plan status
+
+Replaced the two fixed tabs with a month selector and previous/next controls: 24 months of recorded transactions, one existing plan and explicit future no-plan states. Replaced the main donut with a status, explanation and evidence action; retained a collapsible six-month trend. Verified first/last month boundaries, historical category changes, review-to-payment navigation, trend navigation, unavailable-month recovery, Home status, compact width (331px with no horizontal overflow), and the latest shared calendar page. Integrated the team's calendar changes before release. The isolated combined frontend passes 77 tests, including reconciliation of every historical month to the source and status behavior for missing data, provisional budgets and overspending. Screenshots: 16-interpreted-budget-history.jpg and 17-home-plan-status.jpg.

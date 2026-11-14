@@ -53,11 +53,11 @@ synthetic samples; live account export is disabled pending a private connection.
 See FINANCIAL_CALENDAR.md for recurrence rules, examples and Google setup.
 ## Budget page and spending history
 
-Home → Your budget → View all opens `#budget`. The October plan uses the same CUST00005 / ACC000005 budget as Home and Coach. `GET /api/budget?period=plan|history` supplies the view. Proposed category limits total €1,793.99. September actual spending totals €2,209.34; income and investment/transfer movements are excluded. Refunds are listed separately, not added to available budget.
+Home → Your budget → View all opens `#budget`. The October plan uses the same CUST00005 / ACC000005 budget as Home and Coach. `GET /api/budget?period=plan|history|YYYY-MM` supplies the view. Proposed category limits total €1,793.99. September actual spending totals €2,209.34; income and investment/transfer movements are excluded. Refunds are listed separately, not added to available budget.
 
 The source export ends 30 September; no October actuals exist. `spentCents` and `remainingCents` are therefore **null**, never fabricated zeros. September is its own history view, never deducted from October limits. The calculation supports same-period posted spending, negative remaining amounts, unbudgeted categories, and partial coverage. Budget changes/recalculation are not enabled by this page.
 
-`server/budget/activity.json` contains only seven synthetic September transactions for the selected account, exported from the prepared SQLite database by `python3 ui-skeleton/server/budget/build-fixture.py` from repository root. Do not package the full database. To wire a real account feed, supply matching customer/account identities, a trustworthy coverage start/end, all posted activity in that window, and the matching plan period. Keep missing coverage distinct from no transactions. Authentication and a live bank connection remain outside this prototype.
+`server/budget/activity.json` contains all 430 synthetic transactions (October 2024–September 2026) for the selected account, exported from the prepared SQLite database by `python3 ui-skeleton/server/budget/build-fixture.py` from repository root. Do not package the full database. To wire a real account feed, supply matching customer/account identities, a trustworthy coverage start/end, all posted activity in that window, and the matching plan period. Keep missing coverage distinct from no transactions. Authentication and a live bank connection remain outside this prototype.
 
 
 ## One production source
@@ -76,3 +76,12 @@ Vercel CLI flags can be forwarded after `--`. It never resets or discards work.
 Use this command instead of raw `vercel --prod` for team releases. Manual CLI or
 Vercel dashboard deployments can bypass the local guard; this does not change
 team permissions or claim to prevent an owner from publishing an older build.
+
+
+## Budget history, status and interpretation
+
+The month selector exposes 24 recorded months, October’s proposed plan, and November/December unavailable-plan states. The API returns `catalog`, `selectedMonth`, `explanation` (label/reason/action), a same-period `comparison`, up to six monthly totals in `series`, and an optional large-payment insight. Month-over-month comparisons require complete coverage of both months. Missing periods return no amounts, not zero balances or copied forecasts.
+
+Home shows a plain-language plan status, not a numeric score. Current October status is Ready for your review because costs are unconfirmed and no October transactions are present. For matching actuals, status distinguishes over-limit categories, spending without a budget, unconfirmed proposals, and within-limits-so-far observations. It never promises that future bills fit merely because spending is currently below a limit.
+
+History explains the net monthly change and its largest category driver, including offsets from other categories. Review actions open the category and actual payments. The optional history bars also navigate between months. No historical budgets are invented and reduced spending is not called improved financial health. The calendar remains the latest shared frontend version; its selected sample profile is separate from the fixed Home budget account.

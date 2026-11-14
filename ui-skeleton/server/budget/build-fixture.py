@@ -11,10 +11,10 @@ with sqlite3.connect((root / 'data/local/bank.sqlite').as_uri() + '?mode=ro', ur
     db.row_factory = sqlite3.Row
     audit = json.loads(db.execute("SELECT value FROM metadata WHERE key='audit'").fetchone()[0])
     rows = db.execute('SELECT * FROM transactions WHERE customer_id=? AND date BETWEEN ? AND ? ORDER BY occurred_at,source_row',
-                      (customer, '2026-09-01', '2026-09-30')).fetchall()
+                      (customer, audit['first_date'], audit['last_date'])).fetchall()
     data = {'customerId': customer, 'accountIds': [a['accountId'] for a in plan['forecast']['accounts']],
             'source': 'bank_provided_synthetic_data', 'sourceRevision': audit['source_revision'],
-            'coverage': {'start': '2026-09-01', 'end': '2026-09-30'},
+            'coverage': {'start': audit['first_date'], 'end': audit['last_date']},
             'transactions': [{'id': r['transaction_id'], 'customerId': r['customer_id'], 'accountId': r['account_id'],
                               'date': r['date'], 'category': r['category'], 'amountCents': r['amount_cents'],
                               'type': r['transaction_type']} for r in rows]}

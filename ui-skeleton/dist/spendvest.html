@@ -49,7 +49,7 @@
           <div id="home-budget-ring" class="budget-ring small-ring" aria-hidden="true"><span>Plan</span></div>
         </a>
         <div id="home-budget-categories" class="home-budget-categories"></div>
-        <p id="home-budget-note" class="budget-caption">Loading your category limits…</p>
+        <div class="home-plan-status"><strong id="home-budget-status">Loading your plan…</strong><p id="home-budget-note" class="budget-caption"></p></div>
         <a href="#budget" class="budget-hero-link">View category budgets <svg class="icon"><use href="#i-arrow"/></svg></a>
       </section>
       <button class="primary-button purchase-trigger" id="open-purchase">Check a purchase<svg class="icon"><use href="#i-arrow"/></svg></button>
@@ -95,16 +95,20 @@
     <section id="budget-page" class="page budget-page" aria-labelledby="budget-title" hidden>
       <a href="#home" class="budget-back">← Home</a>
       <div class="budget-heading"><h1 id="budget-title">Your budget.</h1><p>Know where it goes. Plan what comes next.</p></div>
-      <div class="budget-periods" role="group" aria-label="Budget period"><button type="button" data-budget-period="plan" aria-pressed="true">October plan</button><button type="button" data-budget-period="history" aria-pressed="false">September spent</button></div>
+      <div class="budget-month-nav"><button id="budget-prev" type="button" aria-label="Previous month">←</button><label for="budget-month" class="sr-only">Budget month</label><select id="budget-month" aria-label="Budget month"><option>Loading months…</option></select><button id="budget-next" type="button" aria-label="Next month">→</button></div>
       <p id="budget-loading" role="status">Loading your budget…</p>
       <button id="budget-retry" class="inline-link" type="button" hidden>Try again</button>
       <div id="budget-content" hidden>
-        <section class="budget-overview" aria-label="Spending overview">
-          <div id="budget-ring" class="budget-ring" role="img"><span id="budget-ring-label"></span></div>
+        <section id="budget-status-card" class="budget-status-card" aria-labelledby="budget-status-title">
+          <p class="budget-eyebrow" id="budget-status-kicker">WHAT THIS MEANS</p><h2 id="budget-status-title"></h2><p id="budget-insight" class="budget-insight"></p><button id="budget-status-action" type="button"></button>
+        </section>
+        <section id="budget-overview" class="budget-overview interpreted-overview" aria-label="Spending overview">
           <div class="budget-overview-copy"><p id="budget-total-label"></p><strong id="budget-total"></strong><p id="budget-dates"></p><span id="budget-badge" class="budget-badge"></span></div>
+          <div id="budget-comparison" class="budget-overview-copy"><p id="budget-comparison-label"></p><strong id="budget-comparison-total"></strong><p id="budget-comparison-change"></p></div>
         </section>
         <div id="budget-totals" class="budget-totals"></div>
-        <p id="budget-insight" class="budget-insight"></p>
+        <p id="budget-payment-insight" class="budget-payment-insight" hidden></p>
+        <details id="budget-trend" class="budget-trend" hidden><summary>See recent months</summary><div id="budget-month-bars" class="budget-month-bars" aria-label="Monthly spending history"></div></details>
         <div class="budget-section-heading"><h2 id="budget-list-title">By category</h2><span id="budget-list-caption"></span></div>
         <div id="budget-categories" class="budget-categories"></div>
         <details class="budget-method"><summary>How this is worked out</summary><p id="budget-method-copy"></p><p id="budget-method-period"></p><p id="budget-method-assumptions"></p></details>
@@ -117,6 +121,7 @@
       <label for="goals-scenario">Savings scenario</label><select id="goals-scenario"><option value="afterExpense">With a €60 bike repair</option><option value="beforeExpense">Before the bike repair</option></select>
       <section id="short-goal" class="goal-card" aria-label="Short-term savings"><h2>That trip is closer.</h2><p class="goal-kicker">Projected by 31 January 2027</p><p id="goal-projection" class="goal-amount">—</p><p id="goal-target" class="goal-subtitle"></p><progress id="goal-progress" aria-label="Projected progress toward your trip" max="24000" value="0"></progress><p id="goal-saved" class="goal-saved"></p><p id="goal-insight" class="goal-insight"></p><button type="button" id="goal-recovery" class="primary-button" aria-pressed="false" hidden>Explore a small adjustment</button><p id="goal-recovery-copy" class="goal-note" role="status" hidden></p><details class="goal-evidence"><summary>What’s behind this projection</summary><div id="goal-periods"></div><ul id="goal-evidence"></ul><p>This savings sample is separate from Home and Calendar. The projection assumes the planned contributions are made; it does not check daily cash balances.</p></details></section>
       <section id="long-goal" class="goal-card" aria-label="Long-term savings illustration" hidden><h2>A little, over time.</h2><p class="goal-kicker">Explore how a regular contribution could grow.</p><form id="growth-form"><div class="growth-fields"><label for="growth-monthly">Monthly contribution assumption (€)<input id="growth-monthly" inputmode="decimal" value="20" required></label><label for="growth-years">Years<input id="growth-years" type="number" min="2" max="40" value="10" required></label><label for="growth-rate">Annual return assumption<select id="growth-rate"><option value="-3">−3%</option><option value="0">0%</option><option value="3">3%</option><option value="6" selected>6%</option><option value="9">9%</option></select></label></div><button class="primary-button" type="submit">Update illustration</button></form><p id="growth-title" class="goal-kicker" style="margin-top:22px">After 10 years</p><p id="growth-value" class="goal-amount">—</p><div class="growth-total"><span>Total contributions</span><strong id="growth-contributed">—</strong></div><details class="goal-evidence"><summary>Assumptions and limits</summary><p id="goal-assumptions"></p></details><p class="goal-note">An illustration, not a guaranteed return. Contributions still need a cash-flow check.</p></section>
+      <section id="purchase-goal" class="goal-card" hidden><h2 id="purchase-goal-name"></h2><p id="purchase-goal-amount" class="goal-subtitle"></p><p class="goal-note">Saved on this device</p></section>
       <p id="goals-error" class="form-error" role="alert" hidden></p><p id="goals-status" class="goals-status" role="status"></p><button type="button" id="goals-retry" class="inline-link">Refresh goals</button>
     </section>
     <section id="calendar-page" class="page calendar-page" aria-labelledby="calendar-title" hidden>
