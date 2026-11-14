@@ -73,3 +73,7 @@
 #coach-page .composer button[type=submit]:disabled { background:#cfd8d1; }
 #coach-page .chat-status { font-size:11px; color:#8a948d; }
 @media (prefers-reduced-motion: reduce) { #coach-page .message, #coach-page .typing-dots i { animation:none; } }
+#coach-page .message .reply-summary { font-size:14px; line-height:1.4; font-weight:500; }
+#coach-page .reply-point { margin-top:6px; font-size:12.5px; line-height:1.4; color:#4c5a50; }
+#coach-page .reply-more summary { margin-top:6px; color:var(--c-forest); font-size:12px; font-weight:600; cursor:pointer; }
+#coach-page .message-assistant { padding:10px 13px; }

@@ -24,11 +24,11 @@ function purchaseAdvice(input, session) {
     // Use the engine's immediate set-aside capacity as a conservative screen.
     if (available - budget.savingsTargetCents >= purchase.amountCents) {
       return {
-        summary: `The ${price} ${purchase.label} looks like it fits in October. If your upcoming costs are covered, buying this month should leave room for your savings target and cash buffer.`,
+        summary: `The ${price} ${purchase.label} looks like it fits in October, with your savings target and buffer still covered.`,
         suggestions: [],
       };
     }
-    summary = `I’d wait and save for the ${purchase.label}. Setting aside ${price} would leave too little room for your savings target and cash buffer. Check next month’s plan before buying.`;
+    summary = `I’d wait and save for the ${purchase.label} — ${price} now would squeeze your savings target and buffer.`;
   }
   return { summary, goal: { label: purchase.label, amountCents: purchase.amountCents, currency: 'EUR', period: 'one_time' } };
 }
