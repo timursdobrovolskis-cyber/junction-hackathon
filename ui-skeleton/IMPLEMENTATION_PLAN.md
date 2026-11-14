@@ -1,5 +1,12 @@
 # Next frontend integrations
 
+The [Financial Calendar UI](FINANCIAL_CALENDAR.md) is now implemented on
+`feat/financial-calendar-ui`, based on this frontend's latest preview. It runs
+with generated engine examples and an optional compatible backend connection.
+Merge this focused UI branch into `codex/frontend-coach-preview` to include it
+in that app's next deployment. Saved-plan editing and shared live customer state
+remain separate integrations below.
+
 ## 1. Connect “Check a purchase” to the forecast
 
 Status: the Python engine already accepts `plannedPurchase` and returns `purchasePreview`. The deployed website only collects amount/date; it does not call that engine yet. See `src/purchase_preview.py`, `src/financial_engine.py` and `data/DEMO_WALKTHROUGH.md` in the main project checkout.

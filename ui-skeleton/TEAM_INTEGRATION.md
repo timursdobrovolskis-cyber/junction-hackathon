@@ -19,7 +19,7 @@ Home → Goals → Calendar → Coach. One phone frame, one navigation, S-Pankki
 
 - Short-term trip projection: €270 before a €60 repair, €210 after it, €240 if three €10 delivery reductions are followed. Evidence and planned contributions can be inspected. Saved money remains €150 throughout.
 - Long-term illustration: editable contribution, 2–40 years and return assumption; zero and negative returns supported. It is not a product prediction or an assessment of affordable contributions. No real transfers, round-ups or investment actions are switched on.
-- Calendar: month navigation, cost/income/yearly filters, estimated payment windows, recurring candidates, daily balances within forecast coverage and source transactions. These are not verified subscription contracts; no cancellation feature is claimed.
+- Calendar: 24-month navigation, cost/income/subscription/yearly filters, single estimated dates for regular payments, date dialogs and source transactions. Irregular spending and buffer-risk overlays are excluded. These are not verified subscription contracts; no cancellation feature is claimed.
 - Coach: teammate state machine for goals, priorities, buffers and dated expenses; explicit confirmations; Gemini explanations; browser-local conversations and uncalculated drafts isolated by sample profile.
 
 ## Remaining integration boundary
@@ -44,6 +44,13 @@ Verification: 61 automated tests and live structured Gemini output. Home/Coach i
 
 Structured output reference: https://ai.google.dev/gemini-api/docs/structured-output ; the configured generateContent responseMimeType/responseJsonSchema was verified with the live provider.
 
+
+Calendar upgrade: small posting-date differences no longer hide monthly housing.
+Three consecutive merchant payments can identify a possible subscription.
+Customer-scoped, dated spending notices open evidence and next steps below the
+month grid. A read-only Google Calendar feed/export is available for the public
+synthetic samples; live account export is disabled pending a private connection.
+See FINANCIAL_CALENDAR.md for recurrence rules, examples and Google setup.
 ## Budget page and spending history
 
 Home → Your budget → View all opens `#budget`. The October plan uses the same CUST00005 / ACC000005 budget as Home and Coach. `GET /api/budget?period=plan|history` supplies the view. Proposed category limits total €1,793.99. September actual spending totals €2,209.34; income and investment/transfer movements are excluded. Refunds are listed separately, not added to available budget.
@@ -51,3 +58,21 @@ Home → Your budget → View all opens `#budget`. The October plan uses the sam
 The source export ends 30 September; no October actuals exist. `spentCents` and `remainingCents` are therefore **null**, never fabricated zeros. September is its own history view, never deducted from October limits. The calculation supports same-period posted spending, negative remaining amounts, unbudgeted categories, and partial coverage. Budget changes/recalculation are not enabled by this page.
 
 `server/budget/activity.json` contains only seven synthetic September transactions for the selected account, exported from the prepared SQLite database by `python3 ui-skeleton/server/budget/build-fixture.py` from repository root. Do not package the full database. To wire a real account feed, supply matching customer/account identities, a trustworthy coverage start/end, all posted activity in that window, and the matching plan period. Keep missing coverage distinct from no transactions. Authentication and a live bank connection remain outside this prototype.
+
+
+## One production source
+
+Deployments replace the whole website. Publishing an older feature checkout can
+remove someone else's Calendar, Budget or Coach changes even if their files are
+still on GitHub. The shared production source is `codex/frontend-coach-preview`.
+Merge feature PRs into it and update the local checkout before publishing.
+
+Run `npm run deploy` inside `ui-skeleton` using the existing linked
+`agentsquared/junction-money-ui` project. The command fetches the shared branch,
+rejects dirty checkouts or any HEAD other than that exact shared commit, runs all
+UI tests, then deploys. `npm run deploy -- --check` performs only the checks.
+Vercel CLI flags can be forwarded after `--`. It never resets or discards work.
+
+Use this command instead of raw `vercel --prod` for team releases. Manual CLI or
+Vercel dashboard deployments can bypass the local guard; this does not change
+team permissions or claim to prevent an owner from publishing an older build.

@@ -55,7 +55,7 @@ Production app: https://junction-money-ui.vercel.app/spendvest.html
 
 Device preview: https://junction-money-ui.vercel.app/preview.html
 
-Vercel project: `agentsquared/junction-money-ui`. `GEMINI_API_KEY` is configured as a Vercel secret after the owner's explicit approval. Local `.env.local` is excluded from Git and deployment uploads. Team members need Vercel project access to deploy; GitHub pushes do not currently deploy automatically. Deploy from this directory with `npx vercel --prod --yes`.
+Vercel project: `agentsquared/junction-money-ui`. `GEMINI_API_KEY` is configured as a Vercel secret after the owner's explicit approval. Local `.env.local` is excluded from Git and deployment uploads. Team members need Vercel project access to deploy; GitHub pushes do not currently deploy automatically. Merge into `codex/frontend-coach-preview`, update the local checkout, then deploy from this directory with `npm run deploy`. This verifies the shared source and runs tests before publishing; see TEAM_INTEGRATION.md.
 
 ## Brand sources
 

@@ -1,23 +1,24 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "customerId": "CUST00005",
   "asOf": "2026-09-30",
   "currency": "EUR",
   "modelVersion": "conditioned-income-v2",
   "rangeStart": "2026-10-01",
-  "rangeEnd": "2027-09-30",
+  "rangeEnd": "2028-09-30",
   "forecastStatus": "estimated",
   "forecastThrough": "2026-10-30",
   "events": [
     {
-      "id": "forecast-3fb213adf3447c86de",
+      "id": "recurring-3fb213adf3447c86de",
       "seriesId": "0ca3824b954735fb20",
       "title": "Housing payment",
       "source": "forecast",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2026-10-01",
-      "latestDate": "2026-10-06",
+      "date": "2026-10-03",
+      "earliestDate": "2026-10-03",
+      "latestDate": "2026-10-03",
       "amountCents": 79913,
       "direction": "outflow",
       "status": "estimated",
@@ -35,128 +36,19 @@
         "tx-49b3265d8e44e751-2773",
         "tx-49b3265d8e44e751-2794"
       ],
-      "explanation": "Copied from the cash-flow forecast. This window is an estimate, not a scheduled bank payment."
-    },
-    {
-      "id": "forecast-578622da34d16baeca",
-      "seriesId": "733b7ed20397b4efe6",
-      "title": "Salary",
-      "source": "forecast",
-      "kind": "income",
-      "cadence": "forecast",
-      "earliestDate": "2026-10-03",
-      "latestDate": "2026-10-30",
-      "amountCents": 217123,
-      "direction": "inflow",
-      "status": "estimated",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": true,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "accountId": "ACC000005",
-      "category": "Salary",
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2711",
-        "tx-49b3265d8e44e751-2737",
-        "tx-49b3265d8e44e751-2741",
-        "tx-49b3265d8e44e751-2756",
-        "tx-49b3265d8e44e751-2792",
-        "tx-49b3265d8e44e751-2795"
-      ],
-      "explanation": "Copied from the cash-flow forecast. This window is an estimate, not a scheduled bank payment."
-    },
-    {
-      "id": "forecast-347de7c6d6e3c147cd",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "forecast",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2026-10-04",
-      "latestDate": "2026-10-28",
-      "amountCents": 12700,
-      "direction": "outflow",
-      "status": "estimated",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": true,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "accountId": "ACC000005",
-      "category": "Utilities",
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2710",
-        "tx-49b3265d8e44e751-2713",
-        "tx-49b3265d8e44e751-2715",
-        "tx-49b3265d8e44e751-2718",
-        "tx-49b3265d8e44e751-2734",
-        "tx-49b3265d8e44e751-2736",
-        "tx-49b3265d8e44e751-2742",
-        "tx-49b3265d8e44e751-2744",
-        "tx-49b3265d8e44e751-2745",
-        "tx-49b3265d8e44e751-2747",
-        "tx-49b3265d8e44e751-2760",
-        "tx-49b3265d8e44e751-2769",
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
-      ],
-      "explanation": "Copied from the cash-flow forecast. This window is an estimate, not a scheduled bank payment."
-    },
-    {
-      "id": "forecast-ec9a75f537d3dcb7f5",
-      "seriesId": "263e3e986ab083c85a",
-      "title": "Invest Deposit",
-      "source": "forecast",
-      "kind": "movement",
-      "cadence": "forecast",
-      "earliestDate": "2026-10-16",
-      "latestDate": "2026-10-16",
-      "amountCents": 27724,
-      "direction": "outflow",
-      "status": "estimated",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": true,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "accountId": "ACC000005",
-      "category": "Invest Deposit",
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2712",
-        "tx-49b3265d8e44e751-2743",
-        "tx-49b3265d8e44e751-2757",
-        "tx-49b3265d8e44e751-2796"
-      ],
-      "explanation": "Copied from the cash-flow forecast. This window is an estimate, not a scheduled bank payment."
-    },
-    {
-      "id": "recurring-09ccec2367e73adde6",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2026-11-01",
-      "latestDate": "2026-11-30",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
-      ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-9fe8c6143bab6013f3",
@@ -165,15 +57,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2026-11-01",
-      "latestDate": "2026-11-06",
+      "date": "2026-11-03",
+      "earliestDate": "2026-11-03",
+      "latestDate": "2026-11-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -183,34 +78,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-3683417d733e69c4ff",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2026-12-01",
-      "latestDate": "2026-12-31",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
       ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-4d0354a10dc0791b7d",
@@ -219,15 +98,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2026-12-01",
-      "latestDate": "2026-12-06",
+      "date": "2026-12-03",
+      "earliestDate": "2026-12-03",
+      "latestDate": "2026-12-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -237,7 +119,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-2fdd123391bca5f65f",
@@ -246,15 +139,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-01-01",
-      "latestDate": "2027-01-06",
+      "date": "2027-01-03",
+      "earliestDate": "2027-01-03",
+      "latestDate": "2027-01-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -264,34 +160,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-ee5b04200b6bfb7287",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2027-01-01",
-      "latestDate": "2027-01-31",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
       ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-50ee9cf9c8c07af2bc",
@@ -300,15 +180,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-02-01",
-      "latestDate": "2027-02-06",
+      "date": "2027-02-03",
+      "earliestDate": "2027-02-03",
+      "latestDate": "2027-02-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -318,61 +201,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-d79ba9b2c6ec768f46",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2027-02-01",
-      "latestDate": "2027-02-28",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
       ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-77395bf9c63b42a847",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2027-03-01",
-      "latestDate": "2027-03-31",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
-      ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-92576ad6e903bc032d",
@@ -381,15 +221,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-03-01",
-      "latestDate": "2027-03-06",
+      "date": "2027-03-03",
+      "earliestDate": "2027-03-03",
+      "latestDate": "2027-03-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -399,34 +242,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-84ae7d4e8fac1bdc3b",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2027-04-01",
-      "latestDate": "2027-04-30",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
       ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-ef4319dd3cb10cde77",
@@ -435,15 +262,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-04-01",
-      "latestDate": "2027-04-06",
+      "date": "2027-04-03",
+      "earliestDate": "2027-04-03",
+      "latestDate": "2027-04-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -453,34 +283,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-70d520273457b6cc1a",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2027-05-01",
-      "latestDate": "2027-05-31",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
       ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-c22a47201db4fafe36",
@@ -489,15 +303,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-05-01",
-      "latestDate": "2027-05-06",
+      "date": "2027-05-03",
+      "earliestDate": "2027-05-03",
+      "latestDate": "2027-05-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -507,7 +324,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-9003e1b1f1af1dd887",
@@ -516,15 +344,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-06-01",
-      "latestDate": "2027-06-06",
+      "date": "2027-06-03",
+      "earliestDate": "2027-06-03",
+      "latestDate": "2027-06-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -534,61 +365,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-b8c5d8f620fb0adee4",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2027-06-01",
-      "latestDate": "2027-06-30",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
       ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-49f8109436f64b7484",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2027-07-01",
-      "latestDate": "2027-07-31",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
-      ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-f24781aee241c68b19",
@@ -597,15 +385,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-07-01",
-      "latestDate": "2027-07-06",
+      "date": "2027-07-03",
+      "earliestDate": "2027-07-03",
+      "latestDate": "2027-07-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -615,34 +406,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
-    },
-    {
-      "id": "recurring-4d21b9ae0c45c93cde",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
-      "source": "history_pattern",
-      "kind": "bill",
-      "cadence": "monthly",
-      "earliestDate": "2027-08-01",
-      "latestDate": "2027-08-31",
-      "amountCents": 12286,
-      "direction": "outflow",
-      "status": "needs_review",
-      "isConfirmed": false,
-      "alreadyIncludedInForecast": null,
-      "scope": "account_type_category_aggregate",
-      "merchantId": null,
-      "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
       ],
-      "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-74c549752d83aacd13",
@@ -651,15 +426,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-08-01",
-      "latestDate": "2027-08-06",
+      "date": "2027-08-03",
+      "earliestDate": "2027-08-03",
+      "latestDate": "2027-08-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -669,7 +447,18 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
       "id": "recurring-2fe962b07ae1eab70d",
@@ -678,15 +467,18 @@
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-09-01",
-      "latestDate": "2027-09-06",
+      "date": "2027-09-03",
+      "earliestDate": "2027-09-03",
+      "latestDate": "2027-09-03",
       "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
         "tx-49b3265d8e44e751-2706",
         "tx-49b3265d8e44e751-2717",
@@ -696,34 +488,510 @@
         "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 6 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     },
     {
-      "id": "recurring-4583e303324fb5e132",
-      "seriesId": "4be14ba05c813050cb",
-      "title": "Utilities \u00b7 payment group",
+      "id": "recurring-cfe35bcb7cff977ee9",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
       "source": "history_pattern",
       "kind": "bill",
       "cadence": "monthly",
-      "earliestDate": "2027-09-01",
-      "latestDate": "2027-09-30",
-      "amountCents": 12286,
+      "date": "2027-10-03",
+      "earliestDate": "2027-10-03",
+      "latestDate": "2027-10-03",
+      "amountCents": 80390,
       "direction": "outflow",
-      "status": "needs_review",
+      "status": "estimated",
       "isConfirmed": false,
       "alreadyIncludedInForecast": null,
       "scope": "account_type_category_aggregate",
       "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
       "evidenceIds": [
-        "tx-49b3265d8e44e751-2776",
-        "tx-49b3265d8e44e751-2782",
-        "tx-49b3265d8e44e751-2788",
-        "tx-49b3265d8e44e751-2797",
-        "tx-49b3265d8e44e751-2798",
-        "tx-49b3265d8e44e751-2799"
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
       ],
       "evidenceStrength": "strong",
-      "explanation": "Possible monthly recurrence based on 18 observed payments. Verify the provider and renewal date. This annotation does not change the forecast."
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-5da8f1a8b4d2f45fd8",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-11-03",
+      "earliestDate": "2027-11-03",
+      "latestDate": "2027-11-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-1cf5e97d8b7cea422b",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-12-03",
+      "earliestDate": "2027-12-03",
+      "latestDate": "2027-12-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-544d741043d7c83bbc",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-01-03",
+      "earliestDate": "2028-01-03",
+      "latestDate": "2028-01-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-dc8cf1deb59c8f3737",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-02-03",
+      "earliestDate": "2028-02-03",
+      "latestDate": "2028-02-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-36f345d26058f1799a",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-03-03",
+      "earliestDate": "2028-03-03",
+      "latestDate": "2028-03-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d551af400bd1f5172d",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-04-03",
+      "earliestDate": "2028-04-03",
+      "latestDate": "2028-04-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-a0268c237c2a088d77",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-05-03",
+      "earliestDate": "2028-05-03",
+      "latestDate": "2028-05-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-98a9476ad60b3e8261",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-06-03",
+      "earliestDate": "2028-06-03",
+      "latestDate": "2028-06-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-1b2a1d36ab7a9b7b04",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-07-03",
+      "earliestDate": "2028-07-03",
+      "latestDate": "2028-07-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d5954bd10d11666cd2",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-08-03",
+      "earliestDate": "2028-08-03",
+      "latestDate": "2028-08-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d1d1cd03aedfa66e7f",
+      "seriesId": "0ca3824b954735fb20",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-09-03",
+      "earliestDate": "2028-09-03",
+      "latestDate": "2028-09-03",
+      "amountCents": 80390,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000005",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2706",
+        "tx-49b3265d8e44e751-2717",
+        "tx-49b3265d8e44e751-2739",
+        "tx-49b3265d8e44e751-2746",
+        "tx-49b3265d8e44e751-2773",
+        "tx-49b3265d8e44e751-2794"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        6
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80390,
+        "minCents": 77015,
+        "maxCents": 82332,
+        "medianAbsoluteDeviationCents": 1321
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
     }
   ],
   "daily": [
@@ -1041,82 +1309,10 @@
       "merchantId": null
     },
     {
-      "id": "tx-49b3265d8e44e751-2710",
-      "date": "2026-04-14",
-      "amountCents": -5549,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2711",
-      "date": "2026-04-15",
-      "amountCents": 228883,
-      "category": "Salary",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2712",
-      "date": "2026-04-16",
-      "amountCents": -40100,
-      "category": "Invest Deposit",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2713",
-      "date": "2026-04-16",
-      "amountCents": -4155,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2715",
-      "date": "2026-04-26",
-      "amountCents": -6307,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
       "id": "tx-49b3265d8e44e751-2717",
       "date": "2026-05-02",
       "amountCents": -77015,
       "category": "Housing",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2718",
-      "date": "2026-05-04",
-      "amountCents": -3925,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2734",
-      "date": "2026-05-21",
-      "amountCents": -2838,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2736",
-      "date": "2026-05-28",
-      "amountCents": -2823,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2737",
-      "date": "2026-05-31",
-      "amountCents": 275192,
-      "category": "Salary",
       "accountId": "ACC000005",
       "merchantId": null
     },
@@ -1129,90 +1325,10 @@
       "merchantId": null
     },
     {
-      "id": "tx-49b3265d8e44e751-2741",
-      "date": "2026-06-15",
-      "amountCents": 229539,
-      "category": "Salary",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2742",
-      "date": "2026-06-15",
-      "amountCents": -7658,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2743",
-      "date": "2026-06-16",
-      "amountCents": -40215,
-      "category": "Invest Deposit",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2744",
-      "date": "2026-06-19",
-      "amountCents": -5915,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2745",
-      "date": "2026-06-19",
-      "amountCents": -3949,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
       "id": "tx-49b3265d8e44e751-2746",
       "date": "2026-07-03",
       "amountCents": -81089,
       "category": "Housing",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2747",
-      "date": "2026-07-05",
-      "amountCents": -2443,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2756",
-      "date": "2026-07-15",
-      "amountCents": 240527,
-      "category": "Salary",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2757",
-      "date": "2026-07-16",
-      "amountCents": -42140,
-      "category": "Invest Deposit",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2760",
-      "date": "2026-07-21",
-      "amountCents": -2901,
-      "category": "Utilities",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2769",
-      "date": "2026-07-28",
-      "amountCents": -3162,
-      "category": "Utilities",
       "accountId": "ACC000005",
       "merchantId": null
     },
@@ -1233,12 +1349,76 @@
       "merchantId": null
     },
     {
+      "id": "tx-49b3265d8e44e751-2779",
+      "date": "2026-08-13",
+      "amountCents": -7375,
+      "category": "Entertainment",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-ENT-0051"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2780",
+      "date": "2026-08-17",
+      "amountCents": -7325,
+      "category": "Health",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-HEA-0003"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2781",
+      "date": "2026-08-17",
+      "amountCents": -12054,
+      "category": "Entertainment",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-ENT-0053"
+    },
+    {
       "id": "tx-49b3265d8e44e751-2782",
       "date": "2026-08-17",
       "amountCents": -4545,
       "category": "Utilities",
       "accountId": "ACC000005",
       "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2783",
+      "date": "2026-08-21",
+      "amountCents": -3152,
+      "category": "Transportation",
+      "accountId": "ACC000005",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2784",
+      "date": "2026-08-23",
+      "amountCents": -3195,
+      "category": "Transportation",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-TRN-0007"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2785",
+      "date": "2026-08-24",
+      "amountCents": -6295,
+      "category": "Transportation",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-TRN-0048"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2786",
+      "date": "2026-08-26",
+      "amountCents": -2212,
+      "category": "Transportation",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-TRN-0038"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2787",
+      "date": "2026-08-26",
+      "amountCents": -3567,
+      "category": "Transportation",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-TRN-0037"
     },
     {
       "id": "tx-49b3265d8e44e751-2788",
@@ -1249,34 +1429,34 @@
       "merchantId": null
     },
     {
-      "id": "tx-49b3265d8e44e751-2792",
-      "date": "2026-08-30",
-      "amountCents": 251434,
-      "category": "Salary",
+      "id": "tx-49b3265d8e44e751-2789",
+      "date": "2026-08-28",
+      "amountCents": -3793,
+      "category": "Entertainment",
       "accountId": "ACC000005",
-      "merchantId": null
+      "merchantId": "MRC-ENT-0052"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2790",
+      "date": "2026-08-29",
+      "amountCents": -7036,
+      "category": "Health",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-HEA-0014"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2791",
+      "date": "2026-08-30",
+      "amountCents": -5462,
+      "category": "Entertainment",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-ENT-0028"
     },
     {
       "id": "tx-49b3265d8e44e751-2794",
       "date": "2026-09-01",
       "amountCents": -82332,
       "category": "Housing",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2795",
-      "date": "2026-09-15",
-      "amountCents": 250516,
-      "category": "Salary",
-      "accountId": "ACC000005",
-      "merchantId": null
-    },
-    {
-      "id": "tx-49b3265d8e44e751-2796",
-      "date": "2026-09-16",
-      "amountCents": -43890,
-      "category": "Invest Deposit",
       "accountId": "ACC000005",
       "merchantId": null
     },
@@ -1303,6 +1483,14 @@
       "category": "Utilities",
       "accountId": "ACC000005",
       "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2800",
+      "date": "2026-09-28",
+      "amountCents": -128419,
+      "category": "Lifestyle",
+      "accountId": "ACC000005",
+      "merchantId": "MRC-LIF-0044"
     }
   ],
   "warnings": [
@@ -1320,7 +1508,112 @@
     "Modeled income is a probability-weighted expectation shared by scenarios; salary uncertainty requires separate error calibration.",
     "Calibration targets whole-path coverage on the synthetic population; distribution shifts and individual customers can violate it."
   ],
-  "notice": "Payment windows are estimates. Recurring entries beyond the forecast are reminders, not balance predictions. No money is moved.",
+  "omittedPatterns": [
+    {
+      "title": "Salary",
+      "reason": "Payment dates, amounts or monthly frequency are not consistent enough for one scheduled day.",
+      "transactionType": "salary",
+      "monthlyAmountCents": 245522,
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2711",
+        "tx-49b3265d8e44e751-2737",
+        "tx-49b3265d8e44e751-2741",
+        "tx-49b3265d8e44e751-2756",
+        "tx-49b3265d8e44e751-2792",
+        "tx-49b3265d8e44e751-2795"
+      ]
+    },
+    {
+      "title": "Utilities payment",
+      "reason": "Payment dates, amounts or monthly frequency are not consistent enough for one scheduled day.",
+      "transactionType": "utilities_payment",
+      "monthlyAmountCents": 12286,
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2776",
+        "tx-49b3265d8e44e751-2782",
+        "tx-49b3265d8e44e751-2788",
+        "tx-49b3265d8e44e751-2797",
+        "tx-49b3265d8e44e751-2798",
+        "tx-49b3265d8e44e751-2799"
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "954771e11e3270f313b4",
+      "kind": "spending_trend",
+      "severity": "warning",
+      "title": "Day-to-day spending is climbing",
+      "summary": "Spending increased in each of the last three complete months.",
+      "explanation": "Purchases rose by at least 10% in each comparison. If that pattern continues, it could leave less room for saving. This describes observed spending, not a prediction of your future balance. Refunds reduce these totals; transfers and investments are excluded.",
+      "action": "Review recurring purchases and choose a realistic limit for flexible spending before increasing savings.",
+      "asOf": "2026-09-30",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2779",
+        "tx-49b3265d8e44e751-2780",
+        "tx-49b3265d8e44e751-2781",
+        "tx-49b3265d8e44e751-2783",
+        "tx-49b3265d8e44e751-2784",
+        "tx-49b3265d8e44e751-2785",
+        "tx-49b3265d8e44e751-2786",
+        "tx-49b3265d8e44e751-2787",
+        "tx-49b3265d8e44e751-2789",
+        "tx-49b3265d8e44e751-2790",
+        "tx-49b3265d8e44e751-2791",
+        "tx-49b3265d8e44e751-2800"
+      ],
+      "monthlyTotals": [
+        {
+          "month": "2026-07",
+          "amountCents": 79874
+        },
+        {
+          "month": "2026-08",
+          "amountCents": 99548
+        },
+        {
+          "month": "2026-09",
+          "amountCents": 128419
+        }
+      ],
+      "metrics": [
+        {
+          "label": "Increase from first to last month",
+          "amountCents": 48545
+        },
+        {
+          "label": "Increase",
+          "percent": 61
+        }
+      ]
+    },
+    {
+      "id": "87b9ce812c8c58b3ee65",
+      "kind": "bill_timing_uncertain",
+      "severity": "info",
+      "title": "Utilities payment: check the due dates",
+      "summary": "These costs recur, but the history cannot identify reliable individual payment dates.",
+      "explanation": "Several payments or changing dates can belong to different providers. The monthly amount below is a historical estimate, not an extra bill or a scheduled deduction. These costs remain in the engine\u2019s financial forecast.",
+      "action": "Check each provider\u2019s next due date before adding individual reminders.",
+      "asOf": "2026-09-30",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-2776",
+        "tx-49b3265d8e44e751-2782",
+        "tx-49b3265d8e44e751-2788",
+        "tx-49b3265d8e44e751-2797",
+        "tx-49b3265d8e44e751-2798",
+        "tx-49b3265d8e44e751-2799"
+      ],
+      "metrics": [
+        {
+          "label": "Typical active-month total",
+          "amountCents": 12286
+        }
+      ]
+    }
+  ],
+  "notice": "Only regular payments with a predictable date are shown. Dates and amounts are estimates. Irregular spending is excluded; reminders do not extend the balance forecast.",
   "label": "Transaction example",
-  "sourceNotice": "Synthetic bank customer CUST00005; history through 30 September 2026. Separate from Home's illustrative November figures."
+  "sourceNotice": "Synthetic bank customer CUST00005; history through 30 September 2026. Separate from Home's illustrative November figures.",
+  "generatedAt": "2026-11-14T17:37:44Z"
 }
