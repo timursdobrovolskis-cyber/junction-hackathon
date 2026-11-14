@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "asOf": "2026-09-30",
+  "lookbackMonths": 12,
+  "customerCount": 3,
+  "statuses": {
+    "ready": 3
+  },
+  "recurringPatternCounts": {
+    "bill_group": 5,
+    "account_movement": 1,
+    "income": 3
+  },
+  "sourceRevision": "fbdecdedf1a1f49dd641c2e6b9f2b62d0dc0cc8f",
+  "sources": {
+    "tx_customers_junction.csv": {
+      "sha256": "c2511f4f04f825f561d0c37ee4c64c83cdcd358b27b23c1b311f87a951bc8cb3",
+      "bytes": 102050
+    },
+    "tx_junction_transactions.csv": {
+      "sha256": "49b3265d8e44e751de305a074dcffcda732bb79aa1e07b46fcca774ce76f1e63",
+      "bytes": 362796501
+    }
+  }
+}

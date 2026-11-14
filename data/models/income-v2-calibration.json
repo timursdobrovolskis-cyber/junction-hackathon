@@ -1,0 +1,10 @@
+{
+  "method": "split-path-envelope-expansion",
+  "modelVersion": "conditioned-income-v2",
+  "modelDigest": "fc8b6701c1bd309b1ea523162813b73a6e457b48cb69c00b76f5cb2ac1225c97",
+  "calibrationThrough": "2026-08-30",
+  "horizonDays": 30,
+  "targetPathCoverage": 0.9,
+  "calibrationPaths": 4105,
+  "marginCents": 243853
+}

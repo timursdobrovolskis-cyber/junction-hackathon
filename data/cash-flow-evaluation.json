@@ -1,0 +1,333 @@
+{
+  "modelVersion": "calendar-scenarios-v1",
+  "cutoffs": [
+    "2026-05-31",
+    "2026-06-15",
+    "2026-07-31",
+    "2026-08-31"
+  ],
+  "horizonDays": 30,
+  "bufferCents": 0,
+  "customerCount": 5100,
+  "statuses": {
+    "estimated": 20400
+  },
+  "sourceRevision": "fbdecdedf1a1f49dd641c2e6b9f2b62d0dc0cc8f",
+  "sources": {
+    "tx_customers_junction.csv": {
+      "sha256": "c2511f4f04f825f561d0c37ee4c64c83cdcd358b27b23c1b311f87a951bc8cb3",
+      "bytes": 102050
+    },
+    "tx_junction_transactions.csv": {
+      "sha256": "49b3265d8e44e751de305a074dcffcda732bb79aa1e07b46fcca774ce76f1e63",
+      "bytes": 362796501
+    }
+  },
+  "splitRule": "SHA256(customer_id) first 8 hex digits modulo 5 = 0 reserves customers; latest cutoff reserves time.",
+  "notes": [
+    "No parameters are fitted to evaluation outcomes. This evaluates a fixed baseline, not a trained model.",
+    "Overlapping forecast windows are correlated; this is not an independent sample confidence interval.",
+    "Coverage measures an uncalibrated historical-scenario envelope, not a promised probability.",
+    "Bank balance_after values are the evaluation target; quiet days carry the prior balance.",
+    "Zero buffer tests negative end-of-day balances. Intraday overdrafts are outside this evaluation."
+  ],
+  "metrics": {
+    "cutoff:2026-05-31": {
+      "windows": 5100,
+      "days": 153000,
+      "dailyMAECents": 82816,
+      "dailyBiasCents": -4792,
+      "flatDailyMAECents": 120831,
+      "day30MAECents": 80712,
+      "flatDay30MAECents": 84772,
+      "lowestBalanceMAECents": 53332,
+      "flatLowestBalanceMAECents": 186803,
+      "scenarioEnvelopeCoveragePercent": 71.39,
+      "meanEnvelopeWidthCents": 237828,
+      "actualLowCashWindows": 773,
+      "dailyMAEImprovementPercent": 31.46,
+      "centralLowCash": {
+        "flaggedWindows": 591,
+        "truePositives": 485,
+        "precision": 0.8206,
+        "recall": 0.6274
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 1247,
+        "truePositives": 698,
+        "precision": 0.5597,
+        "recall": 0.903
+      },
+      "flatLowCash": {
+        "flaggedWindows": 98,
+        "truePositives": 94,
+        "precision": 0.9592,
+        "recall": 0.1216
+      }
+    },
+    "cutoff:2026-06-15": {
+      "windows": 5100,
+      "days": 153000,
+      "dailyMAECents": 79475,
+      "dailyBiasCents": -24724,
+      "flatDailyMAECents": 172102,
+      "day30MAECents": 166614,
+      "flatDay30MAECents": 186313,
+      "lowestBalanceMAECents": 84628,
+      "flatLowestBalanceMAECents": 247774,
+      "scenarioEnvelopeCoveragePercent": 68.47,
+      "meanEnvelopeWidthCents": 188550,
+      "actualLowCashWindows": 832,
+      "dailyMAEImprovementPercent": 53.82,
+      "centralLowCash": {
+        "flaggedWindows": 943,
+        "truePositives": 628,
+        "precision": 0.666,
+        "recall": 0.7548
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 1533,
+        "truePositives": 792,
+        "precision": 0.5166,
+        "recall": 0.9519
+      },
+      "flatLowCash": {
+        "flaggedWindows": 242,
+        "truePositives": 220,
+        "precision": 0.9091,
+        "recall": 0.2644
+      }
+    },
+    "cutoff:2026-07-31": {
+      "windows": 5100,
+      "days": 153000,
+      "dailyMAECents": 86001,
+      "dailyBiasCents": -1663,
+      "flatDailyMAECents": 124151,
+      "day30MAECents": 95688,
+      "flatDay30MAECents": 99628,
+      "lowestBalanceMAECents": 54246,
+      "flatLowestBalanceMAECents": 188357,
+      "scenarioEnvelopeCoveragePercent": 70.69,
+      "meanEnvelopeWidthCents": 239232,
+      "actualLowCashWindows": 750,
+      "dailyMAEImprovementPercent": 30.73,
+      "centralLowCash": {
+        "flaggedWindows": 612,
+        "truePositives": 492,
+        "precision": 0.8039,
+        "recall": 0.656
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 1276,
+        "truePositives": 681,
+        "precision": 0.5337,
+        "recall": 0.908
+      },
+      "flatLowCash": {
+        "flaggedWindows": 88,
+        "truePositives": 83,
+        "precision": 0.9432,
+        "recall": 0.1107
+      }
+    },
+    "cutoff:2026-08-31": {
+      "windows": 5100,
+      "days": 153000,
+      "dailyMAECents": 82742,
+      "dailyBiasCents": -1296,
+      "flatDailyMAECents": 121866,
+      "day30MAECents": 79773,
+      "flatDay30MAECents": 84993,
+      "lowestBalanceMAECents": 52849,
+      "flatLowestBalanceMAECents": 186401,
+      "scenarioEnvelopeCoveragePercent": 71.93,
+      "meanEnvelopeWidthCents": 239641,
+      "actualLowCashWindows": 785,
+      "dailyMAEImprovementPercent": 32.1,
+      "centralLowCash": {
+        "flaggedWindows": 612,
+        "truePositives": 500,
+        "precision": 0.817,
+        "recall": 0.6369
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 1248,
+        "truePositives": 716,
+        "precision": 0.5737,
+        "recall": 0.9121
+      },
+      "flatLowCash": {
+        "flaggedWindows": 101,
+        "truePositives": 98,
+        "precision": 0.9703,
+        "recall": 0.1248
+      }
+    },
+    "overall": {
+      "windows": 20400,
+      "days": 612000,
+      "dailyMAECents": 82758,
+      "dailyBiasCents": -8119,
+      "flatDailyMAECents": 134737,
+      "day30MAECents": 105697,
+      "flatDay30MAECents": 113926,
+      "lowestBalanceMAECents": 61264,
+      "flatLowestBalanceMAECents": 202334,
+      "scenarioEnvelopeCoveragePercent": 70.62,
+      "meanEnvelopeWidthCents": 226313,
+      "actualLowCashWindows": 3140,
+      "dailyMAEImprovementPercent": 38.58,
+      "centralLowCash": {
+        "flaggedWindows": 2758,
+        "truePositives": 2105,
+        "precision": 0.7632,
+        "recall": 0.6704
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 5304,
+        "truePositives": 2887,
+        "precision": 0.5443,
+        "recall": 0.9194
+      },
+      "flatLowCash": {
+        "flaggedWindows": 529,
+        "truePositives": 495,
+        "precision": 0.9357,
+        "recall": 0.1576
+      }
+    },
+    "split:both_holdout": {
+      "windows": 995,
+      "days": 29850,
+      "dailyMAECents": 81923,
+      "dailyBiasCents": -828,
+      "flatDailyMAECents": 119782,
+      "day30MAECents": 82686,
+      "flatDay30MAECents": 87728,
+      "lowestBalanceMAECents": 51928,
+      "flatLowestBalanceMAECents": 185359,
+      "scenarioEnvelopeCoveragePercent": 72.54,
+      "meanEnvelopeWidthCents": 244272,
+      "actualLowCashWindows": 156,
+      "dailyMAEImprovementPercent": 31.61,
+      "centralLowCash": {
+        "flaggedWindows": 131,
+        "truePositives": 113,
+        "precision": 0.8626,
+        "recall": 0.7244
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 244,
+        "truePositives": 146,
+        "precision": 0.5984,
+        "recall": 0.9359
+      },
+      "flatLowCash": {
+        "flaggedWindows": 27,
+        "truePositives": 27,
+        "precision": 1.0,
+        "recall": 0.1731
+      }
+    },
+    "split:customer_holdout": {
+      "windows": 2985,
+      "days": 89550,
+      "dailyMAECents": 84414,
+      "dailyBiasCents": -11523,
+      "flatDailyMAECents": 138754,
+      "day30MAECents": 115301,
+      "flatDay30MAECents": 124922,
+      "lowestBalanceMAECents": 65831,
+      "flatLowestBalanceMAECents": 207307,
+      "scenarioEnvelopeCoveragePercent": 70.39,
+      "meanEnvelopeWidthCents": 228178,
+      "actualLowCashWindows": 477,
+      "dailyMAEImprovementPercent": 39.16,
+      "centralLowCash": {
+        "flaggedWindows": 440,
+        "truePositives": 328,
+        "precision": 0.7455,
+        "recall": 0.6876
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 807,
+        "truePositives": 450,
+        "precision": 0.5576,
+        "recall": 0.9434
+      },
+      "flatLowCash": {
+        "flaggedWindows": 96,
+        "truePositives": 90,
+        "precision": 0.9375,
+        "recall": 0.1887
+      }
+    },
+    "split:development": {
+      "windows": 12315,
+      "days": 369450,
+      "dailyMAECents": 82364,
+      "dailyBiasCents": -10119,
+      "flatDailyMAECents": 139094,
+      "day30MAECents": 114105,
+      "flatDay30MAECents": 123243,
+      "lowestBalanceMAECents": 63641,
+      "flatLowestBalanceMAECents": 207727,
+      "scenarioEnvelopeCoveragePercent": 70.13,
+      "meanEnvelopeWidthCents": 220341,
+      "actualLowCashWindows": 1878,
+      "dailyMAEImprovementPercent": 40.79,
+      "centralLowCash": {
+        "flaggedWindows": 1706,
+        "truePositives": 1277,
+        "precision": 0.7485,
+        "recall": 0.68
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 3249,
+        "truePositives": 1721,
+        "precision": 0.5297,
+        "recall": 0.9164
+      },
+      "flatLowCash": {
+        "flaggedWindows": 332,
+        "truePositives": 307,
+        "precision": 0.9247,
+        "recall": 0.1635
+      }
+    },
+    "split:temporal_holdout": {
+      "windows": 4105,
+      "days": 123150,
+      "dailyMAECents": 82941,
+      "dailyBiasCents": -1409,
+      "flatDailyMAECents": 122371,
+      "day30MAECents": 79067,
+      "flatDay30MAECents": 84330,
+      "lowestBalanceMAECents": 53073,
+      "flatLowestBalanceMAECents": 186653,
+      "scenarioEnvelopeCoveragePercent": 71.78,
+      "meanEnvelopeWidthCents": 238519,
+      "actualLowCashWindows": 629,
+      "dailyMAEImprovementPercent": 32.22,
+      "centralLowCash": {
+        "flaggedWindows": 481,
+        "truePositives": 387,
+        "precision": 0.8046,
+        "recall": 0.6153
+      },
+      "scenarioLowCash": {
+        "flaggedWindows": 1004,
+        "truePositives": 570,
+        "precision": 0.5677,
+        "recall": 0.9062
+      },
+      "flatLowCash": {
+        "flaggedWindows": 74,
+        "truePositives": 71,
+        "precision": 0.9595,
+        "recall": 0.1129
+      }
+    }
+  }
+}
