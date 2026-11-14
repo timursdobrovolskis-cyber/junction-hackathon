@@ -1,3 +1,12 @@
+# Production app
+
+Canonical source: **main**, directory **ui-skeleton**. Use `npm run dev` here
+for the app, `npm test` for checks, and `npm run deploy` from a clean checkout at
+origin/main to publish. Never publish an old feature checkout over production.
+See [TEAM_INTEGRATION.md](TEAM_INTEGRATION.md) for integration/release details.
+
+---
+
 # S-Pankki financial coach concept
 
 Spendvest-inspired Home and Coach screens with S-Pankki branding. The default Vercel page is an interactive phone preview with device/zoom controls and a QR link. The original visual sketch remains at `/index.html`. Production: https://junction-money-ui.vercel.app.
@@ -29,7 +38,7 @@ The existing coach's explanation code is vendored under `server/coach`; this is 
 ## Deploy
 
 ```sh
-npx vercel --prod --yes
+npm run deploy
 ```
 
 Static assets come from `dist`; Vercel also runs `api/coach.js` with its included `server` files. The Gemini secret is configured in the Vercel project after explicit owner approval; a local `.env.local` is never published. Without a hosted key, examples remain available and chat is explicitly disabled.

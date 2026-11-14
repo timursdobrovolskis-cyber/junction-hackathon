@@ -1,3 +1,23 @@
+# Production source: main
+
+The production app is `ui-skeleton/` on **main**. Merge frontend changes into
+main before publishing. Run `npm run deploy` inside ui-skeleton; it verifies a
+clean checkout at exactly origin/main, runs tests, and deploys the whole app.
+Git pushes alone are not a claim that the website has been updated.
+
+On 14 November, a production deployment from feat/phone-app included newer Goals
+and Coach but an older calendar. The deployed HTML and calendar module matched
+that branch byte-for-byte. The integration now preserves those newer screens and
+restores the current calendar, its personal events, fixtures, API and Google feed.
+The active phone-app branch also receives this calendar integration.
+
+Deployments replace the complete website. The deploy command blocks stale/feature
+checkouts; manual Vercel/dashboard releases can bypass it. Always use main for
+production releases. This changes the source workflow, not team permissions.
+The legacy /index.html entry redirects to the same /spendvest.html app.
+
+---
+
 # Integrated team app
 
 ## Sources

@@ -3,6 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import coach from './api/coach.js';
 import calendar from './api/calendar.js';
+import calendarFeed from './api/calendar-feed.js';
 import goals from './api/goals.js';
 import budget from './api/budget.js';
 const root=resolve(new URL('.',import.meta.url).pathname,'dist');
@@ -11,6 +12,8 @@ createServer(async(req,res)=>{
   try{
     const url=new URL(req.url,'http://localhost');
     if(url.pathname==='/api/budget'){await budget(req,res);return;}
+    if(url.pathname==='/index.html'){res.writeHead(302,{'Location':'/spendvest.html'});res.end();return;}
+    if(url.pathname==='/api/calendar-feed'){await calendarFeed(req,res);return;}
     if(url.pathname==='/api/calendar'){await calendar(req,res);return;}
     if(url.pathname==='/api/goals'){await goals(req,res);return;}
     if(url.pathname==='/api/coach'){
