@@ -68,6 +68,7 @@ export async function conversationReply(input, generate) {
   const advice = purchaseAdvice(input, previous);
   const answer = input.scenario === 'engine' ? accountAnswer(input.message) : null;
   const historical = historyAnswer(input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
+    previousHistory:previous.messages.at(-1)?.presentation?.historyQuery,
     previousQuestion:previous.messages.findLast(m=>m.role==='user')?.text ?? input.history?.findLast(m=>m.role==='user')?.text});
   const projection = savingsProjectionAnswer(input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
     draft:previous.draft, previousProjection:previous.messages.at(-1)?.presentation?.projection});

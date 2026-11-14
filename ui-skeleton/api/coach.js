@@ -29,7 +29,12 @@ export async function generateReply(input, { key, fetcher = fetch, model = proce
   const candidate=data.candidates?.[0];
   const reply=candidate?.content?.parts?.filter(p=>!p.thought && typeof p.text==='string').map(p=>p.text).join('\n').trim();
   if (!reply || candidate.finishReason && candidate.finishReason !== 'STOP') throw new Error('incomplete');
-  return validatePresentation(JSON.parse(reply));
+  const presentation = validatePresentation(JSON.parse(reply));
+  // No exchange-rate result is supplied by this EUR-only account prototype.
+  // Reject a currency switch instead of silently relabelling a financial amount.
+  if (/[£$]/.test([presentation.summary,...presentation.bullets,presentation.nextQuestion].join(' ')))
+    return {title:'',summary:'This account uses euros. I couldn’t verify the currency in that answer.',bullets:[],nextQuestion:''};
+  return presentation;
 }
 export default async function handler(req,res) {
   res.setHeader('Cache-Control','no-store');

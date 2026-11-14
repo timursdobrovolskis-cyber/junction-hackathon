@@ -53,6 +53,12 @@ export function parseHistoryQuestion(message, today, ledger=activity) {
   const categoryText=text.match(/\bon\s+(.+?)(?=\s+(?:at|from|in|during|for|last month|this month|last year|this year|between)\b|$)/i)?.[1];
   let category=null;
   if(categoryText && !validDate(categoryText)){category=categories.find(c=>normalize(c)===normalize(categoryText))??aliases[normalize(categoryText)];if(!category)return {clarify:`Which spending category do you mean by “${categoryText.slice(0,60)}”?`};}
+  if(!category){
+    const labels=[...categories.map(name=>[name.toLowerCase(),name]),...Object.entries(aliases)];
+    const inferred=[...new Set(labels.filter(([label])=>new RegExp('\\b'+label+'\\s+(?:spending|expenses|payments)\\b','i').test(text)).map(([,name])=>name))];
+    if(inferred.length>1)return {clarify:'Which single spending category should I look up?'};
+    category=inferred[0]??null;
+  }
   const merchant=text.match(/\b(?:at|from)\s+(.+?)(?=\s+(?:in|during|last month|this month|last year|this year|between|on|for)\b|$)/i)?.[1]?.trim();
   // "from DATE to DATE" is a range, not a merchant.
   return {period,label,relative,today,category,merchant:merchant&& !/^\d{4}-/.test(merchant)?merchant:null,limit};
@@ -85,43 +91,57 @@ export function queryHistory(query, {ledger=activity, plan=accountPlan, customer
     selectedTotalCents:selected.reduce((n,t)=>n-t.amountCents,0),rows:selected};
 }
 
-export function historyAnswer(message, {customerId,today,previousQuestion,ledger=activity,plan=accountPlan}={}) {
+function restoreQuery(value,customerId,today,ledger) {
+  if(!value || value.customerId!==customerId || value.today!==today || !validDate(value.period?.start) || !validDate(value.period?.end) || value.period.start>value.period.end
+    || !(value.category===null || ledger.transactions.some(t=>t.category===value.category))
+    || !(value.merchant===null || typeof value.merchant==='string' && value.merchant.length<=100)
+    || !(value.limit===null || Number.isInteger(value.limit)&&value.limit>=1&&value.limit<=10))return null;
+  const {period,category,merchant,limit}=value;
+  const year=period.start.slice(0,4),month=period.start.slice(0,7);
+  const label=period.start===year+'-01-01' && period.end===year+'-12-31'?year
+    :period.start===month+'-01' && period.end===monthPeriod(month).end?monthLabel(month):`${period.start} to ${period.end}`;
+  return {period,category,merchant,limit,label,today,relative:value.relative===true};
+}
+export function historyAnswer(message, {customerId,today,previousQuestion,previousHistory,ledger=activity,plan=accountPlan}={}) {
   let query=parseHistoryQuestion(message,today,ledger);
+  const restored=restoreQuery(previousHistory,customerId,today,ledger);
+  const respond=(summary,nextQuestion='',evidence=[],bullets=[])=>({...presentation(summary,nextQuestion,evidence,bullets),
+    ...(query?.period && customerId===plan.customerId?{historyQuery:{customerId,today,period:query.period,category:query.category,merchant:query.merchant,limit:query.limit,relative:query.relative}}:{})});
   // Resolve a narrow clarification without treating chat history as transaction data.
   const followUp=message.trim().replace(/^(?:what about|and|in|for)\s+/i,'').replace(/[?.!]+$/,'');
-  if(!query && previousQuestion && /^(?:\d{4}(?:-\d{2}(?:-\d{2})?)?(?: to \d{4}-\d{2}-\d{2})?|(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{4})?|last month|this month|last year|this year)$/i.test(followUp)) {
-    const prior=parseHistoryQuestion(previousQuestion,today,ledger);
+  if(!query && (previousQuestion || restored) && /^(?:\d{4}(?:-\d{2}(?:-\d{2})?)?(?: to \d{4}-\d{2}-\d{2})?|(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{4})?|last month|this month|last year|this year)$/i.test(followUp)) {
+    const prior=restored ?? parseHistoryQuestion(previousQuestion??'',today,ledger);
     if(prior?.period){
       const updated=parseHistoryQuestion('How much did I spend in '+followUp,today,ledger);
       if(updated?.period)query={...prior,...updated,category:prior.category,merchant:prior.merchant,limit:prior.limit};
     } else if(prior?.clarify)query=parseHistoryQuestion(previousQuestion+' in '+followUp,today,ledger);
   }
-  if(!query && previousQuestion) {
-    const prior=parseHistoryQuestion(previousQuestion,today,ledger);
+  if(!query && (previousQuestion || restored)) {
+    const prior=restored ?? parseHistoryQuestion(previousQuestion??'',today,ledger);
     const category=[...new Set(ledger.transactions.map(t=>t.category))].find(c=>normalize(c)===normalize(message));
     const merchantId=/^MRC-[A-Z]+-\d+$/i.test(message.trim())?message.trim():null;
     if(prior?.period && prior.merchant && (category || merchantId))query={...prior,merchant:merchantId,category:category??null};
   }
   if(!query)return null;
-  if((message.match(/\bCUST\d+\b/gi)??[]).some(id=>id.toUpperCase()!==customerId))return presentation('I can only look up transactions for the selected demo customer.');
-  if(customerId!==plan.customerId)return presentation('Historical transactions aren’t connected for this selected demo profile.');
-  if(query.clarify)return presentation('I can look up recorded spending.',query.clarify);
+  if((message.match(/\bCUST\d+\b/gi)??[]).some(id=>id.toUpperCase()!==customerId))return respond('I can only look up transactions for the selected demo customer.');
+  if(customerId!==plan.customerId)return respond('Historical transactions aren’t connected for this selected demo profile.');
+  if(query.clarify)return respond('I can look up recorded spending.',query.clarify);
   const result=queryHistory(query,{ledger,plan,customerId});
   const scope=query.merchant?` at ${query.merchant}`:query.category?` on ${query.category.toLowerCase()}`:'';
-  if(result.status==='unavailable')return presentation('I couldn’t verify the transaction history for this account.');
-  if(result.status==='missing')return presentation(`No recorded history covers ${query.label}. Available history runs from ${result.coverage.start} to ${result.coverage.end}; forecast amounts aren’t actual spending.`);
-  if(result.status==='merchant_unavailable')return presentation(`I can’t identify ${query.merchant} in ${query.label}: this ledger has anonymous merchant IDs, without store names.`, 'Do you have its merchant ID, or should I look up a spending category?');
-  if(result.status==='merchant_partial')return presentation(result.knownCents>0?`${money(result.knownCents)} is identifiable${scope} in ${query.label}, but missing merchant details mean this isn’t a complete merchant total.`:`I can’t confirm a total${scope} in ${query.label}: some transactions have no merchant details.`, '',
+  if(result.status==='unavailable')return respond('I couldn’t verify the transaction history for this account.');
+  if(result.status==='missing')return respond(`No recorded history covers ${query.label}. Available history runs from ${result.coverage.start} to ${result.coverage.end}; forecast amounts aren’t actual spending.`);
+  if(result.status==='merchant_unavailable')return respond(`I can’t identify ${query.merchant} in ${query.label}: this ledger has anonymous merchant IDs, without store names.`, 'Do you have its merchant ID, or should I look up a spending category?');
+  if(result.status==='merchant_partial')return respond(result.knownCents>0?`${money(result.knownCents)} is identifiable${scope} in ${query.label}, but missing merchant details mean this isn’t a complete merchant total.`:`I can’t confirm a total${scope} in ${query.label}: some transactions have no merchant details.`, '',
     result.rows.filter(t=>t.amountCents<0).slice(0,12).map(t=>({id:t.id,label:`${t.date} · ${t.merchantName??t.merchantId??t.category}`,value:money(-t.amountCents)})),
     result.partial?[`Partial date coverage: ${result.start} to ${result.end}.`]:[]);
-  if(result.status==='partial' && result.count===0)return presentation(`No matching spending appears in the available history (${result.start} to ${result.end}). Coverage is partial, so the total for ${query.label} is unknown.`);
+  if(result.status==='partial' && result.count===0)return respond(`No matching spending appears in the available history (${result.start} to ${result.end}). Coverage is partial, so the total for ${query.label} is unknown.`);
   const evidence=result.rows.slice(0,12).map(t=>({id:t.id,label:`${t.date} · ${t.merchantName??t.merchantId??t.category}`,value:money(-t.amountCents)}));
   const note=result.status==='partial'?`Partial history only: ${result.start} to ${result.end}; this is not a full-period total.`:query.relative?`Relative dates use the demo date, ${today}.`:'';
   if(query.limit){
     const items=result.rows.map(t=>`${money(-t.amountCents)} ${t.merchantName??t.category} (${t.date})`).join('; ');
-    return presentation(`${money(result.selectedTotalCents)} across the ${result.rows.length} largest spending payments${scope} in ${query.label}.${items?' '+items+'.':''}`, '', evidence,
+    return respond(`${money(result.selectedTotalCents)} across the ${result.rows.length} largest spending payments${scope} in ${query.label}.${items?' '+items+'.':''}`, '', evidence,
       [note || 'Spending excludes income, transfers and investments.']);
   }
-  return presentation(`${money(result.totalCents)} recorded spending${scope} in ${query.label}${result.status==='partial'?' (partial history)':''}.`, '', evidence,
+  return respond(`${money(result.totalCents)} recorded spending${scope} in ${query.label}${result.status==='partial'?' (partial history)':''}.`, '', evidence,
     [note,result.refundsCents?`${money(result.refundsCents)} in refunds is shown separately, not deducted.`:''].filter(Boolean));
 }

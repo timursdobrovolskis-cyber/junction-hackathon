@@ -1,0 +1,17 @@
+{
+  "description": "Original synthetic evaluation conversations, not customer chats or Gemini fine-tuning data. Financial expectations come from the checked ledger and contribution calculator.",
+  "scenarios": [
+    {"id":"category-wording", "turns":[{"message":"How much was my grocery spending last year?","source":"history","includes":["€4,825.19","groceries in 2025"]}]},
+    {"id":"repeated-history-periods", "turns":[{"message":"How much did I spend on groceries in September?","source":"history","includes":["€0.00","groceries"]},{"message":"What about October 2024?","source":"history","includes":["€551.27","October 2024"]},{"message":"And November 2024?","source":"history","includes":["€555.81","groceries"]}]},
+    {"id":"merchant-clarification-and-followup", "turns":[{"message":"What did I spend at Lidl last month?","source":"history","includes":["anonymous merchant IDs"]},{"message":"Groceries","source":"history","includes":["groceries in August 2026"]},{"message":"What about 2025?","source":"history","includes":["€4,825.19","groceries"]}]},
+    {"id":"projection-amount-corrections", "turns":[{"message":"How much could I save by the end of 2027?","source":"projection","includes":["€1,500.00"]},{"message":"Make it €200","source":"projection","includes":["€3,000.00"]},{"message":"And €300?","source":"projection","includes":["€4,500.00"]},{"message":"What about next year?","source":"projection","includes":["€4,500.00","31 December 2027"]}]},
+    {"id":"specific-deadline", "turns":[{"message":"How much could I save by 1 June 2027?","source":"projection","includes":["€800.00","1 June 2027","8 months"]}]},
+    {"id":"american-date-wording", "turns":[{"message":"How much could I save by June 1, 2027?","source":"projection","includes":["€800.00","1 June 2027"]}]},
+    {"id":"invalid-named-date", "turns":[{"message":"How much could I save by 30 February 2027?","source":"projection","includes":["What future date"]}]},
+    {"id":"year-start-boundary", "turns":[{"message":"How much could I save by the start of 2027?","source":"projection","includes":["€300.00","1 January 2027","3 months"]}]},
+    {"id":"savings-confirmation-detour", "turns":[{"message":"I want to save €400 monthly","source":"planning","includes":["requested target"],"goalCents":null},{"message":"What did I spend last month?","source":"history","includes":["€1,938.52"],"goalCents":null},{"message":"Add goal","source":"planning","includes":["in the draft"],"goalCents":40000}]},
+    {"id":"missing-history-period", "turns":[{"message":"How much did I spend on groceries?","source":"history","includes":["Which month"]},{"message":"2025","source":"history","includes":["€4,825.19"]}]},
+    {"id":"partial-and-missing-coverage", "turns":[{"message":"What did I spend this year?","source":"history","includes":["partial history","2026-09-30"]},{"message":"What about 2023?","source":"history","includes":["No recorded history"]}]},
+    {"id":"foreign-profile", "scenario":"design", "turns":[{"message":"What did I spend in September?","source":"history","includes":["aren’t connected"]},{"message":"How much could I save by 2027?","source":"projection","includes":["not connected"]}]}
+  ]
+}
