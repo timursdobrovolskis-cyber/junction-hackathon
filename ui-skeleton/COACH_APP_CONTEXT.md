@@ -1,8 +1,8 @@
 # Coach access to app sections
 
 Every coach message now includes the latest section selection and local entries.
-The server adds the same Home and Budget data used to render those pages. Replies
-can link back to Home, Goals, Calendar or Budget. This is read-only access: it does
+The server adds the same Home and Budget data used to render those pages. Replies answer directly in chat with the relevant amounts, dates and progress;
+they do not add section navigation buttons or hide answer paragraphs. This is read-only access: it does
 not activate a plan, move savings or recalculate the forecast.
 
 ## Sources and boundaries
@@ -38,14 +38,15 @@ does not receive the CUST00005 sections. Arbitrary client balances or an incomin
 server data. Calendar fetch failures are marked unavailable, not empty. Event
 lists are bounded and marked when truncated; named payments and explicit dates
 can narrow a question. Deterministic read replies work without Gemini, preserve
-pending confirmations and return `presentation.sections` for safe local links.
+pending confirmations and return the answer as visible text. Goal advice uses the conversational model
+instead of returning a canned goal inventory.
 Open-ended Gemini replies receive the same context as untrusted user data, with
 rules against treating titles as instructions or mixing sample accounts. No
 financial forecast or savings arithmetic has been moved into the language model.
 
 ## Verify
 
-Run `npm test` inside `ui-skeleton` (102 tests). With `npm run dev` running, use:
+Run `npm test` inside `ui-skeleton` (104 tests). With `npm run dev` running, use:
 
 ```sh
 COACH_TEST_URL=http://127.0.0.1:4174 python3 scripts/check-coach-context.py
@@ -55,7 +56,7 @@ CALENDAR_TEST_URL=http://127.0.0.1:4174 python3 scripts/check-calendar-controls.
 
 Browser checks require Python Playwright and Chromium at `/usr/bin/chromium`.
 The context check creates/deposits/deletes a goal, adds/deletes a reminder,
-switches calendar sources and verifies replies, reloads, links and mobile widths.
+switches calendar sources and verifies replies, reloads, direct visible answers without section buttons and mobile widths.
 It uses an isolated browser context, makes eight coach requests and never changes
 the engine plan. Allow for the existing 12-request/minute demo rate limit when
 repeating it.

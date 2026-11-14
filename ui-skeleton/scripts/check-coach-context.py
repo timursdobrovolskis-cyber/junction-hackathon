@@ -12,12 +12,12 @@ with sync_playwright() as p:
   page.wait_for_function("document.querySelector('#chat-send').disabled===false")
   assert body['planChanged']==False
   return body
- home=ask('What does the first page show?');assert home['source']=='app';assert 'Home’s demo' in home['reply'];assert home['presentation']['sections']==['home']
+ home=ask('What does the first page show?');assert home['source']=='app';assert 'Home’s demo' in home['reply'];assert 'sections' not in home['presentation']
  page.locator('#nav-goals').click();frame=page.frame_locator('#goals-planner');frame.get_by_role('button',name='Add a short-term goal').click()
  frame.get_by_label('What are you saving for?').fill('Camera context');frame.get_by_label('Amount €',exact=True).fill('675');frame.get_by_role('button',name='Add goal',exact=True).click()
  goals=ask('What are my goals?');assert any(e['label']=='Camera context' and '675.00' in e['value'] for e in goals['presentation']['evidence'])
  page.locator('#nav-goals').click();frame.get_by_label('Add money saved toward Camera context',exact=True).fill('50');frame.locator('form.g2-deposit').filter(has=frame.get_by_label('Add money saved toward Camera context',exact=True)).get_by_role('button',name='Add',exact=True).click()
- saved=ask('How much have I saved for my Camera context?');assert '€50.00 recorded of €675.00' in saved['reply']
+ saved=ask('How much have I saved for my Camera context?');assert '€50.00 toward €675.00' in saved['reply']
  page.locator('#nav-goals').click();frame.get_by_role('button',name='Delete Camera context',exact=True).click(force=True);frame.get_by_text('Deleted “Camera context”',exact=True).wait_for()
  deleted=ask('What are my goals?');assert 'Camera context' not in deleted['reply'];assert not any(e['label']=='Camera context' for e in deleted['presentation']['evidence'])
  page.locator('#nav-calendar').click();page.wait_for_selector('#calendar-add:not([disabled])');page.locator('#calendar-add').click()
@@ -29,8 +29,10 @@ with sync_playwright() as p:
  account=ask('What is on my calendar?');assert 'fictional demo' not in account['reply'];assert 'Dentist context' not in account['reply']
  page.reload();page.wait_for_function("document.querySelector('#chat-send').disabled===false")
  after=ask('What are my goals?');assert any(e['label']=='Trip' for e in after['presentation']['evidence']);assert all(e['label']!='Camera context' for e in after['presentation']['evidence'])
- assert page.locator('#chat-log .message-assistant').last.get_by_role('link',name='Open Goals').is_visible()
+ assert page.locator('#chat-log .reply-section-links').count()==0
+ assert page.locator('#chat-log .reply-more').count()==0
+ assert '€150.00 toward €240.00' in page.locator('#chat-log .message-assistant').last.inner_text()
  for width in [320,390,1024]:
   page.set_viewport_size({'width':width,'height':844});assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
  assert not errors,errors
- browser.close();print('PASS: live Home figures; goal create, deposit and delete; calendar add/delete and customer switch; source links; reload; mobile layouts; no plan mutations')
+ browser.close();print('PASS: live Home figures; goal create, deposit and delete; calendar add/delete and customer switch; direct text without navigation buttons or collapsed answers; reload; mobile layouts; no plan mutations')
