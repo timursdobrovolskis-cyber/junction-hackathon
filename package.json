@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node --test",
     "demo": "node examples/coach-demo.mjs",
-    "demo:history": "node examples/history-demo.mjs"
+    "demo:history": "node examples/history-demo.mjs",
+    "demo:coach": "node examples/engine-coach-demo.mjs"
   }
 }

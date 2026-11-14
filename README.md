@@ -10,15 +10,19 @@ Start with [the build plan and current workflow](BUILD_PLAN.md) for the product 
 
 ## Run the planning and coach module
 
-Requires Node.js 22 or later; no dependencies or API keys are needed.
+Start with the shared-engine coach: [frontend and input contract](docs/engine-coach.md).
+It explains the three entries in `fixtures/savings-demo.json` and captures customer
+answers for recalculation. Requires Node.js 22 or later; Python 3 is also needed for
+the engine integration test. No additional packages or API keys are needed.
 
 ```sh
 npm test
+npm run demo:coach
 npm run demo
 npm run demo:history
 ```
 
-Person Three's implementation provides category budgets, goal projections, purchase
+Earlier standalone work provides category budgets, goal projections, purchase
 and recovery previews, and evidence-backed coach actions. See the
 [integration contract](docs/planning-coach.md) and
 [two customer fixtures](fixtures/planning-profiles.json). These are illustrative
