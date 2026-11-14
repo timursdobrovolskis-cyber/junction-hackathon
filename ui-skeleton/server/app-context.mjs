@@ -69,54 +69,57 @@ export async function buildAppContext(input, {calendarLoader=loadCalendar}={}) {
   }
   return context;
 }
-const response=(summary,bullets=[],evidence=[],sections=[])=>({title:'',summary,bullets,nextQuestion:'',evidence,sections});
+const response=(summary,bullets=[],evidence=[])=>({title:'',summary,bullets,nextQuestion:'',evidence});
 const readQuestion=text=>/^(show|list|what|which|when|how|tell|do i|have i|can you (see|read|show|tell)|remind|explain|summari[sz]e)\b/i.test(text);
 export function appSectionAnswer(message, context) {
   if(!context)return null;
   const text=message.trim().toLowerCase();if(!readQuestion(text))return null;
   if(/\b(draft|add|delete|remove|change|update|create|cancel)\b/.test(text) && !/\bdeleted\b/.test(text))return null;
+  // Advice needs a conversational explanation, not a canned section inventory.
+  if (/\b(should|recommend|prioriti[sz]e|advice|improve|on track|reach my|achieve|help me)\b/.test(text) || /^how (can|could|do) i\b/.test(text)) return null;
   const goalAsked=/\b(goals?|savings plan)\b/.test(text) || context.goals.shortTermGoals?.some(g=>g.label && text.includes(g.label.toLowerCase()));
   const calendarAsked=/\b(calendar|reminders?)\b/.test(text) || [...(context.calendar.events??[]),...(context.calendar.deleted??[])].some(e=>text.includes(e.title.toLowerCase()));
   const homeAsked=/\b(home|first page|dashboard|spend today|per day|daily (spending|allowance))\b/.test(text);
   const budgetAsked=/\b(budget page|selected budget|this budget month)\b/.test(text);
   if([goalAsked,calendarAsked,homeAsked,budgetAsked].filter(Boolean).length>1){
-    if(calendarAsked && context.calendar.status==='available' && !context.calendar.sameCustomer)return response('The selected calendar is a separate sample from Home; its payments cannot be used to judge whether your goals fit your account.',[],[],['home','goals','calendar']);
     return null;
   }
   if(goalAsked){
-    const g=context.goals;if(g.status!=='available')return response('I couldn’t read the Goals section for this profile. Open Goals to check its saved entries, then try again.',[],[],['goals']);
-    if(/\b(savings plan|regular|monthly|long.term)\b/.test(text) && !/\bgoals\b/.test(text))return response(`Your Goals savings plan is ${money(g.longTerm.monthlyCents)} monthly into ${g.longTerm.accountType}, ${g.longTerm.active?'marked active':'not activated'} in the app.`,['This is a local plan; no account has been opened or money moved.'],[],['goals']);
+    const g=context.goals;if(g.status!=='available')return response('I couldn’t read your saved goals for this profile, so I can’t confirm their targets or progress right now.',[],[]);
+    if(/\b(savings plan|regular|monthly|long.term)\b/.test(text) && !/\bgoals\b/.test(text))return response(`Your Goals savings plan is ${money(g.longTerm.monthlyCents)} monthly into ${g.longTerm.accountType}, ${g.longTerm.active?'marked active':'not activated'} in the app.`,['This is a local plan; no account has been opened or money moved.'],[]);
     let goals=g.shortTermGoals;
     const named=goals.filter(i=>i.label && text.includes(i.label.toLowerCase()));if(named.length)goals=named;
-    if(!goals.length)return response('Your Goals section has no saved goals.',[],[],['goals']);
+    if(!goals.length)return response('Your Goals section has no saved goals.',[],[]);
     if(/\blong.term\b/.test(text))goals=goals.filter(i=>i.horizon==='long');
     if(/\bshort.term\b/.test(text))goals=goals.filter(i=>i.horizon==='short');
-    if(!goals.length)return response('There are no goals in that timeframe in your Goals section.',[],[],['goals']);
+    if(!goals.length)return response('There are no goals in that timeframe in your Goals section.',[],[]);
     const rows=goals.map(i=>({label:i.label||'Unnamed goal',value:`${money(i.savedCents)} recorded of ${money(i.targetCents)} · by ${i.targetDate}${i.complete?' · marked complete':''}`,id:`goal:${i.id}`}));
-    return response(goals.length===1?`${rows[0].label}: ${rows[0].value}.`:`Your Goals section has ${goals.length} goals; the first ${Math.min(3,goals.length)} are below.`,
-      goals.length===1?['Saved amounts are recorded in Goals, not verified bank savings.']:rows.slice(0,3).map(r=>`${r.label}: ${r.value}`),rows.slice(0,12),['goals']);
+    return response(goals.slice(0,5).map(g=>`For ${g.label||'your unnamed goal'}, you’ve recorded ${money(g.savedCents)} toward ${money(g.targetCents)}, with a target date of ${g.targetDate}.${g.complete?' You’ve marked it complete.':''}`).join(' '),
+      ['These saved amounts are your recorded progress, not verified bank savings.'+(goals.length>5?` There are ${goals.length} goals in total; these are the first five.`:'')],rows.slice(0,12));
   }
   if(calendarAsked){
-    const c=context.calendar;if(c.status!=='available')return response('I couldn’t read the selected calendar. Open Calendar to check its source or retry loading it.',[],[],['calendar']);
+    const c=context.calendar;if(c.status!=='available')return response('I couldn’t read your selected calendar, so I can’t confirm its payment dates or amounts right now.',[],[]);
     const prefix=c.sameCustomer?'Your selected calendar':`The ${c.isIllustrative?'fictional demo':'separate sample'} calendar`;
-    if(/\b(warning|alert|risk|shortfall)\b/.test(text))return response(c.warnings[0]?`${prefix}: ${c.warnings[0].summary}`:`${prefix} has no current spending alert.`,c.warnings.slice(0,1).map(n=>`Analysis through ${n.asOf}. ${n.title}`),[],['calendar']);
+    if(/\b(warning|alert|risk|shortfall)\b/.test(text))return response(c.warnings[0]?`${prefix}: ${c.warnings[0].summary}`:`${prefix} has no current spending alert.`,c.warnings.slice(0,1).map(n=>`Analysis through ${n.asOf}. ${n.title}`),[]);
     const deletedNamed=c.deleted.find(e=>text.includes(e.title.toLowerCase()));
-    if(deletedNamed && !c.events.some(e=>e.title===deletedNamed.title))return response(`${deletedNamed.title} is deleted from the selected calendar.`,['Deleting its reminder does not cancel the payment. You can restore it in Calendar.'],[],['calendar']);
-    if(/\bdeleted\b/.test(text))return response(`${prefix} has ${c.deletedCount} deleted reminders.`,['Deleting a reminder does not cancel its payment.'],c.deleted.map(e=>({label:e.title,value:e.date,id:e.id})).slice(0,12),['calendar']);
-    if(!c.covered)return response(`The selected calendar covers ${c.coverage.start} to ${c.coverage.end}; I can’t confirm events outside that range.`,[],[],['calendar']);
+    if(deletedNamed && !c.events.some(e=>e.title===deletedNamed.title))return response(`${deletedNamed.title} is deleted from the selected calendar.`,['Deleting its reminder does not cancel the payment.'],[]);
+    if(/\bdeleted\b/.test(text))return response(`${prefix} has ${c.deletedCount} deleted reminders.`,['Deleting a reminder does not cancel its payment.'],c.deleted.map(e=>({label:e.title,value:e.date,id:e.id})).slice(0,12));
+    if(!c.covered)return response(`The selected calendar covers ${c.coverage.start} to ${c.coverage.end}; I can’t confirm events outside that range.`,[],[]);
     const named=c.events.some(e=>text.includes(e.title.toLowerCase()));
-    const entries=named?c.events:c.events.filter(e=>e.visible);
+    let entries=named?c.events:c.events.filter(e=>e.visible);
+    if(!named && /\bsubscriptions?\b/.test(text))entries=entries.filter(e=>e.kind==='subscription');
+    else if(!named && /\b(bills?|payments?|costs?)\b/.test(text))entries=entries.filter(e=>e.direction==='outflow');
     const rows=entries.map(e=>({label:e.title,value:`${e.date} · ${money(e.amountCents)} · ${e.source==='manual'?'added by you':'estimated'}${e.visible?'':' · hidden by filter'}`,id:e.id}));
-    return response(rows.length?`${prefix} shows ${rows[0].label} on ${rows[0].value}.`:`${prefix} has no matching visible events for ${c.queryPeriod.start} to ${c.queryPeriod.end}.`,
-      [c.sameCustomer?'Dates are reminders or estimates; calendar edits do not recalculate your forecast.':'This sample is separate from your Home account.',...(c.truncated?['This is a partial list; narrow the date range to see more.']:[])],rows.slice(0,12),['calendar']);
+    return response(rows.length?`${prefix}: ${entries.slice(0,6).map(e=>`${e.title} is ${money(e.amountCents)} on ${e.date} (${e.source==='manual'?'added by you':'estimated'}${e.visible?'':', hidden by your filter'})`).join('; ')}.${rows.length>6?` There are ${rows.length} matching entries; these are the first six.`:''}`:`${prefix} has no matching visible events for ${c.queryPeriod.start} to ${c.queryPeriod.end}.`,
+      [c.sameCustomer?'Dates are reminders or estimates; calendar edits do not recalculate your forecast.':'This sample is separate from your Home account.',...(c.truncated?['This is a partial list; narrow the date range to see more.']:[])],rows.slice(0,12));
   }
   if(homeAsked){
-    const h=context.home;if(h.status!=='available')return response('Home is attached to a different profile.',[],[],['home']);
+    const h=context.home;if(h.status!=='available')return response('Home is attached to a different profile.',[],[]);
     const d=h.display;
     return response(`Home’s demo shows ${money(d.safePerDayCents)} per day, with ${money(d.everydayLeftCents)} everyday spending left over ${d.daysLeft} days.`,
-      [d.replayLabel+' This is not a live affordability check.'],d.baskets.map(b=>({label:b.label,value:`Planned ${money(b.plannedCents)} · remaining ${money(b.remainingCents)}`})),['home']);
+      [d.replayLabel+' This is not a live affordability check.'],d.baskets.map(b=>({label:b.label,value:`Planned ${money(b.plannedCents)} · remaining ${money(b.remainingCents)}`})));
   }
-  if(budgetAsked){const b=context.budget;if(b.status!=='available')return response('The selected budget month is unavailable.',[],[],['budget']);
-    return response(`Budget is showing ${b.selectedMonth}: ${b.explanation.label}.`,[b.spentCents===null?'Recorded spending is unavailable for this period.':`Recorded spending: ${money(b.spentCents)}.`],b.categories.slice(0,12).map(c=>({label:c.category,value:c.spentCents===null?'No recorded activity for this period':money(c.spentCents)})),['budget']);}
+  if(budgetAsked){const b=context.budget;if(b.status!=='available')return response('The selected budget month is unavailable.',[],[]);
+    return response(`Budget is showing ${b.selectedMonth}: ${b.explanation.label}.`,[b.spentCents===null?'Recorded spending is unavailable for this period.':`Recorded spending: ${money(b.spentCents)}.`],b.categories.slice(0,12).map(c=>({label:c.category,value:c.spentCents===null?'No recorded activity for this period':money(c.spentCents)})));}
   return null;
 }

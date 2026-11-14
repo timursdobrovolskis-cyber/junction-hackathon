@@ -37,7 +37,7 @@ read-integration reference.
 
 ## Run and deploy
 
-Use Node 22+ and `npm run dev` inside `ui-skeleton`; open `/preview.html`. `npm test` runs all 102 checks. Deployment remains the existing `junction-money-ui` Vercel project with server-only Gemini configuration. Git pushes do not deploy automatically.
+Use Node 22+ and `npm run dev` inside `ui-skeleton`; open `/preview.html`. `npm test` runs all 104 checks. Deployment remains the existing `junction-money-ui` Vercel project with server-only Gemini configuration. Git pushes do not deploy automatically.
 
 ## Navigation
 

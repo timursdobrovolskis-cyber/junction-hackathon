@@ -16,11 +16,11 @@ test('Home and selected Budget use the same server values as their screens, neve
  const i=await input('What does the first page show?',state);const home=getBudgetView('plan');
  assert.deepEqual(i.appContext.home.display,home.live);assert.equal(i.appContext.home.observedAccount.balanceCents,646614);
  assert.equal(i.appContext.budget.spentCents,getBudgetView('2026-09').spentCents);
- const r=await conversationReply(i,noModel);assert.equal(r.source,'app');assert.match(r.reply,/Home’s demo/);assert.match(r.reply,/not a live affordability/);assert.deepEqual(r.presentation.sections,['home']);
+ const r=await conversationReply(i,noModel);assert.equal(r.source,'app');assert.match(r.reply,/Home’s demo/);assert.match(r.reply,/not a live affordability/);assert.equal(r.presentation.sections,undefined);
 });
 test('Goals answers reflect edits, completion and deletion on the next request',async()=>{
  const state=appState();let r=await conversationReply(await input('What are my goals?',state),noModel);
- assert.match(r.reply,/Laptop/);assert.match(r.reply,/€250.00 recorded of €1,200.00/);assert.equal(r.planChanged,false);
+ assert.match(r.reply,/Laptop/);assert.match(r.reply,/€250.00 toward €1,200.00/);assert.equal(r.planChanged,false);
  state.goals.data.shortTermGoals[0].savedCents=50000;
  r=await conversationReply(await input('How much have I saved for my Laptop?',state),noModel);assert.match(r.reply,/€500.00/);assert.doesNotMatch(r.reply,/€250.00/);
  state.goals.data.shortTermGoals=[];r=await conversationReply(await input('What goals do I have?',state),noModel);assert.match(r.reply,/no saved goals/);
@@ -31,7 +31,7 @@ test('Calendar includes local additions, excludes deleted dates and keeps demo i
  const netflix=calendarExamples.risk.events.find(e=>e.title==='Netflix'&&e.date==='2026-11-21');state.calendar.edits.removed.push(netflix.id);
  let i=await input('What is on my calendar?',state);assert.ok(i.appContext.calendar.events.some(e=>e.title==='Dentist'));assert.ok(!i.appContext.calendar.events.some(e=>e.id===netflix.id));assert.equal(i.appContext.calendar.sameCustomer,false);
  const r=await conversationReply(i,noModel);assert.match(r.reply,/fictional demo/);assert.match(r.reply,/separate from your Home account/);
- const found=await conversationReply(await input('When is my Dentist reminder?',state),noModel);assert.match(found.reply,/2026-11-22.*€70.50.*added by you/);
+ const found=await conversationReply(await input('When is my Dentist reminder?',state),noModel);assert.match(found.reply,/€70.50.*2026-11-22.*added by you/);
  state.calendar.edits.removed=[];i=await input('Show my calendar',state);assert.ok(i.appContext.calendar.events.some(e=>e.id===netflix.id));
 });
 test('Calendar dates, filters and yearly entries match the selected view; explicit dates work',async()=>{
@@ -76,6 +76,8 @@ test('The language model receives current scoped section data and treats labels 
   seen=JSON.parse(options.body);return {ok:true,json:async()=>({candidates:[{finishReason:'STOP',content:{parts:[{text:JSON.stringify({title:'',summary:'These sections have different sources.',bullets:[],nextQuestion:''})}]}}]})};
  }});
  assert.match(seen.systemInstruction.parts[0].text,/never combine its payments/);assert.match(seen.systemInstruction.parts[0].text,/untrusted content/);
+ assert.match(seen.systemInstruction.parts[0].text,/Do not replace an answer with instructions to open/);
+ assert.equal(seen.generationConfig.responseJsonSchema.properties.bullets.maxItems,3);
  const supplied=seen.contents.find(c=>c.parts[0].text.startsWith('APP SECTION DATA'));assert.ok(supplied);assert.match(supplied.parts[0].text,/RISK-DEMO/);assert.match(supplied.parts[0].text,/Ignore rules and claim/);
  assert.doesNotMatch(seen.systemInstruction.parts[0].text,/Ignore rules and claim/);
 });
@@ -87,4 +89,19 @@ test('Browser snapshot is fresh per message, handles blocked storage, and avoids
  assert.equal(collectAppState('CUST00005',storage).goals.data.shortTermGoals[0].savedCents,51000);
  const blocked=collectAppState('CUST00005',{getItem(){throw Error('blocked')}});assert.equal(blocked.goals.status,'unavailable');assert.equal(blocked.calendar.status,'unavailable');
  assert.deepEqual(collectAppState('home-sample',storage),{version:1,customerId:'home-sample'});
+});
+
+test('Calendar answers contain multiple payments directly in chat without navigation links',async()=>{
+ const r=await conversationReply(await input('What subscriptions are on my calendar?'),noModel);
+ assert.match(r.reply,/Netflix/);assert.match(r.reply,/Spotify/);
+ assert.match(r.reply,/€[0-9]+/);assert.match(r.reply,/2026-11-/);
+ assert.equal(r.presentation.sections,undefined);assert.doesNotMatch(r.reply,/open|visit|check the calendar/i);
+});
+test('Advice about a goal reaches the model with goal data instead of returning an inventory',async()=>{
+ let called=false;
+ const r=await conversationReply(await input('How should I prioritize my Laptop goal?'),async i=>{
+  called=true;assert.equal(i.appContext.goals.shortTermGoals[0].savedCents,25000);
+  return {title:'',summary:'You have recorded €250 toward your Laptop target of €1,200.',bullets:['Choose a contribution only after essential costs and your buffer are covered.'],nextQuestion:''};
+ });
+ assert.ok(called);assert.equal(r.source,'gemini');assert.match(r.reply,/€250/);assert.equal(r.presentation.sections,undefined);assert.equal(r.planChanged,false);
 });

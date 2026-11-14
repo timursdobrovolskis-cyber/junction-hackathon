@@ -112,7 +112,6 @@ export async function conversationReply(input, generate) {
     .replaceAll('For this prototype, choose', 'Choose')
     .replaceAll('We still need your financial data to check whether it fits.', 'We’ll need to check it against your forecast before changing your plan.');
   if (!message.presentation) message.presentation = formatPlanning(next);
-  if (source === 'gemini' && input.appContext) message.presentation.sections = ['home','goals','calendar','budget'].filter(section => input.appContext[section]?.status === 'available');
   next.messages = next.messages.slice(-40);
   next.messages.forEach((m, i) => { m.id = `m${i + 1}`; });
   validateConversation(next, input.scenario);

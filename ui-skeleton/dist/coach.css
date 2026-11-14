@@ -77,4 +77,3 @@
 #coach-page .reply-point { margin-top:6px; font-size:12.5px; line-height:1.4; color:#4c5a50; }
 #coach-page .reply-more summary { margin-top:6px; color:var(--c-forest); font-size:12px; font-weight:600; cursor:pointer; }
 #coach-page .message-assistant { padding:10px 13px; }
-.reply-section-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.reply-section-links a{display:inline-flex;align-items:center;min-height:40px;padding:7px 11px;border:1px solid #c9dfcf;border-radius:9px;color:#006b3e;font-size:11px;text-decoration:none}.reply-section-links a:focus-visible{outline:3px solid #007841;outline-offset:2px}
