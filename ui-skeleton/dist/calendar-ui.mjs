@@ -131,7 +131,7 @@ function openEvent(event, returnFocus, back) {
     content.push(list);
   }
   }
-  const remove = create('button', event.cadence === 'once' ? 'Delete from calendar' : 'Delete this date', 'calendar-delete'); remove.type = 'button'; remove.id = 'calendar-delete-event';
+  const remove = create('button', 'Delete this event', 'calendar-delete'); remove.type = 'button'; remove.id = 'calendar-delete-event';
   remove.addEventListener('click', () => deleteEvent(event)); content.push(remove);
   if (event.localId && event.cadence !== 'once') {
     const series = create('button', 'Delete all repeats', 'calendar-delete'); series.type = 'button'; series.id = 'calendar-delete-series';
