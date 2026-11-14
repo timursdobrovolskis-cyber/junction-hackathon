@@ -1,0 +1,1 @@
+Source: `origin/feat/planning-coach` at `47b7b64`. The two conversation modules are copied without edits. The hybrid adapter in `../conversation.mjs` owns app integration. Keep upstream logic and its tests synchronized.

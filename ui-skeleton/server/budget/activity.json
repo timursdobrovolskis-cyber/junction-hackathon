@@ -1,0 +1,3884 @@
+{
+  "customerId": "CUST00005",
+  "accountIds": [
+    "ACC000005"
+  ],
+  "source": "bank_provided_synthetic_data",
+  "sourceRevision": "fbdecdedf1a1f49dd641c2e6b9f2b62d0dc0cc8f",
+  "coverage": {
+    "start": "2024-10-01",
+    "end": "2026-09-30"
+  },
+  "transactions": [
+    {
+      "id": "tx-49b3265d8e44e751-2371",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-02",
+      "category": "Groceries",
+      "amountCents": -6910,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2372",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-02",
+      "category": "Housing",
+      "amountCents": -79217,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2373",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-02",
+      "category": "Transportation",
+      "amountCents": -2573,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2374",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-02",
+      "category": "Groceries",
+      "amountCents": -3996,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2375",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-03",
+      "category": "Groceries",
+      "amountCents": -4536,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2376",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-04",
+      "category": "Transportation",
+      "amountCents": -1939,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2377",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-07",
+      "category": "Transportation",
+      "amountCents": -2430,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2378",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-09",
+      "category": "Groceries",
+      "amountCents": -10368,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2379",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-11",
+      "category": "Utilities",
+      "amountCents": -2403,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2380",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-11",
+      "category": "Transportation",
+      "amountCents": -6225,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2381",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-11",
+      "category": "Transportation",
+      "amountCents": -2444,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2382",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-12",
+      "category": "Transportation",
+      "amountCents": -5395,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2383",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-12",
+      "category": "Utilities",
+      "amountCents": -3114,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2384",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-13",
+      "category": "Transportation",
+      "amountCents": -8471,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2385",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-13",
+      "category": "Transportation",
+      "amountCents": -9180,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2386",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-16",
+      "category": "Transportation",
+      "amountCents": -3475,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2387",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-16",
+      "category": "Groceries",
+      "amountCents": -4548,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2388",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-16",
+      "category": "Transportation",
+      "amountCents": -2121,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2389",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-16",
+      "category": "Groceries",
+      "amountCents": -14061,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2390",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-17",
+      "category": "Transportation",
+      "amountCents": -2972,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2391",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-18",
+      "category": "Groceries",
+      "amountCents": -8399,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2392",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-18",
+      "category": "Transportation",
+      "amountCents": -6624,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2393",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-22",
+      "category": "Groceries",
+      "amountCents": -2309,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2394",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-23",
+      "category": "Transportation",
+      "amountCents": -735,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2395",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-29",
+      "category": "Salary",
+      "amountCents": 254812,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2396",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-30",
+      "category": "Invest Deposit",
+      "amountCents": -44643,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2397",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-30",
+      "category": "Transportation",
+      "amountCents": -8486,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2398",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-10-30",
+      "category": "Transportation",
+      "amountCents": -3169,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2399",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-01",
+      "category": "Groceries",
+      "amountCents": -5599,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2400",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-02",
+      "category": "Groceries",
+      "amountCents": -8500,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2401",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-02",
+      "category": "Groceries",
+      "amountCents": -8993,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2402",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-02",
+      "category": "Groceries",
+      "amountCents": -13216,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2403",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-03",
+      "category": "Housing",
+      "amountCents": -76910,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2404",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-03",
+      "category": "Home & Tech",
+      "amountCents": -38968,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2405",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-04",
+      "category": "Utilities",
+      "amountCents": -5134,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2406",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-04",
+      "category": "Groceries",
+      "amountCents": -4341,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2407",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-05",
+      "category": "Utilities",
+      "amountCents": -3867,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2408",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-07",
+      "category": "Entertainment",
+      "amountCents": -4396,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2409",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-08",
+      "category": "Entertainment",
+      "amountCents": -5643,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2410",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-09",
+      "category": "Utilities",
+      "amountCents": -5210,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2411",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-15",
+      "category": "Salary",
+      "amountCents": 211704,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2412",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-16",
+      "category": "Invest Deposit",
+      "amountCents": -37091,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2413",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-17",
+      "category": "Groceries",
+      "amountCents": -9134,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2414",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-20",
+      "category": "Entertainment",
+      "amountCents": -4887,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2415",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-21",
+      "category": "Entertainment",
+      "amountCents": -3369,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2416",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-24",
+      "category": "Groceries",
+      "amountCents": -3068,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2417",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-25",
+      "category": "Entertainment",
+      "amountCents": -3346,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2418",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-11-26",
+      "category": "Groceries",
+      "amountCents": -2730,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2419",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-02",
+      "category": "Groceries",
+      "amountCents": -4844,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2420",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-04",
+      "category": "Utilities",
+      "amountCents": -3439,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2421",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-05",
+      "category": "Transportation",
+      "amountCents": -7815,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2422",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-06",
+      "category": "Housing",
+      "amountCents": -78664,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2423",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-09",
+      "category": "Transportation",
+      "amountCents": -6793,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2424",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-09",
+      "category": "Transportation",
+      "amountCents": -3022,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2425",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-10",
+      "category": "Utilities",
+      "amountCents": -3055,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2426",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-10",
+      "category": "Transportation",
+      "amountCents": -2624,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2427",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-15",
+      "category": "Salary",
+      "amountCents": 219581,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2428",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-16",
+      "category": "Invest Deposit",
+      "amountCents": -38471,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2429",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-17",
+      "category": "Transportation",
+      "amountCents": -2658,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2430",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-17",
+      "category": "Transportation",
+      "amountCents": -4729,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2431",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-18",
+      "category": "Transportation",
+      "amountCents": -3544,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2432",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-19",
+      "category": "Utilities",
+      "amountCents": -3669,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2433",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-22",
+      "category": "Groceries",
+      "amountCents": -5241,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2434",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-26",
+      "category": "Groceries",
+      "amountCents": -12201,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2435",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-27",
+      "category": "Transportation",
+      "amountCents": -5055,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2436",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-28",
+      "category": "Groceries",
+      "amountCents": -7117,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2437",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-30",
+      "category": "Transportation",
+      "amountCents": -4286,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2438",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-30",
+      "category": "Groceries",
+      "amountCents": -3781,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2439",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2024-12-30",
+      "category": "Lifestyle",
+      "amountCents": -35812,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2440",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-01-06",
+      "category": "Utilities",
+      "amountCents": -5943,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2441",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-01-08",
+      "category": "Housing",
+      "amountCents": -80644,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2442",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-01-11",
+      "category": "Lifestyle",
+      "amountCents": -54495,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2443",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-01-25",
+      "category": "Utilities",
+      "amountCents": -2405,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2444",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-01-30",
+      "category": "Salary",
+      "amountCents": 241648,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2445",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-01-31",
+      "category": "Utilities",
+      "amountCents": -5767,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2446",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-01-31",
+      "category": "Invest Deposit",
+      "amountCents": -42337,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2447",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-02",
+      "category": "Housing",
+      "amountCents": -83141,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2448",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-06",
+      "category": "Groceries",
+      "amountCents": -5200,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2449",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-06",
+      "category": "Utilities",
+      "amountCents": -3178,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2450",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-11",
+      "category": "Utilities",
+      "amountCents": -3177,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2451",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-15",
+      "category": "Health",
+      "amountCents": -13347,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2452",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-15",
+      "category": "Salary",
+      "amountCents": 217625,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2453",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-16",
+      "category": "Invest Deposit",
+      "amountCents": -38128,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2454",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-16",
+      "category": "Utilities",
+      "amountCents": -2723,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2455",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-17",
+      "category": "Health",
+      "amountCents": -9773,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2456",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-18",
+      "category": "Lifestyle",
+      "amountCents": -33795,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2457",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-19",
+      "category": "Groceries",
+      "amountCents": -4837,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2458",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-21",
+      "category": "Groceries",
+      "amountCents": -3426,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2459",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-21",
+      "category": "Groceries",
+      "amountCents": -6499,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2460",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-21",
+      "category": "Groceries",
+      "amountCents": -12522,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2461",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-02-26",
+      "category": "Health",
+      "amountCents": -12661,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2462",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-01",
+      "category": "Groceries",
+      "amountCents": -13051,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2463",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-02",
+      "category": "Groceries",
+      "amountCents": -8982,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2464",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-06",
+      "category": "Housing",
+      "amountCents": -79622,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2465",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-08",
+      "category": "Groceries",
+      "amountCents": -5708,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2466",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-10",
+      "category": "Utilities",
+      "amountCents": -2834,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2467",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-10",
+      "category": "Groceries",
+      "amountCents": -3248,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2468",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-11",
+      "category": "Utilities",
+      "amountCents": -2586,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2469",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-12",
+      "category": "Groceries",
+      "amountCents": -1482,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2470",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-12",
+      "category": "Groceries",
+      "amountCents": -4354,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2471",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-13",
+      "category": "Groceries",
+      "amountCents": -8261,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2472",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-15",
+      "category": "Salary",
+      "amountCents": 245516,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2473",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-15",
+      "category": "Groceries",
+      "amountCents": -3050,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2474",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-16",
+      "category": "Groceries",
+      "amountCents": -7321,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2475",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-16",
+      "category": "Invest Deposit",
+      "amountCents": -43014,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2476",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-17",
+      "category": "Groceries",
+      "amountCents": -2903,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2477",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-17",
+      "category": "Groceries",
+      "amountCents": -14012,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2478",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-21",
+      "category": "Groceries",
+      "amountCents": -6213,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2479",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-25",
+      "category": "Groceries",
+      "amountCents": -5708,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2480",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-27",
+      "category": "Groceries",
+      "amountCents": -6740,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2481",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-28",
+      "category": "Groceries",
+      "amountCents": -8680,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2482",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-28",
+      "category": "Groceries",
+      "amountCents": -5333,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2483",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-29",
+      "category": "Groceries",
+      "amountCents": -7936,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2484",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-29",
+      "category": "Groceries",
+      "amountCents": -11306,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2485",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-30",
+      "category": "Utilities",
+      "amountCents": -1723,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2486",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-30",
+      "category": "Groceries",
+      "amountCents": -14991,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2487",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-03-31",
+      "category": "Groceries",
+      "amountCents": -3460,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2488",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-02",
+      "category": "Transportation",
+      "amountCents": -1173,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2489",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-06",
+      "category": "Housing",
+      "amountCents": -78554,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2490",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-07",
+      "category": "Transportation",
+      "amountCents": -4721,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2491",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-08",
+      "category": "Transportation",
+      "amountCents": -5846,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2492",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-09",
+      "category": "Transportation",
+      "amountCents": -4070,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2493",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-10",
+      "category": "Utilities",
+      "amountCents": -4719,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2494",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-11",
+      "category": "Transportation",
+      "amountCents": -4846,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2495",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-11",
+      "category": "Transportation",
+      "amountCents": -4109,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2496",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-13",
+      "category": "Transportation",
+      "amountCents": -7726,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2497",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-14",
+      "category": "Transportation",
+      "amountCents": -2798,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2498",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-14",
+      "category": "Transportation",
+      "amountCents": -3871,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2499",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-15",
+      "category": "Salary",
+      "amountCents": 236330,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2500",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-15",
+      "category": "Utilities",
+      "amountCents": -2597,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2501",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-16",
+      "category": "Invest Deposit",
+      "amountCents": -41405,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2502",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-16",
+      "category": "Transportation",
+      "amountCents": -4070,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2503",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-17",
+      "category": "Transportation",
+      "amountCents": -4559,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2504",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-17",
+      "category": "Transportation",
+      "amountCents": -10064,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2505",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-18",
+      "category": "Transportation",
+      "amountCents": -2666,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2506",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-18",
+      "category": "Transportation",
+      "amountCents": -2503,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2507",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-21",
+      "category": "Transportation",
+      "amountCents": -2724,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2508",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-23",
+      "category": "Transportation",
+      "amountCents": -4781,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2509",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-23",
+      "category": "Utilities",
+      "amountCents": -6641,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2510",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-25",
+      "category": "Transportation",
+      "amountCents": -6352,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2511",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-29",
+      "category": "Transportation",
+      "amountCents": -3433,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2512",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-30",
+      "category": "Transportation",
+      "amountCents": -4203,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2513",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-04-30",
+      "category": "Transportation",
+      "amountCents": -5923,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2514",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-03",
+      "category": "Groceries",
+      "amountCents": -5392,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2515",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-03",
+      "category": "Housing",
+      "amountCents": -77100,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2516",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-11",
+      "category": "Utilities",
+      "amountCents": -5722,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2517",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-12",
+      "category": "Groceries",
+      "amountCents": -4642,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2518",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-13",
+      "category": "Utilities",
+      "amountCents": -5432,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2519",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-15",
+      "category": "Utilities",
+      "amountCents": -5284,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2520",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-15",
+      "category": "Salary",
+      "amountCents": 224351,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2521",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-16",
+      "category": "Invest Deposit",
+      "amountCents": -39306,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2522",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-17",
+      "category": "Groceries",
+      "amountCents": -3432,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2523",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-21",
+      "category": "Groceries",
+      "amountCents": -10626,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2524",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-23",
+      "category": "Groceries",
+      "amountCents": -3376,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2525",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-26",
+      "category": "Groceries",
+      "amountCents": -3667,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2526",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-30",
+      "category": "Groceries",
+      "amountCents": -10671,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2527",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-05-31",
+      "category": "Groceries",
+      "amountCents": -11146,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2528",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-01",
+      "category": "Transportation",
+      "amountCents": -3058,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2529",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-03",
+      "category": "Housing",
+      "amountCents": -78144,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2530",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-04",
+      "category": "Transportation",
+      "amountCents": -4095,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2531",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-04",
+      "category": "Utilities",
+      "amountCents": -3364,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2532",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-04",
+      "category": "Utilities",
+      "amountCents": -5695,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2533",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-06",
+      "category": "Transportation",
+      "amountCents": -7171,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2534",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-09",
+      "category": "Transportation",
+      "amountCents": -5589,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2535",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-10",
+      "category": "Transportation",
+      "amountCents": -5438,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2536",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-12",
+      "category": "Transportation",
+      "amountCents": -2466,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2537",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-12",
+      "category": "Transportation",
+      "amountCents": -3459,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2538",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-13",
+      "category": "Transportation",
+      "amountCents": -11041,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2539",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-13",
+      "category": "Utilities",
+      "amountCents": -3276,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2540",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-14",
+      "category": "Transportation",
+      "amountCents": -2881,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2541",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-14",
+      "category": "Transportation",
+      "amountCents": -3460,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2542",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-15",
+      "category": "Salary",
+      "amountCents": 255179,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2543",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-16",
+      "category": "Transportation",
+      "amountCents": -3197,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2544",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-16",
+      "category": "Invest Deposit",
+      "amountCents": -44707,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2545",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-17",
+      "category": "Transportation",
+      "amountCents": -3387,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2546",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-17",
+      "category": "Transportation",
+      "amountCents": -4454,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2547",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-18",
+      "category": "Transportation",
+      "amountCents": -5442,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2548",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-19",
+      "category": "Transportation",
+      "amountCents": -5930,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2549",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-20",
+      "category": "Transportation",
+      "amountCents": -3400,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2550",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-21",
+      "category": "Transportation",
+      "amountCents": -4055,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2551",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-21",
+      "category": "Transportation",
+      "amountCents": -3765,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2552",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-24",
+      "category": "Transportation",
+      "amountCents": -3134,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2553",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-25",
+      "category": "Transportation",
+      "amountCents": -5820,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2554",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-27",
+      "category": "Transportation",
+      "amountCents": -3503,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2555",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-27",
+      "category": "Transportation",
+      "amountCents": -2227,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2556",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-28",
+      "category": "Transportation",
+      "amountCents": -8377,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2557",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-30",
+      "category": "Transportation",
+      "amountCents": -2624,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2558",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-06-30",
+      "category": "Transportation",
+      "amountCents": -3004,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2559",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-02",
+      "category": "Housing",
+      "amountCents": -79866,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2560",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-04",
+      "category": "Groceries",
+      "amountCents": -6922,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2561",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-04",
+      "category": "Groceries",
+      "amountCents": -4457,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2562",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-09",
+      "category": "Groceries",
+      "amountCents": -4683,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2563",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-09",
+      "category": "Groceries",
+      "amountCents": -12313,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2564",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-11",
+      "category": "Groceries",
+      "amountCents": -4236,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2565",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-13",
+      "category": "Utilities",
+      "amountCents": -2785,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2566",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-13",
+      "category": "Groceries",
+      "amountCents": -4953,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2567",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-15",
+      "category": "Salary",
+      "amountCents": 246212,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2568",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-16",
+      "category": "Invest Deposit",
+      "amountCents": -43136,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2569",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-16",
+      "category": "Utilities",
+      "amountCents": -5085,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2570",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-17",
+      "category": "Groceries",
+      "amountCents": -5065,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2571",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-17",
+      "category": "Utilities",
+      "amountCents": -3009,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2572",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-19",
+      "category": "Groceries",
+      "amountCents": -12817,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2573",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-19",
+      "category": "Groceries",
+      "amountCents": -4021,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2574",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-20",
+      "category": "Groceries",
+      "amountCents": -7280,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2575",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-20",
+      "category": "Groceries",
+      "amountCents": -10159,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2576",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-27",
+      "category": "Groceries",
+      "amountCents": -6940,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2577",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-27",
+      "category": "Groceries",
+      "amountCents": -5667,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2578",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-30",
+      "category": "Groceries",
+      "amountCents": -8497,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2579",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-07-31",
+      "category": "Groceries",
+      "amountCents": -4435,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2580",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-02",
+      "category": "Groceries",
+      "amountCents": -10936,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2581",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-03",
+      "category": "Housing",
+      "amountCents": -77957,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2582",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-05",
+      "category": "Utilities",
+      "amountCents": -5054,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2583",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-08",
+      "category": "Groceries",
+      "amountCents": -2110,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2584",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-08",
+      "category": "Groceries",
+      "amountCents": -9554,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2585",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-15",
+      "category": "Salary",
+      "amountCents": 217153,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2586",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-16",
+      "category": "Invest Deposit",
+      "amountCents": -38045,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2587",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-21",
+      "category": "Groceries",
+      "amountCents": -9396,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2588",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-22",
+      "category": "Groceries",
+      "amountCents": -6502,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2589",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-24",
+      "category": "Groceries",
+      "amountCents": -9001,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2590",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-25",
+      "category": "Groceries",
+      "amountCents": -4347,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2591",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-27",
+      "category": "Utilities",
+      "amountCents": -4218,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2592",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-29",
+      "category": "Groceries",
+      "amountCents": -6208,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2593",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-29",
+      "category": "Groceries",
+      "amountCents": -6292,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2594",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-08-31",
+      "category": "Utilities",
+      "amountCents": -4422,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2595",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-04",
+      "category": "Transportation",
+      "amountCents": -3633,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2596",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-04",
+      "category": "Transportation",
+      "amountCents": -3621,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2597",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-05",
+      "category": "Transportation",
+      "amountCents": -4707,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2598",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-08",
+      "category": "Housing",
+      "amountCents": -81295,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2599",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-09",
+      "category": "Utilities",
+      "amountCents": -3745,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2600",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-10",
+      "category": "Transportation",
+      "amountCents": -3802,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2601",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-11",
+      "category": "Transportation",
+      "amountCents": -3229,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2602",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-11",
+      "category": "Transportation",
+      "amountCents": -3587,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2603",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-14",
+      "category": "Transportation",
+      "amountCents": -4986,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2604",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-15",
+      "category": "Salary",
+      "amountCents": 275598,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2605",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-16",
+      "category": "Invest Deposit",
+      "amountCents": -48285,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2606",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-17",
+      "category": "Transportation",
+      "amountCents": -8254,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2607",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-18",
+      "category": "Transportation",
+      "amountCents": -3306,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2608",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-19",
+      "category": "Transportation",
+      "amountCents": -2879,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2609",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-22",
+      "category": "Transportation",
+      "amountCents": -2648,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2610",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-22",
+      "category": "Transportation",
+      "amountCents": -3439,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2611",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-23",
+      "category": "Utilities",
+      "amountCents": -5815,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2612",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-27",
+      "category": "Utilities",
+      "amountCents": -3475,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2613",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-09-30",
+      "category": "Transportation",
+      "amountCents": -9554,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2614",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-01",
+      "category": "Housing",
+      "amountCents": -78443,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2615",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-02",
+      "category": "Groceries",
+      "amountCents": -7926,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2616",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-07",
+      "category": "Utilities",
+      "amountCents": -3880,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2617",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-08",
+      "category": "Groceries",
+      "amountCents": -8906,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2618",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-10",
+      "category": "Groceries",
+      "amountCents": -4414,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2619",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-15",
+      "category": "Salary",
+      "amountCents": 265356,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2620",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-16",
+      "category": "Invest Deposit",
+      "amountCents": -46490,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2621",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-16",
+      "category": "Groceries",
+      "amountCents": -5980,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2622",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-18",
+      "category": "Utilities",
+      "amountCents": -4818,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2623",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-20",
+      "category": "Groceries",
+      "amountCents": -5428,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2624",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-27",
+      "category": "Utilities",
+      "amountCents": -3994,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2625",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-27",
+      "category": "Groceries",
+      "amountCents": -5786,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2626",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-10-29",
+      "category": "Groceries",
+      "amountCents": -7088,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2627",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-04",
+      "category": "Utilities",
+      "amountCents": -4038,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2628",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-06",
+      "category": "Housing",
+      "amountCents": -77264,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2629",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-08",
+      "category": "Travel",
+      "amountCents": -22335,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2630",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-12",
+      "category": "Utilities",
+      "amountCents": -5206,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2631",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-13",
+      "category": "Health",
+      "amountCents": -6799,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2632",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-19",
+      "category": "Health",
+      "amountCents": -21606,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2633",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-20",
+      "category": "Utilities",
+      "amountCents": -3400,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2634",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-27",
+      "category": "Health",
+      "amountCents": -12897,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2635",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-30",
+      "category": "Salary",
+      "amountCents": 228888,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2636",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-11-30",
+      "category": "Invest Deposit",
+      "amountCents": -40101,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2637",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-01",
+      "category": "Groceries",
+      "amountCents": -8540,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2638",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-03",
+      "category": "Groceries",
+      "amountCents": -8640,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2639",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-05",
+      "category": "Restaurants",
+      "amountCents": -2988,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2640",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-06",
+      "category": "Restaurants",
+      "amountCents": -3373,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2641",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-08",
+      "category": "Housing",
+      "amountCents": -76872,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2642",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-08",
+      "category": "Restaurants",
+      "amountCents": -4699,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2643",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-09",
+      "category": "Restaurants",
+      "amountCents": -4912,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2644",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-11",
+      "category": "Utilities",
+      "amountCents": -2618,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2645",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-12",
+      "category": "Groceries",
+      "amountCents": -5538,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2646",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-12",
+      "category": "Utilities",
+      "amountCents": -2290,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2647",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-15",
+      "category": "Salary",
+      "amountCents": 264530,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2648",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-16",
+      "category": "Invest Deposit",
+      "amountCents": -46346,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2649",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-16",
+      "category": "Restaurants",
+      "amountCents": -2312,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2650",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-19",
+      "category": "Restaurants",
+      "amountCents": -4673,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2651",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-20",
+      "category": "Groceries",
+      "amountCents": -4723,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2652",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-22",
+      "category": "Groceries",
+      "amountCents": -8093,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2653",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-22",
+      "category": "Groceries",
+      "amountCents": -6491,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2654",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-24",
+      "category": "Utilities",
+      "amountCents": -2763,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2655",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-26",
+      "category": "Restaurants",
+      "amountCents": -8410,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2656",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-27",
+      "category": "Restaurants",
+      "amountCents": -4777,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2657",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-27",
+      "category": "Restaurants",
+      "amountCents": -3191,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2658",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-28",
+      "category": "Restaurants",
+      "amountCents": -4347,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2659",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2025-12-28",
+      "category": "Home & Tech",
+      "amountCents": -13671,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2660",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-03",
+      "category": "Transportation",
+      "amountCents": -2239,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2661",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-05",
+      "category": "Utilities",
+      "amountCents": -5290,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2662",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-05",
+      "category": "Lifestyle",
+      "amountCents": -16634,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2663",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-05",
+      "category": "Housing",
+      "amountCents": -76956,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2664",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-08",
+      "category": "Transportation",
+      "amountCents": -3514,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2665",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-08",
+      "category": "Transportation",
+      "amountCents": -5310,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2666",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-09",
+      "category": "Transportation",
+      "amountCents": -6224,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2667",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-10",
+      "category": "Transportation",
+      "amountCents": -8067,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2668",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-12",
+      "category": "Transportation",
+      "amountCents": -3556,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2669",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-12",
+      "category": "Transportation",
+      "amountCents": -2862,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2670",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-13",
+      "category": "Transportation",
+      "amountCents": -3211,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2671",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-13",
+      "category": "Utilities",
+      "amountCents": -4172,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2672",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-14",
+      "category": "Transportation",
+      "amountCents": -1039,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2673",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-14",
+      "category": "Transportation",
+      "amountCents": -5477,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2674",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-15",
+      "category": "Transportation",
+      "amountCents": -4159,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2675",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-15",
+      "category": "Salary",
+      "amountCents": 276220,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2676",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-16",
+      "category": "Invest Deposit",
+      "amountCents": -48394,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2677",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-22",
+      "category": "Transportation",
+      "amountCents": -3993,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2678",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-25",
+      "category": "Utilities",
+      "amountCents": -5918,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2679",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-25",
+      "category": "Transportation",
+      "amountCents": -4804,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2680",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-26",
+      "category": "Transportation",
+      "amountCents": -4390,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2681",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-27",
+      "category": "Transportation",
+      "amountCents": -3608,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2682",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-01-29",
+      "category": "Transportation",
+      "amountCents": -8364,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2683",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-02-03",
+      "category": "Utilities",
+      "amountCents": -2491,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2684",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-02-05",
+      "category": "Lifestyle",
+      "amountCents": -52660,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2685",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-02-07",
+      "category": "Housing",
+      "amountCents": -78544,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2686",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-02-12",
+      "category": "Utilities",
+      "amountCents": -2546,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2687",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-02-15",
+      "category": "Salary",
+      "amountCents": 238415,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2688",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-02-16",
+      "category": "Invest Deposit",
+      "amountCents": -41770,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2689",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-02-22",
+      "category": "Travel",
+      "amountCents": -57987,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2690",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-02-26",
+      "category": "Utilities",
+      "amountCents": -2845,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2691",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-02",
+      "category": "Housing",
+      "amountCents": -83336,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2692",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-02",
+      "category": "Groceries",
+      "amountCents": -3004,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2693",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-06",
+      "category": "Groceries",
+      "amountCents": -13260,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2694",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-07",
+      "category": "Utilities",
+      "amountCents": -3734,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2695",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-07",
+      "category": "Utilities",
+      "amountCents": -5220,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2696",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-07",
+      "category": "Groceries",
+      "amountCents": -5142,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2697",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-11",
+      "category": "Groceries",
+      "amountCents": -4582,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2698",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-15",
+      "category": "Salary",
+      "amountCents": 235246,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2699",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-16",
+      "category": "Utilities",
+      "amountCents": -4350,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2700",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-16",
+      "category": "Invest Deposit",
+      "amountCents": -41215,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2701",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-16",
+      "category": "Groceries",
+      "amountCents": -3189,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2702",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-17",
+      "category": "Groceries",
+      "amountCents": -4964,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2703",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-21",
+      "category": "Groceries",
+      "amountCents": -7606,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2704",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-30",
+      "category": "Groceries",
+      "amountCents": -6010,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2705",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-03-30",
+      "category": "Groceries",
+      "amountCents": -17535,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2706",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-02",
+      "category": "Housing",
+      "amountCents": -78261,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2707",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-04",
+      "category": "Entertainment",
+      "amountCents": -9092,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2708",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-08",
+      "category": "Entertainment",
+      "amountCents": -20100,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2709",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-08",
+      "category": "Entertainment",
+      "amountCents": -21317,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2710",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-14",
+      "category": "Utilities",
+      "amountCents": -5549,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2711",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-15",
+      "category": "Salary",
+      "amountCents": 228883,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2712",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-16",
+      "category": "Invest Deposit",
+      "amountCents": -40100,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2713",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-16",
+      "category": "Utilities",
+      "amountCents": -4155,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2714",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-17",
+      "category": "Entertainment",
+      "amountCents": -11353,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2715",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-26",
+      "category": "Utilities",
+      "amountCents": -6307,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2716",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-04-29",
+      "category": "Entertainment",
+      "amountCents": -20819,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2717",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-02",
+      "category": "Housing",
+      "amountCents": -77015,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2718",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-04",
+      "category": "Utilities",
+      "amountCents": -3925,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2719",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-05",
+      "category": "Transportation",
+      "amountCents": -6625,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2720",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-06",
+      "category": "Transportation",
+      "amountCents": -3208,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2721",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-06",
+      "category": "Groceries",
+      "amountCents": -3868,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2722",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-09",
+      "category": "Transportation",
+      "amountCents": -6391,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2723",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-11",
+      "category": "Groceries",
+      "amountCents": -13667,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2724",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-13",
+      "category": "Transportation",
+      "amountCents": -3094,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2725",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-14",
+      "category": "Groceries",
+      "amountCents": -7592,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2726",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-15",
+      "category": "Transportation",
+      "amountCents": -2314,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2727",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-17",
+      "category": "Groceries",
+      "amountCents": -11314,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2728",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-20",
+      "category": "Transportation",
+      "amountCents": -6209,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2729",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-20",
+      "category": "Groceries",
+      "amountCents": -3039,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2730",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-20",
+      "category": "Groceries",
+      "amountCents": -5814,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2731",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-21",
+      "category": "Transportation",
+      "amountCents": -2733,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2732",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-21",
+      "category": "Transportation",
+      "amountCents": -4398,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2733",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-21",
+      "category": "Transportation",
+      "amountCents": -4033,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2734",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-21",
+      "category": "Utilities",
+      "amountCents": -2838,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2735",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-22",
+      "category": "Groceries",
+      "amountCents": -2638,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2736",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-28",
+      "category": "Utilities",
+      "amountCents": -2823,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2737",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-31",
+      "category": "Salary",
+      "amountCents": 275192,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2738",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-05-31",
+      "category": "Invest Deposit",
+      "amountCents": -48214,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2739",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-06-03",
+      "category": "Housing",
+      "amountCents": -80864,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2740",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-06-10",
+      "category": "Lifestyle",
+      "amountCents": -44870,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2741",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-06-15",
+      "category": "Salary",
+      "amountCents": 229539,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2742",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-06-15",
+      "category": "Utilities",
+      "amountCents": -7658,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2743",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-06-16",
+      "category": "Invest Deposit",
+      "amountCents": -40215,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2744",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-06-19",
+      "category": "Utilities",
+      "amountCents": -5915,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2745",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-06-19",
+      "category": "Utilities",
+      "amountCents": -3949,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2746",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-03",
+      "category": "Housing",
+      "amountCents": -81089,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2747",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-05",
+      "category": "Utilities",
+      "amountCents": -2443,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2748",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-06",
+      "category": "Transportation",
+      "amountCents": -6912,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2749",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-07",
+      "category": "Transportation",
+      "amountCents": -7522,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2750",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-09",
+      "category": "Transportation",
+      "amountCents": -2160,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2751",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-10",
+      "category": "Transportation",
+      "amountCents": -5510,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2752",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-11",
+      "category": "Transportation",
+      "amountCents": -3108,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2753",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-12",
+      "category": "Transportation",
+      "amountCents": -7936,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2754",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-12",
+      "category": "Transportation",
+      "amountCents": -4455,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2755",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-14",
+      "category": "Transportation",
+      "amountCents": -2974,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2756",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-15",
+      "category": "Salary",
+      "amountCents": 240527,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2757",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-16",
+      "category": "Invest Deposit",
+      "amountCents": -42140,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2758",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-17",
+      "category": "Transportation",
+      "amountCents": -2608,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2759",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-18",
+      "category": "Transportation",
+      "amountCents": -2113,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2760",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-21",
+      "category": "Utilities",
+      "amountCents": -2901,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2761",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-23",
+      "category": "Transportation",
+      "amountCents": -7091,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2762",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-25",
+      "category": "Transportation",
+      "amountCents": -8569,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2763",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-27",
+      "category": "Transportation",
+      "amountCents": -4370,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2764",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-27",
+      "category": "Transportation",
+      "amountCents": -3607,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2765",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-27",
+      "category": "Transportation",
+      "amountCents": -3012,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2766",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-28",
+      "category": "Transportation",
+      "amountCents": -2191,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2767",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-28",
+      "category": "Transportation",
+      "amountCents": -3577,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2768",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-28",
+      "category": "Transportation",
+      "amountCents": -2159,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2769",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-07-28",
+      "category": "Utilities",
+      "amountCents": -3162,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2770",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-01",
+      "category": "Entertainment",
+      "amountCents": -6350,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2771",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-02",
+      "category": "Transportation",
+      "amountCents": -3651,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2772",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-03",
+      "category": "Health",
+      "amountCents": -5369,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2773",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-06",
+      "category": "Housing",
+      "amountCents": -79915,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2774",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-07",
+      "category": "Transportation",
+      "amountCents": -7659,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2775",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-10",
+      "category": "Transportation",
+      "amountCents": -2034,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2776",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-11",
+      "category": "Utilities",
+      "amountCents": -5508,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2777",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-12",
+      "category": "Transportation",
+      "amountCents": -4149,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2778",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-13",
+      "category": "Transportation",
+      "amountCents": -8870,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2779",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-13",
+      "category": "Entertainment",
+      "amountCents": -7375,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2780",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-17",
+      "category": "Health",
+      "amountCents": -7325,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2781",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-17",
+      "category": "Entertainment",
+      "amountCents": -12054,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2782",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-17",
+      "category": "Utilities",
+      "amountCents": -4545,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2783",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-21",
+      "category": "Transportation",
+      "amountCents": -3152,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2784",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-23",
+      "category": "Transportation",
+      "amountCents": -3195,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2785",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-24",
+      "category": "Transportation",
+      "amountCents": -6295,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2786",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-26",
+      "category": "Transportation",
+      "amountCents": -2212,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2787",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-26",
+      "category": "Transportation",
+      "amountCents": -3567,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2788",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-28",
+      "category": "Utilities",
+      "amountCents": -4336,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2789",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-28",
+      "category": "Entertainment",
+      "amountCents": -3793,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2790",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-29",
+      "category": "Health",
+      "amountCents": -7036,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2791",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-30",
+      "category": "Entertainment",
+      "amountCents": -5462,
+      "type": "purchase"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2792",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-30",
+      "category": "Salary",
+      "amountCents": 251434,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2793",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-08-31",
+      "category": "Invest Deposit",
+      "amountCents": -44051,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2794",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-01",
+      "category": "Housing",
+      "amountCents": -82332,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2795",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-15",
+      "category": "Salary",
+      "amountCents": 250516,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2796",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-16",
+      "category": "Invest Deposit",
+      "amountCents": -43890,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2797",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-17",
+      "category": "Utilities",
+      "amountCents": -1785,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2798",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-22",
+      "category": "Utilities",
+      "amountCents": -4357,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2799",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-22",
+      "category": "Utilities",
+      "amountCents": -4041,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2800",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-28",
+      "category": "Lifestyle",
+      "amountCents": -128419,
+      "type": "purchase"
+    }
+  ]
+}

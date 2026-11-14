@@ -1,0 +1,56 @@
+{
+  "description": "Original fictional evaluation conversations. Informed by public coaching/design guidance; not scraped personal chats or model-training data.",
+  "today": "2026-11-14",
+  "scenarios": [
+    {
+      "id": "goal-priority-and-correction",
+      "messages": ["I want to save €400 a month but don’t cut my gym", "actually, €300", "sounds good", "What are my options?"],
+      "expected": { "goalCents": 30000, "period": "monthly", "priorities": ["gym"], "lastReplyIncludes": "protecting gym" }
+    },
+    {
+      "id": "question-detour-then-resume",
+      "messages": ["I want to save €400", "What is an emergency fund?", "Continue", "Each month", "Add goal", "Groceries"],
+      "expected": { "goalCents": 40000, "period": "monthly", "priorities": ["groceries"], "hasSources": true }
+    },
+    {
+      "id": "variable-income-follow-up",
+      "messages": ["My income changes every month", "Both", "yes", "500", "yes"],
+      "expected": { "bufferCents": 50000, "hasSources": true }
+    },
+    {
+      "id": "expense-correction-and-cancel-removal",
+      "messages": ["A €200 repair tomorrow", "Extra cost", "Add expense", "Change repair to €250", "Update expense", "Remove repair", "Cancel"],
+      "expected": { "expenseCents": [25000], "expenseDates": ["2026-11-15"] }
+    },
+    {
+      "id": "clarify-why-before-adding",
+      "messages": ["A €200 repair next Friday", "Why are you asking?", "I don’t know", "Add expense"],
+      "expected": { "expenseCents": [20000], "expenseDates": ["2026-11-20"], "expenseInclusion": ["unsure"] }
+    },
+    {
+      "id": "spending-question-does-not-loop",
+      "messages": ["Help me understand my spending", "Everyday spending", "Gym"],
+      "expected": { "priorities": ["gym"], "lastReplyIncludes": "spending you want to protect" }
+    },
+    {
+      "id": "debt-education-before-goal",
+      "messages": ["Should I repay debt or save?", "No overdue payments", "Back to my plan", "I’d like to save €100 each month", "yep", "Nothing in particular"],
+      "expected": { "goalCents": 10000, "period": "monthly", "hasSources": true }
+    },
+    {
+      "id": "remove-confirmed-expense",
+      "messages": ["I have a €200 repair tomorrow", "Already included", "Add expense", "Remove repair", "yes"],
+      "expected": { "expenseCents": [], "lastReplyIncludes": "Removed from your local draft" }
+    },
+    {
+      "id": "correction-after-goal-was-recorded",
+      "messages": ["I want to save €400 monthly", "Add goal", "no, €300", "okay"],
+      "expected": { "goalCents": 30000, "period": "monthly" }
+    },
+    {
+      "id": "repeated-misunderstanding-repair",
+      "messages": ["flibbertigibbet", "gobbledygook", "I want to save €400", "In total", "Add goal"],
+      "expected": { "goalCents": 40000, "period": "one_time" }
+    }
+  ]
+}

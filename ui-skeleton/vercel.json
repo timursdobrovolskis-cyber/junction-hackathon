@@ -1,0 +1,32 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/coach.js": {
+      "includeFiles": "server/**",
+      "maxDuration": 30
+    },
+    "api/calendar.js": {
+      "includeFiles": "server/calendar/**",
+      "maxDuration": 20
+    },
+    "api/goals.js": {
+      "includeFiles": "server/goals/**",
+      "maxDuration": 20
+    },
+    "api/budget.js": {
+      "includeFiles": "server/**",
+      "maxDuration": 20
+    }
+  },
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/preview.html",
+      "permanent": false
+    }
+  ]
+}

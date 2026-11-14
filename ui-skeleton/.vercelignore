@@ -1,0 +1,11 @@
+.openai
+.git
+.vercel
+README.md
+review/
+test/
+dev.mjs
+
+.env*
+
+/goals-planner/
