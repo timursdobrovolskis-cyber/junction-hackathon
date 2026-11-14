@@ -52,6 +52,8 @@ Unknown fields and invalid inputs return HTTP 400. Unknown routes return 404; di
 
 ## What to show
 
+The [coach integration guide](../docs/financial-coach-integration.md) connects this endpoint to the JavaScript coach, preserves customer answers across requests, and includes a live demo and HTTP integration check. Use `src/financial-coach-client.mjs` for frontend requests and structured explanations.
+
 Use [forecast fields](CASH_FLOW_CONTRACT.md), [calibrated ranges and savings states](INCOME_AND_SAVINGS.md), and [budget/edit fields](CATEGORY_BUDGETS.md). Preserve the response's warnings, assumptions, supporting transaction IDs, confirmation state, and infeasible-plan state. Savings previews do not move money. A budget edit is conditional on changed behavior; its forecast has no newly measured coverage guarantee.
 
 The default remains `conditioned-income-v2`. Its measured daily balance error is €802.70 on 995 reserved synthetic customers, so display uncertainty alongside the central forecast. The [bounded spending-model experiment](SPENDING_MODEL_EXPERIMENT.md) did not improve this result and was not promoted.

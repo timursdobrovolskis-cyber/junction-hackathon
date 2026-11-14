@@ -13,6 +13,8 @@ Start with [the build plan and current workflow](BUILD_PLAN.md) for the product 
 
 ## Run the planning and coach module
 
+For the combined live API, start with the [coach integration guide](docs/financial-coach-integration.md). Run `npm run demo:api-coach` after starting the local engine, or add `-- --fixture` to inspect the saved response offline.
+
 Start with the shared-engine coach: [frontend and input contract](docs/engine-coach.md).
 The [budget coach contract](docs/budget-coach.md) covers all four budget examples and real Python engine recalculation after category edits.
 It explains the three entries in `fixtures/savings-demo.json` and captures customer

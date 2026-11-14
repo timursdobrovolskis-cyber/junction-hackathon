@@ -82,9 +82,10 @@ export function createBudgetCoachResponse(result) {
     const context = reduction
       ? `For example, ${reduction.category} is projected at ${money(reduction.historicalForecastCents)} from payment history; this plan previews a ${money(reduction.previewLimitCents)} limit.`
       : 'No category reductions are needed from the spending projected from payment history.';
+    const unconfirmed = [!b.savingsConfirmed ? 'the savings target' : '', !b.commitmentsConfirmed ? 'upcoming expenses' : ''].filter(Boolean).join(' and ');
     insight = { kind: reduction ? 'budget_adjustments' : 'budget_fits',
       title: reduction ? 'A conditional plan with spending adjustments' : 'Your projected spending fits this preview',
-      explanation: `For ${b.periodStart}–${b.periodEnd}, this plan previews ${money(b.totalPlannedSpendingCents)} in category spending with a ${money(b.savingsTargetCents)} savings target and ${money(b.bufferCents)} cash buffer. ${context} ${b.status === 'needs_confirmation' ? 'These are draft amounts pending confirmation of the savings target and commitments.' : 'Even with those inputs confirmed, this plan depends on future income and following the spending limits.'}` };
+      explanation: `For ${b.periodStart}–${b.periodEnd}, this plan previews ${money(b.totalPlannedSpendingCents)} in category spending with a ${money(b.savingsTargetCents)} savings target and ${money(b.bufferCents)} cash buffer. ${context} ${b.status === 'needs_confirmation' ? `These are draft amounts pending confirmation of ${unconfirmed}.` : 'Even with those inputs confirmed, this plan depends on future income and following the spending limits.'}` };
     followUp = !b.savingsConfirmed
       ? { kind: 'confirm_savings_target', question: `Is ${money(b.savingsTargetCents)} the savings target you want to use for this preview?`, inputFields: ['savingsTargetCents', 'savingsConfirmed'] }
       : !b.commitmentsConfirmed
