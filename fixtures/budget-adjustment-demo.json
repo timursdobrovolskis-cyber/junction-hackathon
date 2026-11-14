@@ -1,0 +1,846 @@
+{
+  "customerId": "CUST00005",
+  "change": {
+    "category": "Entertainment",
+    "oldLimitCents": 19509,
+    "newLimitCents": 20509
+  },
+  "before": {
+    "schemaVersion": "1.0.0",
+    "customerId": "CUST00005",
+    "asOf": "2026-09-30",
+    "currency": "EUR",
+    "status": "needs_confirmation",
+    "movesMoney": false,
+    "categories": [
+      {
+        "category": "Entertainment",
+        "historicalForecastCents": 19618,
+        "protectedCents": 0,
+        "previewLimitCents": 19509,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": -109,
+        "adjustable": true,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2716",
+          "tx-49b3265d8e44e751-2770",
+          "tx-49b3265d8e44e751-2779",
+          "tx-49b3265d8e44e751-2781",
+          "tx-49b3265d8e44e751-2789",
+          "tx-49b3265d8e44e751-2791"
+        ]
+      },
+      {
+        "category": "Groceries",
+        "historicalForecastCents": 7990,
+        "protectedCents": 7990,
+        "previewLimitCents": 7990,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2723",
+          "tx-49b3265d8e44e751-2725",
+          "tx-49b3265d8e44e751-2727",
+          "tx-49b3265d8e44e751-2729",
+          "tx-49b3265d8e44e751-2730",
+          "tx-49b3265d8e44e751-2735"
+        ]
+      },
+      {
+        "category": "Health",
+        "historicalForecastCents": 3289,
+        "protectedCents": 3289,
+        "previewLimitCents": 3289,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2772",
+          "tx-49b3265d8e44e751-2780",
+          "tx-49b3265d8e44e751-2790"
+        ]
+      },
+      {
+        "category": "Housing",
+        "historicalForecastCents": 79912,
+        "protectedCents": 79912,
+        "previewLimitCents": 79912,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2706",
+          "tx-49b3265d8e44e751-2717",
+          "tx-49b3265d8e44e751-2739",
+          "tx-49b3265d8e44e751-2746",
+          "tx-49b3265d8e44e751-2773",
+          "tx-49b3265d8e44e751-2794"
+        ]
+      },
+      {
+        "category": "Lifestyle",
+        "historicalForecastCents": 28881,
+        "protectedCents": 0,
+        "previewLimitCents": 28721,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": -160,
+        "adjustable": true,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2740",
+          "tx-49b3265d8e44e751-2800"
+        ]
+      },
+      {
+        "category": "Transportation",
+        "historicalForecastCents": 27278,
+        "protectedCents": 27278,
+        "previewLimitCents": 27278,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2778",
+          "tx-49b3265d8e44e751-2783",
+          "tx-49b3265d8e44e751-2784",
+          "tx-49b3265d8e44e751-2785",
+          "tx-49b3265d8e44e751-2786",
+          "tx-49b3265d8e44e751-2787"
+        ]
+      },
+      {
+        "category": "Utilities",
+        "historicalForecastCents": 12700,
+        "protectedCents": 12700,
+        "previewLimitCents": 12700,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2776",
+          "tx-49b3265d8e44e751-2782",
+          "tx-49b3265d8e44e751-2788",
+          "tx-49b3265d8e44e751-2797",
+          "tx-49b3265d8e44e751-2798",
+          "tx-49b3265d8e44e751-2799"
+        ]
+      }
+    ],
+    "preview": {
+      "startingBalanceAfterSavingsCents": 636614,
+      "daily": [
+        {
+          "date": "2026-10-01",
+          "expectedBalanceCents": 621840,
+          "expectedNetChangeCents": -14774,
+          "conditionalLowerBalanceCents": 310435,
+          "conditionalUpperBalanceCents": 880473,
+          "cumulativeChangeFromOriginalCents": -9994
+        },
+        {
+          "date": "2026-10-02",
+          "expectedBalanceCents": 595352,
+          "expectedNetChangeCents": -26488,
+          "conditionalLowerBalanceCents": 310435,
+          "conditionalUpperBalanceCents": 880473,
+          "cumulativeChangeFromOriginalCents": -9994
+        },
+        {
+          "date": "2026-10-03",
+          "expectedBalanceCents": 567467,
+          "expectedNetChangeCents": -27885,
+          "conditionalLowerBalanceCents": 310437,
+          "conditionalUpperBalanceCents": 865105,
+          "cumulativeChangeFromOriginalCents": -9994
+        },
+        {
+          "date": "2026-10-04",
+          "expectedBalanceCents": 565306,
+          "expectedNetChangeCents": -2161,
+          "conditionalLowerBalanceCents": 305425,
+          "conditionalUpperBalanceCents": 865114,
+          "cumulativeChangeFromOriginalCents": -9986
+        },
+        {
+          "date": "2026-10-05",
+          "expectedBalanceCents": 563797,
+          "expectedNetChangeCents": -1509,
+          "conditionalLowerBalanceCents": 305215,
+          "conditionalUpperBalanceCents": 865116,
+          "cumulativeChangeFromOriginalCents": -9986
+        },
+        {
+          "date": "2026-10-06",
+          "expectedBalanceCents": 548149,
+          "expectedNetChangeCents": -15648,
+          "conditionalLowerBalanceCents": 297497,
+          "conditionalUpperBalanceCents": 799624,
+          "cumulativeChangeFromOriginalCents": -9986
+        },
+        {
+          "date": "2026-10-07",
+          "expectedBalanceCents": 545618,
+          "expectedNetChangeCents": -2531,
+          "conditionalLowerBalanceCents": 289838,
+          "conditionalUpperBalanceCents": 799624,
+          "cumulativeChangeFromOriginalCents": -9986
+        },
+        {
+          "date": "2026-10-08",
+          "expectedBalanceCents": 538757,
+          "expectedNetChangeCents": -6861,
+          "conditionalLowerBalanceCents": 264053,
+          "conditionalUpperBalanceCents": 799665,
+          "cumulativeChangeFromOriginalCents": -9948
+        },
+        {
+          "date": "2026-10-09",
+          "expectedBalanceCents": 537331,
+          "expectedNetChangeCents": -1426,
+          "conditionalLowerBalanceCents": 264053,
+          "conditionalUpperBalanceCents": 799665,
+          "cumulativeChangeFromOriginalCents": -9948
+        },
+        {
+          "date": "2026-10-10",
+          "expectedBalanceCents": 528637,
+          "expectedNetChangeCents": -8694,
+          "conditionalLowerBalanceCents": 264094,
+          "conditionalUpperBalanceCents": 798238,
+          "cumulativeChangeFromOriginalCents": -9907
+        },
+        {
+          "date": "2026-10-11",
+          "expectedBalanceCents": 524925,
+          "expectedNetChangeCents": -3712,
+          "conditionalLowerBalanceCents": 264096,
+          "conditionalUpperBalanceCents": 798240,
+          "cumulativeChangeFromOriginalCents": -9907
+        },
+        {
+          "date": "2026-10-12",
+          "expectedBalanceCents": 522168,
+          "expectedNetChangeCents": -2757,
+          "conditionalLowerBalanceCents": 264096,
+          "conditionalUpperBalanceCents": 798240,
+          "cumulativeChangeFromOriginalCents": -9907
+        },
+        {
+          "date": "2026-10-13",
+          "expectedBalanceCents": 518952,
+          "expectedNetChangeCents": -3216,
+          "conditionalLowerBalanceCents": 261993,
+          "conditionalUpperBalanceCents": 798247,
+          "cumulativeChangeFromOriginalCents": -9900
+        },
+        {
+          "date": "2026-10-14",
+          "expectedBalanceCents": 516266,
+          "expectedNetChangeCents": -2686,
+          "conditionalLowerBalanceCents": 258554,
+          "conditionalUpperBalanceCents": 798247,
+          "cumulativeChangeFromOriginalCents": -9900
+        },
+        {
+          "date": "2026-10-15",
+          "expectedBalanceCents": 692643,
+          "expectedNetChangeCents": 176377,
+          "conditionalLowerBalanceCents": 436593,
+          "conditionalUpperBalanceCents": 976286,
+          "cumulativeChangeFromOriginalCents": -9900
+        },
+        {
+          "date": "2026-10-16",
+          "expectedBalanceCents": 664231,
+          "expectedNetChangeCents": -28412,
+          "conditionalLowerBalanceCents": 392342,
+          "conditionalUpperBalanceCents": 932400,
+          "cumulativeChangeFromOriginalCents": -9900
+        },
+        {
+          "date": "2026-10-17",
+          "expectedBalanceCents": 655755,
+          "expectedNetChangeCents": -8476,
+          "conditionalLowerBalanceCents": 381011,
+          "conditionalUpperBalanceCents": 930637,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-18",
+          "expectedBalanceCents": 655404,
+          "expectedNetChangeCents": -351,
+          "conditionalLowerBalanceCents": 381012,
+          "conditionalUpperBalanceCents": 930638,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-19",
+          "expectedBalanceCents": 653760,
+          "expectedNetChangeCents": -1644,
+          "conditionalLowerBalanceCents": 381012,
+          "conditionalUpperBalanceCents": 930638,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-20",
+          "expectedBalanceCents": 651253,
+          "expectedNetChangeCents": -2507,
+          "conditionalLowerBalanceCents": 381015,
+          "conditionalUpperBalanceCents": 930641,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-21",
+          "expectedBalanceCents": 647911,
+          "expectedNetChangeCents": -3342,
+          "conditionalLowerBalanceCents": 381016,
+          "conditionalUpperBalanceCents": 930642,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-22",
+          "expectedBalanceCents": 646072,
+          "expectedNetChangeCents": -1839,
+          "conditionalLowerBalanceCents": 381016,
+          "conditionalUpperBalanceCents": 922244,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-23",
+          "expectedBalanceCents": 644359,
+          "expectedNetChangeCents": -1713,
+          "conditionalLowerBalanceCents": 381017,
+          "conditionalUpperBalanceCents": 922245,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-24",
+          "expectedBalanceCents": 643312,
+          "expectedNetChangeCents": -1047,
+          "conditionalLowerBalanceCents": 381020,
+          "conditionalUpperBalanceCents": 922248,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-25",
+          "expectedBalanceCents": 641887,
+          "expectedNetChangeCents": -1425,
+          "conditionalLowerBalanceCents": 381023,
+          "conditionalUpperBalanceCents": 922251,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-26",
+          "expectedBalanceCents": 639873,
+          "expectedNetChangeCents": -2014,
+          "conditionalLowerBalanceCents": 374716,
+          "conditionalUpperBalanceCents": 922251,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-27",
+          "expectedBalanceCents": 638042,
+          "expectedNetChangeCents": -1831,
+          "conditionalLowerBalanceCents": 370431,
+          "conditionalUpperBalanceCents": 922252,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-28",
+          "expectedBalanceCents": 613089,
+          "expectedNetChangeCents": -24953,
+          "conditionalLowerBalanceCents": 306250,
+          "conditionalUpperBalanceCents": 885242,
+          "cumulativeChangeFromOriginalCents": -9755
+        },
+        {
+          "date": "2026-10-29",
+          "expectedBalanceCents": 614077,
+          "expectedNetChangeCents": 988,
+          "conditionalLowerBalanceCents": 311881,
+          "conditionalUpperBalanceCents": 890873,
+          "cumulativeChangeFromOriginalCents": -9736
+        },
+        {
+          "date": "2026-10-30",
+          "expectedBalanceCents": 646615,
+          "expectedNetChangeCents": 32538,
+          "conditionalLowerBalanceCents": 345329,
+          "conditionalUpperBalanceCents": 924321,
+          "cumulativeChangeFromOriginalCents": -9731
+        }
+      ],
+      "endingExpectedBalanceCents": 646615,
+      "lowestConditionalBalanceCents": 258554,
+      "lowestConditionalBalanceDate": "2026-10-14",
+      "lowestExpectedBalance": {
+        "date": "2026-10-14",
+        "amountCents": 516266
+      },
+      "bufferShortfallCents": 0,
+      "incomeShortfallCents": 0,
+      "assumesPlanFollowed": true,
+      "calibrationCoverageClaimApplies": false
+    },
+    "savingsTargetCents": 10000,
+    "bufferCents": 50000,
+    "feasible": true,
+    "periodStart": "2026-10-01",
+    "periodEnd": "2026-10-30",
+    "periodDays": 30,
+    "expectedIncomeCents": 217123,
+    "otherAccountOutflowsCents": 27724,
+    "futureCostReserveCents": 0,
+    "futureCommitments": [],
+    "incomeAvailableForSpendingCents": 179399,
+    "totalHistoricalSpendingCents": 179668,
+    "totalPlannedSpendingCents": 179399,
+    "unallocatedIncomeCents": 0,
+    "confirmationRequired": true,
+    "savingsConfirmed": false,
+    "commitmentsConfirmed": false,
+    "constraintFailures": [],
+    "assumptions": [
+      "Limits cover the next forecast window, not a calendar month or money already spent.",
+      "Savings is previewed as a withdrawal now; future costs are reserved separately.",
+      "Expense changes occur on historical spending dates; spending earlier can break the buffer.",
+      "Conditional bounds retain the original error allowance but have not been calibrated under changed behavior.",
+      "Protected categories are a default policy, not inferred personal needs; users can supply preferences and floors.",
+      "Investment withdrawals and existing balances do not increase the recurring-income spending limit.",
+      "An infeasible result requires changing goals or constraints, not treating zero discretionary budgets as a recommendation."
+    ]
+  },
+  "after": {
+    "schemaVersion": "1.0.0",
+    "customerId": "CUST00005",
+    "asOf": "2026-09-30",
+    "currency": "EUR",
+    "status": "needs_confirmation",
+    "movesMoney": false,
+    "categories": [
+      {
+        "category": "Entertainment",
+        "historicalForecastCents": 19618,
+        "protectedCents": 0,
+        "previewLimitCents": 20509,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 891,
+        "adjustable": true,
+        "source": "user_override",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2716",
+          "tx-49b3265d8e44e751-2770",
+          "tx-49b3265d8e44e751-2779",
+          "tx-49b3265d8e44e751-2781",
+          "tx-49b3265d8e44e751-2789",
+          "tx-49b3265d8e44e751-2791"
+        ]
+      },
+      {
+        "category": "Groceries",
+        "historicalForecastCents": 7990,
+        "protectedCents": 7990,
+        "previewLimitCents": 7990,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2723",
+          "tx-49b3265d8e44e751-2725",
+          "tx-49b3265d8e44e751-2727",
+          "tx-49b3265d8e44e751-2729",
+          "tx-49b3265d8e44e751-2730",
+          "tx-49b3265d8e44e751-2735"
+        ]
+      },
+      {
+        "category": "Health",
+        "historicalForecastCents": 3289,
+        "protectedCents": 3289,
+        "previewLimitCents": 3289,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2772",
+          "tx-49b3265d8e44e751-2780",
+          "tx-49b3265d8e44e751-2790"
+        ]
+      },
+      {
+        "category": "Housing",
+        "historicalForecastCents": 79912,
+        "protectedCents": 79912,
+        "previewLimitCents": 79912,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2706",
+          "tx-49b3265d8e44e751-2717",
+          "tx-49b3265d8e44e751-2739",
+          "tx-49b3265d8e44e751-2746",
+          "tx-49b3265d8e44e751-2773",
+          "tx-49b3265d8e44e751-2794"
+        ]
+      },
+      {
+        "category": "Lifestyle",
+        "historicalForecastCents": 28881,
+        "protectedCents": 0,
+        "previewLimitCents": 27721,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": -1160,
+        "adjustable": true,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2740",
+          "tx-49b3265d8e44e751-2800"
+        ]
+      },
+      {
+        "category": "Transportation",
+        "historicalForecastCents": 27278,
+        "protectedCents": 27278,
+        "previewLimitCents": 27278,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2778",
+          "tx-49b3265d8e44e751-2783",
+          "tx-49b3265d8e44e751-2784",
+          "tx-49b3265d8e44e751-2785",
+          "tx-49b3265d8e44e751-2786",
+          "tx-49b3265d8e44e751-2787"
+        ]
+      },
+      {
+        "category": "Utilities",
+        "historicalForecastCents": 12700,
+        "protectedCents": 12700,
+        "previewLimitCents": 12700,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2776",
+          "tx-49b3265d8e44e751-2782",
+          "tx-49b3265d8e44e751-2788",
+          "tx-49b3265d8e44e751-2797",
+          "tx-49b3265d8e44e751-2798",
+          "tx-49b3265d8e44e751-2799"
+        ]
+      }
+    ],
+    "preview": {
+      "startingBalanceAfterSavingsCents": 636614,
+      "daily": [
+        {
+          "date": "2026-10-01",
+          "expectedBalanceCents": 621786,
+          "expectedNetChangeCents": -14828,
+          "conditionalLowerBalanceCents": 310381,
+          "conditionalUpperBalanceCents": 880419,
+          "cumulativeChangeFromOriginalCents": -10048
+        },
+        {
+          "date": "2026-10-02",
+          "expectedBalanceCents": 595298,
+          "expectedNetChangeCents": -26488,
+          "conditionalLowerBalanceCents": 310381,
+          "conditionalUpperBalanceCents": 880419,
+          "cumulativeChangeFromOriginalCents": -10048
+        },
+        {
+          "date": "2026-10-03",
+          "expectedBalanceCents": 567413,
+          "expectedNetChangeCents": -27885,
+          "conditionalLowerBalanceCents": 310383,
+          "conditionalUpperBalanceCents": 865051,
+          "cumulativeChangeFromOriginalCents": -10048
+        },
+        {
+          "date": "2026-10-04",
+          "expectedBalanceCents": 565175,
+          "expectedNetChangeCents": -2238,
+          "conditionalLowerBalanceCents": 305294,
+          "conditionalUpperBalanceCents": 864983,
+          "cumulativeChangeFromOriginalCents": -10117
+        },
+        {
+          "date": "2026-10-05",
+          "expectedBalanceCents": 563666,
+          "expectedNetChangeCents": -1509,
+          "conditionalLowerBalanceCents": 305084,
+          "conditionalUpperBalanceCents": 864985,
+          "cumulativeChangeFromOriginalCents": -10117
+        },
+        {
+          "date": "2026-10-06",
+          "expectedBalanceCents": 548018,
+          "expectedNetChangeCents": -15648,
+          "conditionalLowerBalanceCents": 297366,
+          "conditionalUpperBalanceCents": 799493,
+          "cumulativeChangeFromOriginalCents": -10117
+        },
+        {
+          "date": "2026-10-07",
+          "expectedBalanceCents": 545487,
+          "expectedNetChangeCents": -2531,
+          "conditionalLowerBalanceCents": 289707,
+          "conditionalUpperBalanceCents": 799493,
+          "cumulativeChangeFromOriginalCents": -10117
+        },
+        {
+          "date": "2026-10-08",
+          "expectedBalanceCents": 538275,
+          "expectedNetChangeCents": -7212,
+          "conditionalLowerBalanceCents": 263571,
+          "conditionalUpperBalanceCents": 799183,
+          "cumulativeChangeFromOriginalCents": -10430
+        },
+        {
+          "date": "2026-10-09",
+          "expectedBalanceCents": 536849,
+          "expectedNetChangeCents": -1426,
+          "conditionalLowerBalanceCents": 263571,
+          "conditionalUpperBalanceCents": 799183,
+          "cumulativeChangeFromOriginalCents": -10430
+        },
+        {
+          "date": "2026-10-10",
+          "expectedBalanceCents": 528414,
+          "expectedNetChangeCents": -8435,
+          "conditionalLowerBalanceCents": 263871,
+          "conditionalUpperBalanceCents": 798015,
+          "cumulativeChangeFromOriginalCents": -10130
+        },
+        {
+          "date": "2026-10-11",
+          "expectedBalanceCents": 524702,
+          "expectedNetChangeCents": -3712,
+          "conditionalLowerBalanceCents": 263873,
+          "conditionalUpperBalanceCents": 798017,
+          "cumulativeChangeFromOriginalCents": -10130
+        },
+        {
+          "date": "2026-10-12",
+          "expectedBalanceCents": 521945,
+          "expectedNetChangeCents": -2757,
+          "conditionalLowerBalanceCents": 263873,
+          "conditionalUpperBalanceCents": 798017,
+          "cumulativeChangeFromOriginalCents": -10130
+        },
+        {
+          "date": "2026-10-13",
+          "expectedBalanceCents": 518666,
+          "expectedNetChangeCents": -3279,
+          "conditionalLowerBalanceCents": 261707,
+          "conditionalUpperBalanceCents": 797961,
+          "cumulativeChangeFromOriginalCents": -10186
+        },
+        {
+          "date": "2026-10-14",
+          "expectedBalanceCents": 515980,
+          "expectedNetChangeCents": -2686,
+          "conditionalLowerBalanceCents": 258268,
+          "conditionalUpperBalanceCents": 797961,
+          "cumulativeChangeFromOriginalCents": -10186
+        },
+        {
+          "date": "2026-10-15",
+          "expectedBalanceCents": 692357,
+          "expectedNetChangeCents": 176377,
+          "conditionalLowerBalanceCents": 436307,
+          "conditionalUpperBalanceCents": 976000,
+          "cumulativeChangeFromOriginalCents": -10186
+        },
+        {
+          "date": "2026-10-16",
+          "expectedBalanceCents": 663945,
+          "expectedNetChangeCents": -28412,
+          "conditionalLowerBalanceCents": 392056,
+          "conditionalUpperBalanceCents": 932114,
+          "cumulativeChangeFromOriginalCents": -10186
+        },
+        {
+          "date": "2026-10-17",
+          "expectedBalanceCents": 655270,
+          "expectedNetChangeCents": -8675,
+          "conditionalLowerBalanceCents": 380526,
+          "conditionalUpperBalanceCents": 930152,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-18",
+          "expectedBalanceCents": 654919,
+          "expectedNetChangeCents": -351,
+          "conditionalLowerBalanceCents": 380527,
+          "conditionalUpperBalanceCents": 930153,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-19",
+          "expectedBalanceCents": 653275,
+          "expectedNetChangeCents": -1644,
+          "conditionalLowerBalanceCents": 380527,
+          "conditionalUpperBalanceCents": 930153,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-20",
+          "expectedBalanceCents": 650768,
+          "expectedNetChangeCents": -2507,
+          "conditionalLowerBalanceCents": 380530,
+          "conditionalUpperBalanceCents": 930156,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-21",
+          "expectedBalanceCents": 647426,
+          "expectedNetChangeCents": -3342,
+          "conditionalLowerBalanceCents": 380531,
+          "conditionalUpperBalanceCents": 930157,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-22",
+          "expectedBalanceCents": 645587,
+          "expectedNetChangeCents": -1839,
+          "conditionalLowerBalanceCents": 380531,
+          "conditionalUpperBalanceCents": 921759,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-23",
+          "expectedBalanceCents": 643874,
+          "expectedNetChangeCents": -1713,
+          "conditionalLowerBalanceCents": 380532,
+          "conditionalUpperBalanceCents": 921760,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-24",
+          "expectedBalanceCents": 642827,
+          "expectedNetChangeCents": -1047,
+          "conditionalLowerBalanceCents": 380535,
+          "conditionalUpperBalanceCents": 921763,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-25",
+          "expectedBalanceCents": 641402,
+          "expectedNetChangeCents": -1425,
+          "conditionalLowerBalanceCents": 380538,
+          "conditionalUpperBalanceCents": 921766,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-26",
+          "expectedBalanceCents": 639388,
+          "expectedNetChangeCents": -2014,
+          "conditionalLowerBalanceCents": 374231,
+          "conditionalUpperBalanceCents": 921766,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-27",
+          "expectedBalanceCents": 637557,
+          "expectedNetChangeCents": -1831,
+          "conditionalLowerBalanceCents": 369946,
+          "conditionalUpperBalanceCents": 921767,
+          "cumulativeChangeFromOriginalCents": -10363
+        },
+        {
+          "date": "2026-10-28",
+          "expectedBalanceCents": 613312,
+          "expectedNetChangeCents": -24245,
+          "conditionalLowerBalanceCents": 306473,
+          "conditionalUpperBalanceCents": 885465,
+          "cumulativeChangeFromOriginalCents": -9532
+        },
+        {
+          "date": "2026-10-29",
+          "expectedBalanceCents": 614123,
+          "expectedNetChangeCents": 811,
+          "conditionalLowerBalanceCents": 311927,
+          "conditionalUpperBalanceCents": 890919,
+          "cumulativeChangeFromOriginalCents": -9690
+        },
+        {
+          "date": "2026-10-30",
+          "expectedBalanceCents": 646615,
+          "expectedNetChangeCents": 32492,
+          "conditionalLowerBalanceCents": 345329,
+          "conditionalUpperBalanceCents": 924321,
+          "cumulativeChangeFromOriginalCents": -9731
+        }
+      ],
+      "endingExpectedBalanceCents": 646615,
+      "lowestConditionalBalanceCents": 258268,
+      "lowestConditionalBalanceDate": "2026-10-14",
+      "lowestExpectedBalance": {
+        "date": "2026-10-14",
+        "amountCents": 515980
+      },
+      "bufferShortfallCents": 0,
+      "incomeShortfallCents": 0,
+      "assumesPlanFollowed": true,
+      "calibrationCoverageClaimApplies": false
+    },
+    "savingsTargetCents": 10000,
+    "bufferCents": 50000,
+    "feasible": true,
+    "periodStart": "2026-10-01",
+    "periodEnd": "2026-10-30",
+    "periodDays": 30,
+    "expectedIncomeCents": 217123,
+    "otherAccountOutflowsCents": 27724,
+    "futureCostReserveCents": 0,
+    "futureCommitments": [],
+    "incomeAvailableForSpendingCents": 179399,
+    "totalHistoricalSpendingCents": 179668,
+    "totalPlannedSpendingCents": 179399,
+    "unallocatedIncomeCents": 0,
+    "confirmationRequired": true,
+    "savingsConfirmed": false,
+    "commitmentsConfirmed": false,
+    "constraintFailures": [],
+    "assumptions": [
+      "Limits cover the next forecast window, not a calendar month or money already spent.",
+      "Savings is previewed as a withdrawal now; future costs are reserved separately.",
+      "Expense changes occur on historical spending dates; spending earlier can break the buffer.",
+      "Conditional bounds retain the original error allowance but have not been calibrated under changed behavior.",
+      "Protected categories are a default policy, not inferred personal needs; users can supply preferences and floors.",
+      "Investment withdrawals and existing balances do not increase the recurring-income spending limit.",
+      "An infeasible result requires changing goals or constraints, not treating zero discretionary budgets as a recommendation."
+    ]
+  }
+}

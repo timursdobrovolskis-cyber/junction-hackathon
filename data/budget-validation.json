@@ -1,0 +1,22 @@
+{
+  "asOf": "2026-09-30",
+  "bufferCents": 50000,
+  "savingsTargetCents": 10000,
+  "counts": {
+    "customers": 5100,
+    "infeasible": 2382,
+    "needs_confirmation": 2718,
+    "feasible_with_reductions": 917
+  },
+  "customerWithFeasibleReductions": "CUST00005",
+  "checks": [
+    "component ledger reconciles",
+    "budget totals reconcile",
+    "protected floors preserved",
+    "savings subtracted once",
+    "every daily preview reconciles",
+    "feasible plans satisfy income and buffer constraints",
+    "unconfirmed plans do not expose suggested limits"
+  ],
+  "note": "These are deterministic accounting checks with illustrative inputs, not evidence of future affordability or customer adherence."
+}

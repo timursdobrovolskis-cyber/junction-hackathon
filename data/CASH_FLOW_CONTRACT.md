@@ -2,7 +2,7 @@
 
 Model `calendar-scenarios-v1` estimates the next 30 end-of-day balances for one customer. It uses the prepared bank history and profile engine. It is a deterministic historical baseline, not a trained machine-learning model. Savings and budget recommendations are separate future stages.
 
-This document describes the retained v1 baseline. The newer [income v2 and savings workflow](INCOME_AND_SAVINGS.md) adds a trained payday model, calibrated bounds, and conditional savings previews. Category budgets are still planned.
+This document describes the retained v1 baseline. The newer [income v2 and savings workflow](INCOME_AND_SAVINGS.md) adds a trained payday model, calibrated bounds, and conditional savings previews. [Category budgets](CATEGORY_BUDGETS.md) now add adjustable limits and conditional balance previews.
 
 ## Run and integrate
 
