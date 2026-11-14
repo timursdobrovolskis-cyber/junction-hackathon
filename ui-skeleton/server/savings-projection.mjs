@@ -6,11 +6,16 @@ const dateLabel=d=>new Date(d+'T12:00:00Z').toLocaleDateString('en-GB',{day:'num
 const validDate=d=>typeof d==='string' && /^\d{4}-\d{2}-\d{2}$/.test(d) && Number.isFinite(Date.parse(d)) && new Date(d+'T12:00:00Z').toISOString().slice(0,10)===d;
 const months=['january','february','march','april','may','june','july','august','september','october','november','december'];
 const reply=(summary,nextQuestion='')=>({title:'',summary,bullets:[],nextQuestion});
-function targetDate(text) {
+function targetDate(text,today) {
   const iso=text.match(/\b\d{4}-\d{2}-\d{2}\b/)?.[0];if(iso)return iso;
-  const month=text.toLowerCase().match(/\b(january|february|march|april|may|june|july|august|september|october|november|december)\s+(20\d{2})\b/);
-  if(month)return new Date(Date.UTC(Number(month[2]),months.indexOf(month[1])+1,0)).toISOString().slice(0,10);
-  const year=text.match(/\b20\d{2}\b/)?.[0];return year?year+'-12-31':null;
+  const month=text.toLowerCase().match(/\b(?:(\d{1,2})(?:st|nd|rd|th)?\s+)?(january|february|march|april|may|june|july|august|september|october|november|december)(?:\s+(\d{1,2})(?:st|nd|rd|th)?,?)?\s+(20\d{2})\b/);
+  if(month){
+    const year=month[4],m=months.indexOf(month[2])+1,day=month[1]??month[3];
+    return day?`${year}-${String(m).padStart(2,'0')}-${String(day).padStart(2,'0')}`:new Date(Date.UTC(Number(year),m,0)).toISOString().slice(0,10);
+  }
+  const relative=text.match(/\b(next|this) year\b/i)?.[1]?.toLowerCase();
+  const year=text.match(/\b20\d{2}\b/)?.[0]??(relative?String(Number(today.slice(0,4))+(relative==='next'?1:0)):null);
+  return year?year+(/\b(start|beginning)\b/i.test(text)?'-01-01':'-12-31'):null;
 }
 const futureIntent=text=>/\b(save|savings|set aside)\b/i.test(text) && /\b(by|until|till|through|end of|project|projection|forecast|future)\b/i.test(text);
 function cents(text) {
@@ -37,13 +42,13 @@ export function projectContributions({customerId,asOf,endDate,monthlyCents}) {
 }
 export function savingsProjectionAnswer(message,{customerId,today,draft,previousProjection}={}) {
   const previous=previousProjection?.customerId===customerId && previousProjection.asOf===today ? previousProjection:null;
-  const amountOnly=message.trim().match(/^(?:what about |use |try |at )?(?:€\s*)?(\d+(?:[.,]\d+)?)(?:\s*(?:euros?|eur))?(?:\s*(?:a month|per month|monthly))?[?.!]?$/i);
-  const dateOnly=previous && /^(?:what about |by |until |till )?(?:the )?(?:end of )?(?:20\d{2}(?:-\d{2}-\d{2})?|(?:january|february|march|april|may|june|july|august|september|october|november|december) 20\d{2})[?.!]?$/i.test(message.trim());
+  const amountOnly=message.trim().match(/^(?:what about |make it |change it to |actually,? |and |use |try |at )?(?:€\s*)?(\d+(?:[.,]\d+)?)(?:\s*(?:euros?|eur))?(?:\s*(?:a month|per month|monthly))?[?.!]?$/i);
+  const dateOnly=previous && /^(?:what about |and |by |until |till )?(?:the )?(?:end of )?(?:20\d{2}(?:-\d{2}-\d{2})?|(?:january|february|march|april|may|june|july|august|september|october|november|december) 20\d{2}|next year|this year)[?.!]?$/i.test(message.trim());
   if(!futureIntent(message) && !(previous && (amountOnly||dateOnly)))return null;
   if(customerId!==accountPlan.customerId)return reply('A savings projection is not connected for this demo profile.');
   const pending=(summary,question,endDate=null)=>({...reply(summary,question),projection:{customerId,asOf:today,endDate,
     monthlyCents:previous?.monthlyCents??(draft?.goal?.period==='monthly'?draft.goal.amountCents:accountPlan.budget.savingsTargetCents)}});
-  const endDate=dateOnly?targetDate(message):futureIntent(message)?targetDate(message):previous?.endDate;
+  const endDate=dateOnly?targetDate(message,today):futureIntent(message)?targetDate(message,today):previous?.endDate;
   if(!endDate)return pending('I can illustrate future savings from a monthly contribution.','What target date should I use?');
   if(!validDate(endDate)||endDate<=today)return reply('Choose a date after this demo’s 30 September 2026 starting point.','What future date should I use?');
   if(/[$£]|\b(usd|dollars?|gbp|pounds?|weekly|yearly|annually|per year|per week)\b/i.test(message))return pending('This illustration uses monthly contributions in euros.','How much would you set aside each month in euros?',endDate);

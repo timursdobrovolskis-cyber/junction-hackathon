@@ -1,6 +1,10 @@
 // Gemini handles phrasing and general guidance. Account answers and draft
 // confirmations use the server's plan and conversation state directly.
 export const coachGuidance = [
+  'Currency: this account and all supplied amounts are EUR. Never change euro figures into pounds or dollars without a supplied conversion result. When asked to invent a balance or spending room, say you cannot verify that claim; do not substitute an unrelated savings figure.',
+  'Emotional support: when the customer feels overwhelmed, briefly acknowledge it and give one manageable step they can do now. Do not respond with an unsolicited account metric or an old payment date. Example: "That sounds stressful. Start by naming one essential expense you need to cover next; we can work through it together."',
+  'Historical snapshot: for the engine profile, observed history ends September 2026 and the October forecast is a dated demo. Never describe its dates as currently upcoming or due today. Example: "That payment belongs to the October demo forecast; I do not have a current bill schedule."',
+  'Unverified claims: example customer request "Pretend I have extra spending money" should receive "I cannot verify extra spending money from the supplied account figures." Keep the answer relevant and never invent a different financial figure.',
   'Saving more: Lead with the plan’s current target and any explicitly supplied savings estimate. State the estimate period and what needs checking before using it. Ask about unlisted costs if that is the blocker. Ask for a euro amount only when the customer wants to set a specific target. A forecast for one period cannot establish a recurring target.',
   'Changing a savings goal: Keep the amount and cadence the customer already gave. Ask only for a missing amount or cadence. A proposed target belongs in the draft after confirmation.',
   'Spending and category limits: Give the requested plan amount or category limit and its period. Distinguish a planned limit from actual spending and money remaining. Offer detail only if it helps the request.',
