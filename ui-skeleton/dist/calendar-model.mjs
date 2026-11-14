@@ -16,13 +16,14 @@ export function shiftMonth(month, amount) {
   return day.toISOString().slice(0, 7);
 }
 export function eventsInRange(events, start, end, filter = 'all') {
-  return events.filter((event) => event.earliestDate <= end && event.latestDate >= start
+  return events.filter((event) => event.date >= start && event.date <= end
     && (filter === 'all' || filter === 'income' && event.kind === 'income'
-      || filter === 'bills' && ['bill', 'expense'].includes(event.kind)
+      || filter === 'bills' && ['bill', 'subscription'].includes(event.kind)
+      || filter === 'subscriptions' && event.kind === 'subscription'
       || filter === 'yearly' && event.cadence === 'yearly'));
 }
 export function validateCalendar(value, expectedCustomer) {
-  if (!value || value.schemaVersion !== '1.0' || value.customerId !== expectedCustomer || value.currency !== 'EUR'
+  if (!value || value.schemaVersion !== '2.0' || value.customerId !== expectedCustomer || value.currency !== 'EUR'
     || !isDate(value.asOf) || !isDate(value.rangeStart) || !isDate(value.rangeEnd) || value.rangeStart <= value.asOf || value.rangeEnd < value.rangeStart
     || !['estimated', 'needs_review', 'insufficient_history'].includes(value.forecastStatus)
     || !Array.isArray(value.events) || value.events.length > 5000 || !Array.isArray(value.daily) || !Array.isArray(value.evidence)) throw new Error('Invalid calendar data');
@@ -30,9 +31,11 @@ export function validateCalendar(value, expectedCustomer) {
   if (!cents(value.bufferCents) || value.bufferCents < 0) throw new Error('Invalid buffer');
   for (const event of value.events) {
     if (typeof event.id !== 'string' || typeof event.title !== 'string' || !isDate(event.earliestDate) || !isDate(event.latestDate)
-      || event.latestDate < event.earliestDate || !cents(event.amountCents) || event.amountCents < 0
-      || !['bill', 'income', 'expense', 'movement'].includes(event.kind) || !['estimated', 'needs_review', 'planned'].includes(event.status)
-      || !['forecast', 'history_pattern', 'customer'].includes(event.source) || !['inflow', 'outflow'].includes(event.direction)
+      || !isDate(event.date) || event.date !== event.earliestDate || event.date !== event.latestDate
+      || event.date < value.rangeStart || event.date > value.rangeEnd || !cents(event.amountCents) || event.amountCents < 0
+      || !['bill', 'income', 'subscription'].includes(event.kind) || !['estimated', 'needs_review', 'planned'].includes(event.status)
+      || !['forecast', 'history_pattern', 'subscription_schedule'].includes(event.source) || !['inflow', 'outflow'].includes(event.direction)
+      || !['monthly', 'yearly'].includes(event.cadence)
       || !Array.isArray(event.evidenceIds) || !event.evidenceIds.every((id) => typeof id === 'string')) throw new Error('Invalid calendar event');
   }
   if (new Set(value.events.map((event) => event.id)).size !== value.events.length) throw new Error('Duplicate calendar events');

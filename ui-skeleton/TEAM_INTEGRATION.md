@@ -19,7 +19,7 @@ Home → Goals → Calendar → Coach. One phone frame, one navigation, S-Pankki
 
 - Short-term trip projection: €270 before a €60 repair, €210 after it, €240 if three €10 delivery reductions are followed. Evidence and planned contributions can be inspected. Saved money remains €150 throughout.
 - Long-term illustration: editable contribution, 2–40 years and return assumption; zero and negative returns supported. It is not a product prediction or an assessment of affordable contributions. No real transfers, round-ups or investment actions are switched on.
-- Calendar: month navigation, cost/income/yearly filters, estimated payment windows, recurring candidates, daily balances within forecast coverage and source transactions. These are not verified subscription contracts; no cancellation feature is claimed.
+- Calendar: 24-month navigation, cost/income/subscription/yearly filters, single estimated dates for regular payments, date dialogs and source transactions. Irregular spending and buffer-risk overlays are excluded. These are not verified subscription contracts; no cancellation feature is claimed.
 - Coach: teammate state machine for goals, priorities, buffers and dated expenses; explicit confirmations; Gemini explanations; browser-local conversations and uncalculated drafts isolated by sample profile.
 
 ## Remaining integration boundary

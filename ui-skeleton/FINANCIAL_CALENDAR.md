@@ -1,64 +1,52 @@
-# Financial calendar UI branch
+# Calendar UI: recurring payments on exact dates
 
-This branch adds the Calendar tab to the latest `codex/frontend-coach-preview`
-app (base `2fc66c4`). It preserves the updated Home/Coach copy, Gemini endpoint,
-S-Pankki colours, typography, phone preview and persistent navigation. Changes
-are confined to `ui-skeleton/`; it does not merge the separate planning backend.
+This branch builds on the team's integrated frontend (including Goals and Coach).
+Run `npm run dev` inside `ui-skeleton` and open
+http://127.0.0.1:4174/spendvest.html#calendar. `PORT=4176 npm run dev` chooses another
+port. No Gemini key or Python service is needed for the saved calendar samples.
 
-## Run
+- Monthly calendar covering the current partial month and 24 future months;
+  previous/next controls and a month/year selector, remembered per sample.
+- One estimated date per regular salary, bill or renewal. No multi-day windows,
+  irregular payments, one-off costs or buffer-risk overlays.
+- Click a day to open every payment on that date (including payments hidden by
+  the month filter); click a payment for amount, cadence and supporting IDs.
+  Back and Escape restore the appropriate list/focus. Empty dates are explicit.
+- Separate customer/sample selection: CUST00003's regular payday on the 15th,
+  CUST00005's history with inconsistent dates omitted, a fictional recurring
+  ledger, and the team's named subscription demo. These are not combined with
+  Home's illustrative balance or Goals' separate example.
+- Refresh keeps the selected month. Failed requests keep the previous customer's
+  label and values together. Browser storage is optional.
 
-```sh
-cd ui-skeleton
-npm run dev
-```
+`GET /api/calendar?source=regular|engine|recurring|subscriptions` serves generated
+schema 2.0 JSON. Each event has `date == earliestDate == latestDate`. Financial
+amounts and scheduling originate in Python or supplied subscription schedules;
+the browser only formats amounts, filters dates and renders evidence.
 
-Open http://127.0.0.1:4174/spendvest.html#calendar or the phone preview at
-http://127.0.0.1:4174/preview.html and select Calendar. No installation, build,
-Gemini key, or Python service is required for the included calendar examples.
-If another preview is running, use `PORT=4175 npm run dev`.
+Optional live connection: set `FINANCIAL_ENGINE_URL=http://127.0.0.1:8765` and
+restart Node. The Python service must run the **schema 2.0 calendar upgrade** on
+[feat/planning-coach](https://github.com/timursdobrovolskis-cyber/junction-hackathon/tree/feat/planning-coach).
+The older calendar at `47b7b64` returns windows and is intentionally rejected.
+Both bank-data samples are recalculated using server-selected customer/cutoff
+inputs; demo ledgers remain explicitly labelled saved examples. The Python API
+supports any customer in its database; an authenticated app should supply that
+customer from its server session rather than use this demo selector.
 
-## What works
+The main subscription fixture has no owner. Its Netflix/Spotify/iCloud/gym/Adobe
+schedules are therefore shown under `SUBSCRIPTIONS-DEMO`, not assigned to a bank
+customer. Customer-scoped subscription schedule and cancellation integration is
+available in the Python adapter, but the React demo's local cancellation state
+is not connected to this static UI. This calendar is not a live bank/provider
+connection and does not move money, confirm contracts or recalculate plan costs.
 
-- A month grid, day selection and cost/income/yearly filters.
-- Automatically populated payment windows from generated financial-engine data.
-- Monthly recurring candidates and possible yearly subscription/renewal costs.
-- Payment details with source transaction IDs and uncertainty explanations.
-- Estimated daily balances and buffer-risk markers inside the supplied forecast
-  horizon. Later recurring entries are reminders, not invented balance forecasts.
-- Accessible navigation and dialogs, mobile layout, and retention of the previous
-  calendar when a new request fails.
+Full scheduling rules, backend interface and fixture regeneration:
+[backend integration guide](https://github.com/timursdobrovolskis-cyber/junction-hackathon/blob/feat/planning-coach/docs/financial-calendar.md).
 
-The default example is synthetic customer CUST00005 with observations through
-30 September 2026 and a 30-day October forecast. The recurring-cost example is
-a separate fictional ledger illustrating monthly bills and an annual renewal
-in November 2026. Home's sample amounts are separate. An annual candidate is
-not a verified subscription, and this UI neither schedules payments nor edits
-the customer's saved financial plan.
+## Checks
 
-## Integration and deployment
-
-`api/calendar.js` serves the two generated examples from `server/calendar/`.
-The Vercel configuration includes that endpoint and its fixtures. This branch
-can be deployed independently using the UI project's existing deployment setup;
-creating or merging the branch does not itself establish a new deployment.
-Any existing Vercel automatic branch previews are controlled by that project.
-
-For a live local calculation, set `FINANCIAL_ENGINE_URL` in `.env.local` and run
-the Python service from the companion
-[planning/calendar backend branch](https://github.com/timursdobrovolskis-cyber/junction-hackathon/tree/feat/planning-coach).
-That service must include calendar commit `47b7b64` or a descendant. The older
-frontend branch's Python engine does not have `/api/calendar`. Do not configure
-the URL until the compatible service is running; a failed upstream request is
-shown as an error rather than silently falling back to sample data.
-
-The backend's recurrence rules, generator, source limitations and API contract
-are in the [backend calendar guide](https://github.com/timursdobrovolskis-cyber/junction-hackathon/blob/47b7b64d711c5cbcb2e69b1875c433664f9772ff/docs/financial-calendar.md).
-Financial amounts remain engine outputs; the UI does not recalculate forecasts.
-
-## Validation
-
-`npm test` runs the existing coach checks and the calendar API/presentation tests.
-Browser verification covers the latest Home and Coach screens, Calendar in the
-phone preview, monthly/yearly examples, source evidence, mobile navigation,
-forecast boundaries, and failed calendar requests. Real Gemini replies require
-the separately configured server key and are not part of this calendar change.
+Run `npm test` here: 57 checks including the team's Coach/Goals tests and calendar
+API validation, date boundaries, isolation, exact-day filters and yearly
+subscriptions. Browser checks cover 320/390/1024px layouts, date and evidence
+dialogs, Escape/focus restoration, February 2028, reload persistence, all four
+sources and failed refreshes. No live Gemini requests are needed.
