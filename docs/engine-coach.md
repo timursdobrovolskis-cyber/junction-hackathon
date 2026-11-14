@@ -1,9 +1,11 @@
 # Coach responses from the shared calculation engine
 
-The production integration entry point is `src/engine-coach.mjs`. It consumes one
+The forecast/savings response function is `src/engine-coach.mjs`. It consumes one
 `{ forecast, savings }` entry from `fixtures/savings-demo.json` directly. It does not
 call our older standalone planning/history calculations, infer savings from balances,
 or change any engine amount. `src/coach.mjs` is preserved unchanged by this integration.
+
+The [saved-plan upgrade](saved-plans.md) connects this function to persistent plans, reviewed in-horizon expenses, matching, and recovery options. Use the combined client for new app integrations.
 
 Run `npm run demo:coach` for readable examples for all three customers. Run
 `node examples/engine-coach-demo.mjs --json` for the structured response array.
@@ -114,12 +116,13 @@ same answer. Confirmation never makes the financial estimate guaranteed.
 - `needsInclusionReview` holds uncertain expenses or expenses whose routing cannot
   be established because no forecast horizon exists.
 
-**Current engine limitation:** `forecast_cash_flow` does not yet accept customer-entered
-in-horizon expense overrides. The coach does not add synthetic bank transactions or
-adjust calibrated balances itself. Such requests have
-`readyForCurrentEngine: false` and blocker `in_horizon_expenses_need_engine_support`.
-The backend must implement this input path before those requests can be applied.
-Missing calibration/source review or uncertain expense inclusion also block dispatch.
+The combined engine now accepts `engineRequest.plannedExpenses` as canonical inputs.
+It creates a separate conditional plan scenario with locked dated expenses, preserving
+the historical forecast. Reviewed in-horizon expenses no longer receive the blanket
+`in_horizon_expenses_need_engine_support` blocker. Missing calibration/source review,
+uncertain inclusion, and past-due unresolved expenses still block reliable advice.
+Use `captureFinancialPlanInputs` to build the complete API request; do not send a later
+expense both in `plannedExpenses` and legacy `futureCommitments`.
 
 For ready requests, the backend scopes the customer's transaction rows, retains the
 selected model and compatible calibration, runs `forecast_cash_flow` followed by

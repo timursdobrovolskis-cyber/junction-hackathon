@@ -1,5 +1,7 @@
 # Coach connected to the combined financial API
 
+For persistence, confirmed in-horizon expenses, matching, remembered priorities, and two recovery choices, use the [saved-plan upgrade](saved-plans.md). The examples below also remain valid for stateless forecast/budget requests.
+
 Follow [Timurs's engine setup](../data/FINANCIAL_ENGINE.md) first. The coach now consumes the complete `POST /api/plan` response: `forecast`, `savings`, and `budget`. Customer edits go back to that endpoint so the three panels refresh together. The existing forecast/savings coach, budget coach, and standalone Python budget bridge remain available.
 
 ## Run and test
@@ -31,7 +33,7 @@ python3 scripts/check_financial_api.py
 npm run check:coach-api
 ```
 
-The last two commands need the prepared database. Each starts its own temporary local server and stops it after checking. The coach check covers all four demo customers, exact fixture parity, category overrides, repeated edits, €400 savings, confirmations, shared buffers and reserves, infeasible plans, and errors that preserve the previous result.
+The last two commands need the prepared database. Each starts its own temporary local server and stops it after checking. The coach check covers all four demo customers, exact fixture parity, category overrides, repeated edits, €400 savings, confirmations, shared buffers and reserves, infeasible plans, and errors that preserve the previous result. Run `npm run check:saved-plans` for persistence across a process restart, expense scenarios, selection, and matching with September observations.
 
 ## Frontend usage
 
@@ -85,10 +87,10 @@ Supported answers combine the existing [budget preferences](budget-coach.md) and
 - `upcomingExpenses` upserts `{id, date, amountCents, label?, inclusion}`; inclusion is `additional`, `already_included`, or `unsure`. `removeExpenseIds` removes selected known entries.
 - Alternatively, `futureCommitments` replaces the full later-cost list. Do not combine that replacement with expense upserts/removals in the same answer.
 
-Missing later expenses become `futureCommitments` in the API. Expenses already in the forecast are not added again. Unknown inclusion requires review. New in-window expenses remain blocked because this API does not yet add them to the forecast. Pending expenses survive subsequent edits until corrected or removed.
+New expense flows use `plannedExpenses` as the canonical API input. The engine routes reviewed in-window costs to locked dated outflows and later costs to reserves exactly once. Already-included costs are not charged again. Unknown inclusion and past-due unresolved expenses remain review blockers. Pending expenses survive subsequent edits until corrected or removed. Legacy `futureCommitments` requests remain supported; do not send the same ID in both lists.
 
 Financial changes reset confirmations unless the customer explicitly renews them. Existing category protections, overrides, and future reserves are preserved across edits. Persist `response.inputs` for the same customer and observation date; do not reuse it for a different customer or date. When loading a previously saved request, retain the exact preference state if available; otherwise the coach conservatively reconstructs category floors from the returned protections.
 
-On success, replace all three engine panels together. `forecastChanged`, `savingsChanged`, and `budgetChanged` compare the newly returned objects with the previous objects; a category edit can change only the budget while still fetching all three calculations. On an HTTP error, timeout, malformed response, identity mismatch, or blocked expense, retain the old complete result. The UI should show the pending/error status alongside it. No flow moves money.
+On success, replace all engine panels together. `forecastChanged`, `planScenarioChanged`, `savingsChanged`, and `budgetChanged` compare the newly returned objects with the previous objects. A dated expense changes the plan scenario while preserving the historical forecast. A category edit can change only the budget while still fetching all calculations. On an HTTP error, timeout, malformed response, identity mismatch, or blocked expense, retain the old complete result. The UI should show the pending/error status alongside it. No flow moves money.
 
 This uses the guide's unauthenticated localhost development API. It is not a deployed application. App screens, customer authorization, and deployment remain with the app lane.

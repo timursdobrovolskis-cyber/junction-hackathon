@@ -42,7 +42,7 @@ function validateResult({ forecast, savings }) {
     requireValue(!dates.length || dates.at(-1) < row.date, 'forecast daily rows must be chronological and unique');
     dates.push(row.date);
     cents(row.expectedBalanceCents, 'expectedBalanceCents', { signed: true });
-    for (const field of ['calibratedLowerBalanceCents', 'calibratedUpperBalanceCents']) {
+    for (const field of ['calibratedLowerBalanceCents', 'calibratedUpperBalanceCents', 'conditionalLowerBalanceCents', 'conditionalUpperBalanceCents']) {
       if (row[field] !== undefined) cents(row[field], field, { signed: true });
     }
   }
@@ -101,9 +101,11 @@ export function createEngineCoachResponse(result, { bufferConfirmed = false } = 
   const payments = paymentContext(forecast);
   const buffer = money(savings.bufferCents);
   const lowest = forecast.lowestExpectedBalance;
+  const conditional = forecast.scenarioBasis === 'known_expense_plan';
+  const lowerKey = conditional ? 'conditionalLowerBalanceCents' : 'calibratedLowerBalanceCents';
   // Compare supplied engine records with the chosen buffer; never calculate a new balance.
-  const rangeRisk = forecast.calibration
-    ? forecast.daily.find((row) => row.calibratedLowerBalanceCents !== undefined && row.calibratedLowerBalanceCents < savings.bufferCents)
+  const rangeRisk = forecast.calibration || conditional
+    ? forecast.daily.find((row) => row[lowerKey] !== undefined && row[lowerKey] < savings.bufferCents)
     : undefined;
   const previewAmount = validForecast && savings.status !== 'withheld'
     ? savings.status === 'needs_confirmation' ? savings.conditionalCapacityCents : savings.suggestedSavingsCents : null;
@@ -125,7 +127,7 @@ export function createEngineCoachResponse(result, { bufferConfirmed = false } = 
       explanation: `The engine's lowest expected balance is ${money(lowest.amountCents)}, estimated for ${lowest.date}, below the supplied ${buffer} cash buffer. ${previewAmount === 0 ? 'Its conditional savings preview is €0.00; this is not a confirmed recommendation.' : 'Review the payment timing before setting money aside.'}` };
   } else if (rangeRisk) {
     insight = { kind: 'uncertain_buffer_gap', title: 'Allow for uncertainty before saving',
-      explanation: `The calibrated lower balance estimate is ${money(rangeRisk.calibratedLowerBalanceCents)} on ${rangeRisk.date}, below the supplied ${buffer} buffer. This is a possible outcome within the model's uncertain range, not a prediction that this balance will occur.` };
+      explanation: `The ${conditional ? 'conditional' : 'calibrated'} lower balance estimate is ${money(rangeRisk[lowerKey])} on ${rangeRisk.date}, below the supplied ${buffer} buffer. This is a possible outcome within an uncertain range, not a prediction that this balance will occur.` };
   } else if (savings.status === 'withheld') {
     insight = { kind: 'savings_withheld', title: 'A savings estimate is not available yet',
       explanation: savings.reason ?? 'The engine has withheld savings pending a review of the forecast and account coverage.' };
@@ -193,7 +195,8 @@ export function createEngineCoachResponse(result, { bufferConfirmed = false } = 
       unresolvedTransactionIds: ids.filter((id) => !transactions.some((row) => row.id === id)),
       scopeNote: 'These transactions support opening balances and payment estimates; they are not the complete spending history behind the forecast.' },
     uncertainty: {
-      message: forecast.calibration
+      ...(conditional ? { calibrationCoverageClaimApplies: false } : {}),
+      message: conditional ? 'Known expenses are included in this conditional plan. The original forecast calibration does not establish coverage for these changed balances; payment dates and savings remain uncertain.' : forecast.calibration
         ? `The model expands its scenario range by ${money(forecast.calibration.marginCents)} on each side to account for past errors. Payment dates and savings remain uncertain; this is not an individual guarantee.`
         : 'A calibrated uncertainty range is unavailable. Payment dates are estimates; savings must not be treated as guaranteed.',
       calibrationMarginCents: forecast.calibration?.marginCents ?? null,
@@ -228,7 +231,7 @@ export function captureCoachInputs(result, answer, previousInputs) {
   unique(incoming.map((expense) => expense.id), 'incoming expense ids');
   unique(removed, 'removed expense ids');
   requireValue(!incoming.some((expense) => removed.includes(expense.id)), 'cannot update and remove the same expense');
-  const existing = previousInputs?.upcomingExpenses ?? (savings.futureCommitments ?? []).map((expense) => ({ ...expense, inclusion: 'additional' }));
+  const existing = previousInputs?.upcomingExpenses ?? result.plannedExpenses ?? (savings.futureCommitments ?? []).map((expense) => ({ ...expense, inclusion: 'additional' }));
   requireValue(Array.isArray(existing), 'previous upcomingExpenses must be an array');
   unique(existing.map((expense) => expense.id), 'existing expense ids');
   const expenses = new Map(existing.map((expense) => [expense.id, { ...expense }]));
@@ -239,7 +242,6 @@ export function captureCoachInputs(result, answer, previousInputs) {
   for (const expense of incoming) expenses.set(expense.id, { ...expense, inclusion: expense.inclusion ?? 'unsure' });
   for (const expense of expenses.values()) {
     identifier(expense.id); date(expense.date);
-    requireValue(expense.date > forecast.asOf, 'upcoming expenses must follow the reference date; historical expenses need a source-data correction');
     cents(expense.amountCents, 'expense.amountCents');
     requireValue(['additional', 'already_included', 'unsure'].includes(expense.inclusion), 'unknown expense inclusion');
     if (expense.label !== undefined) identifier(expense.label, 'expense.label');
@@ -252,6 +254,8 @@ export function captureCoachInputs(result, answer, previousInputs) {
   const reservedByEngine = new Map((savings.futureCommitments ?? []).map((expense) => [expense.id, expense]));
   const inHorizonExpenses = [], futureCommitments = [], needsInclusionReview = [], alreadyIncludedExpenses = [];
   for (const expense of expenses.values()) {
+    if (expense.status === 'matched' || expense.status === 'cancelled') continue;
+    if (expense.date <= forecast.asOf) { needsInclusionReview.push(expense); continue; }
     if (!horizonEnd || expense.inclusion === 'unsure') needsInclusionReview.push(expense);
     else if (expense.inclusion === 'already_included') {
       if (expense.date <= horizonEnd) alreadyIncludedExpenses.push(expense);
@@ -269,7 +273,6 @@ export function captureCoachInputs(result, answer, previousInputs) {
   if (forecast.status !== 'estimated') blockers.push('source_data_requires_review');
   if (!forecast.calibration) blockers.push('calibrated_forecast_required');
   if (needsInclusionReview.length) blockers.push('expense_inclusion_requires_review');
-  if (inHorizonExpenses.length) blockers.push('in_horizon_expenses_need_engine_support');
   return {
     status: 'awaiting_recalculation', customerId: forecast.customerId, asOf: forecast.asOf,
     message: 'Your choices have been captured. The displayed forecast and savings have not changed; the engine must return a recalculated result first.',
@@ -281,6 +284,8 @@ export function captureCoachInputs(result, answer, previousInputs) {
       forecastInputs: { customer_id: forecast.customerId, as_of: forecast.asOf, horizon_days: forecast.horizonDays, buffer_cents: bufferCents },
       savingsInputs: { buffer_cents: bufferCents, future_commitments: futureCommitments, commitments_confirmed: commitmentsConfirmed },
       inHorizonExpenses, needsInclusionReview, alreadyIncludedExpenses,
+      plannedExpenses: [...expenses.values()].map((expense) => Object.fromEntries(Object.entries(expense)
+        .filter(([key]) => ['id', 'date', 'amountCents', 'label', 'category', 'accountId', 'merchantId', 'inclusion', 'status'].includes(key)))),
     },
     forecastChanged: false, savingsChanged: false, movesMoney: false,
   };

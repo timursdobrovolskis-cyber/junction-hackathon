@@ -19,15 +19,15 @@ function validate({ budget: b, originalForecast: f }) {
     for (const field of ['historicalForecastCents', 'protectedCents', 'previewLimitCents']) cents(c[field], field);
     cents(c.changeFromHistoryCents, 'changeFromHistoryCents', { signed: true });
     requireValue(typeof c.adjustable === 'boolean', 'adjustable must be a boolean');
-    requireValue(['user_override', 'history_and_constraints'].includes(c.source), 'unknown category source');
+    requireValue(['user_override', 'history_and_constraints', 'accepted_plan'].includes(c.source), 'unknown category source');
     if (b.status === 'conditional_plan') {
       cents(c.suggestedLimitCents, 'suggestedLimitCents');
       requireValue(c.suggestedLimitCents === c.previewLimitCents, 'suggested limit must match the confirmed preview');
     } else requireValue(c.suggestedLimitCents === null, 'unconfirmed or infeasible limits cannot be recommendations');
   }
-  requireValue(Array.isArray(f.evidence), 'forecast evidence must be an array');
-  unique(f.evidence.map((r) => r.id), 'evidence IDs');
-  for (const row of f.evidence) {
+  requireValue(f.evidence === undefined || Array.isArray(f.evidence), 'forecast evidence must be an array');
+  unique((f.evidence ?? []).map((r) => r.id), 'evidence IDs');
+  for (const row of f.evidence ?? []) {
     identifier(row.id); date(row.date); cents(row.amountCents, 'evidence amount', { signed: true });
     requireValue(row.date <= f.asOf, 'evidence cannot follow the reference date');
     if (row.customerId !== undefined) requireValue(row.customerId === f.customerId, 'evidence belongs to another customer');
@@ -37,7 +37,9 @@ function validate({ budget: b, originalForecast: f }) {
     identifier(b.reason, 'withheld reason');
     return;
   }
-  requireValue(f.status === 'estimated' && f.calibration && Array.isArray(f.cashFlowComponents), 'a budget plan requires an eligible forecast with category components');
+  const eligibleScenario = f.scenarioBasis === 'known_expense_plan' && f.calibrationCoverageClaimApplies === false
+    && f.sourceEligibility?.baseStatus === 'estimated' && f.sourceEligibility?.calibrated === true;
+  requireValue(f.status === 'estimated' && (f.calibration || eligibleScenario) && Array.isArray(f.cashFlowComponents), 'a budget plan requires an eligible forecast with category components');
   requireValue(b.feasible === (b.status !== 'infeasible'), 'budget status and feasibility disagree');
   requireValue(typeof b.savingsConfirmed === 'boolean' && typeof b.commitmentsConfirmed === 'boolean', 'confirmation fields must be booleans');
   const confirmed = b.savingsConfirmed && b.commitmentsConfirmed;
@@ -97,12 +99,12 @@ export function createBudgetCoachResponse(result) {
   // Funding and liquidity explanations also need income and other cash-movement evidence.
   const ids = evidenceIds([...b.categories.flatMap((c) => c.evidenceIds),
     ...(b.preview ? (f.cashFlowComponents ?? []).flatMap((c) => evidenceIds(c.evidenceIds)) : [])]);
-  const records = f.evidence.filter((row) => ids.includes(row.id));
+  const records = (f.evidence ?? []).filter((row) => ids.includes(row.id));
   const found = new Set(records.map((row) => row.id));
   return copy({
     schemaVersion: '1.0.0', customerId: b.customerId, asOf: b.asOf, currency: b.currency,
     status: b.status, insight, followUp, period: b.preview ? { start: b.periodStart, end: b.periodEnd, kind: 'rolling_forecast_window' } : null,
-    facts: ['bufferCents', 'savingsTargetCents', 'expectedIncomeCents', 'otherAccountOutflowsCents', 'futureCostReserveCents', 'totalPlannedSpendingCents']
+    facts: ['bufferCents', 'savingsTargetCents', 'expectedIncomeCents', 'otherAccountOutflowsCents', 'futureCostReserveCents', 'lockedCommitmentsCents', 'totalPlannedSpendingCents']
       .filter((key) => b[key] !== undefined).map((key) => ({ key, amountCents: b[key], sourcePath: `budget.${key}` })),
     categories: b.categories.map((c, i) => ({ ...c, previewLimitCents: b.feasible ? c.previewLimitCents : null,
       diagnosticLimitCents: b.feasible ? null : c.previewLimitCents,
@@ -132,7 +134,7 @@ export function captureBudgetInputs(result, answer, previousInputs) {
     minimumCategoryCents: Object.fromEntries(b.categories.map((c) => [c.category, c.protectedCents])),
     futureCommitments: b.futureCommitments ?? [], savingsConfirmed: b.savingsConfirmed ?? false, commitmentsConfirmed: b.commitmentsConfirmed ?? false,
   };
-  const inputs = copy(previousInputs ?? initial);
+  const inputs = copy({ ...initial, ...previousInputs });
   const known = new Set(b.categories.map((c) => c.category));
   const checkCategory = (key) => requireValue(known.has(key), `unknown projected category: ${key}`);
   for (const field of ['bufferCents', 'savingsTargetCents']) if (Object.hasOwn(answer, field)) inputs[field] = cents(answer[field], field);

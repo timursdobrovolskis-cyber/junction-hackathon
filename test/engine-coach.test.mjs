@@ -157,8 +157,8 @@ test('chosen buffer and expenses become pending engine inputs without changing r
   assert.equal(result.engineRequest.forecastInputs.buffer_cents, 60000);
   assert.deepEqual(result.engineRequest.savingsInputs.future_commitments, [{ id: 'trip', date: '2026-12-01', amountCents: 20000 }]);
   assert.equal(result.engineRequest.inHorizonExpenses[0].id, 'repair');
-  assert.equal(result.engineRequest.readyForCurrentEngine, false);
-  assert.ok(result.engineRequest.blockers.includes('in_horizon_expenses_need_engine_support'));
+  assert.equal(result.engineRequest.readyForCurrentEngine, true);
+  assert.deepEqual(result.engineRequest.plannedExpenses.map((e) => e.id), ['repair', 'trip']);
   assert.equal(result.movesMoney, false);
   assert.deepEqual(input, original);
 });
@@ -240,7 +240,9 @@ test('answer validation rejects ambiguous money, duplicate expenses and cross-cu
   const expense = { id: 'x', date: '2026-12-01', amountCents: 1000, inclusion: 'additional' };
   assert.throws(() => captureCoachInputs(example(), { upcomingExpenses: [expense, expense] }), /unique/);
   assert.throws(() => captureCoachInputs(example(), { commitmentsConfirmed: 'yes' }), /explicit/);
-  assert.throws(() => captureCoachInputs(example(), { upcomingExpenses: [{ ...expense, date: '2026-09-30' }] }), /follow the reference/);
+  const overdue = captureCoachInputs(example(), { upcomingExpenses: [{ ...expense, date: '2026-09-30' }] });
+  assert.equal(overdue.engineRequest.readyForCurrentEngine, false);
+  assert.equal(overdue.engineRequest.needsInclusionReview[0].id, 'x');
   const previous = captureCoachInputs(example(1), { bufferCents: 10000 });
   assert.throws(() => captureCoachInputs(example(), { bufferCents: 20000 }, previous.inputs), /this customer/);
 });

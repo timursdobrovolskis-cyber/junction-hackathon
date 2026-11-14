@@ -62,24 +62,27 @@ test('category edit uses combined API, preserves all panels, and removes coach-o
   assert.deepEqual(response.engineResult.budget, adjustment.after);
 });
 
-test('expense capture preserves known reserves, strips labels, and avoids adding already projected expenses', () => {
+test('canonical expense capture preserves inclusion and avoids duplicating later reserves', () => {
   const pending = captureFinancialPlanInputs(fixture, { upcomingExpenses: [
     { id: 'later', date: '2026-12-01', amountCents: 10000, label: 'Trip', inclusion: 'additional' },
     { id: 'rent', date: '2026-10-03', amountCents: 10000, inclusion: 'already_included' },
   ] });
   assert.equal(pending.engineRequest.ready, true);
-  assert.deepEqual(pending.engineRequest.request.futureCommitments, [{ id: 'later', date: '2026-12-01', amountCents: 10000 }]);
+  assert.deepEqual(pending.engineRequest.request.futureCommitments, []);
+  assert.equal(pending.engineRequest.request.plannedExpenses[0].id, 'later');
+  assert.equal(pending.engineRequest.request.plannedExpenses[1].inclusion, 'already_included');
   assert.equal(pending.inputs.upcomingExpenses[0].label, 'Trip');
   const next = captureFinancialPlanInputs(fixture, { savingsTargetCents: 40000 }, pending.inputs);
   assert.deepEqual(next.engineRequest.request.futureCommitments, pending.engineRequest.request.futureCommitments);
+  assert.deepEqual(next.engineRequest.request.plannedExpenses, pending.engineRequest.request.plannedExpenses);
   assert.equal(next.engineRequest.request.savingsTargetCents, 40000);
   assert.equal(next.budgetChanged, false);
   assert.equal(next.savingsChanged, false);
   assert.equal(next.forecastChanged, false);
 });
 
-test('unknown expense inclusion and new in-window costs remain blocked on later edits', async () => {
-  for (const [inclusion, blocker] of [['unsure', 'expense_inclusion_requires_review'], ['additional', 'in_horizon_expenses_need_engine_support']]) {
+test('unknown inclusion stays blocked, while reviewed in-window costs route to the engine', async () => {
+  for (const [inclusion, blocker] of [['unsure', 'expense_inclusion_requires_review']]) {
     const pending = await previewFinancialPlanChange(fixture, { upcomingExpenses: [{ id: 'repair', date: '2026-10-20', amountCents: 10000, inclusion }] }, undefined,
       { endpoint: 'http://127.0.0.1:1/api/plan' });
     assert.equal(pending.status, 'awaiting_recalculation');
@@ -90,6 +93,9 @@ test('unknown expense inclusion and new in-window costs remain blocked on later 
     const corrected = captureFinancialPlanInputs(fixture, { upcomingExpenses: [{ id: 'repair', date: '2026-12-20', amountCents: 10000, inclusion: 'additional' }] }, edited.inputs);
     assert.equal(corrected.engineRequest.ready, true);
   }
+  const reviewed = captureFinancialPlanInputs(fixture, { upcomingExpenses: [{ id: 'repair', date: '2026-10-20', amountCents: 10000, inclusion: 'additional' }] });
+  assert.equal(reviewed.engineRequest.ready, true);
+  assert.equal(reviewed.engineRequest.request.plannedExpenses[0].date, '2026-10-20');
 });
 
 test('full commitment replacement and removals are explicit and reset confirmations', () => {

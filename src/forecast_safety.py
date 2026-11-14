@@ -74,6 +74,20 @@ def fit_scaled_calibration(scores_and_scales, model, through, target=0.9):
             "normalizedMarginNumerator": q.numerator, "normalizedMarginDenominator": q.denominator}
 
 
+def eligible_bounds(forecast):
+    if forecast.get("scenarioBasis") == "known_expense_plan":
+        source = forecast.get("sourceEligibility", {})
+        return (forecast.get("calibrationCoverageClaimApplies") is False
+                and source.get("baseStatus") == "estimated" and source.get("calibrated") is True
+                and source.get("modelVersion") == forecast.get("modelVersion"))
+    return "calibration" in forecast
+
+
+def bound_value(forecast, row, side):
+    prefix = "conditional" if forecast.get("scenarioBasis") == "known_expense_plan" else "calibrated"
+    return row[f"{prefix}{side}BalanceCents"]
+
+
 def estimate_savings(forecast, buffer_cents, future_commitments, commitments_confirmed=False):
     """Preview a one-time withdrawal now, preserving the calibrated path buffer.
 
@@ -85,7 +99,9 @@ def estimate_savings(forecast, buffer_cents, future_commitments, commitments_con
     result = {"currency": "EUR", "asOf": forecast["asOf"], "status": "withheld",
               "suggestedSavingsCents": None, "conditionalCapacityCents": None,
               "bufferCents": buffer_cents, "movesMoney": False}
-    if not forecast["daily"] or forecast["status"] != "estimated" or "calibration" not in forecast:
+    if forecast.get("scenarioBasis"):
+        result.update(scenarioBasis=forecast["scenarioBasis"], calibrationCoverageClaimApplies=False)
+    if not forecast["daily"] or forecast["status"] != "estimated" or not eligible_bounds(forecast):
         return {**result, "reason": "An eligible calibrated forecast is required."}
     if len(forecast["accounts"]) != 1:
         return {**result, "reason": "Account-specific liquidity must be modeled before combining multiple accounts."}
@@ -100,7 +116,7 @@ def estimate_savings(forecast, buffer_cents, future_commitments, commitments_con
         if not isinstance(cost["amountCents"], int) or cost["amountCents"] < 0:
             raise ValueError("Commitment amount must be nonnegative integer cents")
         reserve += cost["amountCents"]
-    floor = min(forecast["startingBalanceCents"], *(d["calibratedLowerBalanceCents"] for d in forecast["daily"]))
+    floor = min(forecast["startingBalanceCents"], *(bound_value(forecast, d, "Lower") for d in forecast["daily"]))
     capacity = max(0, floor - buffer_cents - reserve)
     return {**result, "status": "conditional_estimate" if commitments_confirmed else "needs_confirmation",
             "conditionalCapacityCents": capacity,
@@ -110,4 +126,5 @@ def estimate_savings(forecast, buffer_cents, future_commitments, commitments_con
             "assumptions": ["The supplied buffer is a user/product choice, not learned financial advice.",
                             "Only listed future costs are reserved; confirm other commitments before acting.",
                             "Capacity assumes a withdrawal now, no automatic money movement, and end-of-day liquidity.",
-                            "A calibrated bound is not a guarantee of future affordability."]}
+                            "A conditional scenario bound is not a guarantee of future affordability; changed-plan coverage has not been measured."
+                            if forecast.get("scenarioBasis") else "A calibrated bound is not a guarantee of future affordability."]}

@@ -10,6 +10,8 @@
     "demo:coach": "node examples/engine-coach-demo.mjs",
     "demo:budget-coach": "node examples/budget-coach-demo.mjs",
     "demo:api-coach": "node examples/financial-coach-demo.mjs",
-    "check:coach-api": "node scripts/check_coach_api.mjs"
+    "check:coach-api": "node scripts/check_coach_api.mjs",
+    "check:saved-plans": "node scripts/check_saved_plan_api.mjs",
+    "demo:saved-plans": "node examples/saved-plan-demo.mjs"
   }
 }

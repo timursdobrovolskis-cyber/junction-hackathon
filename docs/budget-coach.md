@@ -1,5 +1,7 @@
 # Budget coach integration
 
+For persistent expenses, in-horizon recalculation, and recovery choices, use the [saved-plan integration](saved-plans.md). This document describes the earlier standalone category-budget adapter, which remains available for fixture demos.
+
 The coach explains the shared Python engine's budget results and sends customer edits back to `build_category_budgets`. It performs no allocation, forecast, or savings calculations. `src/coach.mjs` and the existing forecast/savings coach are preserved.
 
 ## Try it

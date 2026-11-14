@@ -1,5 +1,7 @@
 # One endpoint for the UI and coach
 
+The coach branch also implements [persistent plans and expense-aware recovery](../docs/saved-plans.md), with separate local SQLite storage and customer-scoped save/load, selection, and matching routes. The existing stateless endpoint remains available and does not persist previews.
+
 The local Python engine returns a customer's 30-day forecast, conditional savings estimate, and category budget in one request. It uses their own transaction history and the fitted income model. It works with any customer in the prepared 5,100-customer dataset; no retraining per customer or OpenAI API key is needed.
 
 Run commands from the repository root with Python 3.11 or newer. First follow [data preparation](README.md) to create the ignored local SQLite database. Fitted model files are already included.
@@ -47,8 +49,12 @@ Required fields: `customerId`, `asOf`, `bufferCents`, `savingsTargetCents`. Opti
 - `adjustableCategories`: array of category names the customer permits changing.
 - `minimumCategoryCents`: category-to-minimum-spending map.
 - `categoryOverrides`: category-to-requested-budget map; send another request to preview an edit.
+- `plannedExpenses`: canonical dated costs with stable IDs, amounts, category/label, inclusion, and lifecycle. Confirmed in-horizon costs become locked outflows; later costs become reserves. See the [complete expense contract](../docs/saved-plans.md).
+- `sourcePlanId` and `sourceRevision`: optional saved-plan context for a preview, supplied together. The service checks customer ownership and revision before using saved spending preferences and matching history.
 
 Unknown fields and invalid inputs return HTTP 400. Unknown routes return 404; disallowed browser origins return 403. `GET /health` reports the loaded model version, not database readiness. This is an unauthenticated local development adapter; customer authentication and authorization are required before connecting real accounts or deploying it.
+
+When expenses are supplied, `forecast` remains the historical base, and `planScenario` is the conditional expense-adjusted input to the returned savings, budget, and alternatives. Display the matching basis for each set of amounts. Saved-plan writes use optimistic revisions and idempotent mutation IDs; stale actions return 409. Initialize/load plans through the saved-plan routes rather than assuming a preview was saved.
 
 ## What to show
 

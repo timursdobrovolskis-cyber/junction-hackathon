@@ -13,6 +13,8 @@ Start with [the build plan and current workflow](BUILD_PLAN.md) for the product 
 
 ## Run the planning and coach module
 
+The [saved-plan guide](docs/saved-plans.md) adds durable expenses/preferences, payment matching, and two engine-calculated recovery choices. Run `npm run demo:saved-plans` with the local engine running, or `npm run check:saved-plans` for the automated save/restart/replay walkthrough.
+
 For the combined live API, start with the [coach integration guide](docs/financial-coach-integration.md). Run `npm run demo:api-coach` after starting the local engine, or add `-- --fixture` to inspect the saved response offline.
 
 Start with the shared-engine coach: [frontend and input contract](docs/engine-coach.md).

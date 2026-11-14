@@ -4,7 +4,7 @@ from collections import defaultdict
 from fractions import Fraction
 
 from src.financial_profile import CONSUMPTION_TYPES, INCOME_TYPES
-from src.forecast_safety import estimate_savings
+from src.forecast_safety import estimate_savings, bound_value
 from src.income_model import allocate_cents
 
 
@@ -19,7 +19,8 @@ def money(value, label):
 def build_category_budgets(forecast, buffer_cents, savings_target_cents,
                            future_commitments=None, savings_confirmed=False,
                            commitments_confirmed=False, adjustable_categories=None,
-                           minimum_category_cents=None, category_overrides=None):
+                           minimum_category_cents=None, category_overrides=None,
+                           fixed_spending_limits=None, maximum_category_cents=None):
     """Build next-horizon limits. Savings is reserved NOW, not at month end.
 
     Unconfirmed inputs produce previews only. Fixed bill components never change.
@@ -33,6 +34,11 @@ def build_category_budgets(forecast, buffer_cents, savings_target_cents,
     costs = future_commitments if future_commitments is not None else []
     adjustable = DEFAULT_ADJUSTABLE if adjustable_categories is None else set(adjustable_categories)
     floors, overrides = dict(minimum_category_cents or {}), dict(category_overrides or {})
+    user_overrides = dict(overrides)
+    overrides.update(fixed_spending_limits or {})
+    ceilings = dict(maximum_category_cents or {})
+    for category, amount in ceilings.items():
+        money(amount, category)
     for category, amount in {**floors, **overrides}.items():
         money(amount, category)
     # Validate floors independently when the same category also has an override.
@@ -42,6 +48,10 @@ def build_category_budgets(forecast, buffer_cents, savings_target_cents,
               "asOf": forecast["asOf"], "currency": "EUR", "status": "withheld",
               "movesMoney": False, "categories": [], "preview": None,
               "savingsTargetCents": savings_target_cents, "bufferCents": buffer_cents}
+    if forecast.get("scenarioBasis"):
+        result.update(scenarioBasis=forecast["scenarioBasis"], calibrationCoverageClaimApplies=False,
+                      lockedCommitments=forecast.get("lockedCommitments", []),
+                      lockedCommitmentsCents=sum(e["amountCents"] for e in forecast.get("lockedCommitments", [])))
     eligibility = estimate_savings(forecast, buffer_cents, costs, commitments_confirmed)
     if eligibility["status"] == "withheld":
         return {**result, "reason": eligibility["reason"]}
@@ -64,7 +74,7 @@ def build_category_budgets(forecast, buffer_cents, savings_target_cents,
         field = "purchaseDaily" if c["transactionType"] == "purchase" else "billDaily"
         group[field] = [a + b for a, b in zip(group[field], c["dailyAmountsCents"])]
         group["ids"].update(c["evidenceIds"])
-    if (floors.keys() | overrides.keys()) - groups.keys():
+    if (floors.keys() | overrides.keys() | ceilings.keys()) - groups.keys():
         raise ValueError("A category has no spending projection; add evidence before budgeting it")
     baselines, minimums = {}, {}
     for category, group in groups.items():
@@ -73,11 +83,13 @@ def build_category_budgets(forecast, buffer_cents, savings_target_cents,
         minimums[category] = max(bills if category in adjustable else bills + purchases, floors.get(category, 0))
         if category in overrides and overrides[category] < minimums[category]:
             raise ValueError(f"{category} override is below its protected amount")
+        if category in ceilings and ceilings[category] < max(minimums[category], overrides.get(category, 0)):
+            raise ValueError(f"{category} spending cap conflicts with protected amounts or fixed choices")
     reserve = eligibility["reservedFutureCostsCents"]
     # This additional funding constraint avoids presenting existing capital or
     # investment withdrawals as renewable spending income.
     income_limit = income - other_outflows - savings_target_cents - reserve
-    free_weights = {cat: max(0, baselines[cat] - minimums[cat]) for cat in groups if cat not in overrides}
+    free_weights = {cat: max(0, min(baselines[cat], ceilings.get(cat, baselines[cat])) - minimums[cat]) for cat in groups if cat not in overrides}
     free_total = sum(free_weights.values())
 
     def allocation(flexible_total):
@@ -102,8 +114,8 @@ def build_category_budgets(forecast, buffer_cents, savings_target_cents,
             center = row["expectedBalanceCents"] + running_delta
             daily.append({"date": row["date"], "expectedBalanceCents": center,
                           "expectedNetChangeCents": center - previous,
-                          "conditionalLowerBalanceCents": row["calibratedLowerBalanceCents"] + running_delta,
-                          "conditionalUpperBalanceCents": row["calibratedUpperBalanceCents"] + running_delta,
+                          "conditionalLowerBalanceCents": bound_value(forecast, row, "Lower") + running_delta,
+                          "conditionalUpperBalanceCents": bound_value(forecast, row, "Upper") + running_delta,
                           "cumulativeChangeFromOriginalCents": running_delta})
             previous = center
         lowest = min(starting, *(d["conditionalLowerBalanceCents"] for d in daily))
@@ -145,7 +157,7 @@ def build_category_budgets(forecast, buffer_cents, savings_target_cents,
                            "suggestedLimitCents": chosen[category] if feasible and confirmed else None,
                            "changeFromHistoryCents": chosen[category] - baselines[category],
                            "adjustable": category in adjustable,
-                           "source": "user_override" if category in overrides else "history_and_constraints",
+                           "source": "user_override" if category in user_overrides else "accepted_plan" if category in overrides else "history_and_constraints",
                            "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
                            "evidenceIds": sorted(groups[category]["ids"])})
     return {**result, "status": status, "feasible": feasible,
