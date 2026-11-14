@@ -1,3 +1,4 @@
+import { appSectionAnswer } from './app-context.mjs';
 import { accountAnswer, accountPlan } from './account.mjs';
 import { formatPlanning, presentationText, validatePresentation } from './reply-format.mjs';
 import { createChatSession, purchaseDetails, purchaseIntent, respondToChat, validateChatSession } from './conversation/chat-coach.mjs';
@@ -14,7 +15,9 @@ function purchaseAdvice(input, session) {
   const outsideForecast = purchase.date !== null
     ? !accountPlan.forecast.daily.some(day => day.date === purchase.date)
     : /\b(?:next month|next year|later|january|february|march|april|may|june|july|august|september|november|december)\b/i.test(input.message);
-  const draftChanged = session.draft.expenses.length > 0 || session.draft.bufferCents !== null || session.draft.goal !== null;
+  const draftChanged = session.draft.expenses.length > 0 || session.draft.bufferCents !== null || session.draft.goal !== null
+    || input.appContext?.goals?.shortTermGoals?.some(g => !g.complete) || input.appContext?.goals?.longTerm?.active
+    || input.appState?.calendar?.edits?.items?.length > 0;
   const available = savings.conditionalCapacityCents;
   let summary;
   if (outsideForecast || draftChanged || available == null || !budget.feasible) {
@@ -63,9 +66,14 @@ export function prepareConversation(input) {
 export async function conversationReply(input, generate) {
   const { previous, next, structured } = prepareConversation(input);
   let source = 'planning';
+  const sectionAnswer = appSectionAnswer(input.message, input.appContext);
   const advice = purchaseAdvice(input, previous);
   const answer = input.scenario === 'engine' ? accountAnswer(input.message) : null;
-  if (advice) {
+  if (sectionAnswer) {
+    next.draft = previous.draft; next.awaiting = previous.awaiting; next.context = previous.context;
+    next.messages[next.messages.length-1] = {id:next.messages.at(-1).id,role:'assistant',text:presentationText(sectionAnswer),presentation:sectionAnswer,suggestions:previous.awaiting?['Continue','Cancel']:[]};
+    source = 'app';
+  } else if (advice) {
     const { goal, summary } = advice;
     next.awaiting = goal ? { kind: 'goal_confirm', goal } : null;
     next.draft = previous.draft;
@@ -104,6 +112,7 @@ export async function conversationReply(input, generate) {
     .replaceAll('For this prototype, choose', 'Choose')
     .replaceAll('We still need your financial data to check whether it fits.', 'We’ll need to check it against your forecast before changing your plan.');
   if (!message.presentation) message.presentation = formatPlanning(next);
+  if (source === 'gemini' && input.appContext) message.presentation.sections = ['home','goals','calendar','budget'].filter(section => input.appContext[section]?.status === 'available');
   next.messages = next.messages.slice(-40);
   next.messages.forEach((m, i) => { m.id = `m${i + 1}`; });
   validateConversation(next, input.scenario);

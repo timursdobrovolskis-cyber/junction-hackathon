@@ -45,6 +45,13 @@
       if(Array.isArray(presentation.evidence)&&presentation.evidence.length){const details=node('details','','reply-evidence');details.append(node('summary','View the basis'));for(const e of presentation.evidence.slice(0,12)){const row=node('div','','reply-evidence-row');row.append(node('span',e.label),node('strong',e.value));if(e.id)row.append(node('small',e.id));details.append(row);}article.append(details);}
     } else article.append(node('p',text));
 
+    if (role === 'assistant' && Array.isArray(presentation?.sections)) {
+      const node = (tag,text,cls) => {const n=document.createElement(tag);n.textContent=text;if(cls)n.className=cls;return n;};
+      const links = node('nav', '', 'reply-section-links'); links.setAttribute('aria-label', 'Open the source section');
+      const labels = {home:'Home',goals:'Goals',calendar:'Calendar',budget:'Budget'};
+      for (const section of [...new Set(presentation.sections)]) if (Object.hasOwn(labels, section)) { const link=node('a', `Open ${labels[section]}`);link.href=`#${section}`;links.append(link); }
+      article.append(links);
+    }
     if (sources.length) {
       const details = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = 'Guidance sources'; details.append(summary);
       for (const source of sources) {
@@ -144,8 +151,10 @@
     const requestController = new AbortController(); controller = requestController;
     const timeout = setTimeout(() => requestController.abort(), 30000);
     try {
+      const { collectAppState } = await import('./app-state.mjs');
+      const appState = collectAppState(profileIds[scenario]);
       const response = await fetch('/api/coach', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scenario, message, history: turns.slice(-8), ...(session ? { session } : {}) }), signal: requestController.signal });
+        body: JSON.stringify({ scenario, message, appState, history: turns.slice(-8), ...(session ? { session } : {}) }), signal: requestController.signal });
       const data = await response.json(); if (requestGeneration !== generation) return;
       if (!response.ok || typeof data.reply !== 'string') throw new Error(data.error || 'The coach couldn’t reply. Try again.');
       if (!data.session || data.session.customerId !== profileIds[scenario]) throw new Error('The reply did not match this profile. Please try again.');
