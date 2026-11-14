@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 10608)
+Total output lines: 334
+
 import { useEffect, useState } from 'react';
 import { ArrowDownLeft, ArrowRight, Bell, Check, ChevronRight, ExternalLink, House, Leaf, Menu, MessageCircle, PiggyBank, ShieldCheck, Sparkles, X } from 'lucide-react';
 import fixture from '../../fixtures/coach-demo.json';
@@ -74,7 +77,7 @@ function Header() {
   return <header className="app-header">
     <div className="header-row">
       <button className="icon-button header-menu" aria-label="Open menu"><Menu size={22} /></button>
-      <div className="brand"><span className="brand-mark"><span /></span><span>s-mobiili</span></div>
+      <div className="brand"><span className="brand-mark"><span /></span><span>S-Pankki</span></div>
       <button className="icon-button notification" aria-label="Notifications"><Bell size={20} /><i /></button>
     </div>
     <div className="header-context"><span className="demo-label">PERSONAL SAVING PLAN</span><span className="profile-slot" aria-label="Demo customer profile"><span>1</span></span></div>
@@ -186,19 +189,7 @@ function LongTermGoal({ goal, updateGoal, removeGoal }) {
       <label className="booster-toggle"><input type="checkbox" checked={Boolean(goal.bonusSavings)} onChange={(event) => updateGoal({ bonusSavings: event.target.checked })}/><span><strong>Bonus säästöön</strong><small>Route an estimated monthly S-Group Bonus to savings</small></span></label>
       {goal.bonusSavings && <label className="field-label booster-amount">Estimated Bonus per month<input type="number" min="0" step="1" value={((goal.bonusMonthlyCents ?? 0) / 100).toFixed(2)} onChange={(event) => updateGoal({ bonusMonthlyCents: euroToCents(event.target.value) })}/></label>}
       <label className="booster-toggle"><input type="checkbox" checked={Boolean(goal.cardMicroSaving)} onChange={(event) => updateGoal({ cardMicroSaving: event.target.checked })}/><span><strong>Card micro-saving</strong><small>{fixture.detectedMonthlyCardTransactionCount} detected card transactions per month in this demo</small></span></label>
-      {goal.cardMicroSaving && <label className="field-label booster-amount">Save per card purchase<input type="number" min="0" step="0.01" value={((goal.microCentsPerTransaction ?? 0) / 100).toFixed(2)} onChange={(event) => updateGoal({ microCentsPerTransaction: euroToCents(event.target.value) })}/><span>Adds about {formatEuro((goal.microCentsPerTransaction ?? 0) * fixture.detectedMonthlyCardTransactionCount)} each month at the detected transaction count.</span></label>}
-    </fieldset>
-    <div className="long-contribution-summary"><span>Planned total from this goal</span><strong>{formatEuro(contributionCents)} / month</strong></div>
-    <div className="savings-timeline"><div className="savings-timeline-heading"><strong>{goal.years}-year balance projection</strong><span>Simulation only · not guaranteed</span></div>
-      <div className="savings-compare"><div><small>Total contributed</small><strong>{formatEuro(totalPrincipal)}</strong></div><div><small>Estimated interest</small><strong>{formatEuro(estimatedInterest)}</strong></div><div><small>Projected balance</small><strong>{formatEuro(estimatedBalance)}</strong></div></div>
-      <div className="savings-chart-wrap"><div className="chart-cursor-tooltip" style={{ left: `${Math.max(18, Math.min(82, activeMonth / horizonMonths * 100))}%` }} aria-live="polite"><strong>{periodLabel}</strong><span>Balance {formatEuro(activePoint.balanceCents)}</span><span>Contributed {formatEuro(activePoint.principalCents)}</span><span>Interest {formatEuro(activePoint.interestCents)}</span></div>
-        <svg className="savings-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} preserveAspectRatio="none" role="img" aria-label={`${goal.years}-year principal and estimated savings account interest simulation`} onPointerMove={pointerSelect} onPointerDown={pointerSelect}>
-          {[0.25,0.5,0.75,1].map(fraction => <line key={fraction} x1="0" x2={chartWidth} y1={chartHeight * (1 - fraction)} y2={chartHeight * (1 - fraction)} className="chart-gridline"/>)}
-          <path d={principalAreaPath} className="chart-savings-area"/><path d={principalPath} className="chart-principal-line"/><path d={growthPath} className="chart-savings-line"/>
-          <line x1={cursorX} x2={cursorX} y1="0" y2={chartHeight} className="chart-cursor-line"/><circle cx={cursorX} cy={pointY(activePoint.balanceCents)} r="4.5" className="chart-cursor-savings"/>
-        </svg>
-      </div>
-      <div className="chart-axis-labels"><span>Now</span><span>Year {goal.years}</span></div><input className="chart-scrubber" type="range" min="0" max={horizonMonths} value={activeMonth} onChange={(event) => setSelectedMonth(Number(event.target.value))} aria-label="Explore principal and projected interest by month"/>
+      {goal.cardMicroSaving &…608 tokens truncated…s-labels"><span>Now</span><span>Year {goal.years}</span></div><input className="chart-scrubber" type="range" min="0" max={horizonMonths} value={activeMonth} onChange={(event) => setSelectedMonth(Number(event.target.value))} aria-label="Explore principal and projected interest by month"/>
       <div className="savings-legend"><span><i className="principal-legend"/>Total contributed</span><span><i className="interest-legend"/>Estimated balance including interest</span></div>
       <div className="target-date-line"><span>Estimated target date</span><strong>{targetDate}</strong></div>
       <small className="simulation-note">Projection only, with no account opening or money movement. This is not a guarantee or financial advice. Tuottotili uses its currently displayed balance tiers and approximates monthly interest. The fixed-term option uses your editable assumed rate across this goal balance; a real S-Määräaikaistili deposit of at least €500 is separate and locked for the selected term. Actual terms and rates may differ.</small>
