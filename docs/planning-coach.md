@@ -4,10 +4,12 @@ This module owns category budget suggestions, savings projections, purchase prev
 and a structured coaching action. It uses deterministic JavaScript and has no runtime
 dependencies. Run `npm test` and `npm run demo` with Node 22 or later.
 
-The repository currently has no bank-data adapter, application, daily cash-flow model,
-LLM credentials, or authentication layer. Examples are explicitly illustrative fixtures.
-Their November dates do not represent live S-Bank balances. The bank data described
-in the brief ends in September 2026; select a historical reference date for those records.
+The repository includes a small S-Bank CSV adapter and historical analysis module;
+see [historical analysis](historical-coach.md). It has no application, daily cash-flow
+model, LLM credentials, or authentication layer. The original planning examples are
+illustrative fixtures whose November dates do not represent live S-Bank balances.
+The separate history demo uses organizer-provided synthetic records through September
+2026 and a clearly labeled historical reference date.
 
 ## Public functions
 
@@ -52,10 +54,14 @@ Do not allow an explanation model to choose arbitrary customer IDs or SQL.
 | `newExpenses` | Optional `{ id, date, amountCents, label? }[]` of additional scenario expenses not already deducted from period cash. IDs must be unique and dates within the forecast window. |
 | `spendingHistory` | Optional complete-month consumption totals: `{ month, category, spentCents, basket, adjustable, evidenceIds? }[]`. Months must precede the reference month. |
 | `signals` | Optional `{ id, type: 'recurring_bill', dueDate, amountCents, confidence, evidenceIds }[]`. Confidence is `low`, `medium`, `high`, or `confirmed`; `confirmed` means customer-confirmed amount and date. Evidence is required. |
+| `transactionHistory` | Optional `{ startDate, endDate, transactions }` for one customer's normalized historical rows. See the history guide for signed amounts, financial movement kinds, coverage, and evidence. |
+| `categoryPreferences` | Optional `{ category, basket, adjustable }[]` of explicit category choices. These allow history-derived budgets. Existing `spendingHistory` classifications take precedence. |
 
-All money is a safe integer in euro cents. Only `availableToSaveCents` and calculated
-net results may be negative. Convert signed bank outflows to positive consumption
-amounts after distinguishing refunds, transfers, investments, and savings. Do not
+All money is a safe integer in euro cents. In the original planning inputs, only
+`availableToSaveCents` and calculated net results may be negative. Normalized
+`transactionHistory` rows instead retain signed amounts as described in the history
+guide. Convert bank outflows to positive consumption amounts for `deliveryHistory`
+and `spendingHistory`, after distinguishing refunds, transfers, investments, and savings. Do not
 apply `abs()` to every row. Preserve source transaction IDs; if the dataset lacks IDs,
 create stable row identifiers and retain their mapping. Never invent merchant names.
 
@@ -105,8 +111,10 @@ forecast before incorporating them.
 Render `action.title`, `action.explanation`, and `action.suggestedAction` as text.
 The result includes a schema version, customer/reference date, source label, numeric
 plan, budgets, assumptions, missing inputs, limitations, and evidence IDs.
-Priority: missing inputs → cash gap → recovery → unsupported goal gap → upcoming bill
-→ goal on track → observation. Bill signals are observations and are never silently
+Priority: missing inputs → cash gap → historical spending above income/income drop
+→ recovery → unsupported goal gap → upcoming bill → historical category change
+→ goal on track → historical summary or missing-history response → observation.
+Bill signals are observations and are never silently
 subtracted again from a forecast that may already include them.
 
 Use `evidenceIds` for customer-scoped transactions and `scenarioExpenseIds` for
@@ -144,7 +152,8 @@ tracking and open-ended chat are not implemented.
    the selected customer, and fall back to templates on failure. The model must not
    calculate or execute financial actions.
 
-No backtest or model accuracy is claimed: bank records and a daily forecast are not
+No forecast backtest or model accuracy is claimed. Historical statistics are checked
+against two customers from the organizer's synthetic data; a daily forecast is not
 present. Tests cover the numeric demo, cash gaps, purchase/experiment previews,
 evidence routing, budget corrections, incomplete history, missing inputs, date and
 horizon validation, integer cents, and duplicate expenses.

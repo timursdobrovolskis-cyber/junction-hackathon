@@ -5,6 +5,7 @@
   "engines": { "node": ">=22" },
   "scripts": {
     "test": "node --test",
-    "demo": "node examples/coach-demo.mjs"
+    "demo": "node examples/coach-demo.mjs",
+    "demo:history": "node examples/history-demo.mjs"
   }
 }

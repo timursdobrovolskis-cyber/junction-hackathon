@@ -1,4 +1,5 @@
 import { calculateGoalPlan } from './coach.mjs';
+import { analyzeTransactionHistory } from './history.mjs';
 import { cents, date, evidenceIds, identifier, month, requireValue, sum, unique } from './validation.mjs';
 
 const money = (value) => new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' }).format(value / 100);
@@ -92,9 +93,35 @@ function calculateProfilePlan(profile, budgets = calculateCategoryBudgets({ hist
   return calculateGoalPlan({ ...profile, deliveryAdjustable });
 }
 
+function prepareProfile(input) {
+  validateProfile(input);
+  const categoryPreferences = input.categoryPreferences ?? [];
+  requireValue(Array.isArray(categoryPreferences), 'categoryPreferences must be an array');
+  const explicitBudgets = input.transactionHistory && input.spendingHistory !== undefined
+    ? calculateCategoryBudgets({ history: input.spendingHistory }) : [];
+  const correctedPreferences = categoryPreferences.map((preference) => {
+    const corrected = explicitBudgets.find((budget) => budget.category === preference.category);
+    return corrected ? { category: corrected.category, basket: corrected.basket, adjustable: corrected.adjustable } : preference;
+  });
+  for (const budget of explicitBudgets) {
+    if (!correctedPreferences.some((preference) => preference.category === budget.category)) {
+      correctedPreferences.push({ category: budget.category, basket: budget.basket, adjustable: budget.adjustable });
+    }
+  }
+  const historicalAnalysis = input.transactionHistory ? analyzeTransactionHistory({
+    customerId: input.customerId, asOf: input.asOf, history: input.transactionHistory,
+    categoryPreferences: correctedPreferences.map((preference) => input.deliveryAdjustable === false && isDelivery(preference.category)
+      ? { ...preference, adjustable: false } : preference),
+  }) : undefined;
+  // Explicit forecast-owner aggregates take precedence over derived history budgets.
+  const profile = historicalAnalysis && input.spendingHistory === undefined
+    ? { ...input, spendingHistory: historicalAnalysis.spendingHistory } : input;
+  return { profile, historicalAnalysis };
+}
+
 /** Pure preview. The purchase must not already be included in the input projection. */
-export function calculatePurchaseScenario(profile, purchase) {
-  validateProfile(profile);
+export function calculatePurchaseScenario(input, purchase) {
+  const { profile } = prepareProfile(input);
   date(purchase.date, 'purchase.date');
   requireValue(purchase.date >= profile.asOf, 'purchase cannot precede asOf');
   const baseline = calculateProfilePlan(profile);
@@ -116,8 +143,8 @@ export function calculatePurchaseScenario(profile, purchase) {
 }
 
 /** Preview the suggested experiment without persisting or claiming realized savings. */
-export function calculateRecoveryScenario(profile) {
-  validateProfile(profile);
+export function calculateRecoveryScenario(input) {
+  const { profile } = prepareProfile(input);
   const baseline = calculateProfilePlan(profile);
   const option = baseline.recoveryOption;
   if (!option || profile.missingInputs.length || baseline.cashShortfalls.length) return null;
@@ -145,8 +172,8 @@ export function calculateRecoveryScenario(profile) {
 }
 
 /** Data-owner handoff in; one mobile home-card action out. No LLM or network needed. */
-export function createCoachAction(profile, { reductionPercent = 0, directAnswer = false } = {}) {
-  validateProfile(profile);
+export function createCoachAction(input, { reductionPercent = 0, directAnswer = false } = {}) {
+  const { profile, historicalAnalysis } = prepareProfile(input);
   const categoryBudgets = calculateCategoryBudgets({ history: profile.spendingHistory ?? [], reductionPercent })
     .map((budget) => profile.deliveryAdjustable === false && isDelivery(budget.category)
       ? { ...budget, adjustable: false, suggestedBudgetCents: budget.baselineCents, estimatedReductionCents: 0 }
@@ -169,6 +196,7 @@ export function createCoachAction(profile, { reductionPercent = 0, directAnswer 
     schemaVersion: 1, customerId: profile.customerId, asOf: profile.asOf, currency: 'EUR',
     dataSource: profile.dataSource, previewOnly: true, categoryBudgets,
     ...(plan ? { plan } : {}),
+    ...(historicalAnalysis ? { historicalAnalysis } : {}),
     assumptions: [...profile.assumptions], missingInputs: [...profile.missingInputs],
     limitations: [
       'Monthly projections cannot identify the weakest day or guarantee that a purchase is affordable.',
@@ -178,6 +206,7 @@ export function createCoachAction(profile, { reductionPercent = 0, directAnswer 
         ? ['Some planning periods have no transaction evidence; inspect their supplied assumptions.'] : []),
       ...(plan?.recoveryOption && profile.deliveryHistory.length < 3
         ? ['The delivery estimate uses fewer than three observations; confirm whether it is representative.'] : []),
+      ...(historicalAnalysis?.limitations ?? []),
     ],
     evidenceIds: evidenceIds([
       ...(profile.periods ?? []).flatMap((period) => period.evidenceIds ?? []),
@@ -195,6 +224,11 @@ export function createCoachAction(profile, { reductionPercent = 0, directAnswer 
     action = { kind: 'review_cash_shortfall', title: 'Check an earlier cash gap',
       explanation: `The supplied plan has a ${money(first.shortfallCents)} cash gap in ${first.month}, even if later income improves the total.`,
       suggestedAction: 'Review payment timing and essential commitments before choosing a spending experiment.' };
+  } else if (historicalAnalysis?.insights.some((insight) => ['income_decrease', 'spending_above_income'].includes(insight.kind))) {
+    const insight = historicalAnalysis.insights.find((item) => ['income_decrease', 'spending_above_income'].includes(item.kind));
+    action = { kind: 'review_history', title: 'Check what changed before planning ahead',
+      explanation: insight.explanation, suggestedAction: insight.suggestedAction,
+      insightKind: insight.kind, evidenceIds: insight.evidenceIds };
   } else if (plan?.recoveryOption) {
     const option = plan.recoveryOption;
     action = { kind: 'goal_recovery', title: 'Try a small adjustment',
@@ -220,17 +254,37 @@ export function createCoachAction(profile, { reductionPercent = 0, directAnswer 
       signalId: upcoming.id, confidence: upcoming.confidence,
     };
     result.evidenceIds = evidenceIds([...result.evidenceIds, ...upcoming.evidenceIds]);
+  } else if (historicalAnalysis?.insights.length) {
+    const insight = historicalAnalysis.insights[0];
+    action = { kind: 'review_history', title: 'A change in your recent spending',
+      explanation: insight.explanation, suggestedAction: insight.suggestedAction,
+      insightKind: insight.kind, evidenceIds: insight.evidenceIds };
   } else if (plan) {
     action = { kind: 'goal_on_track', title: 'Your goal fits the supplied projection',
       explanation: `Projected savings of ${money(plan.projectedSavedCents)} cover the ${money(profile.goal.targetCents)} target if the assumptions hold.`,
       suggestedAction: 'Check the plan again when your income or expenses change.' };
+  } else if (historicalAnalysis) {
+    const latest = historicalAnalysis.monthly.at(-1);
+    action = latest ? { kind: 'history_summary', title: 'Your latest complete month',
+      explanation: `In ${latest.month}, recorded income was ${money(latest.incomeCents)} and spending after refunds was ${money(latest.netSpendingCents)}. These totals describe the supplied history, not money available to spend now.`,
+      suggestedAction: 'Inspect the categories, or choose a goal when you want a savings plan.', evidenceIds: latest.evidenceIds,
+    } : { kind: 'insufficient_history', title: 'More history is needed for a monthly comparison',
+      explanation: 'The supplied history does not cover a complete month before the reference month.',
+      suggestedAction: 'Provide a complete month of transactions, or move the historical reference date forward.' };
   } else {
     action = { kind: 'observation', title: 'Start with what matters to you',
       explanation: 'There is no supported upcoming bill or goal plan to show yet.',
       suggestedAction: 'Inspect your category budgets, or choose a goal when you want a savings plan.' };
   }
+  result.evidenceIds = evidenceIds([...result.evidenceIds, ...(action.evidenceIds ?? [])]);
+  const historyLearning = ['review_history', 'history_summary', 'insufficient_history'].includes(action.kind);
   return { ...result, action,
-    ...(!directAnswer ? { learning: {
+    ...(!directAnswer ? { learning: historyLearning ? {
+      concept: 'Patterns are clues, not predictions',
+      explanation: 'Compare complete months before drawing a conclusion. Payment timing, refunds, or one-off expenses can change a monthly total without changing your usual needs.',
+      reflectionQuestion: 'Does this change match something you expected, or is there a payment worth checking?',
+      optional: true,
+    } : {
       concept: 'Cash flow and trade-offs',
       explanation: 'Money needed for upcoming commitments is different from money available for a goal. A spending experiment only helps if that spending was already in the plan.',
       reflectionQuestion: 'Which adjustment would preserve the things that matter most to you?',
