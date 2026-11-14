@@ -20,6 +20,10 @@
     "api/calendar-feed.js": {
       "includeFiles": "server/calendar/**",
       "maxDuration": 20
+    },
+    "api/budget.js": {
+      "includeFiles": "server/**",
+      "maxDuration": 20
     }
   },
   "redirects": [

@@ -38,18 +38,19 @@ $('amount-explanation').addEventListener('click', () => {
 
 function navigate() {
   if (location.hash === '#main') return;
-  const pages = ['home', 'goals', 'calendar', 'coach'];
+  const pages = ['home', 'goals', 'calendar', 'coach', 'budget'];
   const current = pages.includes(location.hash.slice(1)) && $(location.hash.slice(1) + '-page') ? location.hash.slice(1) : 'home';
   document.body.classList.toggle('coach-open', current === 'coach');
   pages.forEach(name => {
     if (!$(name + '-page')) return;
     const active = name === current;
     $(name + '-page').hidden = !active;
-    $('nav-' + name).classList.toggle('active', active);
-    if (active) $('nav-' + name).setAttribute('aria-current', 'page');
+    if (!$('nav-' + name)) return;
+    $('nav-' + name).classList.toggle('active', active || (name === 'home' && current === 'budget'));
+    if (active || (name === 'home' && current === 'budget')) $('nav-' + name).setAttribute('aria-current', 'page');
     else $('nav-' + name).removeAttribute('aria-current');
   });
-  document.title = ({ home: 'Your money', goals: 'Your goals', calendar: 'Financial calendar', coach: 'Your coach' })[current] + ' — S-Pankki concept';
+  document.title = ({ home: 'Your money', goals: 'Your goals', calendar: 'Financial calendar', coach: 'Your coach', budget: 'Your budget' })[current] + ' — S-Pankki concept';
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 window.addEventListener('hashchange', navigate);

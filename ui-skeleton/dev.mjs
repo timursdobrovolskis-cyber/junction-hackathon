@@ -5,6 +5,7 @@ import coach from './api/coach.js';
 import calendar from './api/calendar.js';
 import calendarFeed from './api/calendar-feed.js';
 import goals from './api/goals.js';
+import budget from './api/budget.js';
 const root=resolve('dist');
 const port=Number(process.env.PORT??4174);
 if(!Number.isInteger(port)||port<1||port>65535)throw new Error('PORT must be between 1 and 65535');
@@ -13,6 +14,7 @@ createServer(async(req,res)=>{
   try{
     const url=new URL(req.url,'http://localhost');
     if(url.pathname==='/api/calendar-feed'){await calendarFeed(req,res);return;}
+    if(url.pathname==='/api/budget'){await budget(req,res);return;}
     if(url.pathname==='/api/calendar'){await calendar(req,res);return;}
     if(url.pathname==='/api/goals'){await goals(req,res);return;}
     if(url.pathname==='/api/coach'){

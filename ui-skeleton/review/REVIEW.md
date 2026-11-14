@@ -39,3 +39,7 @@ Added four compact suggestion cards, an Ideas toggle, a shared account header an
 ## Coach scrolling repair
 
 Replaced nested transcript scrolling with one full-height reading surface and a separate composer above navigation. Replies reveal their beginning without reopening the keyboard; readers who scroll away get a Read new reply button. Removed repeated scroll-to-bottom layout work. Verified standard/compact phone frames, expanded evidence to the bottom, multi-turn replies, reading position during a live Gemini request, reply shortcut, and Home/Goals/Calendar navigation. All 61 tests pass. Physical iOS keyboard behavior still needs device testing. Screenshot: 11-coach-single-scroll.jpg.
+
+## Budget integration
+
+Added a compact Home budget entry and a separate category page, with October proposed limits and September recorded spending as distinct periods. First visual pass showed category rows too far down; shortened the heading and moved the Home entry above the bills/savings tiles, with a smaller balance figure. Second pass checked September chart, transaction disclosure and 331px compact-phone content width without overflow. Third pass checks final standard/compact navigation and screenshots. Added five meaningful calculation/API tests for period coverage, exact totals, transfers, refunds, overspend, unknown categories, foreign accounts and duplicate transactions. All 66 tests pass. No October spending has been invented and no September budget is retrospectively claimed.

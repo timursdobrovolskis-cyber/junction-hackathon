@@ -51,3 +51,10 @@ Customer-scoped, dated spending notices open evidence and next steps below the
 month grid. A read-only Google Calendar feed/export is available for the public
 synthetic samples; live account export is disabled pending a private connection.
 See FINANCIAL_CALENDAR.md for recurrence rules, examples and Google setup.
+## Budget page and spending history
+
+Home → Your budget → View all opens `#budget`. The October plan uses the same CUST00005 / ACC000005 budget as Home and Coach. `GET /api/budget?period=plan|history` supplies the view. Proposed category limits total €1,793.99. September actual spending totals €2,209.34; income and investment/transfer movements are excluded. Refunds are listed separately, not added to available budget.
+
+The source export ends 30 September; no October actuals exist. `spentCents` and `remainingCents` are therefore **null**, never fabricated zeros. September is its own history view, never deducted from October limits. The calculation supports same-period posted spending, negative remaining amounts, unbudgeted categories, and partial coverage. Budget changes/recalculation are not enabled by this page.
+
+`server/budget/activity.json` contains only seven synthetic September transactions for the selected account, exported from the prepared SQLite database by `python3 ui-skeleton/server/budget/build-fixture.py` from repository root. Do not package the full database. To wire a real account feed, supply matching customer/account identities, a trustworthy coverage start/end, all posted activity in that window, and the matching plan period. Keep missing coverage distinct from no transactions. Authentication and a live bank connection remain outside this prototype.
