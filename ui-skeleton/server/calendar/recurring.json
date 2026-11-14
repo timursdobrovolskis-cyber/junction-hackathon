@@ -1,4 +1,126 @@
 {
+  "monthSummaries": {
+    "2026-11": {
+      "incomeCents": 240000,
+      "outflowCents": 99299,
+      "paymentCount": 5
+    },
+    "2026-12": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-01": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-02": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-03": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-04": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-05": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-06": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-07": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-08": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-09": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-10": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-11": {
+      "incomeCents": 240000,
+      "outflowCents": 99299,
+      "paymentCount": 5
+    },
+    "2027-12": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-01": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-02": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-03": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-04": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-05": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-06": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-07": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-08": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-09": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-10": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    }
+  },
   "schemaVersion": "2.0",
   "customerId": "CALENDAR-DEMO",
   "asOf": "2026-10-31",
@@ -4503,5 +4625,5 @@
   "notice": "Only regular payments with a predictable date are shown. Dates and amounts are estimates. Irregular spending is excluded; reminders do not extend the balance forecast.",
   "label": "Recurring costs example",
   "sourceNotice": "Fictional ledger for demonstrating monthly bills and yearly renewals. Separate from the bank-data customer and Home.",
-  "generatedAt": "2026-11-14T18:10:42Z"
+  "generatedAt": "2026-11-14T18:32:32Z"
 }

@@ -1,4 +1,126 @@
 {
+  "monthSummaries": {
+    "2026-10": {
+      "incomeCents": 122122,
+      "outflowCents": 76100,
+      "paymentCount": 2
+    },
+    "2026-11": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2026-12": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-01": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-02": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-03": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-04": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-05": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-06": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-07": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-08": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-09": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-10": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-11": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-12": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-01": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-02": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-03": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-04": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-05": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-06": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-07": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-08": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-09": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    }
+  },
   "schemaVersion": "2.0",
   "customerId": "CUST00003",
   "asOf": "2026-09-30",
@@ -2489,5 +2611,5 @@
   "notice": "Only regular payments with a predictable date are shown. Dates and amounts are estimates. Irregular spending is excluded; reminders do not extend the balance forecast.",
   "label": "Regular payday example",
   "sourceNotice": "Synthetic bank customer CUST00003; history through 30 September 2026. This customer's recent salary arrives on the 15th.",
-  "generatedAt": "2026-11-14T18:10:42Z"
+  "generatedAt": "2026-11-14T18:32:32Z"
 }
