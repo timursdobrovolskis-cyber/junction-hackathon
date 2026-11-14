@@ -364,3 +364,15 @@ button:focus-visible, a:focus-visible { outline: 3px solid #82ddb0; outline-offs
 .g2-band .goal-art { pointer-events:none; }
 .short-goals-list { gap:8px; }
 .g2-band > .g2-delete { position:absolute; z-index:2; }
+/* seamless delete */
+.g2-card { position:relative; }
+.g2-row-delete { position:absolute; top:50%; right:10px; z-index:3; display:grid; place-items:center; width:30px; height:30px; margin-top:-15px; border:0; border-radius:50%; background:#e5484d; color:#fff; box-shadow:0 2px 8px rgba(229,72,77,.35); opacity:0; transform:scale(.7); transition:opacity .15s ease, transform .15s ease; }
+.g2-compact:hover .g2-row-delete, .g2-row-delete:focus-visible { opacity:1; transform:scale(1); }
+.g2-compact:hover .g2-chev { opacity:0; }
+.g2-row-delete:hover { background:#d13438; }
+@media (hover:none) { .g2-row-delete { opacity:.9; transform:scale(.85); top:14px; margin-top:0; right:8px; width:24px; height:24px; } .g2-compact .g2-chev { display:none; } }
+.g2-delete { background:rgba(229,72,77,.92) !important; color:#fff !important; }
+.g2-delete:hover { background:#d13438 !important; }
+.g2-leaving { animation:g2-out .24s ease forwards; pointer-events:none; }
+@keyframes g2-out { to { opacity:0; transform:translateX(24px) scale(.97); max-height:0; margin-top:-8px; } }
+.g2-undo-toast svg { color:#ff9b9e; }

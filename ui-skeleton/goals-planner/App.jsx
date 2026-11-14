@@ -55,7 +55,7 @@ function GoalProgress({ progress, label }) {
 
 const shortDate = (date) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(`${date}T12:00:00`));
 
-function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, completeGoal, expanded, onToggle }) {
+function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, completeGoal, expanded, onToggle, leaving }) {
   const [editing, setEditing] = useState(false);
   const [deposit, setDeposit] = useState('');
   const isFunded = goal.savedCents >= goal.targetCents;
@@ -76,7 +76,8 @@ function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, comple
   const undoAdd = () => { if (!lastAdd) return; updateGoal({ savedCents: Math.max(0, goal.savedCents - lastAdd.cents) }); setLastAdd(null); };
   const startYear = Number(fixture.asOf.slice(0, 4)); const endYear = Number(goal.targetDate.slice(0, 4));
   const whenText = horizon === 'long' ? `by ${new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' }).format(new Date(`${goal.targetDate}T12:00:00`))}` : `by ${shortDate(goal.targetDate)}`;
-  if (!expanded) return <article className={`g2-card g2-compact g2-${horizon} ${isFunded ? 'g2-funded' : ''}`}>
+  if (!expanded) return <article className={`g2-card g2-compact g2-${horizon} ${isFunded ? 'g2-funded' : ''} ${leaving ? 'g2-leaving' : ''}`}>
+    <button type="button" className="g2-row-delete" onClick={removeGoal} aria-label={`Delete ${goal.label || 'goal'}`}><X size={14} strokeWidth={2.6}/></button>
     <button type="button" className="g2-compact-main" aria-expanded="false" onClick={onToggle}>
       <span className="g2-thumb"><GoalArt theme={theme}/></span>
       <span className="g2-compact-text"><strong>{goal.label || 'New goal'}</strong><small>{formatEuro(goal.savedCents)} of {formatEuro(goal.targetCents)} · {whenText}</small><span className="g2-track g2-mini"><span style={{ width: `${progress}%` }}/></span></span>
@@ -84,7 +85,7 @@ function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, comple
     </button>
     {isFunded && <button type="button" className="g2-tick g2-tick-compact" onClick={completeGoal}><Check size={15}/> Fully saved — tick it off</button>}
   </article>;
-  return <article className={`g2-card g2-${horizon} ${isFunded ? 'g2-funded' : ''}`}>
+  return <article className={`g2-card g2-${horizon} ${isFunded ? 'g2-funded' : ''} ${leaving ? 'g2-leaving' : ''}`}>
     <div className="g2-band">
       <button type="button" className="g2-collapse" aria-expanded="true" aria-label={`Collapse ${goal.label || 'goal'}`} onClick={onToggle}/>
       <div className="g2-band-copy"><span className="g2-when">{horizon === 'long' ? `${months >= 24 ? `${Math.round(months / 12)} years` : `${months} months`} · by ${new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' }).format(new Date(`${goal.targetDate}T12:00:00`))}` : `By ${shortDate(goal.targetDate)}`}</span>{isFunded && <span className="g2-badge"><Check size={12}/> Fully saved</span>}</div>
@@ -191,9 +192,17 @@ function SavingsAccountPlan({ plan, updatePlan }) {
   </article>;
 }
 
-function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort, restoreShort, updateLong, mode, openEvidence, previewId, setPreviewId }) {
+function GoalPlanner({ goals, updateShort, removeShort, insertShort, addShort, completeShort, restoreShort, updateLong, mode, openEvidence, previewId, setPreviewId }) {
   const [adding, setAdding] = useState(false);
   const [openId, setOpenId] = useState(null);
+  const [leavingId, setLeavingId] = useState(null);
+  const [deleted, setDeleted] = useState(null);
+  useEffect(() => { if (!deleted) return undefined; const timer = setTimeout(() => setDeleted(null), 5000); return () => clearTimeout(timer); }, [deleted]);
+  const deleteGoal = (goal) => {
+    if (leavingId) return;
+    setLeavingId(goal.id);
+    setTimeout(() => { const index = goals.shortTermGoals.findIndex(item => item.id === goal.id); removeShort(goal.id); setDeleted({ goal, index }); setLeavingId(null); if (openId === goal.id) setOpenId(null); }, 240);
+  };
   const [showAchieved, setShowAchieved] = useState(false);
   const [horizon, setHorizon] = useState(() => { try { return sessionStorage.getItem('goals-horizon') || 'short'; } catch { return 'short'; } });
   const chooseHorizon = (value) => { setHorizon(value); setAdding(false); setShowAchieved(false); try { sessionStorage.setItem('goals-horizon', value); } catch { /* optional */ } };
@@ -211,8 +220,9 @@ function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort,
       {active.length > 0 && <div className="g2-summary"><span>Together</span><strong>{formatEuro(monthlyCents)}<small> / month</small></strong><span>to stay on track</span></div>}
       {active.length === 0 && !adding && <div className={`g2-empty g2-${horizon}`}><GoalArt theme={horizon === 'long' ? 'home' : 'travel'}/><strong>{horizon === 'long' ? 'What’s your big plan?' : 'What do you want next?'}</strong><p>Write down anything you’re saving for — {HORIZONS[horizon].empty}. Add as many as you like.</p></div>}
       {active.map((goal) => {
-        return <ShortTermGoal key={goal.id} horizon={horizon} goal={goal} updateGoal={(patch) => updateShort(goal.id, patch)} removeGoal={() => removeShort(goal.id)} completeGoal={() => completeShort(goal.id)} expanded={openId === goal.id} onToggle={() => setOpenId(openId === goal.id ? null : goal.id)}/>;
+        return <ShortTermGoal key={goal.id} horizon={horizon} goal={goal} updateGoal={(patch) => updateShort(goal.id, patch)} removeGoal={() => deleteGoal(goal)} leaving={leavingId === goal.id} completeGoal={() => completeShort(goal.id)} expanded={openId === goal.id} onToggle={() => setOpenId(openId === goal.id ? null : goal.id)}/>;
       })}
+      {deleted && <div className="g2-toast g2-undo-toast" role="status"><X size={14}/><span>Deleted “{deleted.goal.label || 'goal'}”</span><button type="button" onClick={() => { insertShort(deleted.goal, deleted.index); setDeleted(null); }}>Undo</button></div>}
       {adding
         ? <NewGoalForm key={horizon} horizon={horizon} onAdd={(goal) => { const id = `goal-${Date.now()}`; addShort({ ...goal, id }); setOpenId(id); setAdding(false); }} onCancel={() => setAdding(false)}/>
         : <button className="g2-add" onClick={() => setAdding(true)}><span>+</span>Add a {horizon === 'long' ? 'long-term' : 'short-term'} goal</button>}
@@ -267,11 +277,12 @@ export default function App({ mode }) {
   }) }));
   const addShort = (goal) => setGoals((current) => ({ ...current, shortTermGoals: [...current.shortTermGoals, { id: `goal-${Date.now()}`, savedCents: 0, complete: false, horizon: 'short', ...goal }] }));
   const removeShort = (id) => setGoals((current) => ({ ...current, shortTermGoals: current.shortTermGoals.filter((goal) => goal.id !== id) }));
+  const insertShort = (goal, index) => setGoals((current) => { const list = [...current.shortTermGoals]; list.splice(Math.max(0, Math.min(index, list.length)), 0, goal); return { ...current, shortTermGoals: list }; });
   const completeShort = (id) => updateShort(id, { complete: true });
   const restoreShort = (id) => setGoals((current) => ({ ...current, shortTermGoals: current.shortTermGoals.map((goal) => goal.id === id ? { ...goal, complete: false } : goal) }));
   const updateLong = (patch) => setGoals((current) => ({ ...current, longTerm: { ...current.longTerm, ...patch } }));
   return <>
-    <GoalPlanner goals={goals} updateShort={updateShort} removeShort={removeShort} addShort={addShort} completeShort={completeShort} restoreShort={restoreShort} updateLong={updateLong} mode={mode} openEvidence={(goal, result) => setEvidenceData({ goal, result, mode })} previewId={previewGoalId} setPreviewId={setPreviewGoalId}/>
+    <GoalPlanner goals={goals} updateShort={updateShort} removeShort={removeShort} insertShort={insertShort} addShort={addShort} completeShort={completeShort} restoreShort={restoreShort} updateLong={updateLong} mode={mode} openEvidence={(goal, result) => setEvidenceData({ goal, result, mode })} previewId={previewGoalId} setPreviewId={setPreviewGoalId}/>
     {evidenceData && <EvidenceModal result={evidenceData.result} goal={evidenceData.goal} mode={evidenceData.mode} onClose={() => setEvidenceData(null)}/>}
   </>;
 }
