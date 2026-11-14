@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowDownLeft, ArrowRight, Bell, Check, ChevronRight, CircleHelp, House, Leaf, Menu, MoreHorizontal, PiggyBank, ShieldCheck, Sparkles, X, TrendingUp } from 'lucide-react';
+import { ArrowDownLeft, ArrowRight, Bell, Check, ChevronRight, CircleHelp, House, Leaf, Menu, MoreHorizontal, PiggyBank, ShieldCheck, Sparkles, X, TrendingUp, Wallet, Repeat, CalendarDays } from 'lucide-react';
 import fixture from '../../fixtures/coach-demo.json';
+import subscriptionsFixture from '../../fixtures/subscriptions-demo.json';
 import { calculateGoalPlan } from '../coach.mjs';
 
 const formatEuro = (cents) => `€${(cents / 100).toFixed(cents % 100 === 0 ? 0 : 2)}`;
@@ -77,8 +78,37 @@ function GoalCard({ result, baseline, mode, onEvidence, preview, setPreview, ris
   </div>;
 }
 
+function SubscriptionPage({ cancelledIds, onCancel }) {
+  const [filter, setFilter] = useState('active');
+  const [selectedSubscription, setSelectedSubscription] = useState(null);
+  const [expandedEvidence, setExpandedEvidence] = useState(null);
+  const subscriptions = subscriptionsFixture.subscriptions;
+  const activeSubscriptions = subscriptions.filter((item) => !cancelledIds.includes(item.id));
+  const monthlyTotalCents = activeSubscriptions.reduce((sum, item) => sum + Math.round(item.amountCents / item.intervalMonths), 0);
+  const shownSubscriptions = subscriptions.filter((item) => filter === 'all' || (filter === 'active' ? !cancelledIds.includes(item.id) : cancelledIds.includes(item.id)));
+  return <>
+    <div className="goals-intro subscription-intro"><strong>Your recurring payments, together</strong><p>We group repeated payments found in your bank transaction history. Review the evidence and see what each one costs over a month or year.</p><small>Sample demo matches · live bank detection is not connected in this preview.</small></div>
+    <section className="card subscription-summary"><div className="subscription-summary-label"><span className="subscription-summary-icon"><Repeat size={18}/></span><span>ACTIVE SUBSCRIPTIONS</span></div><div className="subscription-total">{formatEuro(monthlyTotalCents)}<small>/ month</small></div><div className="subscription-summary-foot"><span>{activeSubscriptions.length} active services</span><span>{formatEuro(monthlyTotalCents * 12)} / year</span></div></section>
+    <div className="subscription-evidence-note"><ShieldCheck size={16}/><span>Detected from recurring bank transactions · {subscriptions.reduce((count, item) => count + item.detectedTransactionCount, 0)} matching payments reviewed</span></div>
+    <div className="subscription-filters" role="group" aria-label="Filter subscriptions">{[['active','Active'],['all','All'],['cancelled','Cancelled']].map(([value,label])=><button key={value} className={filter === value ? 'selected' : ''} aria-pressed={filter === value} onClick={() => setFilter(value)}>{label}</button>)}</div>
+    <div className="subscription-list">{shownSubscriptions.length ? shownSubscriptions.map((item) => {
+      const isCancelled = cancelledIds.includes(item.id);
+      const monthlyEquivalent = Math.round(item.amountCents / item.intervalMonths);
+      return <article className={`card subscription-card ${isCancelled ? 'subscription-cancelled' : ''}`} key={item.id}>
+        <div className="subscription-card-top"><div className="subscription-merchant-mark">{item.merchant.split(/\s+/).map(part => part[0]).join('').slice(0,2).toUpperCase()}</div><div className="subscription-name"><strong>{item.merchant}</strong><span>{item.category} · {item.paymentSource}</span></div><span className={`subscription-status ${isCancelled ? 'cancelled' : ''}`}>{isCancelled ? 'Cancelled · demo' : 'Active'}</span></div>
+        <div className="subscription-price-row"><div><strong>{formatEuro(item.amountCents)}</strong><span> / {item.intervalMonths === 1 ? 'month' : `${item.intervalMonths} months`}</span></div><small>{formatEuro(monthlyEquivalent)} / month equivalent</small></div>
+        {!isCancelled && <div className="subscription-next"><CalendarDays size={14}/>Next payment {formatDate(item.nextPaymentDate)}</div>}
+        <button className="subscription-evidence-toggle" onClick={() => setExpandedEvidence(expandedEvidence === item.id ? null : item.id)} aria-expanded={expandedEvidence === item.id}>{item.detectedTransactionCount} recurring payments found · {expandedEvidence === item.id ? 'Hide evidence' : 'View evidence'} <ChevronRight size={15}/></button>
+        {expandedEvidence === item.id && <div className="subscription-evidence-list"><div className="subscription-evidence-caption">Recent matches · {item.detectedTransactionCount} transactions in detection history</div>{item.transactions.map(transaction=><div className="subscription-transaction" key={transaction.id}><span>{formatDate(transaction.date)} <small>· {transaction.id}</small></span><strong>{formatEuro(transaction.amountCents)}</strong></div>)}</div>}
+        <div className="subscription-actions">{isCancelled ? <span className="cancelled-message"><Check size={15}/>Removed from active cost total</span> : <button className="cancel-button" onClick={() => setSelectedSubscription(item)}>Cancel subscription</button>}</div>
+      </article>;
+    }) : <div className="empty-subscriptions">No {filter} subscriptions to show.</div>}</div>
+    {selectedSubscription && <div className="modal-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setSelectedSubscription(null)}><section className="evidence-modal cancel-modal" role="dialog" aria-modal="true" aria-labelledby="cancel-title"><div className="modal-grabber"/><div className="modal-header"><div><div className="eyebrow">CANCELLATION</div><h2 id="cancel-title">Cancel {selectedSubscription.merchant}?</h2></div><button className="close-button" onClick={() => setSelectedSubscription(null)} aria-label="Close cancellation dialog"><X size={20}/></button></div><p className="modal-intro">This demo isn’t connected to {selectedSubscription.merchant}. In a live app, cancellation would need the provider’s authorization or a handoff to their cancellation page. You can simulate marking it cancelled here.</p><div className="cancel-impact">Potentially removed from your recurring total: <strong>{formatEuro(Math.round(selectedSubscription.amountCents / selectedSubscription.intervalMonths))}/month</strong></div><button className="modal-done" onClick={() => { onCancel(selectedSubscription.id); setSelectedSubscription(null); }}>Simulate cancellation</button><button className="cancel-keep" onClick={() => setSelectedSubscription(null)}>Keep subscription</button></section></div>}
+  </>;
+}
+
 function BottomNav({ activeTab, setActiveTab }) {
-  return <nav className="bottom-nav"><button className={`nav-item ${activeTab === 'home' ? 'selected' : ''}`} onClick={() => setActiveTab('home')}><House size={20} /><span>Home</span></button><button className="nav-item" onClick={() => setActiveTab('money')}><Wallet size={20} /><span>Money</span></button><button className={`nav-item center-nav ${activeTab === 'goals' ? 'selected' : ''}`} onClick={() => setActiveTab('goals')}><span><PiggyBank size={21} /></span><span>Goals</span></button><button className="nav-item" onClick={() => setActiveTab('benefits')}><Sparkles size={20} /><span>Benefits</span></button><button className="nav-item" onClick={() => setActiveTab('profile')}><MoreHorizontal size={20} /><span>More</span></button></nav>;
+  return <nav className="bottom-nav"><button className={`nav-item ${activeTab === 'home' ? 'selected' : ''}`} onClick={() => setActiveTab('home')}><House size={20} /><span>Home</span></button><button className="nav-item" onClick={() => setActiveTab('money')}><Wallet size={20} /><span>Money</span></button><button className={`nav-item center-nav ${activeTab === 'goals' ? 'selected' : ''}`} onClick={() => setActiveTab('goals')}><span><PiggyBank size={21} /></span><span>Goals</span></button><button className={`nav-item ${activeTab === 'subscriptions' ? 'selected' : ''}`} onClick={() => setActiveTab('subscriptions')}><Repeat size={20} /><span>Subs</span></button><button className="nav-item" onClick={() => setActiveTab('profile')}><MoreHorizontal size={20} /><span>More</span></button></nav>;
 }
 
 function EvidenceModal({ result, mode, onClose }) {
@@ -107,6 +137,7 @@ export default function App() {
   const [risk, setRisk] = useState(fixture.longTermGoal.risk);
   const [autoInvest, setAutoInvest] = useState({ recurring: true, roundups: false, bonus: false });
   const [activeTab, setActiveTab] = useState('home');
+  const [cancelledSubscriptions, setCancelledSubscriptions] = useState([]);
   const [mode, setMode] = useState('afterExpense');
   const [preview, setPreview] = useState(false);
   const [evidenceOpen, setEvidenceOpen] = useState(false);
@@ -118,5 +149,21 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [evidenceOpen]);
-  return <div className="page-shell"><Header mode={mode} setMode={(value) => { setMode(value); setPreview(false); }} /><main className="main-content"><div className="welcome-row"><div><span className="welcome-overline">DEMO CUSTOMER · {dateLabel.toUpperCase()}</span><h1>{activeTab === 'goals' ? 'Goals & plans' : 'Your money plan'}</h1></div><div className="avatar" aria-hidden="true">1</div></div>{activeTab === 'goals' ? <><div className="goals-intro"><strong>Plan for what matters to you</strong><p>Build a cash cushion for goals coming up soon, or explore how investing your safe monthly surplus could grow over time.</p></div><GoalCard result={result} baseline={baseline} mode={mode} onEvidence={() => setEvidenceOpen(true)} preview={preview} setPreview={setPreview} risk={risk} setRisk={setRisk} autoInvest={autoInvest} setAutoInvest={setAutoInvest} /><div className="trust-line"><ShieldCheck size={15} /><span>Projection only · no money moves</span></div></> : <section className="card home-goals-card"><div className="eyebrow">YOUR GOALS</div><h2>Short-term savings and long-term investing</h2><p>Explore a savings plan for the next 12 months and a fund growth illustration for the years ahead.</p><button className="primary-button" onClick={() => setActiveTab('goals')}>Open Goals <ArrowRight size={18}/></button></section>}</main><BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />{evidenceOpen && <EvidenceModal result={result} mode={mode} onClose={() => setEvidenceOpen(false)} />}</div>;
+  const pageTitle = activeTab === 'goals' ? 'Goals & plans' : activeTab === 'subscriptions' ? 'Subscriptions' : 'Your money plan';
+  return <div className="page-shell">
+    <Header mode={mode} setMode={(value) => { setMode(value); setPreview(false); }} />
+    <main className="main-content">
+      <div className="welcome-row"><div><span className="welcome-overline">DEMO CUSTOMER · {dateLabel.toUpperCase()}</span><h1>{pageTitle}</h1></div><div className="avatar" aria-hidden="true">1</div></div>
+      {activeTab === 'goals' ? <>
+        <div className="goals-intro"><strong>Plan for what matters to you</strong><p>Build a cash cushion for goals coming up soon, or explore how investing your safe monthly surplus could grow over time.</p></div>
+        <GoalCard result={result} baseline={baseline} mode={mode} onEvidence={() => setEvidenceOpen(true)} preview={preview} setPreview={setPreview} risk={risk} setRisk={setRisk} autoInvest={autoInvest} setAutoInvest={setAutoInvest} />
+        <div className="trust-line"><ShieldCheck size={15} /><span>Projection only · no money moves</span></div>
+      </> : activeTab === 'subscriptions' ? <SubscriptionPage cancelledIds={cancelledSubscriptions} onCancel={(id) => setCancelledSubscriptions((current) => current.includes(id) ? current : [...current, id])} /> : <>
+        <section className="card home-goals-card"><div className="eyebrow">YOUR GOALS</div><h2>Short-term savings and long-term investing</h2><p>Explore a savings plan for the next 12 months and a fund growth illustration for the years ahead.</p><button className="primary-button" onClick={() => setActiveTab('goals')}>Open Goals <ArrowRight size={18}/></button></section>
+        <section className="card home-goals-card home-subs-card"><div className="eyebrow">RECURRING PAYMENTS</div><h2>See all your subscriptions together</h2><p>Review monthly costs, upcoming renewals, and the bank transactions used to detect each service.</p><button className="secondary-button" onClick={() => setActiveTab('subscriptions')}>View Subscriptions <ChevronRight size={17}/></button></section>
+      </>}
+    </main>
+    <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
+    {evidenceOpen && <EvidenceModal result={result} mode={mode} onClose={() => setEvidenceOpen(false)} />}
+  </div>;
 }
