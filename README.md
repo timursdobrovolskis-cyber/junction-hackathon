@@ -4,7 +4,7 @@ Start with [the build plan and current workflow](BUILD_PLAN.md) for the product 
 
 The app now includes a [financial calendar](docs/financial-calendar.md). Run
 `npm run dev:app` and open http://127.0.0.1:4174/spendvest.html#calendar to browse
-single-day income, recurring bills and yearly renewals across 24 months. Click a date for its payments and transaction evidence.
+income, recurring bills and yearly renewals in day, week or month views across 24 months. Click a date for its payments and transaction evidence.
 
 - [Run the combined forecast, savings, and budget API](data/FINANCIAL_ENGINE.md) for UI and coach integration. No API key required.
 - [Review the spending-model experiment](data/SPENDING_MODEL_EXPERIMENT.md): v2 remains the default because v3 performed worse on reserved customers.

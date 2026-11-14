@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.financial_calendar import build_financial_calendar
 from src.financial_engine import FinancialEngine
 from src.cash_flow import forecast_cash_flow
+from scripts.calendar_risk_demo import build_risk_demo
 
 
 def recurring_demo_rows():
@@ -57,7 +58,7 @@ def main():
     demo["sourceNotice"] = "Fictional ledger for demonstrating monthly bills and yearly renewals. Separate from the bank-data customer and Home."
     destination = root / "ui-skeleton/server/calendar"
     destination.mkdir(parents=True, exist_ok=True)
-    for name, payload in [("engine", actual), ("regular", stable), ("recurring", demo), ("subscriptions", sub_demo)]:
+    for name, payload in [("risk", build_risk_demo()), ("engine", actual), ("regular", stable), ("recurring", demo), ("subscriptions", sub_demo)]:
         payload["generatedAt"] = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
         (destination / f"{name}.json").write_text(json.dumps(payload, indent=2) + "\n")
         print(f"{name}: {len(payload['events'])} calendar entries; {len(payload['daily'])} forecast days")

@@ -1,15 +1,15 @@
-import { eventsInRange, monthDays, shiftMonth, validateCalendar } from './calendar-model.mjs';
+import { eventsInRange, shiftMonth, validateCalendar, isDate, visibleEvents, eventGroup, calendarPeriod, movePeriod, restoreCalendarView, visibilityDefaults } from './calendar-model.mjs';
 
 const $ = (id) => document.getElementById(id);
 const page = $('calendar-page');
-const customers = { engine: 'CUST00005', regular: 'CUST00003', recurring: 'CALENDAR-DEMO', subscriptions: 'SUBSCRIPTIONS-DEMO' };
+const customers = { risk: 'RISK-DEMO', engine: 'CUST00005', regular: 'CUST00003', recurring: 'CALENDAR-DEMO', subscriptions: 'SUBSCRIPTIONS-DEMO' };
 const euro = (amount) => new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' }).format(amount / 100);
 const dateLabel = (day, options = { day: 'numeric', month: 'short' }) => new Intl.DateTimeFormat('en-GB', { ...options, timeZone: 'UTC' }).format(new Date(`${day}T12:00:00Z`));
 const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Riga', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const create = (tag, text, className) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (className) node.className = className; return node; };
-const read = (key) => { try { return localStorage.getItem(`calendar-v2:${key}`); } catch { return null; } };
-const remember = (key, value) => { try { localStorage.setItem(`calendar-v2:${key}`, value); } catch { /* Storage is optional. */ } };
-let data, month, selectedDay = null, filter = 'all', activeSource = 'regular', controller, busy = false;
+const read = (key) => { try { return localStorage.getItem(`calendar-v3:${key}`); } catch { return null; } };
+const remember = (key, value) => { try { localStorage.setItem(`calendar-v3:${key}`, value); } catch { /* Storage is optional. */ } };
+let data, anchor, view = 'month', visibility = { ...visibilityDefaults }, activeSource = 'risk', controller, busy = false;
 
 function showDialog(title, content, returnFocus) {
   const dialog = $('calendar-detail');
@@ -57,17 +57,17 @@ function eventButton(event, onClick) {
 }
 
 function openDay(day) {
-  // Always show all payments on the date, even when the month has a filter.
-  const entries = eventsInRange(data.events, day, day);
+  const entries = eventsInRange(visibleEvents(data.events, visibility), day, day);
   const list = create('div', undefined, 'calendar-day-payments');
   const returnFocus = document.querySelector(`[data-calendar-date="${day}"]`);
-  if (!entries.length) list.append(create('p', 'No regular payments scheduled on this date. Irregular spending is not shown in this calendar.', 'calendar-empty'));
+  if (!entries.length) list.append(create('p', 'No payments match the checked categories on this date. Irregular spending is not shown.', 'calendar-empty'));
   for (const event of entries) list.append(eventButton(event, () => openEvent(event, returnFocus, () => openDay(day))));
   showDialog(dateLabel(day, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), [list], returnFocus);
 }
 
 function openNotice(notice, button) {
   const content = [create('p', notice.summary, 'calendar-detail-note'), create('p', notice.explanation)];
+  if (notice.isIllustrative) content.unshift(create('p', 'ILLUSTRATIVE SCENARIO · FICTIONAL DATA', 'calendar-demo-badge'));
   if (notice.monthlyTotals?.length) {
     content.push(create('h3', 'How your spending changed'));
     const list = create('dl', undefined, 'calendar-notice-facts');
@@ -93,13 +93,14 @@ function openNotice(notice, button) {
 
 function renderNotices() {
   const list = $('calendar-notifications'); list.replaceChildren();
-  $('calendar-analysis-date').textContent = `Analysis through ${dateLabel(data.asOf, { day: 'numeric', month: 'short', year: 'numeric' })} · selected customer only`;
-  const notices = data.notifications ?? [];
+  $('calendar-notifications-section').hidden = !visibility.alerts;
+  $('calendar-analysis-date').textContent = `${data.isIllustrative ? 'Fictional scenario · ' : ''}Analysis through ${dateLabel(data.asOf, { day: 'numeric', month: 'short', year: 'numeric' })} · selected customer only`;
+  const notices = (data.notifications ?? []).filter(notice => notice.kind !== 'bill_timing_uncertain');
   if (!notices.length) list.append(create('p', 'No spending-pattern alerts identified in the available data. This does not guarantee that future spending is affordable.', 'calendar-empty'));
   for (const notice of notices) {
     const button = create('button', undefined, `calendar-notification notification-${notice.severity}`); button.type = 'button'; button.disabled = busy;
     button.dataset.noticeKind = notice.kind;
-    button.append(create('span', notice.severity === 'warning' ? 'SPENDING ALERT' : 'WORTH CHECKING', 'calendar-notification-label'), create('strong', notice.title), create('span', notice.summary), create('small', 'View details →'));
+    button.append(create('span', notice.isIllustrative ? 'DEMO · POSSIBLE CASH SHORTFALL' : notice.severity === 'warning' ? 'SPENDING ALERT' : 'WORTH CHECKING', 'calendar-notification-label'), create('strong', notice.title), create('span', notice.summary), create('small', 'View details →'));
     button.addEventListener('click', () => openNotice(notice, button)); list.append(button);
   }
 }
@@ -111,7 +112,7 @@ function connectCalendar() {
     content.push(create('p', 'A private calendar connection is needed for live account data. This demo only exports its public sample calendars.'));
   } else {
     const feed = new URL('/api/calendar-feed', 'https://junction-money-ui.vercel.app'); feed.searchParams.set('source', activeSource);
-    content.push(create('p', `Connect “${data.label}” as a separate calendar. It contains estimated payment names and dates for this selected sample; balances and transaction IDs are not shared.`));
+    content.push(create('p', `Connect “${data.label}” as a separate calendar. It includes all payment categories for this selected sample, regardless of the app checkboxes; balances and transaction IDs are not shared.`));
     const google = create('a', 'Open Google Calendar', 'calendar-connect');
     const destination = new URL('https://calendar.google.com/calendar/u/0/r'); destination.searchParams.set('cid', feed.href);
     google.href = destination.href; google.target = '_blank'; google.rel = 'noopener noreferrer'; google.id = 'calendar-google-link'; content.push(google);
@@ -127,45 +128,66 @@ function connectCalendar() {
   showDialog('Connect to Google Calendar', content, $('calendar-connect'));
 }
 
+function saveView() { remember(`${activeSource}:view`, JSON.stringify({ view, anchor, visibility })); }
+function clampDate(day) { return day < data.rangeStart ? data.rangeStart : day > data.rangeEnd ? data.rangeEnd : day; }
+function canMove(offset) {
+  const period = calendarPeriod(view, movePeriod(view, anchor, offset));
+  return period.end >= data.rangeStart && period.start <= data.rangeEnd;
+}
 function render() {
   if (!data) return;
   $('calendar-connect').disabled = busy;
+  $('calendar-data-label').textContent = data.isIllustrative ? 'Demo household · fictional transactions' : data.sourceNotice;
+  $('calendar-data-label').classList.toggle('is-demo', Boolean(data.isIllustrative));
   renderNotices();
-  $('calendar-month').textContent = dateLabel(`${month}-01`, { month: 'long', year: 'numeric' });
-  $('calendar-prev').disabled = busy || month <= data.rangeStart.slice(0, 7);
-  $('calendar-next').disabled = busy || month >= data.rangeEnd.slice(0, 7);
+  const period = calendarPeriod(view, anchor);
+  const heading = view === 'month' ? dateLabel(anchor, { month: 'long', year: 'numeric' })
+    : view === 'week' ? `${dateLabel(period.start)} – ${dateLabel(period.end, { day: 'numeric', month: 'short', year: 'numeric' })}`
+    : dateLabel(anchor, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+  $('calendar-month').textContent = heading;
+  for (const [id, offset, label] of [['calendar-prev', -1, 'Previous'], ['calendar-next', 1, 'Next']]) {
+    $(id).disabled = busy || !canMove(offset); $(id).setAttribute('aria-label', `${label} ${view}`);
+  }
+  document.querySelectorAll('[data-calendar-view]').forEach(button => { button.disabled = busy; button.setAttribute('aria-pressed', String(button.dataset.calendarView === view)); });
+  document.querySelectorAll('[data-calendar-show]').forEach(input => { input.disabled = busy; input.checked = visibility[input.dataset.calendarShow]; });
+  $('calendar-jump-wrap').hidden = view !== 'month'; $('calendar-date-wrap').hidden = view === 'month';
+  const dateInput = $('calendar-date'); dateInput.value = anchor; dateInput.min = data.rangeStart; dateInput.max = data.rangeEnd; dateInput.disabled = busy;
   const jump = $('calendar-jump'); jump.replaceChildren(); jump.disabled = busy;
   for (let optionMonth = data.rangeStart.slice(0, 7); optionMonth <= data.rangeEnd.slice(0, 7); optionMonth = shiftMonth(optionMonth, 1)) {
-    const option = create('option', dateLabel(`${optionMonth}-01`, { month: 'long', year: 'numeric' })); option.value = optionMonth; option.selected = optionMonth === month; jump.append(option);
+    const option = create('option', dateLabel(`${optionMonth}-01`, { month: 'long', year: 'numeric' })); option.value = optionMonth; option.selected = optionMonth === anchor.slice(0, 7); jump.append(option);
   }
-  const days = monthDays(month); const lastDay = days.at(-1);
-  const monthEvents = eventsInRange(data.events, `${month}-01`, lastDay, filter);
-  const grid = $('calendar-grid'); grid.replaceChildren();
-  for (const day of days) {
+  const shown = visibleEvents(data.events, visibility);
+  const events = eventsInRange(shown, period.start, period.end);
+  const grid = $('calendar-grid'); grid.replaceChildren(); grid.dataset.view = view;
+  page.querySelector('.calendar-weekdays').hidden = view === 'day';
+  if (view === 'day') {
+    const hero = create('div', undefined, 'calendar-day-summary');
+    hero.append(create('strong', dateLabel(anchor, { weekday: 'long' })), create('span', `${events.length} ${events.length === 1 ? 'payment' : 'payments'} · estimated dates`)); grid.append(hero);
+  } else for (const day of period.days) {
     if (!day) { grid.append(create('span', '', 'calendar-spacer')); continue; }
-    const entries = eventsInRange(monthEvents, day, day);
+    const entries = eventsInRange(events, day, day);
     const button = create('button', undefined, 'calendar-day'); button.type = 'button'; button.dataset.calendarDate = day;
     button.disabled = busy || day < data.rangeStart || day > data.rangeEnd;
     button.append(create('span', String(Number(day.slice(-2)))));
-    button.setAttribute('aria-pressed', String(selectedDay === day));
+    button.setAttribute('aria-pressed', String(anchor === day));
     if (day === today) { button.classList.add('is-today'); button.setAttribute('aria-current', 'date'); }
     const dots = create('span', undefined, 'calendar-dots');
-    for (const kind of [...new Set(entries.map((entry) => entry.kind))]) dots.append(create('i', '', `dot-${kind}`));
+    for (const kind of [...new Set(entries.map(eventGroup))]) dots.append(create('i', '', `dot-${kind}`));
     button.append(dots);
     button.setAttribute('aria-label', `${dateLabel(day, { weekday: 'long', day: 'numeric', month: 'long' })}, ${entries.length} matching payments. Open date details`);
-    button.addEventListener('click', () => { selectedDay = day; render(); openDay(day); });
+    button.addEventListener('click', () => { anchor = day; saveView(); render(); openDay(day); });
     grid.append(button);
   }
-  $('calendar-selection').textContent = selectedDay ? dateLabel(selectedDay, { weekday: 'long', day: 'numeric', month: 'short' }) : 'This month';
-  $('calendar-clear-day').hidden = !selectedDay;
+  $('calendar-selection').textContent = view === 'day' ? 'Payments on this date' : view === 'week' ? 'Payments this week' : 'Payments this month';
   const agenda = $('calendar-agenda'); agenda.replaceChildren();
-  const events = selectedDay ? eventsInRange(monthEvents, selectedDay, selectedDay) : monthEvents;
   $('calendar-count').textContent = `${events.length} ${events.length === 1 ? 'payment' : 'payments'}`;
-  if (!events.length) agenda.append(create('p', 'No regular payments with predictable dates in this selection. Irregular spending is not shown.', 'calendar-empty'));
+  if (!events.length) agenda.append(create('p', Object.entries(visibility).some(([key, checked]) => key !== 'alerts' && checked)
+    ? 'No payments match your selection in this period. You can change the date or checked categories.'
+    : 'No payment categories selected. Tick a box above to show payments.', 'calendar-empty'));
   for (const event of events) agenda.append(eventButton(event, (button) => openEvent(event, button)));
   const omissions = data.omittedPatterns ?? [];
   $('calendar-warning').textContent = data.notice + (omissions.length ? ` Not scheduled: ${[...new Set(omissions.map((item) => item.title))].join(', ')} — the history does not establish a consistent date or amount.` : '');
-  $('calendar-coverage').textContent = `History / schedule as of ${dateLabel(data.asOf, { day: 'numeric', month: 'short', year: 'numeric' })}. Monthly view through ${dateLabel(data.rangeEnd, { month: 'long', year: 'numeric' })}.`;
+  $('calendar-coverage').textContent = `History / schedule as of ${dateLabel(data.asOf, { day: 'numeric', month: 'short', year: 'numeric' })}. Available through ${dateLabel(data.rangeEnd, { month: 'long', year: 'numeric' })}.`;
 }
 
 async function load(source) {
@@ -176,10 +198,10 @@ async function load(source) {
     if (!response.ok) throw new Error('Calendar unavailable');
     const result = validateCalendar(await response.json(), customers[source]);
     if (request !== controller) return;
-    const previousMonth = source === activeSource && month ? month : read(`${source}:month`);
+    if (data) saveView();
     data = result; activeSource = source;
-    month = previousMonth && previousMonth >= data.rangeStart.slice(0, 7) && previousMonth <= data.rangeEnd.slice(0, 7) ? previousMonth : data.rangeStart.slice(0, 7);
-    selectedDay = null; remember('source', source); $('calendar-source').value = source;
+    ({ view, anchor, visibility } = restoreCalendarView(read(`${source}:view`), data.rangeStart, data.rangeEnd));
+    remember('source', source); $('calendar-source').value = source;
     $('calendar-source-note').textContent = data.sourceNotice;
     $('calendar-status').textContent = data.connection === 'engine' ? 'Refreshed from your financial engine' : 'Saved customer / demo data · no live bank connection';
   } catch {
@@ -192,21 +214,23 @@ async function load(source) {
     if (request === controller) { busy = false; page.setAttribute('aria-busy', 'false'); render(); }
   }
 }
-function changeMonth(next) {
-  if (!data || busy || next < data.rangeStart.slice(0, 7) || next > data.rangeEnd.slice(0, 7)) return;
-  month = next; selectedDay = null; remember(`${activeSource}:month`, month); render();
+function changeDate(next) {
+  if (!data || busy || !isDate(next)) return;
+  anchor = clampDate(next); saveView(); render();
 }
 $('calendar-connect').addEventListener('click', connectCalendar);
 $('calendar-source').addEventListener('change', (event) => load(event.target.value));
 $('calendar-retry').addEventListener('click', () => load($('calendar-source').value));
-$('calendar-prev').addEventListener('click', () => changeMonth(shiftMonth(month, -1)));
-$('calendar-next').addEventListener('click', () => changeMonth(shiftMonth(month, 1)));
-$('calendar-jump').addEventListener('change', (event) => changeMonth(event.target.value));
-$('calendar-reset-month').addEventListener('click', () => { if (data) changeMonth(data.rangeStart.slice(0, 7)); });
-$('calendar-clear-day').addEventListener('click', () => { selectedDay = null; render(); });
-document.querySelectorAll('[data-calendar-filter]').forEach((button) => button.addEventListener('click', () => {
-  filter = button.dataset.calendarFilter;
-  document.querySelectorAll('[data-calendar-filter]').forEach((item) => item.setAttribute('aria-pressed', String(item === button))); render();
+$('calendar-prev').addEventListener('click', () => { if (data && canMove(-1)) changeDate(movePeriod(view, anchor, -1)); });
+$('calendar-next').addEventListener('click', () => { if (data && canMove(1)) changeDate(movePeriod(view, anchor, 1)); });
+$('calendar-jump').addEventListener('change', (event) => changeDate(`${event.target.value}-01`));
+$('calendar-date').addEventListener('change', (event) => changeDate(event.target.value));
+$('calendar-reset-month').addEventListener('click', () => { if (data) changeDate(data.rangeStart); });
+document.querySelectorAll('[data-calendar-view]').forEach(button => button.addEventListener('click', () => {
+  if (!data || busy) return; view = button.dataset.calendarView; saveView(); render();
+}));
+document.querySelectorAll('[data-calendar-show]').forEach(input => input.addEventListener('change', () => {
+  if (!data || busy) return; visibility[input.dataset.calendarShow] = input.checked; saveView(); render();
 }));
 $('calendar-detail-close').addEventListener('click', () => $('calendar-detail').close());
 const savedSource = read('source'); if (Object.hasOwn(customers, savedSource)) $('calendar-source').value = savedSource;
