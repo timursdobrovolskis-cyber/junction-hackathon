@@ -97,10 +97,37 @@ function ShortTermGoal({ goal, updateGoal, removeGoal, result, baseline, mode, o
 }
 
 function LongTermGoal({ goal, updateGoal, mode }) {
+  const [selectedMonth, setSelectedMonth] = useState(goal.years * 12);
   const safeSurplus = safeSurplusCents(mode);
   const monthlyCents = Math.max(0, goal.monthlyCents);
-  const contributedCents = monthlyCents * 12 * goal.years;
-  const projectedCents = Array.from({ length: goal.years * 12 }).reduce((total) => Math.round(total * (1 + annualRates[goal.risk] / 12) + monthlyCents), 0);
+  const monthCount = goal.years * 12;
+  const chartData = [{ month: 0, contributedCents: 0, projectedCents: 0 }];
+  let projectedValue = 0;
+  for (let month = 1; month <= monthCount; month += 1) {
+    projectedValue = Math.round(projectedValue * (1 + annualRates[goal.risk] / 12) + monthlyCents);
+    chartData.push({ month, contributedCents: monthlyCents * month, projectedCents: projectedValue });
+  }
+  const projectedCents = chartData[monthCount].projectedCents;
+  const contributedCents = chartData[monthCount].contributedCents;
+  const activeMonth = Math.min(selectedMonth, monthCount);
+  const activePoint = chartData[activeMonth];
+  const maxValue = Math.max(1, projectedCents);
+  const chartWidth = 320;
+  const chartHeight = 150;
+  const pointX = (month) => (month / monthCount) * chartWidth;
+  const pointY = (cents) => chartHeight - (cents / maxValue) * chartHeight;
+  const projectedPath = chartData.map((point, index) => `${index ? 'L' : 'M'} ${pointX(point.month).toFixed(2)} ${pointY(point.projectedCents).toFixed(2)}`).join(' ');
+  const contributedPath = chartData.map((point, index) => `${index ? 'L' : 'M'} ${pointX(point.month).toFixed(2)} ${pointY(point.contributedCents).toFixed(2)}`).join(' ');
+  const growthAreaPath = `${projectedPath} ${chartData.slice().reverse().map((point) => `L ${pointX(point.month).toFixed(2)} ${pointY(point.contributedCents).toFixed(2)}`).join(' ')} Z`;
+  const cursorX = pointX(activeMonth);
+  const cursorProjectedY = pointY(activePoint.projectedCents);
+  const cursorContributedY = pointY(activePoint.contributedCents);
+  const periodLabel = activeMonth === 0 ? 'Starting point' : `Year ${Math.ceil(activeMonth / 12)} · Month ${activeMonth}`;
+  const pointerSelect = (event) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+    setSelectedMonth(Math.round(ratio * monthCount));
+  };
   const aboveSurplus = monthlyCents > safeSurplus;
   return <section className="card goal-card long-term-card">
     <div className="goal-section-heading"><span className="goal-emoji">🌳</span><div><div className="eyebrow">LONG-TERM · 2+ YEARS</div><h2>Build your future, month by month</h2></div></div>
@@ -112,7 +139,21 @@ function LongTermGoal({ goal, updateGoal, mode }) {
     {aboveSurplus && <div className="surplus-warning" role="status"><Sparkles size={16}/><span>Your chosen contribution is above this demo’s detected surplus. Check your cash buffer and adjust if needed.</span></div>}
     <div className="goal-field-row long-controls"><label className="field-label">Simulation scenario<select value={goal.risk} onChange={(event) => updateGoal({ risk: event.target.value })}><option>Conservative</option><option>Balanced</option><option>Growth</option></select></label><label className="field-label">Time to grow<select value={goal.years} onChange={(event) => updateGoal({ years: Number(event.target.value) })}>{[2,5,10,15,20,25,30].map(year => <option key={year} value={year}>{year} years</option>)}</select></label></div>
     <div className="simulation-context"><ShieldCheck size={16}/><span>This is an educational comparison, not a suggestion to buy a fund. No account access, order, or transfer is connected here.</span></div>
-    <div className="growth-box"><div className="growth-heading"><strong>{goal.years}-year illustration</strong><span>Non-guaranteed simulation</span></div><div className="growth-compare"><div><small>Cash contributed</small><strong>{formatEuro(contributedCents)}</strong></div><div><small>Projected fund value</small><strong>{formatEuro(projectedCents)}</strong></div></div><div className="growth-bar"><span style={{ width: `${projectedCents ? Math.min(100, Math.round(contributedCents / projectedCents * 100)) : 0}%` }}/></div><div className="growth-legend"><span><i className="contributed-dot"/>Total contributed {formatEuro(contributedCents)}</span><span><i/>Estimated market growth {formatEuro(Math.max(0, projectedCents-contributedCents))}</span></div><small className="simulation-note">Assumes {Math.round(annualRates[goal.risk] * 100)}% annual return, compounded monthly. Returns are not guaranteed and can be negative. No money moves.</small></div>
+    <div className="growth-box"><div className="growth-heading"><strong>{goal.years}-year illustration</strong><span>Non-guaranteed simulation</span></div>
+      <div className="growth-compare"><div><small>Cash contributed</small><strong>{formatEuro(contributedCents)}</strong></div><div><small>Projected fund value</small><strong>{formatEuro(projectedCents)}</strong></div></div>
+      <div className="growth-chart-wrap">
+        <div className="chart-cursor-tooltip" style={{ left: `${Math.max(18, Math.min(82, activeMonth / monthCount * 100))}%` }} aria-live="polite"><strong>{periodLabel}</strong><span>Contributed {formatEuro(activePoint.contributedCents)}</span><span>Fund illustration {formatEuro(activePoint.projectedCents)}</span><span>Estimated growth {formatEuro(Math.max(0, activePoint.projectedCents - activePoint.contributedCents))}</span></div>
+        <svg className="growth-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} preserveAspectRatio="none" role="img" aria-label={`${goal.years}-year chart comparing monthly contributions with an illustrative fund value`} onPointerMove={pointerSelect} onPointerDown={pointerSelect}>
+          {[0.25,0.5,0.75,1].map(fraction => <line key={fraction} x1="0" x2={chartWidth} y1={chartHeight * (1 - fraction)} y2={chartHeight * (1 - fraction)} className="chart-gridline"/>)}
+          <path d={growthAreaPath} className="chart-growth-area"/><path d={contributedPath} className="chart-contribution-line"/><path d={projectedPath} className="chart-projection-line"/>
+          <line x1={cursorX} x2={cursorX} y1="0" y2={chartHeight} className="chart-cursor-line"/><circle cx={cursorX} cy={cursorProjectedY} r="4" className="chart-cursor-projected"/><circle cx={cursorX} cy={cursorContributedY} r="4" className="chart-cursor-contributed"/>
+        </svg>
+      </div>
+      <div className="chart-axis-labels"><span>Now</span><span>Year {goal.years}</span></div>
+      <input className="chart-scrubber" type="range" min="0" max={monthCount} value={activeMonth} onChange={(event) => setSelectedMonth(Number(event.target.value))} aria-label="Explore contributions and projected fund value by month"/>
+      <div className="growth-legend"><span><i className="contributed-dot"/>Contributions over time</span><span><i/>Estimated compounded growth</span></div>
+      <small className="simulation-note">Assumes {Math.round(annualRates[goal.risk] * 100)}% annual return, compounded monthly. Returns are not guaranteed and can be negative. This is an illustration, not a product recommendation. No money moves.</small>
+    </div>
     {mode === 'afterExpense' && <div className="insight alert-insight"><span className="insight-icon"><Sparkles size={18}/></span><p>After the unexpected expense, protect your cash buffer first. If needed, pause or lower this monthly investment before changing essential spending.</p></div>}
   </section>;
 }
