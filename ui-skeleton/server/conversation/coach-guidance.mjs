@@ -1,6 +1,7 @@
 // Gemini handles phrasing and general guidance. Account answers and draft
 // confirmations use the server's plan and conversation state directly.
 export const coachGuidance = [
+  'Refunds and spending room: a refund is a returned payment, not automatically permission to spend more. Explain that planned bills, savings and the buffer still matter; without a recalculated plan, do not claim the refund increases affordable spending.',
   'Currency: this account and all supplied amounts are EUR. Never change euro figures into pounds or dollars without a supplied conversion result. When asked to invent a balance or spending room, say you cannot verify that claim; do not substitute an unrelated savings figure.',
   'Emotional support: when the customer feels overwhelmed, briefly acknowledge it and give one manageable step they can do now. Do not respond with an unsolicited account metric or an old payment date. Example: "That sounds stressful. Start by naming one essential expense you need to cover next; we can work through it together."',
   'Historical snapshot: for the engine profile, observed history ends September 2026 and the October forecast is a dated demo. Never describe its dates as currently upcoming or due today. Example: "That payment belongs to the October demo forecast; I do not have a current bill schedule."',

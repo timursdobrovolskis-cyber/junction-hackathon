@@ -6,7 +6,7 @@ sent as training data. The evaluation examples are original synthetic dialogue.
 
 ## Repeatable checks
 
-`test/fixtures/coach-evaluation.json` contains 12 multi-turn scenarios checked by
+`test/fixtures/coach-evaluation.json` contains 18 multi-turn scenarios checked by
 `test/coach-evaluation.test.mjs`. They exercise the actual conversation adapter,
 not only the underlying draft state machine. Known financial questions must use
 server calculations: an unexpected model fallback fails the test. Replies are
@@ -18,7 +18,7 @@ COACH_TEST_URL=http://127.0.0.1:4174 python3 ui-skeleton/scripts/check-coach-dia
 COACH_TEST_URL=https://junction-money-ui.vercel.app python3 ui-skeleton/scripts/evaluate-coach-live.py
 ```
 
-All 127 automated tests pass. The browser script uses seven requests and the live
+All 140 automated tests pass. The browser script uses seven requests and the live
 model review uses five. The app permits twelve requests/minute per instance/IP;
 do not repeatedly run both without allowing the rate window to clear. Browser
 checks need Python Playwright and Chromium at `/usr/bin/chromium`.
@@ -52,3 +52,28 @@ expected facts against the ledger before adding them, and rerun the model review
 when changing models or instructions. The app still uses synthetic account data,
 a 30-day affordability forecast, and conditional longer-term contributions; this
 work does not create a trained multi-year forecasting model.
+
+## Second evaluation pass
+
+Added refund and category follow-ups, explicit-date follow-ups, combined past
+spending/future-savings questions, income loss and topic-switching checks. Refund
+math includes only positive spending entries, with evidence and separate gross
+spending. Partial/missing periods cannot masquerade as a full zero. Stored query
+metadata validates the requested measure and never trusts stored totals.
+
+A live prompt about overdue rent and crypto had returned a generic emergency-fund
+definition. Overdue-essential guidance now takes priority, discusses preserving
+needed cash and contacting the provider, and keeps pending confirmations intact.
+Refund guidance explains that a returned payment is not automatically extra
+affordable spending. The income-loss scenario asks for a revised monthly
+contribution after essential costs rather than reusing the old target.
+
+```sh
+COACH_TEST_URL=http://127.0.0.1:4174 python3 ui-skeleton/scripts/check-coach-edge-cases.py
+COACH_TEST_URL=https://junction-money-ui.vercel.app python3 ui-skeleton/scripts/evaluate-coach-live.py --edge
+```
+
+The edge browser script uses seven requests; the edge model review uses five.
+The mixed-question response reports observed spending and conditional future
+contributions separately. Its next follow-up concerns the savings illustration.
+This still does not train Gemini weights or extend the affordability engine.
