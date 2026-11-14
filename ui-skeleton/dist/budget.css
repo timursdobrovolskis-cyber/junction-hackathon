@@ -56,14 +56,18 @@
 .budget-trend{border-block:1px solid #e6ece6;margin:20px 0 24px;font-size:12px;color:#45654e}.budget-trend summary{cursor:pointer;min-height:44px;align-content:center}.budget-month-bars{display:flex;gap:5px;align-items:flex-end;padding:15px 0 20px}.budget-month-bars button{flex:1;min-width:0;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;gap:8px;font-size:9px;color:#66796b}.budget-month-bars small{font-size:8px;letter-spacing:-.3px;white-space:nowrap}.month-bar{width:70%;background:#bfd6c2;border-radius:4px 4px 0 0}.budget-month-bars button[aria-pressed=true] .month-bar{background:#007841}.budget-month-bars button:hover .month-bar{background:#669e74}
 .budget-category{scroll-margin-top:18px}.home-plan-status{margin:10px 0 12px;padding:9px 11px;border-radius:8px;background:#ffffff0b}.home-plan-status>strong{display:block;font-size:11px;font-weight:550;color:#d4fad9}.budget-hero .home-plan-status .budget-caption{font-size:9px;line-height:1.5;margin:4px 0 0;color:#c8ddce}
 /* Mid-month budget (three baskets) */
-.budget-hero .per-day{font-size:.42em;font-weight:550;color:#c8ddce;margin-left:2px}
-.home-basket{display:block;padding:8px 0;text-decoration:none;color:#d4e8d9;border-bottom:1px solid #ffffff14}
-.home-basket:last-child{border-bottom:0}
-.home-basket-top{display:flex;justify-content:space-between;align-items:baseline;font-size:12px}
-.home-basket-top strong{color:#fff;font-size:12px;font-weight:650}
-.home-basket-bar{height:5px;border-radius:99px;background:#ffffff1f;margin:6px 0 4px;overflow:hidden}
-.home-basket-bar span{display:block;height:100%;border-radius:99px;background:#91fa9b;transition:width .6s cubic-bezier(.2,.8,.2,1)}
-.home-basket-bar .fill-fixed{background:#c8ddce}.home-basket-bar .fill-setAside{background:#d1af60}
-.home-basket small{display:block;font-size:9.5px;color:#a9c4b0;line-height:1.4}
-.budget-demo-label{font-size:9px;color:#a9c4b0;margin:6px 0 0;opacity:.85}
-.budget-hero .pace-note{color:#f3d58a}
+.budget-hero .per-day{font-size:.38em;font-weight:500;color:#a9c4b0;margin-left:3px;letter-spacing:0}
+.budget-hero .home-budget-categories{border-top:1px solid #ffffff1a;padding-top:4px;margin-top:4px}
+.home-basket{display:flex;align-items:center;gap:10px;padding:10px 0;text-decoration:none;color:#d4e8d9}
+.home-basket .basket-dot{width:8px;height:8px;border-radius:50%;flex:none}
+.dot-fixed{background:#c8ddce}.dot-setAside{background:#d1af60}.dot-everyday{background:#91fa9b}
+.home-basket .basket-name{font-size:13px;flex:1}
+.home-basket strong{color:#fff;font-size:14px;font-weight:650}
+.home-basket strong small{font-size:10px;font-weight:450;color:#93b09b}
+.budget-demo-label{font-size:9.5px;color:#93b09b;margin:0 0 10px;text-align:center}
+.home-plan-status.live-alert{background:#fff;border-radius:16px;padding:14px;margin:12px 0 12px}
+.home-plan-status.live-alert>strong{color:#18221c;font-size:14px;font-weight:700}
+.budget-hero .home-plan-status.live-alert .budget-caption{color:#4e5c52;font-size:11.5px;margin-top:3px}
+.live-alert .pace-note{margin:10px 0 0;padding-top:10px;border-top:1px solid #e6ece7;font-size:11px;color:#7a5600}
+.alert-action{display:inline-flex;margin-top:10px;padding:7px 12px;border-radius:99px;background:#007841;color:#fff;font-size:11.5px;font-weight:600;text-decoration:none}
+.budget-hero .small-ring span{font-size:10.5px;font-weight:650}

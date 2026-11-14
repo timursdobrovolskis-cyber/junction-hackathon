@@ -14,7 +14,7 @@ function ring(target,rows,key) {
 }
 function paintHome(data) {
   const live=data.live;
-  document.querySelectorAll('.pace-note,.budget-demo-label').forEach(n=>n.remove());
+  document.querySelectorAll('.pace-note,.budget-demo-label,.alert-action').forEach(n=>n.remove());
   ring(el('home-budget-ring'),data.categories,'plannedCents');
   el('home-budget-categories').replaceChildren();
   if(!live){
@@ -29,32 +29,40 @@ function paintHome(data) {
     return;
   }
   const eyebrow=document.querySelector('.home-budget-overview .budget-eyebrow');
-  if(eyebrow)eyebrow.textContent=`SAFE TO SPEND · ${live.daysLeft} DAYS LEFT`;
+  if(eyebrow)eyebrow.textContent='Safe to spend today';
   el('home-budget-total').innerHTML='';
-  el('home-budget-total').append(document.createTextNode(money(live.safePerDayCents)),node('small',' / day','per-day'));
+  el('home-budget-total').append(document.createTextNode(money(live.safePerDayCents)),node('small','/day','per-day'));
   const sub=document.querySelector('.home-budget-overview p:last-child');
-  if(sub)sub.textContent=`${money(live.everydayLeftCents)} everyday money left after bills and savings`;
+  if(sub)sub.textContent=`${money(live.everydayLeftCents)} left · ${live.daysLeft} days to go`;
+  const basketColor={fixed:'#c8ddce',setAside:'#d1af60',everyday:'#91fa9b'};
+  let at=0;const sum=live.baskets.reduce((s,b)=>s+b.plannedCents,0);
+  const ringEl=el('home-budget-ring');
+  ringEl.style.background=`conic-gradient(${live.baskets.map(b=>{const end=at+b.plannedCents/sum*100;const stop=`${basketColor[b.id]} ${at}% ${end}%`;at=end;return stop;}).join(',')})`;
+  ringEl.setAttribute('aria-label',live.baskets.map(b=>`${b.label}: ${money(b.plannedCents)}`).join('; '));
+  const ringLabel=ringEl.querySelector('span');if(ringLabel)ringLabel.textContent=new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(sum/100);
   for(const b of live.baskets){
     const row=node('a',undefined,'home-basket');row.href='#budget';
-    const pct=b.plannedCents?Math.min(100,Math.round(b.spentCents/b.plannedCents*100)):0;
-    const top=node('div',undefined,'home-basket-top');
-    top.append(node('span',b.label),node('strong',b.id==='setAside'?`${money(b.plannedCents)} reserved`:`${money(Math.max(0,b.remainingCents))} left`));
-    const bar=node('div',undefined,'home-basket-bar');const fill=node('span');fill.style.width=(b.id==='setAside'?100:pct)+'%';fill.className='fill-'+b.id;bar.append(fill);
-    row.append(top,bar,node('small',b.id==='setAside'?b.note:`${money(b.spentCents)} of ${money(b.plannedCents)} used · ${b.note}`));
+    const dot=node('span',undefined,'basket-dot dot-'+b.id);dot.setAttribute('aria-hidden','true');
+    const value=b.id==='setAside'?money(b.plannedCents):money(Math.max(0,b.remainingCents));
+    const meta=b.id==='setAside'?'saved first':'left';
+    const amt=node('strong',value);amt.append(node('small',' '+meta));
+    row.append(dot,node('span',b.label,'basket-name'),amt);
     el('home-budget-categories').append(row);
   }
   const status=el('home-budget-status'), note=el('home-budget-note');
   const o=live.overspend, p=live.pace;
+  const box=status.parentElement;box.classList.add('live-alert');
   if(o){
     status.textContent=`${o.category} is ${money(o.overCents)} over`;
-    note.textContent=o.move?`Cover it from ${o.move.from} (${money(o.move.fromRemainingCents)} left)? Your total stays the same.`:'Review this category before the month ends.';
-  } else {status.textContent='On track so far';note.textContent='Every category is within its limit.';}
+    note.textContent=o.move?`Cover it from ${o.move.from}. Your total stays the same.`:'Review this category.';
+    if(o.move){const btn=node('a',`Review moving ${money(o.move.amountCents)}`,'alert-action');btn.href='#budget';note.after(btn);}
+  } else {status.textContent='On track';note.textContent='Every category is within its limit.';}
   if(p.driver){
-    const pace=node('p',`At this pace ${p.driver.category.toLowerCase()} ends ~${money(p.driver.overCents)} over, leaving ${money(p.savingsAfterPaceCents)} of your ${money(p.savingsTargetCents)} savings target.`,'budget-caption pace-note');
-    note.after(pace);
+    const pace=node('p',`At this pace, ${p.driver.category.toLowerCase()} uses ${money(p.savingsTargetCents-p.savingsAfterPaceCents)} of your savings.`,'pace-note');
+    box.append(pace);
   }
-  const demo=node('p',live.replayLabel,'budget-demo-label');
-  el('home-budget-categories').after(demo);
+  const demo=node('p',`Demo · 14 Oct, replaying your August spending`,'budget-demo-label');
+  document.querySelector('.budget-hero-link')?.before(demo);
 }
 function render(data) {
   currentData=data;
