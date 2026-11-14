@@ -14,6 +14,7 @@ Open http://127.0.0.1:4174/preview.html. `.env.local` supplies `GEMINI_API_KEY` 
 
 ## What works
 
+- Financial Calendar tab: month/day views, forecast payment windows, monthly/yearly recurring candidates, evidence details, and engine-provided daily balances. See [the calendar guide](../docs/financial-calendar.md). This uses separate labelled examples and does not change Home's illustrative figures or saved plans.
 - Responsive Home, persistent navigation, expandable plan, purchase dialog with input validation.
 - Coach with suggested questions, multi-turn Gemini replies, loading/error/retry states, clear chat, and separate conversations for each selected example.
 - Home example matches the illustrative November figures shown on Home.

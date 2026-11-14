@@ -51,7 +51,7 @@ def make_handler(engine, allowed_origin=None, plan_service=None):
                 self.respond(404, {"error": "Not found"})
 
         def do_OPTIONS(self):
-            if (self.path != "/api/plan" and not (plan_service and self.plan_route())) or not allowed_origin or self.headers.get("Origin") != allowed_origin:
+            if (self.path not in {"/api/plan", "/api/calendar"} and not (plan_service and self.plan_route())) or not allowed_origin or self.headers.get("Origin") != allowed_origin:
                 self.respond(403, {"error": "Origin not allowed"})
                 return
             self.send_response(204)
@@ -61,6 +61,9 @@ def make_handler(engine, allowed_origin=None, plan_service=None):
             self.end_headers()
 
         def do_POST(self):
+            if self.path == "/api/calendar":
+                self.perform(lambda: engine.calendar(self.read_body()))
+                return
             route = self.plan_route()
             if self.path != "/api/plan" and not (plan_service and route and route[1]):
                 self.respond(404, {"error": "Not found"})

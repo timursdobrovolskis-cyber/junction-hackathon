@@ -9,7 +9,9 @@
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
   <link rel="preload" href="assets/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="calendar.css">
   <script src="app.js" defer></script>
+  <script type="module" src="calendar-ui.mjs"></script>
 </head>
 <body>
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -79,11 +81,31 @@
       </div>
       <p class="coach-preview-note">A preview of your space to talk things through.</p>
     </section>
+    <section id="calendar-page" class="page calendar-page" aria-labelledby="calendar-title" hidden>
+      <div class="calendar-heading"><span class="calendar-mark" aria-hidden="true"><svg class="icon"><use href="#i-calendar"/></svg></span><div><p>A LITTLE LOOK AHEAD</p><h1 id="calendar-title">Financial calendar</h1></div></div>
+      <label for="calendar-source" class="calendar-source-label">Choose an example</label>
+      <select id="calendar-source" class="calendar-source-select"><option value="engine">Transaction forecast · October 2026</option><option value="recurring">Monthly &amp; yearly costs · November 2026</option></select>
+      <p id="calendar-source-note" class="calendar-source-note">Payments and recurring costs, with their evidence.</p>
+      <p id="calendar-status" class="calendar-status" role="status"></p>
+      <p id="calendar-error" class="calendar-error" role="alert" hidden></p>
+      <div class="calendar-reset-row"><button type="button" id="calendar-reset-month">First forecast month</button><button type="button" id="calendar-retry">Refresh</button></div>
+      <div class="calendar-toolbar"><button type="button" id="calendar-prev" aria-label="Previous month" disabled>‹</button><h2 id="calendar-month" aria-live="polite">Your calendar</h2><button type="button" id="calendar-next" aria-label="Next month" disabled>›</button></div>
+      <div class="calendar-weekdays" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+      <div id="calendar-grid" class="calendar-grid" role="group" aria-label="Select a date"></div>
+      <div class="calendar-legend"><span><i></i>Cost window</span><span><i class="income"></i>Income window</span><span><i class="risk"></i>Buffer risk</span></div>
+      <div class="calendar-filters" role="group" aria-label="Filter calendar entries"><button type="button" data-calendar-filter="all" aria-pressed="true">All</button><button type="button" data-calendar-filter="bills" aria-pressed="false">Costs</button><button type="button" data-calendar-filter="income" aria-pressed="false">Income</button><button type="button" data-calendar-filter="yearly" aria-pressed="false">Yearly</button></div>
+      <div class="calendar-agenda-heading"><h2 id="calendar-selection">This month</h2><span id="calendar-count"></span></div>
+      <button type="button" id="calendar-clear-day" class="calendar-subtle" hidden>Show the whole month</button>
+      <div id="calendar-balance" class="calendar-balance" aria-live="polite"></div>
+      <div id="calendar-agenda" class="calendar-agenda" aria-live="polite"></div>
+      <p id="calendar-warning" class="calendar-notice"></p><p id="calendar-coverage" class="calendar-coverage"></p>
+    </section>
   </main>
 
   <nav class="bottom-nav" aria-label="Main navigation">
     <a href="#home" id="nav-home" class="nav-link active" aria-current="page"><svg class="icon"><use href="#i-home"/></svg><span>Home</span></a>
     <a href="#coach" id="nav-coach" class="nav-link"><svg class="icon"><use href="#i-coach"/></svg><span>Coach</span></a>
+    <a href="#calendar" id="nav-calendar" class="nav-link"><svg class="icon"><use href="#i-calendar"/></svg><span>Calendar</span></a>
   </nav>
 
   <dialog id="purchase-dialog" class="sheet purchase-sheet" aria-labelledby="purchase-title">
@@ -108,6 +130,10 @@
     <h2 id="info-title">A little space<br>for your money.</h2>
     <p id="info-copy">This is an interactive design sketch. All figures and dates are illustrative. It isn’t connected to an account, and no information is saved or sent.</p>
     <button class="primary-button" data-close>Got it<svg class="icon"><use href="#i-check"/></svg></button>
+  </dialog>
+  <dialog id="calendar-detail" class="sheet calendar-detail" aria-labelledby="calendar-detail-title">
+    <header class="sheet-header"><span class="section-kicker">PAYMENT DETAILS</span><button type="button" id="calendar-detail-close" class="icon-button" aria-label="Close payment details"><svg class="icon"><use href="#i-close"/></svg></button></header>
+    <h2 id="calendar-detail-title"></h2><div id="calendar-detail-body" class="calendar-detail-body"></div>
   </dialog>
 </body>
 </html>

@@ -19,6 +19,8 @@ Build a transparent baseline first. For each stage: implement it, check represen
 
 ### Where to find the work
 
+- [Financial calendar](docs/financial-calendar.md): a third app tab, Python-generated recurring payment annotations, yearly candidates, transaction evidence, daily forecast/risk views, and an optional live `/api/calendar` connection. `npm run dev:app` opens the combined frontend; the saved calendar examples work without a key. Recurrences remain estimates and the calendar does not change financial plans.
+
 - [Conversational coach prototype](docs/chat-coach.md): run `npm run dev:chat` for a responsive chat UI with multi-turn goals, expenses, priorities, confirmations, and browser-local memory. The [conversation upgrade](docs/conversation-research.md) adds contextual corrections, source-linked education, question detours, date phrases, and confirmed expense edits/removal, with ten original evaluation conversations. It uses a bounded demo reply adapter; LLM replies and live engine connections remain pending.
 
 - [Combined financial engine](data/FINANCIAL_ENGINE.md): one CLI/API call for forecast, savings, budgets, and edit previews; original engine checks remain passing alongside saved-plan coverage.

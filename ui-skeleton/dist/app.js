@@ -38,16 +38,17 @@ $('amount-explanation').addEventListener('click', () => {
 
 function navigate() {
   if (location.hash === '#main') return;
-  const coach = location.hash === '#coach';
-  $('home-page').hidden = coach;
-  $('coach-page').hidden = !coach;
-  ['home', 'coach'].forEach((name) => {
-    const active = (name === 'coach') === coach;
+  const current = ['#coach', '#calendar'].includes(location.hash) ? location.hash.slice(1) : 'home';
+  const coach = current === 'coach';
+  ['home', 'coach', 'calendar'].forEach((name) => {
+    const active = name === current;
+    $(`${name}-page`).hidden = !active;
     $(`nav-${name}`).classList.toggle('active', active);
     if (active) $(`nav-${name}`).setAttribute('aria-current', 'page');
     else $(`nav-${name}`).removeAttribute('aria-current');
   });
   document.title = document.body.classList.contains('vest-theme') ? (coach ? 'Your coach — S-Pankki concept' : 'S-Pankki — financial coach concept') : (coach ? 'Your coach — Money' : 'Money — a little clearer');
+  if (current === 'calendar') document.title = 'Financial calendar — S-Pankki concept';
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 window.addEventListener('hashchange', navigate);

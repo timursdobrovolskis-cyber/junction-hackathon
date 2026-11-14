@@ -4,6 +4,7 @@
   "type": "module",
   "engines": { "node": ">=22" },
   "scripts": {
+    "dev:app": "npm --prefix ui-skeleton run dev",
     "dev:chat": "node scripts/serve_chat.mjs",
     "test": "node --test",
     "demo": "node examples/coach-demo.mjs",

@@ -2,6 +2,10 @@
 
 Start with [the build plan and current workflow](BUILD_PLAN.md) for the product direction, completed work, next steps, and three-person team responsibilities.
 
+The app now includes a [financial calendar](docs/financial-calendar.md). Run
+`npm run dev:app` and open http://127.0.0.1:4174/spendvest.html#calendar to browse
+estimated bills, income windows, monthly patterns and possible yearly renewals.
+
 - [Run the combined forecast, savings, and budget API](data/FINANCIAL_ENGINE.md) for UI and coach integration. No API key required.
 - [Review the spending-model experiment](data/SPENDING_MODEL_EXPERIMENT.md): v2 remains the default because v3 performed worse on reserved customers.
 - [Prepare the bank data](data/README.md).

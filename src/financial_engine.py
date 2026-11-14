@@ -20,6 +20,15 @@ class FinancialEngine:
         self.model = json.loads(Path(model).read_text())
         self.calibration = json.loads(Path(calibration).read_text())
 
+    def calendar(self, request):
+        from src.financial_calendar import build_financial_calendar
+        result = self.plan(request)
+        with closing(sqlite3.connect(self.database.as_uri() + "?mode=ro", uri=True)) as db:
+            db.row_factory = sqlite3.Row
+            rows = list(db.execute("SELECT * FROM transactions WHERE customer_id=? AND date<=? ORDER BY occurred_at,source_row",
+                                   (result["customerId"], result["asOf"])))
+        return build_financial_calendar(rows, result)
+
     def plan(self, request, *, expense_state=None, spending_plan=None, source=None, matching_decisions=None):
         allowed = {"customerId", "asOf", "bufferCents", "savingsTargetCents", "futureCommitments",
                    "savingsConfirmed", "commitmentsConfirmed", "adjustableCategories",
