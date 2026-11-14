@@ -1,0 +1,43 @@
+{
+  "currency": "EUR",
+  "asOf": "2026-11-14",
+  "goal": {
+    "label": "Trip",
+    "targetCents": 24000,
+    "savedCents": 15000,
+    "targetDate": "2027-01-31"
+  },
+  "periods": [
+    { "month": "2026-11", "availableToSaveCents": 6000, "plannedDeliveryCents": 2000 },
+    { "month": "2026-12", "availableToSaveCents": 3000, "plannedDeliveryCents": 2000 },
+    { "month": "2027-01", "availableToSaveCents": 3000, "plannedDeliveryCents": 2000 }
+  ],
+  "deliveryHistory": [
+    { "id": "delivery-1", "date": "2026-10-21", "amountCents": 900 },
+    { "id": "delivery-2", "date": "2026-10-28", "amountCents": 1000 },
+    { "id": "delivery-3", "date": "2026-11-04", "amountCents": 1200 }
+  ],
+  "scenarios": {
+    "beforeExpense": {
+      "newExpenses": [],
+      "expected": { "projectedSavedCents": 27000, "goalShortfallCents": 0 }
+    },
+    "afterExpense": {
+      "newExpenses": [
+        { "id": "expense-1", "date": "2026-11-14", "label": "Bike repair", "amountCents": 6000 }
+      ],
+      "expected": {
+        "projectedSavedCents": 21000,
+        "goalShortfallCents": 3000,
+        "recoveryOption": {
+          "category": "delivery",
+          "months": ["2026-11", "2026-12", "2027-01"],
+          "estimatedSavingsPerDeliveryCents": 1000,
+          "estimatedSavingsCents": 3000,
+          "projectedSavedIfFollowedCents": 24000,
+          "evidenceIds": ["expense-1", "delivery-1", "delivery-2", "delivery-3"]
+        }
+      }
+    }
+  }
+}
