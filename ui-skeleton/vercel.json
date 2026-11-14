@@ -16,6 +16,10 @@
     "api/goals.js": {
       "includeFiles": "server/goals/**",
       "maxDuration": 20
+    },
+    "api/calendar-feed.js": {
+      "includeFiles": "server/calendar/**",
+      "maxDuration": 20
     }
   },
   "redirects": [

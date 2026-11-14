@@ -3,6 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import coach from './api/coach.js';
 import calendar from './api/calendar.js';
+import calendarFeed from './api/calendar-feed.js';
 import goals from './api/goals.js';
 const root=resolve('dist');
 const port=Number(process.env.PORT??4174);
@@ -11,6 +12,7 @@ const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript','.mjs'
 createServer(async(req,res)=>{
   try{
     const url=new URL(req.url,'http://localhost');
+    if(url.pathname==='/api/calendar-feed'){await calendarFeed(req,res);return;}
     if(url.pathname==='/api/calendar'){await calendar(req,res);return;}
     if(url.pathname==='/api/goals'){await goals(req,res);return;}
     if(url.pathname==='/api/coach'){

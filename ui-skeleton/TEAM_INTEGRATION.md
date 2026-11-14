@@ -43,3 +43,11 @@ Available: read the account snapshot, explain forecast/payment evidence, draft g
 Verification: 61 automated tests and live structured Gemini output. Home/Coach identity and observed balance match; payment evidence resolves to the account fixture; pending confirmations survive account questions; malformed structured replies are rejected. Browser checks include card replies, Ideas reopening, restored conversation layouts and compact-phone overflow.
 
 Structured output reference: https://ai.google.dev/gemini-api/docs/structured-output ; the configured generateContent responseMimeType/responseJsonSchema was verified with the live provider.
+
+
+Calendar upgrade: small posting-date differences no longer hide monthly housing.
+Three consecutive merchant payments can identify a possible subscription.
+Customer-scoped, dated spending notices open evidence and next steps below the
+month grid. A read-only Google Calendar feed/export is available for the public
+synthetic samples; live account export is disabled pending a private connection.
+See FINANCIAL_CALENDAR.md for recurrence rules, examples and Google setup.

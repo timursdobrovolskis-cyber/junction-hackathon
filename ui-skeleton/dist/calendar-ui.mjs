@@ -26,6 +26,8 @@ function openEvent(event, returnFocus, back) {
   content.push(create('p', `${event.direction === 'inflow' ? '+' : '−'}${euro(event.amountCents)}`, 'calendar-detail-amount'));
   content.push(create('p', `${dateLabel(event.date, { day: 'numeric', month: 'long', year: 'numeric' })} · Estimated ${event.cadence} payment`));
   content.push(create('p', event.explanation));
+  if (event.observedDayRange) content.push(create('p', `Observed payment days: ${event.observedDayRange[0]}–${event.observedDayRange[1]} of the month. The calendar uses one estimated date; the actual posting date can differ.`));
+  if (event.historicalAmountRange) content.push(create('p', `Recent payments ranged from ${euro(event.historicalAmountRange.minCents)} to ${euro(event.historicalAmountRange.maxCents)}.`));
   if (event.accountId) content.push(create('p', `Account: ${event.accountId}`));
   if (event.merchantId) content.push(create('p', `Merchant reference: ${event.merchantId}`));
   if (event.scope === 'account_type_category_aggregate') content.push(create('p', 'The data identifies the payment category, but does not name the payee.'));
@@ -64,8 +66,71 @@ function openDay(day) {
   showDialog(dateLabel(day, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), [list], returnFocus);
 }
 
+function openNotice(notice, button) {
+  const content = [create('p', notice.summary, 'calendar-detail-note'), create('p', notice.explanation)];
+  if (notice.monthlyTotals?.length) {
+    content.push(create('h3', 'How your spending changed'));
+    const list = create('dl', undefined, 'calendar-notice-facts');
+    for (const item of notice.monthlyTotals) list.append(create('dt', dateLabel(`${item.month}-01`, { month: 'long', year: 'numeric' })), create('dd', euro(item.amountCents)));
+    content.push(list);
+  }
+  if (notice.metrics?.length) {
+    const list = create('dl', undefined, 'calendar-notice-facts');
+    for (const metric of notice.metrics) list.append(create('dt', metric.label), create('dd', metric.percent !== undefined ? `${metric.percent}%` : euro(metric.amountCents)));
+    content.push(list);
+  }
+  content.push(create('h3', 'A useful next step'), create('p', notice.action));
+  content.push(create('p', `Based on data through ${dateLabel(notice.asOf, { day: 'numeric', month: 'long', year: 'numeric' })}. This assessment does not change when you browse a different month.`, 'calendar-detail-note'));
+  const evidence = data.evidence.filter(row => notice.evidenceIds.includes(row.id));
+  if (evidence.length) {
+    content.push(create('h3', 'Recent supporting transactions'));
+    const list = create('ul', undefined, 'calendar-evidence');
+    for (const row of evidence) { const item = create('li'); item.append(create('span', `${dateLabel(row.date)} · ${row.category ?? 'Payment'} · ${euro(row.amountCents)}`), create('small', row.id)); list.append(item); }
+    content.push(list);
+  }
+  showDialog(notice.title, content, button);
+}
+
+function renderNotices() {
+  const list = $('calendar-notifications'); list.replaceChildren();
+  $('calendar-analysis-date').textContent = `Analysis through ${dateLabel(data.asOf, { day: 'numeric', month: 'short', year: 'numeric' })} · selected customer only`;
+  const notices = data.notifications ?? [];
+  if (!notices.length) list.append(create('p', 'No spending-pattern alerts identified in the available data. This does not guarantee that future spending is affordable.', 'calendar-empty'));
+  for (const notice of notices) {
+    const button = create('button', undefined, `calendar-notification notification-${notice.severity}`); button.type = 'button'; button.disabled = busy;
+    button.dataset.noticeKind = notice.kind;
+    button.append(create('span', notice.severity === 'warning' ? 'SPENDING ALERT' : 'WORTH CHECKING', 'calendar-notification-label'), create('strong', notice.title), create('span', notice.summary), create('small', 'View details →'));
+    button.addEventListener('click', () => openNotice(notice, button)); list.append(button);
+  }
+}
+
+function connectCalendar() {
+  if (!data || busy) return;
+  const content = [];
+  if (!data.exportAvailable) {
+    content.push(create('p', 'A private calendar connection is needed for live account data. This demo only exports its public sample calendars.'));
+  } else {
+    const feed = new URL('/api/calendar-feed', 'https://junction-money-ui.vercel.app'); feed.searchParams.set('source', activeSource);
+    content.push(create('p', `Connect “${data.label}” as a separate calendar. It contains estimated payment names and dates for this selected sample; balances and transaction IDs are not shared.`));
+    const google = create('a', 'Open Google Calendar', 'calendar-connect');
+    const destination = new URL('https://calendar.google.com/calendar/u/0/r'); destination.searchParams.set('cid', feed.href);
+    google.href = destination.href; google.target = '_blank'; google.rel = 'noopener noreferrer'; google.id = 'calendar-google-link'; content.push(google);
+    content.push(create('p', 'In Google Calendar, confirm Add. If it does not open the add-calendar screen, use Other calendars → + → From URL and paste the link below. Adding a URL may require Google Calendar in a desktop browser.'));
+    const label = create('label', 'Calendar subscription URL', 'calendar-jump-label'); label.htmlFor = 'calendar-feed-url';
+    const input = create('input'); input.id = 'calendar-feed-url'; input.readOnly = true; input.value = feed.href; input.className = 'calendar-source-select';
+    const copy = create('button', 'Copy subscription URL', 'calendar-connect'); copy.type = 'button';
+    copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(feed.href); copy.textContent = 'Link copied'; } catch { input.focus(); input.select(); copy.textContent = 'Select and copy the link above'; } });
+    content.push(label, input, copy);
+    const download = create('a', 'Download .ics file instead', 'calendar-subtle'); download.href = `/api/calendar-feed?source=${encodeURIComponent(activeSource)}&download=1`; download.id = 'calendar-download'; content.push(download);
+    content.push(create('p', 'The URL is a one-way subscription: Google decides when to refresh it, so changes are not immediate. A downloaded file is a snapshot and does not update. Add a separate calendar for each sample and remove an old one in Google when you no longer need it.'));
+  }
+  showDialog('Connect to Google Calendar', content, $('calendar-connect'));
+}
+
 function render() {
   if (!data) return;
+  $('calendar-connect').disabled = busy;
+  renderNotices();
   $('calendar-month').textContent = dateLabel(`${month}-01`, { month: 'long', year: 'numeric' });
   $('calendar-prev').disabled = busy || month <= data.rangeStart.slice(0, 7);
   $('calendar-next').disabled = busy || month >= data.rangeEnd.slice(0, 7);
@@ -131,6 +196,7 @@ function changeMonth(next) {
   if (!data || busy || next < data.rangeStart.slice(0, 7) || next > data.rangeEnd.slice(0, 7)) return;
   month = next; selectedDay = null; remember(`${activeSource}:month`, month); render();
 }
+$('calendar-connect').addEventListener('click', connectCalendar);
 $('calendar-source').addEventListener('change', (event) => load(event.target.value));
 $('calendar-retry').addEventListener('click', () => load($('calendar-source').value));
 $('calendar-prev').addEventListener('click', () => changeMonth(shiftMonth(month, -1)));

@@ -41,5 +41,19 @@ export function validateCalendar(value, expectedCustomer) {
   if (new Set(value.events.map((event) => event.id)).size !== value.events.length) throw new Error('Duplicate calendar events');
   for (const day of value.daily) if (!isDate(day.date) || day.date <= value.asOf || !cents(day.expectedBalanceCents)) throw new Error('Invalid daily forecast');
   if (new Set(value.daily.map((day) => day.date)).size !== value.daily.length) throw new Error('Duplicate forecast days');
+  if (value.exportAvailable !== undefined && typeof value.exportAvailable !== 'boolean') throw new Error('Invalid export state');
+  if (value.notifications !== undefined) {
+    if (!Array.isArray(value.notifications) || value.notifications.length > 50) throw new Error('Invalid notifications');
+    for (const notice of value.notifications) {
+      if (!notice || !['warning', 'info'].includes(notice.severity) || notice.asOf !== value.asOf
+        || !['id', 'kind', 'title', 'summary', 'explanation', 'action'].every(key => typeof notice[key] === 'string')
+        || !Array.isArray(notice.evidenceIds) || !notice.evidenceIds.every(id => typeof id === 'string')) throw new Error('Invalid notification');
+      if (notice.metrics && (!Array.isArray(notice.metrics) || notice.metrics.some(m => typeof m.label !== 'string'
+        || !(cents(m.amountCents) && m.amountCents >= 0 || cents(m.percent) && m.percent >= 0)))) throw new Error('Invalid notification metrics');
+      if (notice.monthlyTotals && (!Array.isArray(notice.monthlyTotals) || notice.monthlyTotals.some(m => !isDate(`${m.month}-01`)
+        || !cents(m.amountCents) || m.amountCents < 0))) throw new Error('Invalid monthly totals');
+    }
+    if (new Set(value.notifications.map(n => n.id)).size !== value.notifications.length) throw new Error('Duplicate notifications');
+  }
   return value;
 }
