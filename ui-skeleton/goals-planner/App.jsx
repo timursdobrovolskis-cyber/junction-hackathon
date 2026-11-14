@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowDownLeft, ArrowRight, Bell, Check, ChevronRight, ExternalLink, House, Leaf, Menu, MessageCircle, PiggyBank, ShieldCheck, Sparkles, X } from 'lucide-react';
-import fixture from '../server/goals/planner-fixture.json';
+import fixture from './coach-demo.json';
 import { calculateGoalPlan } from './coach.mjs';
 import { GoalArt, QUICK_PICKS, themeFor } from './GoalArt.jsx';
 
@@ -260,8 +260,7 @@ export default function App({ mode }) {
   const [evidenceData, setEvidenceData] = useState(null);
 
   useEffect(() => {
-    try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(goals)); } catch { /* The coach can still read this open tab. */ }
-    if (window.parent !== window) window.parent.postMessage({type:'goals-state',goals}, window.location.origin);
+    try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(goals)); } catch { /* storage is optional in private browsing */ }
   }, [goals]);
   useEffect(() => {
     if (!evidenceData) return undefined;

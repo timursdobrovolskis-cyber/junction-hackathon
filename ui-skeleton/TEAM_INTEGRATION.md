@@ -18,14 +18,6 @@ The legacy /index.html entry redirects to the same /spendvest.html app.
 
 ---
 
-# Current coach section access
-
-The coach now reads Home, the selected Budget month, saved Goals and the selected
-Calendar on every message. See [COACH_APP_CONTEXT.md](COACH_APP_CONTEXT.md) for the
-contract, data boundaries, limitations and reproducible checks. The historical
-integration notes below describe earlier releases; this document is the current
-read-integration reference.
-
 # Integrated team app
 
 ## Sources
@@ -37,7 +29,7 @@ read-integration reference.
 
 ## Run and deploy
 
-Use Node 22+ and `npm run dev` inside `ui-skeleton`; open `/preview.html`. `npm test` runs all 104 checks. Deployment remains the existing `junction-money-ui` Vercel project with server-only Gemini configuration. Git pushes do not deploy automatically.
+Use Node 22+ and `npm run dev` inside `ui-skeleton`; open `/preview.html`. `npm test` runs all 91 checks. Deployment remains the existing `junction-money-ui` Vercel project with server-only Gemini configuration. Git pushes do not deploy automatically.
 
 ## Navigation
 

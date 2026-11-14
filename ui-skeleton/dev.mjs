@@ -17,7 +17,7 @@ createServer(async(req,res)=>{
     if(url.pathname==='/api/calendar'){await calendar(req,res);return;}
     if(url.pathname==='/api/goals'){await goals(req,res);return;}
     if(url.pathname==='/api/coach'){
-      let body='';for await(const chunk of req){body+=chunk;if(body.length>200000){res.writeHead(413);res.end();return;}}
+      let body='';for await(const chunk of req){body+=chunk;if(body.length>120000){res.writeHead(413);res.end();return;}}
       req.body=body;await coach(req,res);return;
     }
     const path=resolve(root,'.'+decodeURIComponent(url.pathname==='/'?'/spendvest.html':url.pathname));
