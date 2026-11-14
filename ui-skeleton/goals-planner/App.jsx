@@ -134,16 +134,54 @@ function NewGoalForm({ horizon, onAdd, onCancel }) {
   </form>;
 }
 
+const ACCOUNTS = [
+  { id: 'S-Tuottotili', name: 'S-Tuottotili', blurb: 'Flexible — add or withdraw any time', url: 'https://www.s-pankki.fi/fi/tilit/s-tuottotili/' },
+  { id: 'S-Määräaikaistili', name: 'S-Määräaikaistili', blurb: 'Fixed term — set it and leave it', url: 'https://www.s-pankki.fi/fi/tilit/s-maaraaikaistili/' },
+];
+const MONTHLY_PICKS = [2000, 5000, 10000, 20000];
+
+function SavingsAccountPlan({ plan, updatePlan }) {
+  const [custom, setCustom] = useState('');
+  const account = ACCOUNTS.find(item => item.id === plan.accountType) ?? ACCOUNTS[0];
+  const monthly = plan.monthlyCents;
+  const points = [1, 3, 5, 10].map(years => ({ years, cents: monthly * 12 * years }));
+  const max = Math.max(1, points[points.length - 1].cents);
+  const setMonthly = (cents) => cents > 0 && updatePlan({ monthlyCents: cents });
+  return <article className={`g2-card g2-long g2-account-plan ${plan.active ? 'is-active' : ''}`}>
+    <div className="g2-band">
+      <div className="g2-band-copy"><span className="g2-when">No target · just save</span>{plan.active && <span className="g2-badge"><Check size={12}/> Plan active</span>}</div>
+      <GoalArt theme="seed"/>
+    </div>
+    <div className="g2-body">
+      <h3>Save regularly into S-Pankki</h3>
+      <p className="g2-sub">Don’t have a specific goal? Put a set amount aside every month and watch it build up.</p>
+      <div className="g2-account-pick" role="radiogroup" aria-label="Savings account">
+        {ACCOUNTS.map(item => <button type="button" role="radio" aria-checked={account.id === item.id} key={item.id} className={account.id === item.id ? 'on' : ''} onClick={() => updatePlan({ accountType: item.id })}><strong>{item.name}</strong><span>{item.blurb}</span></button>)}
+      </div>
+      <div className="g2-field-title">Every month</div>
+      <div className="g2-chips g2-amount-chips">{MONTHLY_PICKS.map(cents => <button type="button" key={cents} className={monthly === cents ? 'on' : ''} onClick={() => setMonthly(cents)}>{formatEuro(cents)}</button>)}
+        <form onSubmit={(event) => { event.preventDefault(); setMonthly(euroToCents(custom)); setCustom(''); }}><input inputMode="decimal" type="number" min="1" step="1" value={custom} onChange={(event) => setCustom(event.target.value)} placeholder="Other €" aria-label="Other monthly amount"/></form>
+      </div>
+      <div className="g2-growth" aria-label={`Saving ${formatEuro(monthly)} a month`}>
+        {points.map(point => <div key={point.years}><div className="g2-bar"><span style={{ height: `${Math.max(6, Math.round(point.cents / max * 100))}%` }}/></div><strong>{formatEuro(point.cents)}</strong><small>{point.years} {point.years === 1 ? 'year' : 'years'}</small></div>)}
+      </div>
+      <p className="g2-fineprint">Your own deposits only — interest isn’t included. This is a plan; it won’t open an account or move money. <a href={account.url} target="_blank" rel="noreferrer">Current {account.name} terms <ExternalLink size={11}/></a></p>
+      {plan.active
+        ? <button type="button" className="g2-ghost g2-stop" onClick={() => updatePlan({ active: false })}>Stop this plan</button>
+        : <button type="button" className="g2-tick" onClick={() => updatePlan({ active: true })}>Save {formatEuro(monthly)} a month into {account.name}</button>}
+    </div>
+  </article>;
+}
+
 function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort, restoreShort, updateLong, mode, openEvidence, previewId, setPreviewId }) {
   const [adding, setAdding] = useState(false);
   const [showAchieved, setShowAchieved] = useState(false);
-  const [showAccounts, setShowAccounts] = useState(false);
   const [horizon, setHorizon] = useState(() => { try { return sessionStorage.getItem('goals-horizon') || 'short'; } catch { return 'short'; } });
   const chooseHorizon = (value) => { setHorizon(value); setAdding(false); setShowAchieved(false); try { sessionStorage.setItem('goals-horizon', value); } catch { /* optional */ } };
   const inHorizon = goals.shortTermGoals.filter(goal => (goal.horizon ?? 'short') === horizon);
   const active = inHorizon.filter(goal => !goal.complete);
   const achieved = inHorizon.filter(goal => goal.complete);
-  const monthlyCents = active.reduce((sum, goal) => sum + Math.ceil(Math.max(0, goal.targetCents - goal.savedCents) / monthsUntil(goal.targetDate)), 0);
+  const monthlyCents = active.reduce((sum, goal) => sum + Math.ceil(Math.max(0, goal.targetCents - goal.savedCents) / monthsUntil(goal.targetDate)), 0) + (horizon === 'long' && goals.longTerm.active ? goals.longTerm.monthlyCents : 0);
   return <div className="goal-sections">
     <div className="horizon-switch" role="tablist" aria-label="Goal horizon">
       <button type="button" role="tab" aria-selected={horizon === 'short'} className={horizon === 'short' ? 'active' : ''} onClick={() => chooseHorizon('short')}><strong>Short term</strong><small>Weeks to 12 months</small></button>
@@ -163,10 +201,7 @@ function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort,
         <button type="button" className="achieved-toggle" aria-expanded={showAchieved} onClick={() => setShowAchieved(!showAchieved)}>Achieved ({achieved.length}) <ChevronRight size={15}/></button>
         {showAchieved && <ul>{achieved.map(goal => <li key={goal.id}><Check size={14}/><span>{goal.label || 'Goal'} · {formatEuro(goal.targetCents)}</span><button type="button" className="text-button" onClick={() => restoreShort(goal.id)}>Undo</button></li>)}</ul>}
       </div>}
-      {horizon === 'long' && <div className="accounts-explore">
-        <button type="button" className="achieved-toggle" aria-expanded={showAccounts} onClick={() => setShowAccounts(!showAccounts)}>Grow it with S-Pankki savings accounts <ChevronRight size={15}/></button>
-        {showAccounts && <LongTermGoal goal={goals.longTerm} updateGoal={updateLong} mode={mode}/>}
-      </div>}
+      {horizon === 'long' && <><div className="g2-or"><span>or</span></div><SavingsAccountPlan plan={goals.longTerm} updatePlan={updateLong}/></>}
     </section>
   </div>;
 }
