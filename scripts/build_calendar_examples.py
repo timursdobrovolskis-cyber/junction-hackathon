@@ -1,5 +1,6 @@
 """Build reviewable calendar examples using the Python financial engine."""
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 import sys
 
@@ -42,7 +43,7 @@ def main():
     stable = engine.calendar({**request, "customerId": "CUST00003"})
     stable["label"] = "Regular payday example"
     stable["sourceNotice"] = "Synthetic bank customer CUST00003; history through 30 September 2026. This customer's recent salary arrives on the 15th."
-    subscriptions = json.loads((root / "fixtures/subscriptions-demo.json").read_text())
+    subscriptions = json.loads((root / "fixtures/calendar-subscriptions-demo.json").read_text())
     sub_customer = "SUBSCRIPTIONS-DEMO"
     sub_forecast = forecast_cash_flow([], sub_customer, subscriptions["asOf"], buffer_cents=0)
     sub_demo = build_financial_calendar([], {"customerId": sub_customer, "asOf": subscriptions["asOf"], "forecast": sub_forecast},
@@ -57,6 +58,7 @@ def main():
     destination = root / "ui-skeleton/server/calendar"
     destination.mkdir(parents=True, exist_ok=True)
     for name, payload in [("engine", actual), ("regular", stable), ("recurring", demo), ("subscriptions", sub_demo)]:
+        payload["generatedAt"] = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
         (destination / f"{name}.json").write_text(json.dumps(payload, indent=2) + "\n")
         print(f"{name}: {len(payload['events'])} calendar entries; {len(payload['daily'])} forecast days")
 

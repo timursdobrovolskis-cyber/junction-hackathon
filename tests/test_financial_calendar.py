@@ -139,7 +139,7 @@ class CalendarTests(unittest.TestCase):
         for status in ("active", "cancelled", "needs_confirmation"):
             calendar = build_financial_calendar(self.rows, self.result, subscriptions=[self.subscription(status=status)])
             self.assertFalse(any(e.get("merchantId") == "demo-monthly-subscription" for e in calendar["events"]))
-            self.assertEqual(len([e for e in calendar["events"] if e["kind"] == "subscription"]), 24 if status == "active" else 0)
+            self.assertEqual(len([e for e in calendar["events"] if e["source"] == "subscription_schedule"]), 24 if status == "active" else 0)
 
     def test_subscription_anchor_survives_short_months(self):
         calendar = build_financial_calendar([], self.result, subscriptions=[self.subscription(nextPaymentDate="2027-01-31")])
@@ -157,6 +157,37 @@ class CalendarTests(unittest.TestCase):
         same_day = [e for e in self.build(self.rows + extra)["events"] if e["date"] == "2026-12-12"]
         self.assertEqual(len(same_day), 2)
         self.assertEqual(len({e["seriesId"] for e in same_day}), 2)
+
+    def test_monthly_housing_with_posting_jitter_uses_one_estimated_day(self):
+        rows = deepcopy(self.rows)
+        for row in rows:
+            if row["transaction_type"] == "housing_payment" and row["date"][:7] >= "2026-05":
+                day = {5: 2, 6: 3, 7: 3, 8: 5, 9: 7, 10: 3}[int(row["date"][5:7])]
+                row["date"] = row["date"][:8] + f"{day:02d}"
+        housing = [e for e in self.build(rows)["events"] if e["title"] == "Housing payment"]
+        self.assertEqual(len(housing), 24)
+        self.assertTrue(all(e["date"].endswith("-03") for e in housing))
+        self.assertEqual(housing[0]["observedDayRange"], [2, 7])
+
+    def test_new_subscription_needs_three_recent_months_and_no_frequent_shopping(self):
+        extra = [{**self.rows[0], "transaction_id": f"new-{month}", "date": f"2026-{month}-18", "transaction_type": "purchase", "merchant_id": "new-service", "amount_cents": -1500} for month in ["08", "09", "10"]]
+        events = [e for e in self.build(self.rows + extra)["events"] if e.get("merchantId") == "new-service"]
+        self.assertEqual(len(events), 24)
+        self.assertTrue(all(e["kind"] == "subscription" and not e["isConfirmed"] for e in events))
+        for start in ["07", "06"]:
+            extended = extra + [{**extra[0], "transaction_id": "new-" + start, "date": f"2026-{start}-18"}]
+            if start == "06": extended.append({**extra[0], "transaction_id": "new-07", "date": "2026-07-18"})
+            self.assertEqual(len([e for e in self.build(self.rows + extended)["events"] if e.get("merchantId") == "new-service"]), 24)
+        for invalid in [extra[1:], extra + [{**extra[0], "transaction_id": "extra", "date": "2026-08-25"}], [{**r, "merchant_id": None} for r in extra]]:
+            self.assertFalse(any(e.get("merchantId") == "new-service" for e in self.build(self.rows + invalid)["events"]))
+
+    def test_ambiguous_utility_group_is_a_notice_not_a_fabricated_payment(self):
+        extra = [{**r, "transaction_id": "extra-" + r["transaction_id"], "date": r["date"][:8] + "27"} for r in self.rows if r["transaction_type"] == "utilities_payment"]
+        calendar = self.build(self.rows + extra)
+        self.assertFalse(any(e.get("merchantId") == "demo-utilities" for e in calendar["events"]))
+        notice = next(n for n in calendar["notifications"] if n["kind"] == "bill_timing_uncertain")
+        self.assertEqual(notice["metrics"][0]["amountCents"], 12000)
+        self.assertTrue(notice["evidenceIds"])
 
     def test_ids_are_stable_and_invalid_scope_is_rejected(self):
         self.assertEqual([e["id"] for e in self.build()["events"]], [e["id"] for e in self.build()["events"]])

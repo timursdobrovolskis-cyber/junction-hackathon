@@ -3,11 +3,13 @@ import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import coach from './api/coach.js';
 import calendar from './api/calendar.js';
+import calendarFeed from './api/calendar-feed.js';
 const root=resolve('dist');
 const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript','.mjs':'text/javascript','.svg':'image/svg+xml','.woff2':'font/woff2'};
 createServer(async(req,res)=>{
   try{
     const url=new URL(req.url,'http://localhost');
+    if(url.pathname==='/api/calendar-feed'){await calendarFeed(req,res);return;}
     if(url.pathname==='/api/calendar'){await calendar(req,res);return;}
     if(url.pathname==='/api/coach'){
       let body='';for await(const chunk of req){body+=chunk;if(body.length>30000){res.writeHead(413);res.end();return;}}

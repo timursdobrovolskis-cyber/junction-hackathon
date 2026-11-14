@@ -72,9 +72,12 @@ test('two-year schedules retain customer isolation and named monthly/yearly subs
   const regular = (await call('/api/calendar?source=regular')).body;
   assert.equal(regular.rangeEnd, '2028-09-30');
   assert.equal(regular.events.filter(e => e.kind === 'income').length, 24);
-  assert.ok(regular.events.every(e => e.date.endsWith('-15')));
+  assert.ok(regular.events.filter(e => e.kind === 'income').every(e => e.date.endsWith('-15')));
+  assert.equal(regular.events.filter(e => e.kind === 'bill').length, 24);
   const irregular = (await call()).body;
-  assert.equal(irregular.events.length, 0);
+  assert.equal(irregular.events.length, 24);
+  assert.ok(irregular.events.every(e => e.kind === 'bill'));
+  assert.ok(irregular.notifications.some(n => n.kind === 'spending_trend'));
   assert.ok(irregular.omittedPatterns.length > 0);
   const subscriptions = (await call('/api/calendar?source=subscriptions')).body;
   validateCalendar(subscriptions, 'SUBSCRIPTIONS-DEMO');
@@ -83,4 +86,11 @@ test('two-year schedules retain customer isolation and named monthly/yearly subs
   assert.ok(subscriptions.events.every(e => e.date === e.earliestDate && e.date === e.latestDate));
   assert.equal(eventsInRange(subscriptions.events, '2027-01-01', '2027-01-31', 'subscriptions').length, 4);
   assert.ok(!regular.evidence.some(e => e.id.startsWith('txn-nflx')));
+});
+
+test('notification data is customer scoped, numeric, and cannot masquerade as a current alert', () => {
+  for (const change of [n => n.asOf = '2030-01-01', n => n.severity = 'panic', n => n.metrics = [{ label: 'Amount', amountCents: NaN }]]) {
+    const changed = structuredClone(sample); change(changed.notifications[0]);
+    assert.throws(() => validateCalendar(changed, 'CUST00003'));
+  }
 });

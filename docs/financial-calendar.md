@@ -18,7 +18,13 @@ amounts are used unchanged. No financial arithmetic runs in the browser.
 - Monthly history: at least three observations, one payment in every examined
   recent complete month (up to six), a consistent day or exact month-end rule,
   and a recent observation. Fixed costs also require stable amounts (spread at
-  most €1 or 10% of the median). Salary amounts may vary if dates are stable.
+  most €1 or 10% of the median). Bills may drift by up to six calendar days;
+  their median day becomes one estimated date, with the observed day/amount
+  range available in details. Salary timing remains strict.
+- Merchant purchases with stable amounts/dates across three to six consecutive
+  recent months become **possible subscriptions**. A missing recent month or
+  frequent shopping with that merchant prevents the match. These candidates
+  are not confirmed contracts or invented provider names.
 - Annual history: at least two observations, annual intervals, the same month
   and day (including leap-day clipping), and stable amounts. Estimates remain
   unconfirmed; repeated transactions do not establish a subscription contract.
@@ -31,8 +37,8 @@ amounts are used unchanged. No financial arithmetic runs in the browser.
 - Already observed payments are not repeated in that month. Dates before the
   observation cutoff and other customers' transactions are excluded.
 - Buffer-risk and payment-window overlays are removed from this calendar. A
-  buffer risk means a balance forecast falls below the customer's cash reserve;
-  that belongs to the financial plan, not an extra payment on a date.
+  buffer risk means a balance forecast falls below the customer's cash reserve.
+  It can appear as a separate forecast notice, never as a payment.
 
 ## Data and API
 
@@ -52,10 +58,10 @@ The static UI uses server-owned, explicitly selected sample profiles via
 
 | Source | Identity and input | Calendar result |
 | --- | --- | --- |
-| regular (initial UI selection) | CUST00003, bank history through September 2026 | Salary on the 15th for 24 future months |
-| engine | CUST00005, same cutoff | No reliably fixed dates; inconsistent payments are explained, not invented |
+| regular (initial UI selection) | CUST00003, bank history through September 2026 | Salary on the 15th and housing near the 3rd; unclear utilities dates flagged |
+| engine | CUST00005, same cutoff | Housing near the 3rd; rising purchase spending and uncertain utility dates flagged |
 | recurring | CALENDAR-DEMO, fictional ledger through October 2026 | Salary, rent, utilities, monthly cost, annual insurance |
-| subscriptions | SUBSCRIPTIONS-DEMO, `fixtures/subscriptions-demo.json` | Named monthly and yearly renewals from the team's supplied schedule |
+| subscriptions | SUBSCRIPTIONS-DEMO, `fixtures/calendar-subscriptions-demo.json` | Named monthly and yearly renewals from the team's supplied schedule |
 
 `FINANCIAL_ENGINE_URL=http://127.0.0.1:8765` connects the two bank-data samples to
 the running Python service. Restart Node and Python together with schema 2.0.
@@ -66,7 +72,7 @@ these demonstration selectors. Home and Goals still have separate sample data.
 
 ## Customer subscription integration
 
-The subscription fixture on main has no customer identity. It is deliberately
+The preserved calendar subscription fixture has no customer identity. It is deliberately
 assigned a separate demo identity, never attached to a synthetic bank customer.
 Its dates and amounts are reused exactly; the calendar does not manufacture
 Netflix/Spotify matches in bank transactions.
@@ -84,8 +90,56 @@ and duplicate IDs are rejected. Recalculate after a schedule/status change.
 
 This adapter is not connected to the React subscription demo's component-local
 cancellation state. There is no live subscription provider, contract validation,
-authenticated bank feed, notification service or payment execution. Calendar
+authenticated bank feed, external push notification service or payment execution. Calendar
 reminders alone do not add a subscription to a financial plan or confirm savings.
+
+## Spending alerts and reminders
+
+`src/calendar_insights.py` returns customer-scoped `notifications`, separate
+from scheduled payments. Tappable cards below the calendar open the analysis,
+exact amounts, period, transaction IDs and a useful next step. Analysis dates
+stay visible when navigating future months; these are historical observations,
+not two-year spending predictions.
+
+- Rising spending: three complete months of purchases, at least 10% growth in
+  each comparison, at least 25% total growth and €50 absolute growth. Refunds
+  reduce totals; transfers and investments are excluded. A single spike does
+  not trigger this pattern.
+- Repeated shortfall: recorded consumption exceeds positive recorded income in
+  both of the last two complete months. Missing/external income is acknowledged.
+- Buffer warning: directly reuses the engine's central/possible below-buffer
+  dates and chosen reserve; never extrapolates beyond forecast coverage.
+- Unclear recurring bills: historical monthly estimate and evidence, with a
+  request to check provider due dates. Unknown utilities are not given invented
+  dates. Possible subscription matches have a separate evidence reminder.
+
+CUST00005 purchases rise from €798.74 (July) to €995.48 (August) to €1,284.19
+(September), a €485.45 / 61% increase. CUST00003's housing observations occur
+between the 2nd and 7th; the median date is the 3rd. Neither bank-data example has
+an evidenced named subscription: named services remain in the separate demo.
+
+## Google Calendar
+
+Use **Connect to Google Calendar** → **Open Google Calendar**, then confirm Add
+in Google. The dialog also provides a copyable URL (Other calendars → + → From
+URL in Google's desktop web interface) and a downloadable `.ics` snapshot.
+`GET /api/calendar-feed?source=regular|engine|recurring|subscriptions` produces
+RFC 5545 all-day, tentative events with stable UIDs and exclusive next-day end
+dates. Dates/names are exported; account IDs, transaction IDs, balances, alerts
+and payment amounts are excluded. UTF-8 folding and escaping protect the format.
+
+Subscription URLs are one-way; Google controls refresh timing. A downloaded
+file does not update, and repeated file imports may duplicate events. Sample
+selection does not remove calendars previously added in Google. This requires
+no app OAuth credentials and does not grant us access to the user's Google
+account. Actual acceptance/Add in Google is a user action.
+
+These public feeds expose only the bundled, already-public synthetic examples.
+If `FINANCIAL_ENGINE_URL` enables live bank-data results, export is disabled for
+those sources (409). A production private-data connection needs an authenticated,
+revocable per-customer URL or Google OAuth; do not put real customers into the
+public fixture map. The deployed demo updates when regenerated data is published,
+not from a live bank feed.
 
 ## Verification and regenerated examples
 

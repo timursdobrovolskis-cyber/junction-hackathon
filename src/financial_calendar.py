@@ -9,7 +9,8 @@ from copy import deepcopy
 from datetime import date, timedelta
 from hashlib import sha256
 
-from src.financial_profile import build_profile, median_int, shift_month, CONSUMPTION_TYPES
+from src.financial_profile import build_profile, median_int, shift_month, CONSUMPTION_TYPES, timing, distribution
+from src.calendar_insights import calendar_insights
 
 
 def series_key(value):
@@ -28,7 +29,7 @@ def title(value):
     if value.get("transactionType") == "utilities_payment":
         return "Utilities payment"
     if value.get("transactionType") == "purchase":
-        return f"Recurring payment · {value.get('category', 'Purchase')}"
+        return f"Possible subscription · {value.get('category', 'Purchase')}"
     return value.get("category") or "Account movement"
 
 
@@ -70,11 +71,51 @@ def fixed_monthly_day(rule, observed):
     if all(d.day == monthrange(d.year, d.month)[1] for d in days):
         anchor = 31
     if any(d.day != min(anchor, monthrange(d.year, d.month)[1]) for d in days):
-        return None
+        # Posting dates may drift a few days while the bill remains monthly.
+        # Keep salary strict: mid-month/end-month ambiguity is not a payday.
+        if rule["direction"] == "outflow" and max(d.day for d in days) - min(d.day for d in days) <= 6:
+            anchor = median_int([d.day for d in days])
+        else:
+            return None
     amount = rule["paymentAmount"]
     if rule["direction"] == "outflow" and amount["maxCents"] - amount["minCents"] > max(100, amount["medianCents"] // 10):
         return None
     return anchor
+
+
+def new_subscription_patterns(rows, cutoff):
+    """Detect a new merchant series after three consecutive complete months."""
+    end = shift_month(cutoff, 1) if cutoff.day == monthrange(cutoff.year, cutoff.month)[1] else shift_month(cutoff, 0)
+    months = [shift_month(end, n).strftime("%Y-%m") for n in range(-6, 0)]
+    groups = defaultdict(list)
+    for row in rows:
+        if row["transaction_type"] == "purchase" and row["merchant_id"] and row["amount_cents"] < 0 and row["date"][:7] in months:
+            key = (row["account_id"], "purchase", row["category"], row["merchant_id"], "outflow")
+            groups[key].append(row)
+    rules = []
+    for key, group in groups.items():
+        by_month = defaultdict(list)
+        for row in group:
+            by_month[row["date"][:7]].append(row)
+        recent = []
+        for month in reversed(months):
+            if len(by_month[month]) != 1:
+                break
+            recent.extend(by_month[month])
+        if len(recent) < 3:
+            continue
+        recent.sort(key=lambda r: r["date"])
+        # Frequent shopping with this merchant earlier in the lookback is not a subscription.
+        if any(len(items) > 1 for items in by_month.values()):
+            continue
+        rules.append({"accountId": key[0], "transactionType": key[1], "category": key[2], "merchantId": key[3],
+            "direction": "outflow", "cadence": "monthly", "scope": "merchant", "status": "observed_recently",
+            "monthsWithPayments": len(recent), "monthsExamined": len(recent), "transactionCount": len(recent),
+            "paymentAmount": distribution([abs(r["amount_cents"]) for r in recent]),
+            "estimatedActiveMonthTotalCents": median_int([abs(r["amount_cents"]) for r in recent]),
+            "timing": timing(recent, True), "evidenceIds": [r["transaction_id"] for r in recent],
+            "evidenceStrength": "limited" if len(recent) < 5 else "strong"})
+    return rules
 
 
 def build_financial_calendar(transactions, result, months=24, *, subscriptions=None):
@@ -95,12 +136,14 @@ def build_financial_calendar(transactions, result, months=24, *, subscriptions=N
         groups[key].append(row)
     profile = build_profile(rows, customer, as_of)
     rules, omitted = [], []
-    for rule in profile.get("recurringPatterns", []):
+    patterns = [p for p in profile.get("recurringPatterns", []) if p["transactionType"] != "purchase"]
+    patterns += new_subscription_patterns(rows, cutoff)
+    for rule in patterns:
         if rule["transactionType"] not in CONSUMPTION_TYPES | {"salary"}:
             continue
         anchor = fixed_monthly_day(rule, groups[series_key(rule)])
         if anchor is None:
-            omitted.append({"title": title(rule), "reason": "Payment dates, amounts or monthly frequency are not consistent enough for one scheduled day."})
+            omitted.append({"title": title(rule), "reason": "Payment dates, amounts or monthly frequency are not consistent enough for one scheduled day.", "transactionType": rule["transactionType"], "monthlyAmountCents": rule["estimatedActiveMonthTotalCents"], "evidenceIds": rule["evidenceIds"]})
             continue
         rules.append({**rule, "calendarDay": anchor})
     rules += yearly_patterns(rows, cutoff)
@@ -153,13 +196,16 @@ def build_financial_calendar(transactions, result, months=24, *, subscriptions=N
             payment = payments.get((key, label))
             events.append({"id": "recurring-" + stable_id([customer, *key, label]), "seriesId": stable_id([customer, *key]),
                 "title": title(rule), "source": "forecast" if payment else "history_pattern",
-                "kind": "income" if rule["direction"] == "inflow" else "bill", "cadence": rule["cadence"],
+                "kind": "income" if rule["direction"] == "inflow" else "subscription" if rule["transactionType"] == "purchase" else "bill", "cadence": rule["cadence"],
                 "date": scheduled.isoformat(), "earliestDate": scheduled.isoformat(), "latestDate": scheduled.isoformat(),
                 "amountCents": payment["expectedTotalCents"] if payment else rule["estimatedActiveMonthTotalCents"],
                 "direction": rule["direction"], "status": "estimated", "isConfirmed": False,
                 "alreadyIncludedInForecast": True if payment else None, "scope": rule["scope"],
                 "merchantId": rule["merchantId"], "accountId": rule["accountId"], "category": rule["category"],
                 "evidenceIds": rule["evidenceIds"], "evidenceStrength": rule["evidenceStrength"],
+                "dateBasis": "Estimated from historical payment dates",
+                "observedDayRange": [min(date.fromisoformat(r["date"]).day for r in observed if r["transaction_id"] in rule["evidenceIds"]), max(date.fromisoformat(r["date"]).day for r in observed if r["transaction_id"] in rule["evidenceIds"])],
+                "historicalAmountRange": rule.get("paymentAmount"),
                 "explanation": f"One estimated {rule['cadence']} date based on {rule['transactionCount']} regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."})
 
     for sub, anchor in schedules:
@@ -180,7 +226,9 @@ def build_financial_calendar(transactions, result, months=24, *, subscriptions=N
     for expense in result.get("plannedExpenses", []):
         if expense.get("customerId", customer) != customer:
             raise ValueError("Expense belongs to another customer")
-    ids = {i for event in events for i in event["evidenceIds"]}
+    active_rules = [r for r in rules if (r.get("accountId"), r.get("merchantId")) not in overridden]
+    notifications = calendar_insights(rows, customer, as_of, forecast, omitted, active_rules)
+    ids = {i for event in events for i in event["evidenceIds"]} | {i for notice in notifications for i in notice["evidenceIds"]}
     return {"schemaVersion": "2.0", "customerId": customer, "asOf": as_of, "currency": "EUR", "modelVersion": forecast["modelVersion"],
             "rangeStart": (cutoff + timedelta(days=1)).isoformat(), "rangeEnd": end.isoformat(), "forecastStatus": forecast["status"],
             "forecastThrough": forecast.get("daily", [{}])[-1].get("date") if forecast.get("daily") else None,
@@ -188,5 +236,5 @@ def build_financial_calendar(transactions, result, months=24, *, subscriptions=N
             "bufferCents": forecast["bufferCents"], "belowBufferDates": forecast.get("belowBufferDates", []),
             "possibleBelowBufferDates": forecast.get("possibleBelowBufferDates", []),
             "evidence": [evidence[i] for i in sorted(ids) if i in evidence], "warnings": list(forecast.get("warnings", [])),
-            "omittedPatterns": omitted,
+            "omittedPatterns": omitted, "notifications": notifications,
             "notice": "Only regular payments with a predictable date are shown. Dates and amounts are estimates. Irregular spending is excluded; reminders do not extend the balance forecast."}
