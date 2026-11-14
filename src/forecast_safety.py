@@ -4,6 +4,7 @@ from datetime import date
 import hashlib
 import json
 from math import ceil
+from fractions import Fraction
 
 
 def model_digest(model):
@@ -37,13 +38,40 @@ def apply_calibration(forecast, calibration, model):
     if forecast["horizonDays"] != calibration["horizonDays"]:
         raise ValueError("Calibration is valid only for its evaluated horizon")
     result = {**forecast, "calibration": dict(calibration)}
-    margin = calibration["marginCents"]
+    if calibration["method"] == "scaled-path-envelope-expansion":
+        if not forecast["daily"]:
+            return result
+        scale = forecast["uncertaintyScaleCents"]
+        if type(scale) is not int or scale <= 0:
+            raise ValueError("A positive history-based uncertainty scale is required")
+        margin = ceil(Fraction(calibration["normalizedMarginNumerator"], calibration["normalizedMarginDenominator"]) * scale)
+        result["calibration"] = {**calibration, "effectiveMarginCents": margin}
+    else:
+        margin = calibration["marginCents"]
     result["daily"] = [{**d, "calibratedLowerBalanceCents": d["lowerScenarioBalanceCents"] - margin,
                          "calibratedUpperBalanceCents": d["upperScenarioBalanceCents"] + margin}
                         for d in forecast["daily"]]
     result["warnings"] = forecast["warnings"] + [
         "Calibration targets whole-path coverage on the synthetic population; distribution shifts and individual customers can violate it."]
     return result
+
+
+def fit_scaled_calibration(scores_and_scales, model, through, target=0.9):
+    if not 0 < target < 1 or not scores_and_scales:
+        raise ValueError("Calibration data and a target between zero and one are required")
+    scores = []
+    for score, scale in scores_and_scales:
+        if score < 0 or scale <= 0:
+            raise ValueError("Nonnegative errors and positive scales are required")
+        scores.append(Fraction(score, scale))
+    rank = ceil((len(scores) + 1) * target)
+    if rank > len(scores):
+        raise ValueError("Too few calibration paths")
+    q = sorted(scores)[rank - 1]
+    return {"method": "scaled-path-envelope-expansion", "modelVersion": model["modelVersion"],
+            "modelDigest": model_digest(model), "calibrationThrough": date.fromisoformat(through).isoformat(),
+            "horizonDays": 30, "targetPathCoverage": target, "calibrationPaths": len(scores),
+            "normalizedMarginNumerator": q.numerator, "normalizedMarginDenominator": q.denominator}
 
 
 def estimate_savings(forecast, buffer_cents, future_commitments, commitments_confirmed=False):

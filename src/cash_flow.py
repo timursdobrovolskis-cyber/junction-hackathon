@@ -25,7 +25,7 @@ def pattern_key(pattern):
             pattern["merchantId"], pattern["direction"])
 
 
-def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer_cents=0, income_model=None):
+def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer_cents=0, income_model=None, spending_model=None):
     """Forecast the NEXT N end-of-day balances using only data through as_of.
 
     Each of the last six complete months is a scenario, mapped onto future
@@ -44,6 +44,12 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
         if income_model["modelVersion"] != INCOME_VERSION or income_model["trainingThrough"] > as_of:
             raise ValueError("Income model version or training cutoff is incompatible")
         version = income_model["modelVersion"]
+    if spending_model is not None:
+        from src.spending_model import MODEL_VERSION as SPENDING_VERSION
+        if (spending_model["modelVersion"] != SPENDING_VERSION or spending_model["trainingThrough"] > as_of
+                or income_model != spending_model["incomeModel"]):
+            raise ValueError("Spending model, income model, or training cutoff is incompatible")
+        version = SPENDING_VERSION
     rows = sorted((dict(r) for r in transactions
                    if r["customer_id"] == customer_id and r["date"] <= as_of),
                   key=lambda r: (r["occurred_at"], r["source_row"]))
@@ -68,7 +74,12 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
     if income_model is not None:
         from src.income_model import income_plan
         replaced_income, modeled_income = income_plan(rows, profile, as_of, dates, income_model)
-        result["modelVersion"] = income_model["modelVersion"]
+    modeled_purchases, spending_explanations = [], []
+    protected_purchases = {pattern_key(p) for p in profile["recurringPatterns"] if p["kind"] == "repeated_merchant_payment"}
+    if spending_model is not None:
+        from src.spending_model import purchase_plan, uncertainty_scale
+        modeled_purchases, spending_explanations = purchase_plan(rows, as_of, dates, spending_model, protected_purchases)
+        result["uncertaintyScaleCents"] = uncertainty_scale(rows, as_of)
     date_indices = {d: i for i, d in enumerate(dates)}
     target_months = sorted({d.replace(day=1) for d in dates})
     templates = {m: [] for m in months}
@@ -93,6 +104,8 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
             target_last = monthrange(target_month.year, target_month.month)[1]
             for row in templates[source_month]:
                 key = flow_key(row)
+                if spending_model is not None and row["transaction_type"] == "purchase" and row["amount_cents"] < 0 and key not in protected_purchases:
+                    continue
                 if key in replaced_income:
                     continue
                 if target_month == cutoff.replace(day=1) and key in suppressed:
@@ -125,6 +138,12 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
             event["dates"].add(income["date"])
             event["scenarioAmounts"][scenario_index] += income["amountCents"]
             event["evidenceIds"].update(income["evidenceIds"])
+        for purchase in modeled_purchases:
+            i = date_indices[date.fromisoformat(purchase["date"])]
+            changes[i] -= purchase["amountCents"]
+            component = ("purchase", purchase["category"], "outflow")
+            component_paths[component][scenario_index][i] += purchase["amountCents"]
+            component_evidence[component].update(purchase["evidenceIds"])
         running = balance
         path = []
         for change in changes:
@@ -176,6 +195,8 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
     ]
     if income_model is not None:
         warnings.append("Modeled income is a probability-weighted expectation shared by scenarios; salary uncertainty requires separate error calibration.")
+    if spending_model is not None:
+        warnings.append("Purchase amounts are smoothed daily expectations, not scheduled payments. Large-purchase allowances are retained; unseen shocks remain possible.")
     ids = {i for event in events for i in event["evidenceIds"]}
     ids.update(i for c in components for i in c["evidenceIds"])
     ids.update(i for account in profile["accounts"] for i in account["evidenceIds"])
@@ -191,6 +212,7 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
         "startingBalanceBelowBuffer": balance < buffer_cents, "upcomingPayments": events,
         "scenarioPaths": scenario_paths,
         "cashFlowComponents": components,
+        "spendingEstimates": spending_explanations,
         "modeledIncomeGroupCount": len(replaced_income),
         "suppressedAlreadyObservedMonthlyGroups": [{"accountId": key[0], "transactionType": key[1],
                                                      "category": key[2], "merchantId": key[3], "direction": key[4]}

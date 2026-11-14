@@ -1,0 +1,11 @@
+{
+  "method": "scaled-path-envelope-expansion",
+  "modelVersion": "adaptive-spending-v3",
+  "modelDigest": "56366bb5f50bc6e0a39fb02712603a32ac44d493d61eae3c2f703874436b3407",
+  "calibrationThrough": "2026-08-30",
+  "horizonDays": 30,
+  "targetPathCoverage": 0.9,
+  "calibrationPaths": 4105,
+  "normalizedMarginNumerator": 163889,
+  "normalizedMarginDenominator": 145859
+}

@@ -1,0 +1,128 @@
+{
+  "modelVersion": "adaptive-spending-v3",
+  "acceptedOnDevelopment": true,
+  "development": {
+    "windows": 8210,
+    "days": 246300,
+    "dailyMAECents": 69526,
+    "dailyBiasCents": 2443,
+    "flatDailyMAECents": 70722,
+    "day30MAECents": 108159,
+    "flatDay30MAECents": 109287,
+    "lowestBalanceMAECents": 58752,
+    "flatLowestBalanceMAECents": 59544,
+    "scenarioEnvelopeCoveragePercent": 27.4,
+    "meanEnvelopeWidthCents": 79646,
+    "actualLowCashWindows": 1294,
+    "dailyMAEImprovementPercent": 1.69,
+    "centralLowCash": {
+      "flaggedWindows": 1152,
+      "truePositives": 891,
+      "precision": 0.7734,
+      "recall": 0.6886
+    },
+    "scenarioLowCash": {
+      "flaggedWindows": 1385,
+      "truePositives": 1000,
+      "precision": 0.722,
+      "recall": 0.7728
+    },
+    "flatLowCash": {
+      "flaggedWindows": 1135,
+      "truePositives": 879,
+      "precision": 0.7744,
+      "recall": 0.6793
+    }
+  },
+  "learnedRecencyWeights": {
+    "Entertainment": 0,
+    "Groceries": 0,
+    "Health": 0,
+    "Home & Tech": 0,
+    "Lifestyle": 0,
+    "Restaurants": 0,
+    "Transportation": 0,
+    "Travel": 0
+  },
+  "comparisonNote": "flat* metrics refer to conditioned-income-v2 on identical customers/dates.",
+  "adoptionGate": "Lower daily MAE; final-day and minimum-balance MAE may not worsen by more than 5% on development.",
+  "splitNote": "Reserved customers are excluded from fit, selection, calibration; this benchmark was already inspected in previous iterations.",
+  "evaluation": {
+    "windows": 995,
+    "days": 29850,
+    "dailyMAECents": 81500,
+    "dailyBiasCents": 498,
+    "flatDailyMAECents": 80270,
+    "day30MAECents": 88125,
+    "flatDay30MAECents": 84097,
+    "lowestBalanceMAECents": 54247,
+    "flatLowestBalanceMAECents": 52332,
+    "scenarioEnvelopeCoveragePercent": 27.82,
+    "meanEnvelopeWidthCents": 89669,
+    "actualLowCashWindows": 156,
+    "dailyMAEImprovementPercent": -1.53,
+    "centralLowCash": {
+      "flaggedWindows": 134,
+      "truePositives": 114,
+      "precision": 0.8507,
+      "recall": 0.7308
+    },
+    "scenarioLowCash": {
+      "flaggedWindows": 163,
+      "truePositives": 129,
+      "precision": 0.7914,
+      "recall": 0.8269
+    },
+    "flatLowCash": {
+      "flaggedWindows": 131,
+      "truePositives": 113,
+      "precision": 0.8626,
+      "recall": 0.7244
+    }
+  },
+  "calibration": {
+    "method": "scaled-path-envelope-expansion",
+    "modelVersion": "adaptive-spending-v3",
+    "modelDigest": "56366bb5f50bc6e0a39fb02712603a32ac44d493d61eae3c2f703874436b3407",
+    "calibrationThrough": "2026-08-30",
+    "horizonDays": 30,
+    "targetPathCoverage": 0.9,
+    "calibrationPaths": 4105,
+    "normalizedMarginNumerator": 163889,
+    "normalizedMarginDenominator": 145859
+  },
+  "coverageCounts": {
+    "v2Paths": 995,
+    "v2CoveredPaths": 909,
+    "v2CoveredDays": 29159,
+    "v2WidthCents": 19791246171,
+    "v2PositiveSavingsPreviews": 529,
+    "v2BufferBreaches": 3,
+    "v3Paths": 995,
+    "v3CoveredPaths": 900,
+    "v3CoveredDays": 28946,
+    "v3WidthCents": 22289090589,
+    "v3PositiveSavingsPreviews": 533,
+    "v3BufferBreaches": 7
+  },
+  "marginRangeCents": {
+    "min": 76988,
+    "mean": 328517,
+    "max": 3518859
+  },
+  "coverage": {
+    "v2": {
+      "wholePathPercent": 91.36,
+      "dailyPercent": 97.69,
+      "meanWidthCents": 663023
+    },
+    "v3": {
+      "wholePathPercent": 90.45,
+      "dailyPercent": 96.97,
+      "meanWidthCents": 746703
+    }
+  },
+  "recommendedDefault": "conditioned-income-v2",
+  "deploymentDecision": "Candidate not promoted: reserved-customer errors, interval width, and savings buffer breaches worsened.",
+  "artifactNote": "Digest canonicalized after JSON serialization; fitted parameters and evaluation results unchanged."
+}

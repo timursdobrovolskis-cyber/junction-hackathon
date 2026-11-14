@@ -13,12 +13,14 @@ We use one shared calculation engine to produce a separate result for each custo
 | 3. Forecast cash flow | Project daily balances for 30 days, upcoming payments, the lowest balance, and uncertainty. | v1 baseline evaluated across all 5,100 customers. Trained income v2 improves daily error 2.02% on 995 reserved customers; final-day error slightly worsens. Separately calibrated bounds cover 91.36% of complete paths, with a wide margin. |
 | 4. Estimate affordable savings | Find what could be set aside while preserving a chosen cash buffer throughout the forecast; account for known irregular costs beyond that horizon. | Conditional preview implemented using calibrated lower balances, an explicit buffer, and supplied future costs. Suggestions remain unconfirmed by default. Historical previews include three buffer breaches; no guarantee or money movement. |
 | 5. Generate category budgets | Allocate spending within income, commitments, and the savings plan. Recalculate the forecast when a budget changes. | Implemented locally: protected categories, proportional discretionary limits, explicit targets, daily-buffer checks, and category-edit previews. Accounting checks passed for all 5,100 customers. Infeasible plans are flagged; changed-behavior previews have no new calibration guarantee. |
-| 6. Connect coach and UI | Hand over calculated amounts, dates, assumptions, and evidence. Explain and display them, with previews of changes. | Coach functions explain all three forecast/savings examples and all four budget examples, including infeasible plans. Category edits call the shared Python budget engine and return a new conditional preview; failures preserve the previous result. UI/server-route wiring and engine support for new in-horizon expenses remain outstanding. The older coach goal fixture remains standalone. |
+| 6. Connect coach and UI | Hand over calculated amounts, dates, assumptions, and evidence. Explain and display them, with previews of changes. | Combined JSON runner and localhost POST /api/plan implemented with shared request/response fixtures. Coach functions explain forecast/savings and budget results, including infeasible plans, and the existing budget adapter supports category edits. Connecting the coach to the combined API is in progress; frontend wiring and new in-horizon expense support remain outstanding. |
 
 Build a transparent baseline first. For each stage: implement it, check representative cases, validate against the available data, document the output, and hand it to the other lanes. A small payday-transition model is now trained on earlier observations, with separate development, calibration, and evaluation periods. Its modest held-out gain and remaining errors are documented rather than treating training itself as success.
 
 ### Where to find the work
 
+- [Combined financial engine](data/FINANCIAL_ENGINE.md): one CLI/API call for forecast, savings, budgets, and edit previews; 54 unit tests and an HTTP integration check pass.
+- [Spending experiment](data/SPENDING_MODEL_EXPERIMENT.md): one bounded v3 trial worsened reserved-customer daily error by 1.53%; v2 remains the supported default.
 - [Data preparation](data/README.md): source downloads, import commands, and verified coverage.
 - [Profile contract](data/PROFILE_CONTRACT.md): generation commands, output fields, detection rules, and limitations.
 - [Three customer examples](fixtures/customer-profiles.jsonl): synthetic profiles the UI and coach can consume now.
@@ -31,10 +33,9 @@ Build a transparent baseline first. For each stage: implement it, check represen
 - [Category budget contract](data/CATEGORY_BUDGETS.md), [four example plans](fixtures/budget-demo.json), and [a category-edit preview](fixtures/budget-adjustment-demo.json): integration fields, rules, and feasibility checks.
 
 - [Shared-engine coach contract](docs/engine-coach.md) and [response function](src/engine-coach.mjs): renderable explanations, one material follow-up question, and pending customer inputs. Run `npm run demo:coach`.
-
 - [Budget coach contract](docs/budget-coach.md), [response function](src/budget-coach.mjs), and [server adapter](src/budget-engine-client.mjs): four customer explanations and a real category-edit round trip. Run `npm run demo:budget-coach`.
 
-Next wire the coach responses and budget adapter into the app UI/server, including input confirmation and infeasible-plan handling. Investigate spending and one-off expense errors to reduce the wide uncertainty range. Forecasts and counterfactual plans must retain their assumptions and confirmation state.
+Next connect the coach and UI to the combined local API, including input confirmation and infeasible-plan handling. One spending/one-off-expense experiment is complete and was not promoted; tighter reliable uncertainty remains unresolved. Forecasts and counterfactual plans must retain their assumptions and confirmation state.
 
 Raw data, the SQLite database, and all-customer outputs live under `data/local/` and are ignored by Git. Share the code, documentation, and small synthetic examples; teammates can reproduce the full output using the documented commands.
 
