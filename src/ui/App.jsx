@@ -287,7 +287,7 @@ function EvidenceRow({ item, negative }) {
 
 export default function App() {
   const [goals, setGoals] = useState(loadGoals);
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState(() => window.location.hash === '#goals' ? 'goals' : 'home');
   const mode = 'afterExpense';
   const [previewGoalId, setPreviewGoalId] = useState(null);
   const [evidenceData, setEvidenceData] = useState(null);
