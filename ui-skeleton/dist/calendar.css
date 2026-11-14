@@ -16,3 +16,38 @@
 .calendar-timeline{list-style:none;padding:0;border-left:2px solid #dce5d7;margin-left:4px}.calendar-timeline li{position:relative;padding:0 0 18px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 8px;font-size:12px}.calendar-timeline li::before{content:'';position:absolute;left:-5px;top:3px;width:8px;height:8px;background:#007841;border-radius:50%}.calendar-timeline small{grid-column:1/-1;color:#687361}.calendar-detail-body .calendar-day-payments{margin-top:12px}
 @media(max-width:350px){.calendar-heading h1{font-size:22px}.calendar-quick-actions>.calendar-connect{font-size:10px}.calendar-toolbar h2{font-size:17px}.calendar-day{height:44px}}
 .calendar-day{gap:2px}.calendar-cell-label{font-size:8px;line-height:10px;max-width:100%;padding:0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.calendar-day .calendar-dots{height:4px}.calendar-notifications .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.calendar-notifications{margin-top:8px}.calendar-notification{gap:3px}.calendar-notification small{line-height:1.3}
+
+/* Consistent, high-contrast category colours with shapes as a second cue. */
+.check-income,.dot-income,.category-income{--category-colour:#007548;--category-tint:#e4f5ec}
+.check-bill,.dot-bill,.category-bill{--category-colour:#005fcc;--category-tint:#e8f1ff}
+.check-subscription,.dot-subscription,.category-subscription{--category-colour:#7928c4;--category-tint:#f3eaff}
+.check-yearly,.dot-yearly,.category-yearly{--category-colour:#ac5200;--category-tint:#fff0dc}
+.check-alerts,.dot-alerts{--category-colour:#bf173b;--category-tint:#ffe8ee}
+.calendar-check input{accent-color:var(--category-colour)}
+.calendar-category-marker,.calendar-dots i{display:inline-block;flex-shrink:0;width:8px;height:8px;background:var(--category-colour);border-radius:50%}
+.calendar-category-marker.dot-income,.calendar-dots .dot-income{clip-path:polygon(50% 0,100% 100%,0 100%);border-radius:0}
+.calendar-category-marker.dot-bill,.calendar-dots .dot-bill{border-radius:1px}
+.calendar-category-marker.dot-yearly,.calendar-dots .dot-yearly{border-radius:1px;transform:rotate(45deg);width:7px;height:7px;margin:1px}
+.calendar-category-marker.dot-alerts{width:12px;height:14px;border-radius:3px;text-align:center;line-height:14px;color:white;font-size:11px;font-style:normal;font-weight:700}
+.calendar-category-marker.dot-alerts::after{content:'!'}
+.calendar-day .calendar-dots{height:8px;align-items:center;gap:4px}
+.calendar-day .calendar-dots i,.calendar-day[aria-pressed=true] .calendar-dots i{background:var(--category-colour)}
+.calendar-day[aria-pressed=true]{background:#e5f3e9;color:#163c28;border:2px solid #007548}
+.calendar-day[aria-pressed=true] .calendar-payment-count{background:#cce6d5;color:#163c28}
+.calendar-event .calendar-event-icon{color:var(--category-colour);background:var(--category-tint);border-left:3px solid var(--category-colour)}
+.calendar-options-body .calendar-checkboxes{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px}.calendar-check{gap:6px;font-size:11px}
+.calendar-primary,.calendar-outline,.calendar-delete{min-height:44px;border-radius:10px;padding:11px 14px;font:inherit;font-size:12px;cursor:pointer}
+.calendar-primary{background:#007548;color:white;border:1px solid #007548;font-weight:600}
+.calendar-quick-actions>.calendar-primary{flex:1;align-self:stretch;margin:0;white-space:nowrap}
+.calendar-outline{background:white;border:1px solid #ccd9cf;color:#315d43}
+.calendar-delete{display:block;width:100%;background:#fff3f5;border:1px solid #edb5c2;color:#9d1735;margin:8px 0}
+.calendar-primary:disabled,.calendar-outline:disabled{opacity:.5;cursor:default}
+.calendar-extras{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}.calendar-extras button{flex:1;font-size:10px}
+.calendar-edit-status{display:flex;align-items:center;gap:10px;background:#eff7f1;border:1px solid #c9dfd0;border-radius:10px;padding:8px 10px;margin-top:8px}
+.calendar-edit-status[hidden],.calendar-personal-note[hidden]{display:none}.calendar-edit-status p{flex:1;font-size:11px;line-height:1.5;margin:0}.calendar-edit-status button{min-height:44px;font-size:12px;font-weight:600;color:#007548;text-decoration:underline}.calendar-edit-status .is-error{color:#9d1735}
+.calendar-personal-note{font-size:10px;line-height:1.5;color:#526957;margin:10px 0}
+.calendar-event-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.calendar-form-field{display:flex;flex-direction:column;gap:6px;min-width:0;font-size:12px;color:#385340}.calendar-form-field:first-child{grid-column:1/-1}
+.calendar-form-field input,.calendar-form-field select{width:100%;min-width:0;min-height:44px;border:1px solid #c7d6ca;border-radius:9px;padding:9px;font:inherit;font-size:16px;background:white;color:#203e2a;box-sizing:border-box}
+.calendar-event-form>p,.calendar-event-form>button{grid-column:1/-1}.calendar-detail-body .calendar-form-note{font-size:11px;line-height:1.5;color:#5e7161;margin:3px 0}.calendar-detail-body .calendar-form-error{font-size:12px;color:#9d1735;margin:0}.calendar-event-form .calendar-form-error[hidden]{display:none}
+.calendar-detail h2{font-size:27px;line-height:1.2;letter-spacing:-.6px}.calendar-deleted-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #e0e9e2}.calendar-deleted-row span{min-width:0;overflow-wrap:anywhere}.calendar-deleted-row strong{display:block;font-size:13px}.calendar-deleted-row small{display:block;font-size:11px;color:#657868;margin-top:5px}
+.calendar-primary:focus-visible,.calendar-outline:focus-visible,.calendar-delete:focus-visible,.calendar-form-field input:focus-visible,.calendar-form-field select:focus-visible{outline:3px solid #007548;outline-offset:3px}
