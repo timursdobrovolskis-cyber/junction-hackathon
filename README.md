@@ -13,6 +13,11 @@ Start with [the build plan and current workflow](BUILD_PLAN.md) for the product 
 
 ## Run the planning and coach module
 
+For a chat interface you can try without an API, run `npm run dev:chat` and open
+http://localhost:3000. The [chat guide](docs/chat-coach.md) covers conversations,
+browser-local drafts, and the handoff for a future conversational API. This is
+a clearly labelled rule-based demo; it does not calculate affordability.
+
 The [saved-plan guide](docs/saved-plans.md) adds durable expenses/preferences, payment matching, and two engine-calculated recovery choices. Run `npm run demo:saved-plans` with the local engine running, or `npm run check:saved-plans` for the automated save/restart/replay walkthrough.
 
 For the combined live API, start with the [coach integration guide](docs/financial-coach-integration.md). Run `npm run demo:api-coach` after starting the local engine, or add `-- --fixture` to inspect the saved response offline.
@@ -40,4 +45,5 @@ S-Bank transactions for two customers, using June–September 2026 and a histori
 reference date of October 1. It reports spending changes, income variation, and
 per-account observed low balances with source references. See the
 [historical analysis guide](docs/historical-coach.md) to connect another customer.
-The mobile interface, live bank connection, and LLM chat are separate work.
+A standalone responsive chat prototype is available; integration into the team's
+mobile app, a live bank connection, and LLM-powered replies remain separate work.
