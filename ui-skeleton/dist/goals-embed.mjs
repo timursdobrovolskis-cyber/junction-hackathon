@@ -1,4 +1,3 @@
-import { shareGoals } from './app-state.mjs';
 const frame = document.getElementById('goals-planner');
 const purchase = document.getElementById('purchase-goal');
 const money = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' });
@@ -20,8 +19,3 @@ function showGoals() {
 
 window.addEventListener('hashchange', showGoals);
 showGoals();
-
-window.addEventListener('message', event => {
-  if (event.origin !== location.origin || event.source !== frame.contentWindow || event.data?.type !== 'goals-state') return;
-  try { shareGoals(event.data.goals); } catch { /* Invalid iframe state is never forwarded. */ }
-});

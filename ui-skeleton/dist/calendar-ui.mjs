@@ -1,4 +1,3 @@
-import { shareCalendar, unavailableCalendar } from './app-state.mjs';
 import { eventsInRange, shiftMonth, validateCalendar, isDate, visibleEvents, eventGroup, calendarPeriod, movePeriod, restoreCalendarView, visibilityDefaults } from './calendar-model.mjs';
 
 import { emptyEdits, editsKey, readEdits, writeEdits, amountInCents, calendarWithEdits, deletedEvents } from './calendar-edits.mjs';
@@ -260,7 +259,6 @@ function render() {
   $('calendar-data-label').textContent = data.isIllustrative ? 'Demo household · fictional transactions' : data.sourceNotice;
   $('calendar-data-label').classList.toggle('is-demo', Boolean(data.isIllustrative));
   renderNotices();
-  if (!editsBlocked) shareCalendar({source:activeSource,view,anchor,visibility,edits}); else unavailableCalendar();
   const period = calendarPeriod(view, anchor);
   const heading = view === 'month' ? dateLabel(anchor, { month: 'long', year: 'numeric' })
     : view === 'week' ? `${dateLabel(period.start)} – ${dateLabel(period.end, { day: 'numeric', month: 'short', year: 'numeric' })}`

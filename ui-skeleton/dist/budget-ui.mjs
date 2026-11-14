@@ -1,4 +1,3 @@
-import { shareBudget } from './app-state.mjs';
 const el = id => document.getElementById(id);
 const money = cents => cents === null ? '—' : new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR'}).format(cents/100);
 const date = iso => new Date(iso+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'short',timeZone:'UTC'});
@@ -66,7 +65,7 @@ function paintHome(data) {
   document.querySelector('.budget-hero-link')?.before(demo);
 }
 function render(data) {
-  currentData=data; shareBudget(data.selectedMonth);
+  currentData=data;
   const planned=data.mode==='plan', unavailable=data.mode==='unavailable', key=planned?'plannedCents':'spentCents', total=planned?data.totalPlannedCents:data.spentCents;
   const select=el('budget-month');select.replaceChildren();
   for(const item of data.catalog){const option=node('option',item.label+(item.kind==='plan'?' · Plan':item.kind==='unavailable'?' · No plan yet':''));option.value=item.month;select.append(option);}select.value=data.selectedMonth;
