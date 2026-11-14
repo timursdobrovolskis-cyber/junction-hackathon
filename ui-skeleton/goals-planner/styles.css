@@ -315,3 +315,13 @@ button:focus-visible, a:focus-visible { outline: 3px solid #82ddb0; outline-offs
 .g2-long .goal-art [stroke="#007841"] { stroke:#91FA9B; }
 .g2-long .goal-art [stroke="#004628"] { stroke:#2E9A5C; }
 .g2-long .goal-art [stroke="#18221C"] { stroke:#DFF5E3; }
+.g2-stats button { display:flex; flex-direction:column; align-items:flex-start; gap:2px; padding:8px 10px; border:1px solid transparent; border-radius:12px; background:#f6f8f6; text-align:left; font-family:Inter, sans-serif; transition:background .15s ease, border-color .15s ease, transform .1s ease; }
+.g2-stats button span { font-size:10px; color:#68716a; }
+.g2-stats button strong { font-size:13px; font-weight:700; color:#18221c; font-variant-numeric:tabular-nums; }
+.g2-stats button em { font-style:normal; font-size:10px; font-weight:650; color:#007841; }
+.g2-stats button:hover { border-color:#bfe0c9; background:#ebf7ec; }
+.g2-stats button:active { transform:scale(.97); background:#dff3e3; }
+.g2-stats-hint { margin:-4px 0 0; font-size:10px; color:#8a948d; }
+.g2-toast { display:flex; align-items:center; gap:6px; padding:8px 10px; border-radius:12px; background:#18221c; color:#fff; font-size:12px; animation:g2-in .25s ease; }
+.g2-toast svg { color:#91fa9b; } .g2-toast span { flex:1; }
+.g2-toast button { padding:0; border:0; background:none; color:#91fa9b; font:650 12px Inter, sans-serif; }

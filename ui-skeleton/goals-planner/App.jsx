@@ -67,9 +67,13 @@ function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, comple
   const addDeposit = (event) => {
     event.preventDefault();
     const cents = euroToCents(deposit);
-    if (cents > 0) updateGoal({ savedCents: goal.savedCents + cents });
+    if (cents > 0) quickAdd(cents);
     setDeposit('');
   };
+  const [lastAdd, setLastAdd] = useState(null);
+  useEffect(() => { if (!lastAdd) return undefined; const timer = setTimeout(() => setLastAdd(null), 4000); return () => clearTimeout(timer); }, [lastAdd]);
+  const quickAdd = (cents) => { if (cents <= 0) return; updateGoal({ savedCents: goal.savedCents + cents }); setLastAdd({ cents, id: Date.now() }); };
+  const undoAdd = () => { if (!lastAdd) return; updateGoal({ savedCents: Math.max(0, goal.savedCents - lastAdd.cents) }); setLastAdd(null); };
   const startYear = Number(fixture.asOf.slice(0, 4)); const endYear = Number(goal.targetDate.slice(0, 4));
   return <article className={`g2-card g2-${horizon} ${isFunded ? 'g2-funded' : ''}`}>
     <div className="g2-band">
@@ -85,9 +89,13 @@ function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, comple
       {isFunded
         ? <button type="button" className="g2-tick" onClick={completeGoal}><Check size={16}/> Tick it off</button>
         : <>
-            <dl className="g2-stats"><div><dt>Monthly</dt><dd>{formatEuro(neededMonthly)}</dd></div><div><dt>Weekly</dt><dd>{formatEuro(Math.ceil(neededMonthly / 4))}</dd></div><div><dt>To go</dt><dd>{formatEuro(remainingCents)}</dd></div></dl>
+            <div className="g2-stats" role="group" aria-label="Tap an amount to add it to your savings">
+              {[['Monthly', neededMonthly], ['Weekly', Math.ceil(neededMonthly / 4)], ['To go', remainingCents]].map(([name, cents]) => <button type="button" key={name} onClick={() => quickAdd(cents)} aria-label={`Add ${formatEuro(cents)} (${name.toLowerCase()} amount) to ${goal.label || 'goal'}`}><span>{name}</span><strong>{formatEuro(cents)}</strong><em>+ Add</em></button>)}
+            </div>
+            <p className="g2-stats-hint">Tap an amount to add it to what you’ve saved.</p>
             <form className="g2-deposit" onSubmit={addDeposit}><input inputMode="decimal" type="number" min="0" step="0.01" value={deposit} onChange={(event) => setDeposit(event.target.value)} placeholder="Add money saved, €" aria-label={`Add money saved toward ${goal.label || 'goal'}`}/><button type="submit" disabled={!euroToCents(deposit)}>Add</button></form>
           </>}
+      {lastAdd && <div className="g2-toast" role="status" key={lastAdd.id}><Check size={14}/><span>Added {formatEuro(lastAdd.cents)}</span><button type="button" onClick={undoAdd}>Undo</button></div>}
       <button type="button" className="g2-edit-toggle" aria-expanded={editing} onClick={() => setEditing(!editing)}>{editing ? 'Done' : 'Edit goal'}</button>
       {editing && <div className="g2-edit">
         <label>Name<input value={goal.label} maxLength={32} onChange={(event) => updateGoal({ label: event.target.value })}/></label>
