@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import calendar from '../api/calendar.js';
 import { monthDays, shiftMonth, eventsInRange, validateCalendar } from '../dist/calendar-model.mjs';
 
-const sample = JSON.parse(readFileSync(new URL('../server/calendar/engine.json', import.meta.url)));
+const sample = JSON.parse(readFileSync(new URL('../server/calendar/regular.json', import.meta.url)));
 async function call(url = '/api/calendar', method = 'GET') {
   const res = { headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(text) { this.body = JSON.parse(text); } };
   await calendar({ url, method }, res); return res;
@@ -25,25 +25,27 @@ test('calendar aligns Monday-first and handles leap years and year rollover', ()
   assert.equal(shiftMonth('2027-01', -1), '2026-12');
   assert.throws(() => monthDays('2026-13'));
 });
-test('a payment window overlaps selected days but appears only once in the month agenda', () => {
-  const event = sample.events.find((e) => e.earliestDate !== e.latestDate);
+test('each payment appears only on its exact day and once in a month', () => {
+  const event = sample.events[0];
   assert.equal(eventsInRange([event], event.earliestDate, event.latestDate).length, 1);
   assert.equal(eventsInRange([event], event.latestDate, event.latestDate).length, 1);
-  assert.equal(eventsInRange([event], '2028-01-01', '2028-01-31').length, 0);
+  assert.equal(eventsInRange([event], '2026-10-14', '2026-10-14').length, 0);
+  assert.equal(eventsInRange([event], '2026-10-16', '2026-10-16').length, 0);
+  assert.equal(eventsInRange(sample.events, '2026-10-01', '2026-10-31', 'income').length, 1);
   assert.ok(eventsInRange(sample.events, '2026-10-01', '2026-10-31', 'income').every((e) => e.kind === 'income'));
 });
 test('wrong customer, malformed dates, amounts, and duplicate records are rejected', () => {
-  validateCalendar(sample, 'CUST00005');
+  validateCalendar(sample, 'CUST00003');
   assert.throws(() => validateCalendar(sample, 'OTHER'));
-  for (const patch of [{ earliestDate: '2026-02-30' }, { amountCents: NaN }, { status: 'paid' }]) {
+  for (const patch of [{ earliestDate: '2026-02-30' }, { latestDate: '2026-10-16' }, { date: '2030-01-01' }, { cadence: 'once' }, { amountCents: NaN }, { status: 'paid' }]) {
     const changed = structuredClone(sample); Object.assign(changed.events[0], patch);
-    assert.throws(() => validateCalendar(changed, 'CUST00005'));
+    assert.throws(() => validateCalendar(changed, 'CUST00003'));
   }
   const duplicate = structuredClone(sample); duplicate.events.push(duplicate.events[0]);
-  assert.throws(() => validateCalendar(duplicate, 'CUST00005'));
+  assert.throws(() => validateCalendar(duplicate, 'CUST00003'));
 });
 test('calendar remains read-only and preserves engine balances', async () => {
-  const response = await call(); assert.deepEqual(response.body.daily, sample.daily);
+  const response = await call('/api/calendar?source=regular'); assert.deepEqual(response.body.daily, sample.daily);
   assert.equal(response.body.forecastThrough, sample.forecastThrough);
   assert.ok(response.body.events.every((e) => e.isConfirmed === false));
 });
@@ -55,13 +57,30 @@ test('optional live connection uses server-owned customer inputs and fails expli
   globalThis.fetch = async (url, options) => {
     assert.equal(url.toString(), 'http://localhost:8766/api/calendar');
     const request = JSON.parse(options.body);
-    assert.equal(request.customerId, 'CUST00005'); assert.equal(request.asOf, '2026-09-30');
+    assert.equal(request.customerId, 'CUST00003'); assert.equal(request.asOf, '2026-09-30');
     return { ok: true, json: async () => structuredClone(sample) };
   };
-  const response = await call('/api/calendar?source=engine&customerId=OTHER');
+  const response = await call('/api/calendar?source=regular&customerId=OTHER');
   assert.equal(response.statusCode, 200); assert.equal(response.body.connection, 'engine');
   globalThis.fetch = async () => ({ ok: true, json: async () => ({ ...sample, customerId: 'OTHER' }) });
   assert.equal((await call()).statusCode, 502);
   globalThis.fetch = async () => { throw new Error('secret upstream diagnostic'); };
   const failed = await call(); assert.equal(failed.statusCode, 502); assert.doesNotMatch(JSON.stringify(failed.body), /secret/);
+});
+
+test('two-year schedules retain customer isolation and named monthly/yearly subscriptions', async () => {
+  const regular = (await call('/api/calendar?source=regular')).body;
+  assert.equal(regular.rangeEnd, '2028-09-30');
+  assert.equal(regular.events.filter(e => e.kind === 'income').length, 24);
+  assert.ok(regular.events.every(e => e.date.endsWith('-15')));
+  const irregular = (await call()).body;
+  assert.equal(irregular.events.length, 0);
+  assert.ok(irregular.omittedPatterns.length > 0);
+  const subscriptions = (await call('/api/calendar?source=subscriptions')).body;
+  validateCalendar(subscriptions, 'SUBSCRIPTIONS-DEMO');
+  assert.ok(subscriptions.events.some(e => e.title === 'Netflix' && e.date === '2026-11-21'));
+  assert.equal(subscriptions.events.filter(e => e.title === 'Adobe Creative Cloud').length, 2);
+  assert.ok(subscriptions.events.every(e => e.date === e.earliestDate && e.date === e.latestDate));
+  assert.equal(eventsInRange(subscriptions.events, '2027-01-01', '2027-01-31', 'subscriptions').length, 4);
+  assert.ok(!regular.evidence.some(e => e.id.startsWith('txn-nflx')));
 });

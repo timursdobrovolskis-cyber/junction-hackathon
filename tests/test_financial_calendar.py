@@ -29,13 +29,13 @@ class CalendarTests(unittest.TestCase):
 
     def test_yearly_candidates_need_two_observations_and_are_never_confirmed(self):
         yearly = [e for e in self.build()["events"] if e["cadence"] == "yearly"]
-        self.assertEqual(len(yearly), 1)
+        self.assertEqual(len(yearly), 2)
         event = yearly[0]
-        self.assertEqual((event["earliestDate"], event["latestDate"]), ("2026-11-13", "2026-11-27"))
+        self.assertEqual((event["earliestDate"], event["latestDate"]), ("2026-11-20", "2026-11-20"))
         self.assertEqual(event["amountCents"], 12000)
         self.assertEqual(len(event["evidenceIds"]), 2)
         self.assertFalse(event["isConfirmed"])
-        self.assertEqual(event["status"], "needs_review")
+        self.assertEqual(event["status"], "estimated")
         self.assertIsNone(event["alreadyIncludedInForecast"])
         single = [r for r in self.rows if r["date"] >= "2025-01-01"]
         self.assertFalse([e for e in self.build(single)["events"] if e["cadence"] == "yearly"])
@@ -85,7 +85,7 @@ class CalendarTests(unittest.TestCase):
         forecast = {**self.forecast, "asOf": "2025-01-31", "daily": [], "upcomingPayments": [], "evidence": []}
         result = {**self.result, "asOf": "2025-01-31", "forecast": forecast}
         event = next(e for e in self.build(rows, result)["events"] if e["cadence"] == "yearly")
-        self.assertEqual(event["earliestDate"], "2025-02-21")
+        self.assertEqual(event["earliestDate"], "2025-02-28")
 
     def test_matched_cancelled_and_already_included_costs_do_not_duplicate(self):
         payment = next(p for p in self.forecast["upcomingPayments"] if p["transactionType"] == "housing_payment")
@@ -94,13 +94,73 @@ class CalendarTests(unittest.TestCase):
         result = {**self.result, "plannedExpenses": [base, {**base, "id": "paid", "status": "matched"}, {**base, "id": "cancelled", "status": "cancelled"}]}
         calendar = self.build(result=result)
         self.assertFalse(any(e["source"] == "customer" for e in calendar["events"]))
-        self.assertEqual(next(e for e in calendar["events"] if e.get("plannedExpenseIds"))["plannedExpenseIds"], ["rent"])
+        self.assertEqual(calendar["events"], self.build()["events"])
         base["customerId"] = "OTHER"
         with self.assertRaises(ValueError): self.build(result=result)
 
+    def test_each_regular_payment_appears_on_one_day_for_two_years(self):
+        calendar = self.build()
+        self.assertEqual(calendar["rangeEnd"], "2028-10-31")
+        self.assertTrue(all(e["date"] == e["earliestDate"] == e["latestDate"] for e in calendar["events"]))
+        salary = [e for e in calendar["events"] if e["kind"] == "income"]
+        self.assertEqual(len(salary), 24)
+        self.assertTrue(all(e["date"].endswith("-01") for e in salary))
+
+    def test_irregular_salary_dates_are_omitted_even_when_forecast_has_income(self):
+        rows = deepcopy(self.rows)
+        for row in rows:
+            if row["transaction_type"] == "salary" and row["date"].startswith("2026-09"):
+                row["date"] = "2026-09-15"
+        calendar = self.build(rows)
+        self.assertFalse(any(e["kind"] == "income" for e in calendar["events"]))
+        self.assertTrue(any(p["title"] == "Salary" for p in calendar["omittedPatterns"]))
+        self.assertEqual(calendar["daily"], self.forecast["daily"])
+
+    def test_one_off_costs_are_excluded_without_changing_the_engine_result(self):
+        result = {**self.result, "plannedExpenses": [{"customerId": "CALENDAR-DEMO", "id": "repair", "date": "2026-11-07", "amountCents": 50000, "status": "planned", "inclusion": "additional"}]}
+        self.assertEqual(self.build(result=result)["events"], self.build()["events"])
+
+    def test_missing_month_and_multiple_payments_do_not_create_fixed_rules(self):
+        for rows in ([r for r in self.rows if not (r["transaction_type"] == "salary" and r["date"].startswith("2026-09"))],
+                     self.rows + [{**next(r for r in self.rows if r["date"] == "2026-09-01"), "transaction_id": "extra", "date": "2026-09-15"}]):
+            self.assertFalse(any(e["kind"] == "income" for e in self.build(rows)["events"]))
+
+    def test_variable_cost_amounts_are_excluded(self):
+        rows = deepcopy(self.rows)
+        next(r for r in rows if r["date"] == "2026-09-12")["amount_cents"] = -50000
+        self.assertFalse(any(e.get("merchantId") == "demo-utilities" for e in self.build(rows)["events"]))
+
+    def subscription(self, **changes):
+        return {"id": "subscription", "customerId": "CALENDAR-DEMO", "merchant": "Example service", "status": "active",
+                "intervalMonths": 1, "nextPaymentDate": "2026-11-30", "amountCents": 1299,
+                "accountId": "CALENDAR-DEMO-ACCOUNT", "merchantId": "demo-monthly-subscription", **changes}
+
+    def test_explicit_subscription_replaces_detected_series_once_and_cancellation_hides_it(self):
+        for status in ("active", "cancelled", "needs_confirmation"):
+            calendar = build_financial_calendar(self.rows, self.result, subscriptions=[self.subscription(status=status)])
+            self.assertFalse(any(e.get("merchantId") == "demo-monthly-subscription" for e in calendar["events"]))
+            self.assertEqual(len([e for e in calendar["events"] if e["kind"] == "subscription"]), 24 if status == "active" else 0)
+
+    def test_subscription_anchor_survives_short_months(self):
+        calendar = build_financial_calendar([], self.result, subscriptions=[self.subscription(nextPaymentDate="2027-01-31")])
+        self.assertEqual([e["date"] for e in calendar["events"][:3]], ["2027-01-31", "2027-02-28", "2027-03-31"])
+        self.assertTrue(any(e["date"] == "2028-02-29" for e in calendar["events"]))
+
+    def test_subscription_customer_and_duplicate_ids_are_rejected(self):
+        for subscriptions in ([self.subscription(customerId="OTHER")], [self.subscription(), self.subscription()],
+                              [self.subscription(intervalMonths=0)], [self.subscription(amountCents=True)]):
+            with self.assertRaises(ValueError): build_financial_calendar(self.rows, self.result, subscriptions=subscriptions)
+
+    def test_two_merchants_paid_on_same_day_remain_separate(self):
+        extra = [{**r, "merchant_id": "second-utility", "transaction_id": "second-" + r["transaction_id"]}
+                 for r in self.rows if r["merchant_id"] == "demo-utilities"]
+        same_day = [e for e in self.build(self.rows + extra)["events"] if e["date"] == "2026-12-12"]
+        self.assertEqual(len(same_day), 2)
+        self.assertEqual(len({e["seriesId"] for e in same_day}), 2)
+
     def test_ids_are_stable_and_invalid_scope_is_rejected(self):
         self.assertEqual([e["id"] for e in self.build()["events"]], [e["id"] for e in self.build()["events"]])
-        with self.assertRaises(ValueError): build_financial_calendar(self.rows, self.result, months=13)
+        with self.assertRaises(ValueError): build_financial_calendar(self.rows, self.result, months=25)
         with self.assertRaises(ValueError): self.build(result={**self.result, "customerId": "OTHER"})
 
 
