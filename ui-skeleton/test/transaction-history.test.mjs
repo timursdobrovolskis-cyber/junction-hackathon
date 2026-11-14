@@ -43,6 +43,8 @@ test('merchant names and IDs use exact case-insensitive filters; refunds stay se
 test('real anonymous merchant fixture totals match rows and absent names never imply zero',()=>{
  const q=parse('What did I spend at MRC-ENT-0051 last month?');
  const r=queryHistory(q);assert.equal(r.knownCents,13725);assert.equal(r.status,'merchant_partial');
+ const matched=answer('What did I spend at MRC-ENT-0051 last month?');
+ assert.equal(matched.evidence.length,2);assert.deepEqual(matched.evidence.map(e=>e.id),r.rows.map(t=>t.id));
  const unknown=answer('What did I spend at Lidl last month?');assert.match(unknown.summary,/August 2026.*anonymous merchant IDs/);assert.doesNotMatch(unknown.summary,/€0/);
 });
 test('relative months are tied to selected demo date, not wall clock or October forecast',()=>{
