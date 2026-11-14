@@ -47,7 +47,7 @@ Full scheduling rules, backend interface and fixture regeneration:
 
 ## Checks
 
-Run `npm test` here: 83 checks including the team's Coach/Goals tests and calendar
+Run `npm test` here: 88 checks including the team's Coach/Goals tests and calendar
 API validation, date boundaries, isolation, exact-day filters and yearly
 subscriptions. Browser checks cover 320/390/1024px layouts, date and evidence
 dialogs, Escape/focus restoration, February 2028, reload persistence, all five
@@ -123,7 +123,7 @@ estimates and irregular restaurant purchases are excluded from the calendar.
 
 Day/Week/Month stay visible. Filters & dates opens the checked categories,
 month/date jump, first-date and refresh controls. It closes on a date selection,
-outside click or Escape. Google Calendar is alongside it. Grid cells show short
+outside click or Escape. Add event is alongside it. Google Calendar is a secondary action below the payment list. Grid cells show short
 payment names and a count for shared dates; tapping shows every selected payment.
 
 The page previews three payments. All payments opens the complete filtered period
@@ -143,3 +143,37 @@ For the browser regression, install Python Playwright and Chromium, run the dev
 server, then `CALENDAR_TEST_URL=http://127.0.0.1:4174 python scripts/check-calendar.py`.
 It covers named renewals, short preview/full list, warning timeline, source
 isolation, filters/reload, 320/390/1024px widths, Google download and Budget.
+
+
+## Personal events and distinct categories
+
+The top action is **Add event**. Enter a name, date, positive EUR amount,
+category and one-off/monthly/yearly repetition. Clicking a date also offers Add
+on that date. Monthly reminders retain their original day, clipping to month end
+when needed; annual 29 February reminders use 28 February in non-leap years.
+They are labelled Added by you, separate from estimated bank-history events.
+
+Open a payment to delete that date; personal recurring reminders also offer
+Delete all repeats. Undo reverses the latest edit. Deleted events at the bottom
+lets you restore removed dates/series after reopening. Restoring a series keeps
+any separately deleted dates removed. Deleting never cancels a bank payment or
+subscription. Automatic detected events can be deleted one occurrence at a time.
+
+Edits use validated, versioned localStorage (`calendar-edits-v1:<customerId>`),
+with up to 100 personal reminders per customer. They persist on this browser,
+not across devices or accounts. Foreign-customer/corrupt records are rejected;
+storage failures retain the form and report that nothing was saved. Other-tab
+changes refresh the calendar and invalidate stale Undo, preserving open drafts.
+Engine forecasts, warnings, evidence and automatic scheduled totals remain
+unchanged and are labelled accordingly. Google Calendar at the bottom still
+subscribes to the original public sample feed; local additions/deletions do not
+sync, as explained in the connection dialog. No authentication or private cloud
+calendar storage has been introduced.
+
+Income is green/triangle, bills blue/square, subscriptions purple/circle, annual
+renewals orange/diamond and alerts red/exclamation. The same palette appears on
+checkboxes, larger grid markers and payment icons; names remain visible too.
+
+Run `CALENDAR_TEST_URL=http://127.0.0.1:4174 python scripts/check-calendar-controls.py`
+after starting the dev server to exercise CRUD, recurrence, Undo/restore,
+customer isolation, reload, blocked storage, other-tab updates and mobile forms.
