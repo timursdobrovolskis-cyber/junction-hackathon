@@ -43,3 +43,7 @@ Replaced nested transcript scrolling with one full-height reading surface and a 
 ## Budget integration
 
 Added a compact Home budget entry and a separate category page, with October proposed limits and September recorded spending as distinct periods. First visual pass showed category rows too far down; shortened the heading and moved the Home entry above the bills/savings tiles, with a smaller balance figure. Second pass checked September chart, transaction disclosure and 331px compact-phone content width without overflow. Third pass checks final standard/compact navigation and screenshots. Added five meaningful calculation/API tests for period coverage, exact totals, transfers, refunds, overspend, unknown categories, foreign accounts and duplicate transactions. All 66 tests pass. No October spending has been invented and no September budget is retrospectively claimed.
+
+## Budget-first Home
+
+Moved the category budget into the main green card and removed the duplicate balance-led hero. The purchase action stays immediately below the card, with bills and savings beneath it. Removed the coach loader's Home balance writes so it cannot overwrite the budget or fail on deleted elements; account balance remains in Coach's account context. Verified budget navigation, purchase dialog opening, populated coach account data, and compact layout (331px content and scroll width; budget overview 289px for both). Screenshot: 15-budget-first-home.jpg.

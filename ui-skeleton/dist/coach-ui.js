@@ -167,10 +167,6 @@
   });
   document.querySelectorAll('[data-scenario]').forEach(button => button.addEventListener('click', () => showScenario(button.dataset.scenario)));
   function connectHome(account) {
-    const [whole, decimal] = money(account.balanceCents).split('.');
-    const amount=document.querySelector('.hero-amount');amount.replaceChildren(document.createTextNode(whole));
-    const decimals=document.createElement('span');decimals.className='amount-decimals';decimals.textContent='.'+decimal;amount.append(decimals);amount.setAttribute('aria-label',account.balance+' observed account balance');
-    document.querySelector('.payday-pill').textContent='Observed 28 Sep · '+account.label;
     const billCents=account.payments.filter(p=>p.direction==='outflow'&&['Housing','Utilities'].includes(p.category)).reduce((sum,p)=>sum+p.expectedTotalCents,0);
     const values=document.querySelectorAll('.set-aside strong');values[0].textContent=money(billCents);values[1].textContent=money(account.savingsTargetCents);
     const rows=el('account-plan-rows');rows.replaceChildren();
@@ -179,7 +175,7 @@
   const starters=[
     ['Spending plan','See your category limits','Show my spending plan','↗'],
     ['Upcoming bills','Know what’s due next','Show upcoming bills','▦'],
-    ['Saving room','Understand your options','Show my saving room','＋'],
+    ['Save more','See what your plan allows','I want to save more','＋'],
     ['Plan a cost','Add an upcoming expense','I have an expense coming up','↳'],
   ];
   for(const [title,detail,prompt,icon] of starters){const button=document.createElement('button');button.type='button';button.dataset.prompt=prompt;button.className='coach-starter';const mark=document.createElement('span');mark.className='starter-icon';mark.textContent=icon;mark.setAttribute('aria-hidden','true');const strong=document.createElement('strong');strong.textContent=title;const small=document.createElement('span');small.textContent=detail;button.append(mark,strong,small);button.addEventListener('click',()=>{el('chat-input').value=prompt;submit(prompt);});el('coach-starters').append(button);}
@@ -187,7 +183,7 @@
     setBusy(true);
     try { const response = await fetch('/api/coach'); if (!response.ok) throw new Error(); const data = await response.json();
       if (!data.contexts?.design || !data.contexts?.engine) throw new Error(); contexts = data.contexts; ready = data.ready || data.planningReady; connectHome(data.account); showScenario(scenario);
-    } catch { ready = false; el('coach-source').textContent = 'Your plan couldn’t load.'; el('chat-status').textContent = 'Please reload to reconnect.'; document.querySelector('.payday-pill').textContent='Account data unavailable · reload to retry'; setBusy(false); }
+    } catch { ready = false; el('coach-source').textContent = 'Your plan couldn’t load.'; el('chat-status').textContent = 'Please reload to reconnect.'; setBusy(false); }
   }
   load();
 })();
