@@ -228,3 +228,5 @@ button:focus-visible, a:focus-visible { outline: 3px solid #82ddb0; outline-offs
 .account-product-links strong { font-size:12px; font-weight:800; }
 .account-product-links span { grid-column:1; font-size:10px; color:#60786a; }
 .account-product-links svg { grid-column:2; grid-row:1 / span 2; color:#007841; }
+.accounts-explore { border-radius:12px; background:#f3f8f4; padding:6px 10px; }
+.accounts-explore .goal-card { margin:6px -4px 4px; }
