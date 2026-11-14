@@ -1,0 +1,2615 @@
+{
+  "monthSummaries": {
+    "2026-10": {
+      "incomeCents": 122122,
+      "outflowCents": 76100,
+      "paymentCount": 2
+    },
+    "2026-11": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2026-12": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-01": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-02": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-03": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-04": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-05": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-06": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-07": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-08": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-09": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-10": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-11": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2027-12": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-01": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-02": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-03": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-04": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-05": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-06": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-07": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-08": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    },
+    "2028-09": {
+      "incomeCents": 123529,
+      "outflowCents": 75740,
+      "paymentCount": 2
+    }
+  },
+  "schemaVersion": "2.0",
+  "customerId": "CUST00003",
+  "asOf": "2026-09-30",
+  "currency": "EUR",
+  "modelVersion": "conditioned-income-v2",
+  "rangeStart": "2026-10-01",
+  "rangeEnd": "2028-09-30",
+  "forecastStatus": "estimated",
+  "forecastThrough": "2026-10-30",
+  "events": [
+    {
+      "id": "recurring-5faaa4b04f323a599e",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "forecast",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-10-03",
+      "earliestDate": "2026-10-03",
+      "latestDate": "2026-10-03",
+      "amountCents": 76100,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b890aab91bd2aeb3c9",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "forecast",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2026-10-15",
+      "earliestDate": "2026-10-15",
+      "latestDate": "2026-10-15",
+      "amountCents": 122122,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b54e2acfd93bf44e05",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-11-03",
+      "earliestDate": "2026-11-03",
+      "latestDate": "2026-11-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6f261b163bc152b1e9",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2026-11-15",
+      "earliestDate": "2026-11-15",
+      "latestDate": "2026-11-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-ce5a9daabb62f45fa3",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-12-03",
+      "earliestDate": "2026-12-03",
+      "latestDate": "2026-12-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-19329096c950d84671",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2026-12-15",
+      "earliestDate": "2026-12-15",
+      "latestDate": "2026-12-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-5d8553730df620d105",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-01-03",
+      "earliestDate": "2027-01-03",
+      "latestDate": "2027-01-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-ac9375e0599e05f36f",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-01-15",
+      "earliestDate": "2027-01-15",
+      "latestDate": "2027-01-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-c2c56c2eec1fb74cd9",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-02-03",
+      "earliestDate": "2027-02-03",
+      "latestDate": "2027-02-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7b9ec108487798474d",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-02-15",
+      "earliestDate": "2027-02-15",
+      "latestDate": "2027-02-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-518479ffb2fd57fb19",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-03-03",
+      "earliestDate": "2027-03-03",
+      "latestDate": "2027-03-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-9e68d889cf9786c802",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-03-15",
+      "earliestDate": "2027-03-15",
+      "latestDate": "2027-03-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-60dd08430b1636d206",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-04-03",
+      "earliestDate": "2027-04-03",
+      "latestDate": "2027-04-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b1f131f280f34ce2c2",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-04-15",
+      "earliestDate": "2027-04-15",
+      "latestDate": "2027-04-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-07b2709a9d33d7ab09",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-05-03",
+      "earliestDate": "2027-05-03",
+      "latestDate": "2027-05-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6d22851bd8c169c197",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-05-15",
+      "earliestDate": "2027-05-15",
+      "latestDate": "2027-05-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6855d7c0ed02188037",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-06-03",
+      "earliestDate": "2027-06-03",
+      "latestDate": "2027-06-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-035453c926e1328cdc",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-06-15",
+      "earliestDate": "2027-06-15",
+      "latestDate": "2027-06-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-3f26c75594db5983b8",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-07-03",
+      "earliestDate": "2027-07-03",
+      "latestDate": "2027-07-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b83bb223f91dd1c8a9",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-07-15",
+      "earliestDate": "2027-07-15",
+      "latestDate": "2027-07-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-15785fab21b75140bc",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-08-03",
+      "earliestDate": "2027-08-03",
+      "latestDate": "2027-08-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-e503ea8796a84c521f",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-08-15",
+      "earliestDate": "2027-08-15",
+      "latestDate": "2027-08-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-e350c6679b233b5e60",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-09-03",
+      "earliestDate": "2027-09-03",
+      "latestDate": "2027-09-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-f6dcc8d4e1918afe51",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-09-15",
+      "earliestDate": "2027-09-15",
+      "latestDate": "2027-09-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-dcf41b11c2089476f7",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-10-03",
+      "earliestDate": "2027-10-03",
+      "latestDate": "2027-10-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-c1bb8dab66049a725b",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-10-15",
+      "earliestDate": "2027-10-15",
+      "latestDate": "2027-10-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-e76c0fa5d80610d55b",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-11-03",
+      "earliestDate": "2027-11-03",
+      "latestDate": "2027-11-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bed8d8f4e315f95bf9",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-11-15",
+      "earliestDate": "2027-11-15",
+      "latestDate": "2027-11-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-90c5f94b19651b31de",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-12-03",
+      "earliestDate": "2027-12-03",
+      "latestDate": "2027-12-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b3216bc0e26b4b29d1",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-12-15",
+      "earliestDate": "2027-12-15",
+      "latestDate": "2027-12-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-32ed8c6301b35c9d23",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-01-03",
+      "earliestDate": "2028-01-03",
+      "latestDate": "2028-01-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-ed774d8e99efba6f8f",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-01-15",
+      "earliestDate": "2028-01-15",
+      "latestDate": "2028-01-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bfdaec4bb95832d55f",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-02-03",
+      "earliestDate": "2028-02-03",
+      "latestDate": "2028-02-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-c2a1c6338b113a53f4",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-02-15",
+      "earliestDate": "2028-02-15",
+      "latestDate": "2028-02-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-da7241d10dfe3e6ac6",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-03-03",
+      "earliestDate": "2028-03-03",
+      "latestDate": "2028-03-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bf061fea46d4a43e8b",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-03-15",
+      "earliestDate": "2028-03-15",
+      "latestDate": "2028-03-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-a50f214be7c0ec9d25",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-04-03",
+      "earliestDate": "2028-04-03",
+      "latestDate": "2028-04-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-fc05cb2a689ef33c3c",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-04-15",
+      "earliestDate": "2028-04-15",
+      "latestDate": "2028-04-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-80f4215e55256cc3fb",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-05-03",
+      "earliestDate": "2028-05-03",
+      "latestDate": "2028-05-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-0f0597b51277d01f1c",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-05-15",
+      "earliestDate": "2028-05-15",
+      "latestDate": "2028-05-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7fab5705032353cf5b",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-06-03",
+      "earliestDate": "2028-06-03",
+      "latestDate": "2028-06-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-0ecf663714c299e153",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-06-15",
+      "earliestDate": "2028-06-15",
+      "latestDate": "2028-06-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-745ecb4d7a83c4687d",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-07-03",
+      "earliestDate": "2028-07-03",
+      "latestDate": "2028-07-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7213ac92b78c635422",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-07-15",
+      "earliestDate": "2028-07-15",
+      "latestDate": "2028-07-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-ce68c3ef4bf127e8a0",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-08-03",
+      "earliestDate": "2028-08-03",
+      "latestDate": "2028-08-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-53f7addc26b99cc6d3",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-08-15",
+      "earliestDate": "2028-08-15",
+      "latestDate": "2028-08-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bb62d51319a98df4df",
+      "seriesId": "62a2de901a0596bbcf",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-09-03",
+      "earliestDate": "2028-09-03",
+      "latestDate": "2028-09-03",
+      "amountCents": 75740,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Housing",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1572",
+        "tx-49b3265d8e44e751-1590",
+        "tx-49b3265d8e44e751-1600",
+        "tx-49b3265d8e44e751-1613",
+        "tx-49b3265d8e44e751-1627",
+        "tx-49b3265d8e44e751-1649"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        2,
+        7
+      ],
+      "historicalAmountRange": {
+        "medianCents": 75740,
+        "minCents": 73454,
+        "maxCents": 79127,
+        "medianAbsoluteDeviationCents": 1875
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-8874dc21f94cc166b9",
+      "seriesId": "fab219690274f28218",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-09-15",
+      "earliestDate": "2028-09-15",
+      "latestDate": "2028-09-15",
+      "amountCents": 123529,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "ACC000003",
+      "category": "Salary",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1575",
+        "tx-49b3265d8e44e751-1593",
+        "tx-49b3265d8e44e751-1606",
+        "tx-49b3265d8e44e751-1617",
+        "tx-49b3265d8e44e751-1633",
+        "tx-49b3265d8e44e751-1650"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        15,
+        15
+      ],
+      "historicalAmountRange": {
+        "medianCents": 123529,
+        "minCents": 108847,
+        "maxCents": 159914,
+        "medianAbsoluteDeviationCents": 10440
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    }
+  ],
+  "daily": [
+    {
+      "date": "2026-10-01",
+      "expectedBalanceCents": 664121,
+      "expectedNetChangeCents": -848,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 659882,
+      "upperScenarioBalanceCents": 664969,
+      "calibratedLowerBalanceCents": 416029,
+      "calibratedUpperBalanceCents": 908822
+    },
+    {
+      "date": "2026-10-02",
+      "expectedBalanceCents": 651130,
+      "expectedNetChangeCents": -12991,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 588075,
+      "upperScenarioBalanceCents": 664969,
+      "calibratedLowerBalanceCents": 344222,
+      "calibratedUpperBalanceCents": 908822
+    },
+    {
+      "date": "2026-10-03",
+      "expectedBalanceCents": 612538,
+      "expectedNetChangeCents": -38592,
+      "componentRoundingResidualCents": 1,
+      "lowerScenarioBalanceCents": 585445,
+      "upperScenarioBalanceCents": 664460,
+      "calibratedLowerBalanceCents": 341592,
+      "calibratedUpperBalanceCents": 908313
+    },
+    {
+      "date": "2026-10-04",
+      "expectedBalanceCents": 612285,
+      "expectedNetChangeCents": -253,
+      "componentRoundingResidualCents": -1,
+      "lowerScenarioBalanceCents": 583927,
+      "upperScenarioBalanceCents": 664461,
+      "calibratedLowerBalanceCents": 340074,
+      "calibratedUpperBalanceCents": 908314
+    },
+    {
+      "date": "2026-10-05",
+      "expectedBalanceCents": 599154,
+      "expectedNetChangeCents": -13131,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 583928,
+      "upperScenarioBalanceCents": 664113,
+      "calibratedLowerBalanceCents": 340075,
+      "calibratedUpperBalanceCents": 907966
+    },
+    {
+      "date": "2026-10-06",
+      "expectedBalanceCents": 598705,
+      "expectedNetChangeCents": -449,
+      "componentRoundingResidualCents": 1,
+      "lowerScenarioBalanceCents": 581226,
+      "upperScenarioBalanceCents": 664114,
+      "calibratedLowerBalanceCents": 337373,
+      "calibratedUpperBalanceCents": 907967
+    },
+    {
+      "date": "2026-10-07",
+      "expectedBalanceCents": 585390,
+      "expectedNetChangeCents": -13315,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 581226,
+      "upperScenarioBalanceCents": 588079,
+      "calibratedLowerBalanceCents": 337373,
+      "calibratedUpperBalanceCents": 831932
+    },
+    {
+      "date": "2026-10-08",
+      "expectedBalanceCents": 585359,
+      "expectedNetChangeCents": -31,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 581227,
+      "upperScenarioBalanceCents": 588080,
+      "calibratedLowerBalanceCents": 337374,
+      "calibratedUpperBalanceCents": 831933
+    },
+    {
+      "date": "2026-10-09",
+      "expectedBalanceCents": 584984,
+      "expectedNetChangeCents": -375,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 581227,
+      "upperScenarioBalanceCents": 588080,
+      "calibratedLowerBalanceCents": 337374,
+      "calibratedUpperBalanceCents": 831933
+    },
+    {
+      "date": "2026-10-10",
+      "expectedBalanceCents": 584780,
+      "expectedNetChangeCents": -204,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 581227,
+      "upperScenarioBalanceCents": 588080,
+      "calibratedLowerBalanceCents": 337374,
+      "calibratedUpperBalanceCents": 831933
+    },
+    {
+      "date": "2026-10-11",
+      "expectedBalanceCents": 584718,
+      "expectedNetChangeCents": -62,
+      "componentRoundingResidualCents": 1,
+      "lowerScenarioBalanceCents": 581228,
+      "upperScenarioBalanceCents": 588081,
+      "calibratedLowerBalanceCents": 337375,
+      "calibratedUpperBalanceCents": 831934
+    },
+    {
+      "date": "2026-10-12",
+      "expectedBalanceCents": 584512,
+      "expectedNetChangeCents": -206,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 579992,
+      "upperScenarioBalanceCents": 588081,
+      "calibratedLowerBalanceCents": 336139,
+      "calibratedUpperBalanceCents": 831934
+    },
+    {
+      "date": "2026-10-13",
+      "expectedBalanceCents": 584512,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 579992,
+      "upperScenarioBalanceCents": 588081,
+      "calibratedLowerBalanceCents": 336139,
+      "calibratedUpperBalanceCents": 831934
+    },
+    {
+      "date": "2026-10-14",
+      "expectedBalanceCents": 584512,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 579992,
+      "upperScenarioBalanceCents": 588081,
+      "calibratedLowerBalanceCents": 336139,
+      "calibratedUpperBalanceCents": 831934
+    },
+    {
+      "date": "2026-10-15",
+      "expectedBalanceCents": 700641,
+      "expectedNetChangeCents": 116129,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 696506,
+      "upperScenarioBalanceCents": 704595,
+      "calibratedLowerBalanceCents": 452653,
+      "calibratedUpperBalanceCents": 948448
+    },
+    {
+      "date": "2026-10-16",
+      "expectedBalanceCents": 700161,
+      "expectedNetChangeCents": -480,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 696508,
+      "upperScenarioBalanceCents": 704597,
+      "calibratedLowerBalanceCents": 452655,
+      "calibratedUpperBalanceCents": 948450
+    },
+    {
+      "date": "2026-10-17",
+      "expectedBalanceCents": 698331,
+      "expectedNetChangeCents": -1830,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 690923,
+      "upperScenarioBalanceCents": 704597,
+      "calibratedLowerBalanceCents": 447070,
+      "calibratedUpperBalanceCents": 948450
+    },
+    {
+      "date": "2026-10-18",
+      "expectedBalanceCents": 698189,
+      "expectedNetChangeCents": -142,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 690924,
+      "upperScenarioBalanceCents": 704598,
+      "calibratedLowerBalanceCents": 447071,
+      "calibratedUpperBalanceCents": 948451
+    },
+    {
+      "date": "2026-10-19",
+      "expectedBalanceCents": 696983,
+      "expectedNetChangeCents": -1206,
+      "componentRoundingResidualCents": 1,
+      "lowerScenarioBalanceCents": 688746,
+      "upperScenarioBalanceCents": 704598,
+      "calibratedLowerBalanceCents": 444893,
+      "calibratedUpperBalanceCents": 948451
+    },
+    {
+      "date": "2026-10-20",
+      "expectedBalanceCents": 696809,
+      "expectedNetChangeCents": -174,
+      "componentRoundingResidualCents": -1,
+      "lowerScenarioBalanceCents": 688747,
+      "upperScenarioBalanceCents": 703553,
+      "calibratedLowerBalanceCents": 444894,
+      "calibratedUpperBalanceCents": 947406
+    },
+    {
+      "date": "2026-10-21",
+      "expectedBalanceCents": 696308,
+      "expectedNetChangeCents": -501,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 688748,
+      "upperScenarioBalanceCents": 703554,
+      "calibratedLowerBalanceCents": 444895,
+      "calibratedUpperBalanceCents": 947407
+    },
+    {
+      "date": "2026-10-22",
+      "expectedBalanceCents": 695922,
+      "expectedNetChangeCents": -386,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 686709,
+      "upperScenarioBalanceCents": 703554,
+      "calibratedLowerBalanceCents": 442856,
+      "calibratedUpperBalanceCents": 947407
+    },
+    {
+      "date": "2026-10-23",
+      "expectedBalanceCents": 694048,
+      "expectedNetChangeCents": -1874,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 683146,
+      "upperScenarioBalanceCents": 703554,
+      "calibratedLowerBalanceCents": 439293,
+      "calibratedUpperBalanceCents": 947407
+    },
+    {
+      "date": "2026-10-24",
+      "expectedBalanceCents": 693922,
+      "expectedNetChangeCents": -126,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 682557,
+      "upperScenarioBalanceCents": 703555,
+      "calibratedLowerBalanceCents": 438704,
+      "calibratedUpperBalanceCents": 947408
+    },
+    {
+      "date": "2026-10-25",
+      "expectedBalanceCents": 693608,
+      "expectedNetChangeCents": -314,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 682132,
+      "upperScenarioBalanceCents": 703556,
+      "calibratedLowerBalanceCents": 438279,
+      "calibratedUpperBalanceCents": 947409
+    },
+    {
+      "date": "2026-10-26",
+      "expectedBalanceCents": 690639,
+      "expectedNetChangeCents": -2969,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 674686,
+      "upperScenarioBalanceCents": 697244,
+      "calibratedLowerBalanceCents": 430833,
+      "calibratedUpperBalanceCents": 941097
+    },
+    {
+      "date": "2026-10-27",
+      "expectedBalanceCents": 690113,
+      "expectedNetChangeCents": -526,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 674687,
+      "upperScenarioBalanceCents": 697245,
+      "calibratedLowerBalanceCents": 430834,
+      "calibratedUpperBalanceCents": 941098
+    },
+    {
+      "date": "2026-10-28",
+      "expectedBalanceCents": 689273,
+      "expectedNetChangeCents": -840,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 674687,
+      "upperScenarioBalanceCents": 697245,
+      "calibratedLowerBalanceCents": 430834,
+      "calibratedUpperBalanceCents": 941098
+    },
+    {
+      "date": "2026-10-29",
+      "expectedBalanceCents": 691976,
+      "expectedNetChangeCents": 2703,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 677485,
+      "upperScenarioBalanceCents": 700043,
+      "calibratedLowerBalanceCents": 433632,
+      "calibratedUpperBalanceCents": 943896
+    },
+    {
+      "date": "2026-10-30",
+      "expectedBalanceCents": 694363,
+      "expectedNetChangeCents": 2387,
+      "componentRoundingResidualCents": 1,
+      "lowerScenarioBalanceCents": 680281,
+      "upperScenarioBalanceCents": 700932,
+      "calibratedLowerBalanceCents": 436428,
+      "calibratedUpperBalanceCents": 944785
+    }
+  ],
+  "bufferCents": 50000,
+  "belowBufferDates": [],
+  "possibleBelowBufferDates": [],
+  "evidence": [
+    {
+      "id": "tx-49b3265d8e44e751-1572",
+      "date": "2026-04-03",
+      "amountCents": -79127,
+      "category": "Housing",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1575",
+      "date": "2026-04-15",
+      "amountCents": 108847,
+      "category": "Salary",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1590",
+      "date": "2026-05-07",
+      "amountCents": -78262,
+      "category": "Housing",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1593",
+      "date": "2026-05-15",
+      "amountCents": 117332,
+      "category": "Salary",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1600",
+      "date": "2026-06-03",
+      "amountCents": -74438,
+      "category": "Housing",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1606",
+      "date": "2026-06-15",
+      "amountCents": 141878,
+      "category": "Salary",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1613",
+      "date": "2026-07-03",
+      "amountCents": -73454,
+      "category": "Housing",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1617",
+      "date": "2026-07-15",
+      "amountCents": 124893,
+      "category": "Salary",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1627",
+      "date": "2026-08-05",
+      "amountCents": -77042,
+      "category": "Housing",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1628",
+      "date": "2026-08-05",
+      "amountCents": -833,
+      "category": "Utilities",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1632",
+      "date": "2026-08-09",
+      "amountCents": -956,
+      "category": "Utilities",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1633",
+      "date": "2026-08-15",
+      "amountCents": 159914,
+      "category": "Salary",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1642",
+      "date": "2026-08-28",
+      "amountCents": -1638,
+      "category": "Utilities",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1649",
+      "date": "2026-09-02",
+      "amountCents": -74276,
+      "category": "Housing",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1650",
+      "date": "2026-09-15",
+      "amountCents": 122165,
+      "category": "Salary",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1652",
+      "date": "2026-09-26",
+      "amountCents": -3013,
+      "category": "Utilities",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1653",
+      "date": "2026-09-26",
+      "amountCents": -3299,
+      "category": "Utilities",
+      "accountId": "ACC000003",
+      "merchantId": null
+    },
+    {
+      "id": "tx-49b3265d8e44e751-1654",
+      "date": "2026-09-30",
+      "amountCents": -1907,
+      "category": "Utilities",
+      "accountId": "ACC000003",
+      "merchantId": null
+    }
+  ],
+  "warnings": [
+    "Only observed accounts are covered; external balances and commitments are unknown.",
+    "Recurring payments overlap category totals. Do not add both as separate expenses.",
+    "Evidence strength is a heuristic, not calibrated prediction accuracy.",
+    "Zero-activity months assume continuous export coverage after the first observed month.",
+    "Bills without merchant IDs are category aggregates, not identified providers.",
+    "Historical months are scenarios, not calibrated probabilities or guaranteed bounds.",
+    "The mean path can spread uncertain income across dates; it is not a promised payday.",
+    "Each source month repeats if the horizon crosses a month boundary; seasonal changes are not modeled.",
+    "Balances are end-of-day totals across observed accounts; intraday and individual-account shortfalls can differ.",
+    "Multiple-payment groups are replayed only on remaining dates; matching individual paid bills is not supported.",
+    "Unknown future one-off costs and external accounts are not covered. Do not use this alone to promise affordable savings.",
+    "Modeled income is a probability-weighted expectation shared by scenarios; salary uncertainty requires separate error calibration.",
+    "Calibration targets whole-path coverage on the synthetic population; distribution shifts and individual customers can violate it."
+  ],
+  "omittedPatterns": [
+    {
+      "title": "Utilities payment",
+      "reason": "Payment dates, amounts or monthly frequency are not consistent enough for one scheduled day.",
+      "transactionType": "utilities_payment",
+      "monthlyAmountCents": 5247,
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1628",
+        "tx-49b3265d8e44e751-1632",
+        "tx-49b3265d8e44e751-1642",
+        "tx-49b3265d8e44e751-1652",
+        "tx-49b3265d8e44e751-1653",
+        "tx-49b3265d8e44e751-1654"
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "e3f406704d2bb61da9cf",
+      "kind": "bill_timing_uncertain",
+      "severity": "info",
+      "title": "Utilities payment: check the due dates",
+      "summary": "These costs recur, but the history cannot identify reliable individual payment dates.",
+      "explanation": "Several payments or changing dates can belong to different providers. The monthly amount below is a historical estimate, not an extra bill or a scheduled deduction. These costs remain in the engine\u2019s financial forecast.",
+      "action": "Check each provider\u2019s next due date before adding individual reminders.",
+      "asOf": "2026-09-30",
+      "evidenceIds": [
+        "tx-49b3265d8e44e751-1628",
+        "tx-49b3265d8e44e751-1632",
+        "tx-49b3265d8e44e751-1642",
+        "tx-49b3265d8e44e751-1652",
+        "tx-49b3265d8e44e751-1653",
+        "tx-49b3265d8e44e751-1654"
+      ],
+      "metrics": [
+        {
+          "label": "Typical active-month total",
+          "amountCents": 5247
+        }
+      ]
+    }
+  ],
+  "notice": "Only regular payments with a predictable date are shown. Dates and amounts are estimates. Irregular spending is excluded; reminders do not extend the balance forecast.",
+  "label": "Regular payday example",
+  "sourceNotice": "Synthetic bank customer CUST00003; history through 30 September 2026. This customer's recent salary arrives on the 15th.",
+  "generatedAt": "2026-11-14T18:32:32Z"
+}

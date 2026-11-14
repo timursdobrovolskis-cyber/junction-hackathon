@@ -1,0 +1,4629 @@
+{
+  "monthSummaries": {
+    "2026-11": {
+      "incomeCents": 240000,
+      "outflowCents": 99299,
+      "paymentCount": 5
+    },
+    "2026-12": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-01": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-02": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-03": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-04": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-05": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-06": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-07": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-08": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-09": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-10": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2027-11": {
+      "incomeCents": 240000,
+      "outflowCents": 99299,
+      "paymentCount": 5
+    },
+    "2027-12": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-01": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-02": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-03": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-04": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-05": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-06": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-07": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-08": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-09": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    },
+    "2028-10": {
+      "incomeCents": 240000,
+      "outflowCents": 87299,
+      "paymentCount": 4
+    }
+  },
+  "schemaVersion": "2.0",
+  "customerId": "CALENDAR-DEMO",
+  "asOf": "2026-10-31",
+  "currency": "EUR",
+  "modelVersion": "calendar-scenarios-v1",
+  "rangeStart": "2026-11-01",
+  "rangeEnd": "2028-10-31",
+  "forecastStatus": "estimated",
+  "forecastThrough": "2026-11-30",
+  "events": [
+    {
+      "id": "recurring-1d3d165e0e7262f489",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "forecast",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2026-11-01",
+      "earliestDate": "2026-11-01",
+      "latestDate": "2026-11-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-e8f12dfd82fd3ab489",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "forecast",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-11-03",
+      "earliestDate": "2026-11-03",
+      "latestDate": "2026-11-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-9dc14209c857b4818c",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "forecast",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-11-12",
+      "earliestDate": "2026-11-12",
+      "latestDate": "2026-11-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-05fbcda681cb91fb0a",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "forecast",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2026-11-18",
+      "earliestDate": "2026-11-18",
+      "latestDate": "2026-11-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-dd348854107b0e66e2",
+      "seriesId": "7275ae1aad9fb264c8",
+      "title": "Possible subscription \u00b7 Insurance",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "yearly",
+      "date": "2026-11-20",
+      "earliestDate": "2026-11-20",
+      "latestDate": "2026-11-20",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-yearly-renewal",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Insurance",
+      "evidenceIds": [
+        "calendar-demo-tx-45",
+        "calendar-demo-tx-94"
+      ],
+      "evidenceStrength": "limited",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        20,
+        20
+      ],
+      "historicalAmountRange": null,
+      "explanation": "One estimated yearly date based on 2 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bf96e25efce0df45c3",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2026-12-01",
+      "earliestDate": "2026-12-01",
+      "latestDate": "2026-12-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-9e0af467b329c06016",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-12-03",
+      "earliestDate": "2026-12-03",
+      "latestDate": "2026-12-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-79449d47355e4a7f18",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-12-12",
+      "earliestDate": "2026-12-12",
+      "latestDate": "2026-12-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-f7c6767ee98838f2f4",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2026-12-18",
+      "earliestDate": "2026-12-18",
+      "latestDate": "2026-12-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-8f37ab3784fd4eb486",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-01-01",
+      "earliestDate": "2027-01-01",
+      "latestDate": "2027-01-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6de7392a19a8970254",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-01-03",
+      "earliestDate": "2027-01-03",
+      "latestDate": "2027-01-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-5e40675c6c208c6b23",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-01-12",
+      "earliestDate": "2027-01-12",
+      "latestDate": "2027-01-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-1252da16b7419cbea6",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-01-18",
+      "earliestDate": "2027-01-18",
+      "latestDate": "2027-01-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-df3d9669834f3834ad",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-02-01",
+      "earliestDate": "2027-02-01",
+      "latestDate": "2027-02-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4fb9b4900d4edf634a",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-02-03",
+      "earliestDate": "2027-02-03",
+      "latestDate": "2027-02-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-a185e48a3ed2ddaf73",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-02-12",
+      "earliestDate": "2027-02-12",
+      "latestDate": "2027-02-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-f6b927541ea6f7c389",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-02-18",
+      "earliestDate": "2027-02-18",
+      "latestDate": "2027-02-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7c157bb48d299df13b",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-03-01",
+      "earliestDate": "2027-03-01",
+      "latestDate": "2027-03-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-c125b9472392a40ba4",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-03-03",
+      "earliestDate": "2027-03-03",
+      "latestDate": "2027-03-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d3f1bb534ed0a28dd3",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-03-12",
+      "earliestDate": "2027-03-12",
+      "latestDate": "2027-03-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-75f9342479737ecc54",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-03-18",
+      "earliestDate": "2027-03-18",
+      "latestDate": "2027-03-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d076b7ae157a46ee80",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-04-01",
+      "earliestDate": "2027-04-01",
+      "latestDate": "2027-04-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-41e4bbf6767b0c4563",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-04-03",
+      "earliestDate": "2027-04-03",
+      "latestDate": "2027-04-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b9cd535ea9a7db9087",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-04-12",
+      "earliestDate": "2027-04-12",
+      "latestDate": "2027-04-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-034755896c6fa95c3f",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-04-18",
+      "earliestDate": "2027-04-18",
+      "latestDate": "2027-04-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-cfc2b1125a09ea759e",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-05-01",
+      "earliestDate": "2027-05-01",
+      "latestDate": "2027-05-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-657db5a393b2d0b82b",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-05-03",
+      "earliestDate": "2027-05-03",
+      "latestDate": "2027-05-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-8795f0c6f513442f29",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-05-12",
+      "earliestDate": "2027-05-12",
+      "latestDate": "2027-05-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-419d559835243fa700",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-05-18",
+      "earliestDate": "2027-05-18",
+      "latestDate": "2027-05-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-fd7eded6eda47d0846",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-06-01",
+      "earliestDate": "2027-06-01",
+      "latestDate": "2027-06-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-21a750afc3ad42063b",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-06-03",
+      "earliestDate": "2027-06-03",
+      "latestDate": "2027-06-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b6cffd187c407f8685",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-06-12",
+      "earliestDate": "2027-06-12",
+      "latestDate": "2027-06-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-1045162d9f37baba1b",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-06-18",
+      "earliestDate": "2027-06-18",
+      "latestDate": "2027-06-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-5a68c410b9404272b2",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-07-01",
+      "earliestDate": "2027-07-01",
+      "latestDate": "2027-07-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d792915fdd7f6e4026",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-07-03",
+      "earliestDate": "2027-07-03",
+      "latestDate": "2027-07-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b7337f253358180cc9",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-07-12",
+      "earliestDate": "2027-07-12",
+      "latestDate": "2027-07-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-51254e27a3c3b2f90c",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-07-18",
+      "earliestDate": "2027-07-18",
+      "latestDate": "2027-07-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-2ef00da6fddc43e297",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-08-01",
+      "earliestDate": "2027-08-01",
+      "latestDate": "2027-08-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bd08c631606c8da990",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-08-03",
+      "earliestDate": "2027-08-03",
+      "latestDate": "2027-08-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-76d3c01ab96ef8c6aa",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-08-12",
+      "earliestDate": "2027-08-12",
+      "latestDate": "2027-08-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7ad8daaf9d0455d034",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-08-18",
+      "earliestDate": "2027-08-18",
+      "latestDate": "2027-08-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-58a7ac0a4cc012f7f0",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-09-01",
+      "earliestDate": "2027-09-01",
+      "latestDate": "2027-09-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6ea848ef210cac1f7f",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-09-03",
+      "earliestDate": "2027-09-03",
+      "latestDate": "2027-09-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-3ca7de8f3e1d1afd04",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-09-12",
+      "earliestDate": "2027-09-12",
+      "latestDate": "2027-09-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-a6148740ae79ece4e7",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-09-18",
+      "earliestDate": "2027-09-18",
+      "latestDate": "2027-09-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-f210e619b9d15cb1a7",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-10-01",
+      "earliestDate": "2027-10-01",
+      "latestDate": "2027-10-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-beb1dc4f5724acb380",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-10-03",
+      "earliestDate": "2027-10-03",
+      "latestDate": "2027-10-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-380b8e9e7b7f8c6222",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-10-12",
+      "earliestDate": "2027-10-12",
+      "latestDate": "2027-10-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-47cbd0d27c4e166065",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-10-18",
+      "earliestDate": "2027-10-18",
+      "latestDate": "2027-10-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-ef0cc8327f5efa94df",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-11-01",
+      "earliestDate": "2027-11-01",
+      "latestDate": "2027-11-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-219d36e1ac940a712b",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-11-03",
+      "earliestDate": "2027-11-03",
+      "latestDate": "2027-11-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-ee00b941d804397b0c",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-11-12",
+      "earliestDate": "2027-11-12",
+      "latestDate": "2027-11-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-fd396218db7f470e16",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-11-18",
+      "earliestDate": "2027-11-18",
+      "latestDate": "2027-11-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d7b69d5a2940369c11",
+      "seriesId": "7275ae1aad9fb264c8",
+      "title": "Possible subscription \u00b7 Insurance",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "yearly",
+      "date": "2027-11-20",
+      "earliestDate": "2027-11-20",
+      "latestDate": "2027-11-20",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-yearly-renewal",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Insurance",
+      "evidenceIds": [
+        "calendar-demo-tx-45",
+        "calendar-demo-tx-94"
+      ],
+      "evidenceStrength": "limited",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        20,
+        20
+      ],
+      "historicalAmountRange": null,
+      "explanation": "One estimated yearly date based on 2 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b1500e7baa88a4070c",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-12-01",
+      "earliestDate": "2027-12-01",
+      "latestDate": "2027-12-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4206258dc93d949398",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-12-03",
+      "earliestDate": "2027-12-03",
+      "latestDate": "2027-12-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-21920719a2881ffd88",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-12-12",
+      "earliestDate": "2027-12-12",
+      "latestDate": "2027-12-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d32652d021d6636363",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-12-18",
+      "earliestDate": "2027-12-18",
+      "latestDate": "2027-12-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-f1c4c3173df816be7b",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-01-01",
+      "earliestDate": "2028-01-01",
+      "latestDate": "2028-01-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-aa39a3b3735bc4f3a7",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-01-03",
+      "earliestDate": "2028-01-03",
+      "latestDate": "2028-01-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-67982f5fdd58aa9344",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-01-12",
+      "earliestDate": "2028-01-12",
+      "latestDate": "2028-01-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4e97a2308ae11c5b06",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-01-18",
+      "earliestDate": "2028-01-18",
+      "latestDate": "2028-01-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-dce18e7e35d3774920",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-02-01",
+      "earliestDate": "2028-02-01",
+      "latestDate": "2028-02-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6bef73052596700992",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-02-03",
+      "earliestDate": "2028-02-03",
+      "latestDate": "2028-02-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-39df39a3c47cf80a42",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-02-12",
+      "earliestDate": "2028-02-12",
+      "latestDate": "2028-02-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-3f6a266ccec5376b0d",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-02-18",
+      "earliestDate": "2028-02-18",
+      "latestDate": "2028-02-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-f1cfc079930cf33c4d",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-03-01",
+      "earliestDate": "2028-03-01",
+      "latestDate": "2028-03-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-00a88fe9a2ed418b40",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-03-03",
+      "earliestDate": "2028-03-03",
+      "latestDate": "2028-03-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-a94582f5907337ec60",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-03-12",
+      "earliestDate": "2028-03-12",
+      "latestDate": "2028-03-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-0f4b0f3a9557a1fdf4",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-03-18",
+      "earliestDate": "2028-03-18",
+      "latestDate": "2028-03-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-dbfcf8b6935ec92bf0",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-04-01",
+      "earliestDate": "2028-04-01",
+      "latestDate": "2028-04-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-2175bfe0e1c1fdd9a9",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-04-03",
+      "earliestDate": "2028-04-03",
+      "latestDate": "2028-04-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-58a8783ab0d3ec302c",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-04-12",
+      "earliestDate": "2028-04-12",
+      "latestDate": "2028-04-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-765567816084530da6",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-04-18",
+      "earliestDate": "2028-04-18",
+      "latestDate": "2028-04-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-8f8c58bb6d7a83f8f7",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-05-01",
+      "earliestDate": "2028-05-01",
+      "latestDate": "2028-05-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-5921ecae0ae0dad646",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-05-03",
+      "earliestDate": "2028-05-03",
+      "latestDate": "2028-05-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-314ac910a65bfe52bc",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-05-12",
+      "earliestDate": "2028-05-12",
+      "latestDate": "2028-05-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-86d6e224766ca93f0c",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-05-18",
+      "earliestDate": "2028-05-18",
+      "latestDate": "2028-05-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-59470f1438ee665a48",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-06-01",
+      "earliestDate": "2028-06-01",
+      "latestDate": "2028-06-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-90fcb131d3db77349e",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-06-03",
+      "earliestDate": "2028-06-03",
+      "latestDate": "2028-06-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d3cdfdbfddb493f64f",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-06-12",
+      "earliestDate": "2028-06-12",
+      "latestDate": "2028-06-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-573cca39e19a2357bc",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-06-18",
+      "earliestDate": "2028-06-18",
+      "latestDate": "2028-06-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-687920b337168538c0",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-07-01",
+      "earliestDate": "2028-07-01",
+      "latestDate": "2028-07-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-547ee237c5133ded74",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-07-03",
+      "earliestDate": "2028-07-03",
+      "latestDate": "2028-07-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-9109b210c3d6887b31",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-07-12",
+      "earliestDate": "2028-07-12",
+      "latestDate": "2028-07-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-902f560821e98d5357",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-07-18",
+      "earliestDate": "2028-07-18",
+      "latestDate": "2028-07-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-eb92c196608f42b5af",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-08-01",
+      "earliestDate": "2028-08-01",
+      "latestDate": "2028-08-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-9e0529f82a1277cfa0",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-08-03",
+      "earliestDate": "2028-08-03",
+      "latestDate": "2028-08-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-da4edc1327846c35dc",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-08-12",
+      "earliestDate": "2028-08-12",
+      "latestDate": "2028-08-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d94ff46f4539f87f9d",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-08-18",
+      "earliestDate": "2028-08-18",
+      "latestDate": "2028-08-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6705ff445059c547cf",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-09-01",
+      "earliestDate": "2028-09-01",
+      "latestDate": "2028-09-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-319fe2a50326ed9f1d",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-09-03",
+      "earliestDate": "2028-09-03",
+      "latestDate": "2028-09-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-036fdc2add147bc00f",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-09-12",
+      "earliestDate": "2028-09-12",
+      "latestDate": "2028-09-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d3218697247b4c5951",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-09-18",
+      "earliestDate": "2028-09-18",
+      "latestDate": "2028-09-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6028bef87ced9a502e",
+      "seriesId": "627bb47e7e24e47648",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-10-01",
+      "earliestDate": "2028-10-01",
+      "latestDate": "2028-10-01",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "calendar-demo-tx-115",
+        "calendar-demo-tx-119",
+        "calendar-demo-tx-123",
+        "calendar-demo-tx-127",
+        "calendar-demo-tx-131",
+        "calendar-demo-tx-135"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        1,
+        1
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7389e315c989256eda",
+      "seriesId": "5543732143e449e3a5",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-10-03",
+      "earliestDate": "2028-10-03",
+      "latestDate": "2028-10-03",
+      "amountCents": 80000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "calendar-demo-tx-116",
+        "calendar-demo-tx-120",
+        "calendar-demo-tx-124",
+        "calendar-demo-tx-128",
+        "calendar-demo-tx-132",
+        "calendar-demo-tx-136"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 80000,
+        "minCents": 80000,
+        "maxCents": 80000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bfd29cfe6b4a12ad59",
+      "seriesId": "149245bcbe59f22ed6",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-10-12",
+      "earliestDate": "2028-10-12",
+      "latestDate": "2028-10-12",
+      "amountCents": 6000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "calendar-demo-tx-117",
+        "calendar-demo-tx-121",
+        "calendar-demo-tx-125",
+        "calendar-demo-tx-129",
+        "calendar-demo-tx-133",
+        "calendar-demo-tx-137"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 6000,
+        "minCents": 6000,
+        "maxCents": 6000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6d53e7c19b168897a5",
+      "seriesId": "0d1384764923b1b434",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-10-18",
+      "earliestDate": "2028-10-18",
+      "latestDate": "2028-10-18",
+      "amountCents": 1299,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-monthly-subscription",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1299,
+        "minCents": 1299,
+        "maxCents": 1299,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    }
+  ],
+  "daily": [
+    {
+      "date": "2026-11-01",
+      "expectedBalanceCents": 5707834,
+      "expectedNetChangeCents": 240000,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5707834,
+      "upperScenarioBalanceCents": 5707834
+    },
+    {
+      "date": "2026-11-02",
+      "expectedBalanceCents": 5707834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5707834,
+      "upperScenarioBalanceCents": 5707834
+    },
+    {
+      "date": "2026-11-03",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": -80000,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-04",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-05",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-06",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-07",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-08",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-09",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-10",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-11",
+      "expectedBalanceCents": 5627834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5627834,
+      "upperScenarioBalanceCents": 5627834
+    },
+    {
+      "date": "2026-11-12",
+      "expectedBalanceCents": 5621834,
+      "expectedNetChangeCents": -6000,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5621834,
+      "upperScenarioBalanceCents": 5621834
+    },
+    {
+      "date": "2026-11-13",
+      "expectedBalanceCents": 5621834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5621834,
+      "upperScenarioBalanceCents": 5621834
+    },
+    {
+      "date": "2026-11-14",
+      "expectedBalanceCents": 5621834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5621834,
+      "upperScenarioBalanceCents": 5621834
+    },
+    {
+      "date": "2026-11-15",
+      "expectedBalanceCents": 5621834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5621834,
+      "upperScenarioBalanceCents": 5621834
+    },
+    {
+      "date": "2026-11-16",
+      "expectedBalanceCents": 5621834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5621834,
+      "upperScenarioBalanceCents": 5621834
+    },
+    {
+      "date": "2026-11-17",
+      "expectedBalanceCents": 5621834,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5621834,
+      "upperScenarioBalanceCents": 5621834
+    },
+    {
+      "date": "2026-11-18",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": -1299,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-19",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-20",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-21",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-22",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-23",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-24",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-25",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-26",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-27",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-28",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-29",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    },
+    {
+      "date": "2026-11-30",
+      "expectedBalanceCents": 5620535,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 5620535,
+      "upperScenarioBalanceCents": 5620535
+    }
+  ],
+  "bufferCents": 50000,
+  "belowBufferDates": [],
+  "possibleBelowBufferDates": [],
+  "evidence": [
+    {
+      "id": "calendar-demo-tx-115",
+      "date": "2026-05-01",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "calendar-demo-tx-116",
+      "date": "2026-05-03",
+      "amountCents": -80000,
+      "category": "Housing",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "calendar-demo-tx-117",
+      "date": "2026-05-12",
+      "amountCents": -6000,
+      "category": "Utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-utilities"
+    },
+    {
+      "id": "calendar-demo-tx-118",
+      "date": "2026-05-18",
+      "amountCents": -1299,
+      "category": "Entertainment",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-monthly-subscription"
+    },
+    {
+      "id": "calendar-demo-tx-119",
+      "date": "2026-06-01",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "calendar-demo-tx-120",
+      "date": "2026-06-03",
+      "amountCents": -80000,
+      "category": "Housing",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "calendar-demo-tx-121",
+      "date": "2026-06-12",
+      "amountCents": -6000,
+      "category": "Utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-utilities"
+    },
+    {
+      "id": "calendar-demo-tx-122",
+      "date": "2026-06-18",
+      "amountCents": -1299,
+      "category": "Entertainment",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-monthly-subscription"
+    },
+    {
+      "id": "calendar-demo-tx-123",
+      "date": "2026-07-01",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "calendar-demo-tx-124",
+      "date": "2026-07-03",
+      "amountCents": -80000,
+      "category": "Housing",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "calendar-demo-tx-125",
+      "date": "2026-07-12",
+      "amountCents": -6000,
+      "category": "Utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-utilities"
+    },
+    {
+      "id": "calendar-demo-tx-126",
+      "date": "2026-07-18",
+      "amountCents": -1299,
+      "category": "Entertainment",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-monthly-subscription"
+    },
+    {
+      "id": "calendar-demo-tx-127",
+      "date": "2026-08-01",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "calendar-demo-tx-128",
+      "date": "2026-08-03",
+      "amountCents": -80000,
+      "category": "Housing",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "calendar-demo-tx-129",
+      "date": "2026-08-12",
+      "amountCents": -6000,
+      "category": "Utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-utilities"
+    },
+    {
+      "id": "calendar-demo-tx-130",
+      "date": "2026-08-18",
+      "amountCents": -1299,
+      "category": "Entertainment",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-monthly-subscription"
+    },
+    {
+      "id": "calendar-demo-tx-131",
+      "date": "2026-09-01",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "calendar-demo-tx-132",
+      "date": "2026-09-03",
+      "amountCents": -80000,
+      "category": "Housing",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "calendar-demo-tx-133",
+      "date": "2026-09-12",
+      "amountCents": -6000,
+      "category": "Utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-utilities"
+    },
+    {
+      "id": "calendar-demo-tx-134",
+      "date": "2026-09-18",
+      "amountCents": -1299,
+      "category": "Entertainment",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-monthly-subscription"
+    },
+    {
+      "id": "calendar-demo-tx-135",
+      "date": "2026-10-01",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "calendar-demo-tx-136",
+      "date": "2026-10-03",
+      "amountCents": -80000,
+      "category": "Housing",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "calendar-demo-tx-137",
+      "date": "2026-10-12",
+      "amountCents": -6000,
+      "category": "Utilities",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-utilities"
+    },
+    {
+      "id": "calendar-demo-tx-138",
+      "date": "2026-10-18",
+      "amountCents": -1299,
+      "category": "Entertainment",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-monthly-subscription"
+    },
+    {
+      "id": "calendar-demo-tx-45",
+      "date": "2024-11-20",
+      "amountCents": -12000,
+      "category": "Insurance",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-yearly-renewal"
+    },
+    {
+      "id": "calendar-demo-tx-94",
+      "date": "2025-11-20",
+      "amountCents": -12000,
+      "category": "Insurance",
+      "accountId": "CALENDAR-DEMO-ACCOUNT",
+      "merchantId": "demo-yearly-renewal"
+    }
+  ],
+  "warnings": [
+    "Only observed accounts are covered; external balances and commitments are unknown.",
+    "Recurring payments overlap category totals. Do not add both as separate expenses.",
+    "Evidence strength is a heuristic, not calibrated prediction accuracy.",
+    "Zero-activity months assume continuous export coverage after the first observed month.",
+    "Historical months are scenarios, not calibrated probabilities or guaranteed bounds.",
+    "The mean path can spread uncertain income across dates; it is not a promised payday.",
+    "Each source month repeats if the horizon crosses a month boundary; seasonal changes are not modeled.",
+    "Balances are end-of-day totals across observed accounts; intraday and individual-account shortfalls can differ.",
+    "Multiple-payment groups are replayed only on remaining dates; matching individual paid bills is not supported.",
+    "Unknown future one-off costs and external accounts are not covered. Do not use this alone to promise affordable savings."
+  ],
+  "omittedPatterns": [],
+  "notifications": [
+    {
+      "id": "18ffc5c67d5268af9981",
+      "kind": "subscription_candidates",
+      "severity": "info",
+      "title": "Possible subscriptions found",
+      "summary": "2 recurring merchant patterns detected.",
+      "explanation": "Repeated merchant payments with similar amounts and dates can indicate a subscription, but they may also be regular purchases. Calendar entries remain estimates until the provider schedule is checked.",
+      "action": "Open the payment evidence and check whether you still use each service.",
+      "asOf": "2026-10-31",
+      "evidenceIds": [
+        "calendar-demo-tx-118",
+        "calendar-demo-tx-122",
+        "calendar-demo-tx-126",
+        "calendar-demo-tx-130",
+        "calendar-demo-tx-134",
+        "calendar-demo-tx-138",
+        "calendar-demo-tx-45",
+        "calendar-demo-tx-94"
+      ]
+    }
+  ],
+  "notice": "Only regular payments with a predictable date are shown. Dates and amounts are estimates. Irregular spending is excluded; reminders do not extend the balance forecast.",
+  "label": "Recurring costs example",
+  "sourceNotice": "Fictional ledger for demonstrating monthly bills and yearly renewals. Separate from the bank-data customer and Home.",
+  "generatedAt": "2026-11-14T18:32:32Z"
+}
