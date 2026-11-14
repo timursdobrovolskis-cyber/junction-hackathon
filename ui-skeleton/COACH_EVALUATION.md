@@ -6,7 +6,7 @@ sent as training data. The evaluation examples are original synthetic dialogue.
 
 ## Repeatable checks
 
-`test/fixtures/coach-evaluation.json` contains 18 multi-turn scenarios checked by
+`test/fixtures/coach-evaluation.json` contains 23 multi-turn scenarios checked by
 `test/coach-evaluation.test.mjs`. They exercise the actual conversation adapter,
 not only the underlying draft state machine. Known financial questions must use
 server calculations: an unexpected model fallback fails the test. Replies are
@@ -18,7 +18,7 @@ COACH_TEST_URL=http://127.0.0.1:4174 python3 ui-skeleton/scripts/check-coach-dia
 COACH_TEST_URL=https://junction-money-ui.vercel.app python3 ui-skeleton/scripts/evaluate-coach-live.py
 ```
 
-All 140 automated tests pass. The browser script uses seven requests and the live
+All 153 automated tests pass. The browser script uses seven requests and the live
 model review uses five. The app permits twelve requests/minute per instance/IP;
 do not repeatedly run both without allowing the rate window to clear. Browser
 checks need Python Playwright and Chromium at `/usr/bin/chromium`.
@@ -77,3 +77,28 @@ The edge browser script uses seven requests; the edge model review uses five.
 The mixed-question response reports observed spending and conditional future
 contributions separately. Its next follow-up concerns the savings illustration.
 This still does not train Gemini weights or extend the affordability engine.
+
+## Information selection and reload checks
+
+Added comparisons across two months/years, unions of spending categories, recorded
+income, relative savings horizons, and topic switching between actuals, plans and
+drafts. The 2025 income total (€29,183.86) was independently reconciled to the
+source SQLite salary/other-income credits. Refunds and investment withdrawals
+are excluded. Partial comparison periods never produce a full-period delta.
+
+Recent chat (up to 40 messages), lookup context and pending confirmations now
+persist on this device, scoped to the selected demo customer. Reloading does not
+confirm a proposal. Clear chat removes conversation/context while retaining the
+draft; Clear draft removes the entire record. This is local browser storage, not
+cloud sync or a fresh bank-data connection. Malformed and foreign-profile records
+are rejected, and financial lookup results are recalculated on follow-up.
+
+```sh
+COACH_TEST_URL=http://127.0.0.1:4174 python3 ui-skeleton/scripts/check-coach-routing.py
+COACH_TEST_URL=https://junction-money-ui.vercel.app python3 ui-skeleton/scripts/evaluate-coach-live.py --routing
+```
+
+The routing browser check uses eight requests, and the live wording review uses
+three. It checks that a budget is not proof of spending, a draft is not money
+already saved, and remembered chat is not a live bank balance. Review actual
+model replies; a completed HTTP request alone is not a quality assertion.

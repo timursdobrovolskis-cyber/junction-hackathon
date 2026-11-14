@@ -9,7 +9,7 @@ const validDate = date => /^\d{4}-\d{2}-\d{2}$/.test(date) && !Number.isNaN(Date
 const historicalIntent = text => {
   // Read requests about observed spending must not fall through to a forecast answer.
   if (/\b(plan|budget|limits|target|savings|upcoming|forecast|scheduled|proposed|can i afford|should i|could i afford|will i|next month|next year)\b/i.test(text)) return false;
-  return /\b(?:how much (?:money )?(?:did|have) i (?:spend|spent|pay|paid)|what (?:did|have) i (?:spend|spent|pay|paid)|(?:show|list|what|which|summari[sz]e|tell me).*(?:biggest|largest|transactions|payments|spending|spent|expenses|refund(?:s|ed)?)|(?:historical|recorded|actual|annual|yearly|total) spending|spending (?:on|at|in|for|last)|how much.*(?:spent|spending|refund(?:s|ed)?))\b/i.test(text);
+  return /\b(?:how much (?:money )?(?:did|have) i (?:spend|spent|pay|paid)|what (?:did|have) i (?:spend|spent|pay|paid)|(?:show|list|what|which|summari[sz]e|tell me).*(?:biggest|largest|transactions|payments|spending|spent|expenses|income|earnings|salary|refund(?:s|ed)?)|(?:historical|recorded|actual|annual|yearly|total) spending|spending (?:on|at|in|for|last)|how much.*(?:spent|spending|earn|earned|income|refund(?:s|ed)?))\b/i.test(text);
 };
 const presentation = (summary, nextQuestion='', evidence=[], bullets=[]) => ({title:'',summary,bullets,nextQuestion,evidence});
 
@@ -51,17 +51,23 @@ export function parseHistoryQuestion(message, today, ledger=activity) {
   const categories=[...new Set(ledger.transactions.map(t=>t.category))];
   const aliases={grocery:'Groceries',groceries:'Groceries',rent:'Housing',transport:'Transportation'};
   const categoryText=text.match(/\bon\s+(.+?)(?=\s+(?:at|from|in|during|for|last month|this month|last year|this year|between)\b|$)/i)?.[1];
-  let category=null;
-  if(categoryText && !validDate(categoryText)){category=categories.find(c=>normalize(c)===normalize(categoryText))??aliases[normalize(categoryText)];if(!category)return {clarify:`Which spending category do you mean by “${categoryText.slice(0,60)}”?`};}
-  if(!category){
+  let category=null,categoryList=null;
+  if(categoryText && !validDate(categoryText)){
+    const parts=categoryText.replace(/\b(combined|together)\b/gi,'').trim().split(/\s+(?:and|&)\s+|,\s*/);
+    categoryList=[...new Set(parts.map(part=>categories.find(c=>normalize(c)===normalize(part))??aliases[normalize(part)]))];
+    if(categoryList.some(c=>!c) || categoryList.length>8)return {clarify:`Which recorded categories do you mean by “${categoryText.slice(0,60)}”?`};
+    category=categoryList.length===1?categoryList[0]:null;
+  }
+  if(!category && !categoryList){
     const labels=[...categories.map(name=>[name.toLowerCase(),name]),...Object.entries(aliases)];
     const inferred=[...new Set(labels.filter(([label])=>new RegExp('\\b'+label+'\\s+(?:spending|expenses|payments|refunds)\\b','i').test(text)).map(([,name])=>name))];
     if(inferred.length>1)return {clarify:'Which single spending category should I look up?'};
     category=inferred[0]??null;
   }
+  if(!category && !categoryList && /\bsalary\b/i.test(text) && !/\bother income\b/i.test(text))category='Salary';
   const merchant=text.match(/\b(?:at|from)\s+(.+?)(?=\s+(?:in|during|last month|this month|last year|this year|between|on|for)\b|$)/i)?.[1]?.trim();
   // "from DATE to DATE" is a range, not a merchant.
-  return {period,label,relative,today,measure:/\brefund(?:s|ed)?\b/i.test(text)?'refunds':'spending',category,merchant:merchant&& !/^\d{4}-/.test(merchant)?merchant:null,limit};
+  return {period,label,relative,today,measure:/\b(income|earnings|earned|earn|salary)\b/i.test(text)?'income':/\brefund(?:s|ed)?\b/i.test(text)?'refunds':'spending',category,categories:categoryList,merchant:merchant&& !/^\d{4}-/.test(merchant)?merchant:null,limit};
 }
 
 export function queryHistory(query, {ledger=activity, plan=accountPlan, customerId=accountPlan.customerId}={}) {
@@ -73,8 +79,13 @@ export function queryHistory(query, {ledger=activity, plan=accountPlan, customer
   if(start>end)return {status:'missing',coverage:ledger.coverage};
   const partial=start!==period.start || end!==period.end;
   const rows=ledger.transactions.filter(t=>t.customerId===customerId && plan.forecast.accounts.some(a=>a.accountId===t.accountId)
-    && t.date>=start && t.date<=end && isBudgetSpending(t) && (!query.category || t.category===query.category));
+    && t.date>=start && t.date<=end && (query.measure==='income'?['salary','other_income'].includes(t.type):isBudgetSpending(t)) && (query.categories?.length?query.categories.includes(t.category):!query.category || t.category===query.category));
   let matching=rows;
+  if(query.measure==='income'){
+    const incomeRows=rows.filter(t=>t.amountCents>0).sort((a,b)=>b.amountCents-a.amountCents || a.id.localeCompare(b.id));
+    if(query.merchant)return {status:'merchant_unavailable'};
+    return {status:partial?'partial':'complete',start,end,incomeCents:incomeRows.reduce((n,t)=>n+t.amountCents,0),rows:incomeRows};
+  }
   if(query.merchant){
     const needle=normalize(query.merchant), byId=/^mrc[ -]/i.test(query.merchant);
     // Sponsor IDs have no published merchant-name mapping. Never infer a brand from a category.
@@ -97,49 +108,60 @@ function restoreQuery(value,customerId,today,ledger) {
   if(!value || value.customerId!==customerId || value.today!==today || !validDate(value.period?.start) || !validDate(value.period?.end) || value.period.start>value.period.end
     || !(value.category===null || ledger.transactions.some(t=>t.category===value.category))
     || !(value.merchant===null || typeof value.merchant==='string' && value.merchant.length<=100)
-    || ![undefined,'spending','refunds'].includes(value.measure)
+    || !(value.categories==null || Array.isArray(value.categories) && value.categories.length<=8 && value.categories.every(c=>ledger.transactions.some(t=>t.category===c)))
+    || ![undefined,'spending','refunds','income'].includes(value.measure)
     || !(value.limit===null || Number.isInteger(value.limit)&&value.limit>=1&&value.limit<=10))return null;
   const {period,category,merchant,limit}=value;
   const year=period.start.slice(0,4),month=period.start.slice(0,7);
   const label=period.start===year+'-01-01' && period.end===year+'-12-31'?year
     :period.start===month+'-01' && period.end===monthPeriod(month).end?monthLabel(month):`${period.start} to ${period.end}`;
-  return {period,category,merchant,limit,label,today,measure:value.measure??'spending',relative:value.relative===true};
+  return {period,category,categories:value.categories??null,merchant,limit,label,today,measure:value.measure??'spending',relative:value.relative===true};
 }
 export function historyAnswer(message, {customerId,today,previousQuestion,previousHistory,ledger=activity,plan=accountPlan}={}) {
   let query=parseHistoryQuestion(message,today,ledger);
   const restored=restoreQuery(previousHistory,customerId,today,ledger);
   const respond=(summary,nextQuestion='',evidence=[],bullets=[])=>({...presentation(summary,nextQuestion,evidence,bullets),
-    ...(query?.period && customerId===plan.customerId?{historyQuery:{customerId,today,period:query.period,category:query.category,merchant:query.merchant,limit:query.limit,relative:query.relative,measure:query.measure??'spending'}}:{})});
+    ...(query?.period && customerId===plan.customerId?{historyQuery:{customerId,today,period:query.period,category:query.category,categories:query.categories??null,merchant:query.merchant,limit:query.limit,relative:query.relative,measure:query.measure??'spending'}}:{})});
   // Resolve a narrow clarification without treating chat history as transaction data.
   const followUp=message.trim().replace(/^(?:what about|and|in|for)\s+/i,'').replace(/[?.!]+$/,'');
   if(restored && /^refunds?$/i.test(followUp))query={...restored,measure:'refunds',limit:null};
   if(!query && restored){
     const aliases={grocery:'Groceries',groceries:'Groceries',rent:'Housing',transport:'Transportation'};
     const category=[...new Set(ledger.transactions.map(t=>t.category))].find(c=>normalize(c)===normalize(followUp))??aliases[normalize(followUp)];
-    if(category)query={...restored,category,merchant:null};
+    if(category){
+      const incomeCategory=ledger.transactions.some(t=>t.category===category && ['salary','other_income'].includes(t.type));
+      const measure=incomeCategory?'income':restored.measure==='income'?'spending':restored.measure;
+      query={...restored,category,categories:null,merchant:null,measure};
+    }
   }
   if(!query && (previousQuestion || restored) && /^(?:\d{4}(?:-\d{2}(?:-\d{2})?)?(?: to \d{4}-\d{2}-\d{2})?|(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{4})?|last month|this month|last year|this year)$/i.test(followUp)) {
     const prior=restored ?? parseHistoryQuestion(previousQuestion??'',today,ledger);
     if(prior?.period){
       const updated=parseHistoryQuestion('How much did I spend in '+followUp,today,ledger);
-      if(updated?.period)query={...prior,...updated,category:prior.category,merchant:prior.merchant,limit:prior.limit,measure:prior.measure??'spending'};
+      if(updated?.period)query={...prior,...updated,category:prior.category,categories:prior.categories??null,merchant:prior.merchant,limit:prior.limit,measure:prior.measure??'spending'};
     } else if(prior?.clarify)query=parseHistoryQuestion(previousQuestion+' in '+followUp,today,ledger);
   }
   if(!query && (previousQuestion || restored)) {
     const prior=restored ?? parseHistoryQuestion(previousQuestion??'',today,ledger);
     const category=[...new Set(ledger.transactions.map(t=>t.category))].find(c=>normalize(c)===normalize(message));
     const merchantId=/^MRC-[A-Z]+-\d+$/i.test(message.trim())?message.trim():null;
-    if(prior?.period && prior.merchant && (category || merchantId))query={...prior,merchant:merchantId,category:category??null};
+    if(prior?.period && prior.merchant && (category || merchantId))query={...prior,merchant:merchantId,category:category??null,categories:null};
   }
   if(!query)return null;
   if((message.match(/\bCUST\d+\b/gi)??[]).some(id=>id.toUpperCase()!==customerId))return respond('I can only look up transactions for the selected demo customer.');
   if(customerId!==plan.customerId)return respond('Historical transactions aren’t connected for this selected demo profile.');
   if(query.clarify)return respond('I can look up recorded spending.',query.clarify);
   const result=queryHistory(query,{ledger,plan,customerId});
-  const scope=query.merchant?` at ${query.merchant}`:query.category?` on ${query.category.toLowerCase()}`:'';
+  const scope=query.merchant?` at ${query.merchant}`:query.categories?.length>1?` on ${query.categories.map(c=>c.toLowerCase()).join(' and ')}`:query.category?` on ${query.category.toLowerCase()}`:'';
   if(result.status==='unavailable')return respond('I couldn’t verify the transaction history for this account.');
   if(result.status==='missing')return respond(`No recorded history covers ${query.label}. Available history runs from ${result.coverage.start} to ${result.coverage.end}; forecast amounts aren’t actual spending.`);
   if(result.status==='merchant_unavailable')return respond(`I can’t identify ${query.merchant} in ${query.label}: this ledger has anonymous merchant IDs, without store names.`, 'Do you have its merchant ID, or should I look up a spending category?');
+  if(query.measure==='income'){
+    if(result.status==='partial' && !result.rows.length)return respond(`No income appears in the available history (${result.start} to ${result.end}); the full-period total is unknown.`);
+    return respond(`${money(result.incomeCents)} in recorded ${query.category==='Salary'?'salary':'income'} in ${query.label}${result.status==='partial'?' (partial history)':''}.`, '',
+      result.rows.slice(0,12).map(t=>({id:t.id,label:`${t.date} · ${t.category}`,value:money(t.amountCents)})),
+      [result.status==='partial'?`Available dates: ${result.start} to ${result.end}; this is not a full-period total.`:query.category==='Salary'?'Includes salary credits only; excludes refunds and investment transfers.':'Includes salary and other income; excludes refunds and investment transfers.']);
+  }
   if(query.measure==='refunds'){
     const rows=(result.refundRows??result.rows??[]).filter(t=>t.amountCents>0);
     const evidence=rows.slice(0,12).map(t=>({id:t.id,label:`${t.date} · ${t.merchantName??t.merchantId??t.category}`,value:money(t.amountCents)}));

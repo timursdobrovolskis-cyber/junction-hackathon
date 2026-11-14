@@ -7,6 +7,8 @@ const validDate=d=>typeof d==='string' && /^\d{4}-\d{2}-\d{2}$/.test(d) && Numbe
 const months=['january','february','march','april','may','june','july','august','september','october','november','december'];
 const reply=(summary,nextQuestion='')=>({title:'',summary,bullets:[],nextQuestion});
 function targetDate(text,today) {
+  const duration=text.match(/\b(?:next|over|for|in)\s+(?:the\s+)?(\d+)\s+(months?|years?)\b/i);
+  if(duration){const count=Number(duration[1])*(/^year/i.test(duration[2])?12:1);if(count<1||count>120)return 'invalid';const [y,m]=today.split('-').map(Number);return new Date(Date.UTC(y,m+count,0)).toISOString().slice(0,10);}
   const iso=text.match(/\b\d{4}-\d{2}-\d{2}\b/)?.[0];if(iso)return iso;
   const month=text.toLowerCase().match(/\b(?:(\d{1,2})(?:st|nd|rd|th)?\s+)?(january|february|march|april|may|june|july|august|september|october|november|december)(?:\s+(\d{1,2})(?:st|nd|rd|th)?,?)?\s+(20\d{2})\b/);
   if(month){
@@ -17,7 +19,7 @@ function targetDate(text,today) {
   const year=text.match(/\b20\d{2}\b/)?.[0]??(relative?String(Number(today.slice(0,4))+(relative==='next'?1:0)):null);
   return year?year+(/\b(start|beginning)\b/i.test(text)?'-01-01':'-12-31'):null;
 }
-const futureIntent=text=>/\b(save|savings|set aside)\b/i.test(text) && /\b(by|until|till|through|end of|project|projection|forecast|future)\b/i.test(text);
+const futureIntent=text=>/\b(save|savings|set aside)\b/i.test(text) && (/\b(by|until|till|through|end of|project|projection|forecast|future|next)\b/i.test(text) || /\b(over|for|in)\s+(?:the\s+)?\d+\s+(months?|years?)\b/i.test(text));
 function cents(text) {
   if(!/^\d+(?:[.,]\d{1,2})?$/.test(text))return null;
   const [whole,fraction='']=text.replace(',','.').split('.');const value=Number(whole)*100+Number(fraction.padEnd(2,'0'));
@@ -43,7 +45,7 @@ export function projectContributions({customerId,asOf,endDate,monthlyCents}) {
 export function savingsProjectionAnswer(message,{customerId,today,draft,previousProjection}={}) {
   const previous=previousProjection?.customerId===customerId && previousProjection.asOf===today ? previousProjection:null;
   const amountOnly=message.trim().match(/^(?:what about |make it |change it to |actually,? |and |use |try |at )?(?:€\s*)?(\d+(?:[.,]\d+)?)(?:\s*(?:euros?|eur))?(?:\s*(?:a month|per month|monthly))?[?.!]?$/i);
-  const dateOnly=previous && /^(?:what about |and |by |until |till )?(?:the )?(?:end of )?(?:20\d{2}(?:-\d{2}-\d{2})?|(?:(?:\d{1,2})(?:st|nd|rd|th)? )?(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{1,2}(?:st|nd|rd|th)?,?)? 20\d{2}|next year|this year)[?.!]?$/i.test(message.trim());
+  const dateOnly=previous && /^(?:what about |and |by |until |till )?(?:the )?(?:end of )?(?:20\d{2}(?:-\d{2}-\d{2})?|(?:(?:\d{1,2})(?:st|nd|rd|th)? )?(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{1,2}(?:st|nd|rd|th)?,?)? 20\d{2}|next year|this year|(?:over |for |in )?(?:the )?next \d+ (?:months?|years?))[?.!]?$/i.test(message.trim());
   const incomeShock=/\b(lose my job|lost my job|laid off|no income|income (?:stops|falls|drops)|salary (?:falls|drops)|pay cut)\b/i.test(message);
   if(!futureIntent(message) && !(previous && (amountOnly||dateOnly||incomeShock)))return null;
   if(customerId!==accountPlan.customerId)return reply('A savings projection is not connected for this demo profile.');
