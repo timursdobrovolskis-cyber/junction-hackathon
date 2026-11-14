@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { account } from './account.mjs';
 import { createFinancialCoachResponse } from './coach/financial-coach-client.mjs';
 
 const result = JSON.parse(readFileSync(new URL('./coach/financial-plan-demo.json', import.meta.url)));
@@ -27,3 +28,8 @@ contexts.engine.facts = [
   { label:'Savings target', value:new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR'}).format(result.budget.savingsTargetCents/100) },
   { label:'Cash buffer', value:new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR'}).format(result.budget.bufferCents/100) },
 ];
+
+contexts.engine.account = account;
+contexts.engine.title = 'Your account, in focus.';
+contexts.engine.label = account.label;
+contexts.engine.source = `Bank-provided sample account ${account.accounts[0].accountId}. Balance observed ${account.observedDate}; forecast 1–30 October 2026. No live bank connection.`;
