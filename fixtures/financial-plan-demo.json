@@ -1,0 +1,2014 @@
+{
+  "customerId": "CUST00005",
+  "asOf": "2026-09-30",
+  "modelVersion": "conditioned-income-v2",
+  "forecast": {
+    "schemaVersion": "1.0.0",
+    "modelVersion": "conditioned-income-v2",
+    "customerId": "CUST00005",
+    "asOf": "2026-09-30",
+    "currency": "EUR",
+    "horizonDays": 30,
+    "bufferCents": 50000,
+    "status": "estimated",
+    "daily": [
+      {
+        "date": "2026-10-01",
+        "expectedBalanceCents": 631834,
+        "expectedNetChangeCents": -14780,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 564282,
+        "upperScenarioBalanceCents": 646614,
+        "calibratedLowerBalanceCents": 320429,
+        "calibratedUpperBalanceCents": 890467
+      },
+      {
+        "date": "2026-10-02",
+        "expectedBalanceCents": 605346,
+        "expectedNetChangeCents": -26488,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 564282,
+        "upperScenarioBalanceCents": 646614,
+        "calibratedLowerBalanceCents": 320429,
+        "calibratedUpperBalanceCents": 890467
+      },
+      {
+        "date": "2026-10-03",
+        "expectedBalanceCents": 577461,
+        "expectedNetChangeCents": -27885,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 564284,
+        "upperScenarioBalanceCents": 631246,
+        "calibratedLowerBalanceCents": 320431,
+        "calibratedUpperBalanceCents": 875099
+      },
+      {
+        "date": "2026-10-04",
+        "expectedBalanceCents": 575292,
+        "expectedNetChangeCents": -2169,
+        "componentRoundingResidualCents": -1,
+        "lowerScenarioBalanceCents": 559264,
+        "upperScenarioBalanceCents": 631247,
+        "calibratedLowerBalanceCents": 315411,
+        "calibratedUpperBalanceCents": 875100
+      },
+      {
+        "date": "2026-10-05",
+        "expectedBalanceCents": 573783,
+        "expectedNetChangeCents": -1509,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 559054,
+        "upperScenarioBalanceCents": 631249,
+        "calibratedLowerBalanceCents": 315201,
+        "calibratedUpperBalanceCents": 875102
+      },
+      {
+        "date": "2026-10-06",
+        "expectedBalanceCents": 558135,
+        "expectedNetChangeCents": -15648,
+        "componentRoundingResidualCents": 1,
+        "lowerScenarioBalanceCents": 551336,
+        "upperScenarioBalanceCents": 565757,
+        "calibratedLowerBalanceCents": 307483,
+        "calibratedUpperBalanceCents": 809610
+      },
+      {
+        "date": "2026-10-07",
+        "expectedBalanceCents": 555604,
+        "expectedNetChangeCents": -2531,
+        "componentRoundingResidualCents": -1,
+        "lowerScenarioBalanceCents": 543677,
+        "upperScenarioBalanceCents": 565757,
+        "calibratedLowerBalanceCents": 299824,
+        "calibratedUpperBalanceCents": 809610
+      },
+      {
+        "date": "2026-10-08",
+        "expectedBalanceCents": 548705,
+        "expectedNetChangeCents": -6899,
+        "componentRoundingResidualCents": 1,
+        "lowerScenarioBalanceCents": 517854,
+        "upperScenarioBalanceCents": 565760,
+        "calibratedLowerBalanceCents": 274001,
+        "calibratedUpperBalanceCents": 809613
+      },
+      {
+        "date": "2026-10-09",
+        "expectedBalanceCents": 547279,
+        "expectedNetChangeCents": -1426,
+        "componentRoundingResidualCents": -1,
+        "lowerScenarioBalanceCents": 517854,
+        "upperScenarioBalanceCents": 565760,
+        "calibratedLowerBalanceCents": 274001,
+        "calibratedUpperBalanceCents": 809613
+      },
+      {
+        "date": "2026-10-10",
+        "expectedBalanceCents": 538544,
+        "expectedNetChangeCents": -8735,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 517854,
+        "upperScenarioBalanceCents": 564292,
+        "calibratedLowerBalanceCents": 274001,
+        "calibratedUpperBalanceCents": 808145
+      },
+      {
+        "date": "2026-10-11",
+        "expectedBalanceCents": 534832,
+        "expectedNetChangeCents": -3712,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 517856,
+        "upperScenarioBalanceCents": 564294,
+        "calibratedLowerBalanceCents": 274003,
+        "calibratedUpperBalanceCents": 808147
+      },
+      {
+        "date": "2026-10-12",
+        "expectedBalanceCents": 532075,
+        "expectedNetChangeCents": -2757,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 517856,
+        "upperScenarioBalanceCents": 564294,
+        "calibratedLowerBalanceCents": 274003,
+        "calibratedUpperBalanceCents": 808147
+      },
+      {
+        "date": "2026-10-13",
+        "expectedBalanceCents": 528852,
+        "expectedNetChangeCents": -3223,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 515746,
+        "upperScenarioBalanceCents": 564294,
+        "calibratedLowerBalanceCents": 271893,
+        "calibratedUpperBalanceCents": 808147
+      },
+      {
+        "date": "2026-10-14",
+        "expectedBalanceCents": 526166,
+        "expectedNetChangeCents": -2686,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 512307,
+        "upperScenarioBalanceCents": 564294,
+        "calibratedLowerBalanceCents": 268454,
+        "calibratedUpperBalanceCents": 808147
+      },
+      {
+        "date": "2026-10-15",
+        "expectedBalanceCents": 702543,
+        "expectedNetChangeCents": 176377,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 690346,
+        "upperScenarioBalanceCents": 742333,
+        "calibratedLowerBalanceCents": 446493,
+        "calibratedUpperBalanceCents": 986186
+      },
+      {
+        "date": "2026-10-16",
+        "expectedBalanceCents": 674131,
+        "expectedNetChangeCents": -28412,
+        "componentRoundingResidualCents": 1,
+        "lowerScenarioBalanceCents": 646095,
+        "upperScenarioBalanceCents": 698447,
+        "calibratedLowerBalanceCents": 402242,
+        "calibratedUpperBalanceCents": 942300
+      },
+      {
+        "date": "2026-10-17",
+        "expectedBalanceCents": 665633,
+        "expectedNetChangeCents": -8498,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 634742,
+        "upperScenarioBalanceCents": 696662,
+        "calibratedLowerBalanceCents": 390889,
+        "calibratedUpperBalanceCents": 940515
+      },
+      {
+        "date": "2026-10-18",
+        "expectedBalanceCents": 665282,
+        "expectedNetChangeCents": -351,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 634743,
+        "upperScenarioBalanceCents": 696663,
+        "calibratedLowerBalanceCents": 390890,
+        "calibratedUpperBalanceCents": 940516
+      },
+      {
+        "date": "2026-10-19",
+        "expectedBalanceCents": 663638,
+        "expectedNetChangeCents": -1644,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 634743,
+        "upperScenarioBalanceCents": 696663,
+        "calibratedLowerBalanceCents": 390890,
+        "calibratedUpperBalanceCents": 940516
+      },
+      {
+        "date": "2026-10-20",
+        "expectedBalanceCents": 661131,
+        "expectedNetChangeCents": -2507,
+        "componentRoundingResidualCents": 1,
+        "lowerScenarioBalanceCents": 634746,
+        "upperScenarioBalanceCents": 696666,
+        "calibratedLowerBalanceCents": 390893,
+        "calibratedUpperBalanceCents": 940519
+      },
+      {
+        "date": "2026-10-21",
+        "expectedBalanceCents": 657789,
+        "expectedNetChangeCents": -3342,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 634747,
+        "upperScenarioBalanceCents": 696667,
+        "calibratedLowerBalanceCents": 390894,
+        "calibratedUpperBalanceCents": 940520
+      },
+      {
+        "date": "2026-10-22",
+        "expectedBalanceCents": 655950,
+        "expectedNetChangeCents": -1839,
+        "componentRoundingResidualCents": 1,
+        "lowerScenarioBalanceCents": 634747,
+        "upperScenarioBalanceCents": 688269,
+        "calibratedLowerBalanceCents": 390894,
+        "calibratedUpperBalanceCents": 932122
+      },
+      {
+        "date": "2026-10-23",
+        "expectedBalanceCents": 654237,
+        "expectedNetChangeCents": -1713,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 634748,
+        "upperScenarioBalanceCents": 688270,
+        "calibratedLowerBalanceCents": 390895,
+        "calibratedUpperBalanceCents": 932123
+      },
+      {
+        "date": "2026-10-24",
+        "expectedBalanceCents": 653190,
+        "expectedNetChangeCents": -1047,
+        "componentRoundingResidualCents": -1,
+        "lowerScenarioBalanceCents": 634751,
+        "upperScenarioBalanceCents": 688273,
+        "calibratedLowerBalanceCents": 390898,
+        "calibratedUpperBalanceCents": 932126
+      },
+      {
+        "date": "2026-10-25",
+        "expectedBalanceCents": 651765,
+        "expectedNetChangeCents": -1425,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 634754,
+        "upperScenarioBalanceCents": 688276,
+        "calibratedLowerBalanceCents": 390901,
+        "calibratedUpperBalanceCents": 932129
+      },
+      {
+        "date": "2026-10-26",
+        "expectedBalanceCents": 649751,
+        "expectedNetChangeCents": -2014,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 628447,
+        "upperScenarioBalanceCents": 688276,
+        "calibratedLowerBalanceCents": 384594,
+        "calibratedUpperBalanceCents": 932129
+      },
+      {
+        "date": "2026-10-27",
+        "expectedBalanceCents": 647920,
+        "expectedNetChangeCents": -1831,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 624162,
+        "upperScenarioBalanceCents": 688277,
+        "calibratedLowerBalanceCents": 380309,
+        "calibratedUpperBalanceCents": 932130
+      },
+      {
+        "date": "2026-10-28",
+        "expectedBalanceCents": 622844,
+        "expectedNetChangeCents": -25076,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 559858,
+        "upperScenarioBalanceCents": 651144,
+        "calibratedLowerBalanceCents": 316005,
+        "calibratedUpperBalanceCents": 894997
+      },
+      {
+        "date": "2026-10-29",
+        "expectedBalanceCents": 623813,
+        "expectedNetChangeCents": 969,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 565470,
+        "upperScenarioBalanceCents": 656756,
+        "calibratedLowerBalanceCents": 321617,
+        "calibratedUpperBalanceCents": 900609
+      },
+      {
+        "date": "2026-10-30",
+        "expectedBalanceCents": 656346,
+        "expectedNetChangeCents": 32533,
+        "componentRoundingResidualCents": 0,
+        "lowerScenarioBalanceCents": 598913,
+        "upperScenarioBalanceCents": 690199,
+        "calibratedLowerBalanceCents": 355060,
+        "calibratedUpperBalanceCents": 934052
+      }
+    ],
+    "upcomingPayments": [
+      {
+        "accountId": "ACC000005",
+        "transactionType": "housing_payment",
+        "category": "Housing",
+        "merchantId": null,
+        "direction": "outflow",
+        "scope": "account_type_category_aggregate",
+        "month": "2026-10",
+        "earliestDate": "2026-10-01",
+        "latestDate": "2026-10-06",
+        "expectedTotalCents": 79913,
+        "minScenarioTotalCents": 77015,
+        "maxScenarioTotalCents": 82332,
+        "scenariosWithPayment": 6,
+        "scenarioCount": 6,
+        "status": "observed_recently",
+        "isConfirmed": false,
+        "alreadyIncludedInForecast": true,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2706",
+          "tx-49b3265d8e44e751-2717",
+          "tx-49b3265d8e44e751-2739",
+          "tx-49b3265d8e44e751-2746",
+          "tx-49b3265d8e44e751-2773",
+          "tx-49b3265d8e44e751-2794"
+        ]
+      },
+      {
+        "accountId": "ACC000005",
+        "transactionType": "salary",
+        "category": "Salary",
+        "merchantId": null,
+        "direction": "inflow",
+        "scope": "account_type_category_aggregate",
+        "month": "2026-10",
+        "earliestDate": "2026-10-03",
+        "latestDate": "2026-10-30",
+        "expectedTotalCents": 217123,
+        "minScenarioTotalCents": 217123,
+        "maxScenarioTotalCents": 217123,
+        "scenariosWithPayment": 6,
+        "scenarioCount": 6,
+        "status": "observed_recently",
+        "isConfirmed": false,
+        "alreadyIncludedInForecast": true,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2711",
+          "tx-49b3265d8e44e751-2737",
+          "tx-49b3265d8e44e751-2741",
+          "tx-49b3265d8e44e751-2756",
+          "tx-49b3265d8e44e751-2792",
+          "tx-49b3265d8e44e751-2795"
+        ]
+      },
+      {
+        "accountId": "ACC000005",
+        "transactionType": "utilities_payment",
+        "category": "Utilities",
+        "merchantId": null,
+        "direction": "outflow",
+        "scope": "account_type_category_aggregate",
+        "month": "2026-10",
+        "earliestDate": "2026-10-04",
+        "latestDate": "2026-10-28",
+        "expectedTotalCents": 12700,
+        "minScenarioTotalCents": 8506,
+        "maxScenarioTotalCents": 17522,
+        "scenariosWithPayment": 6,
+        "scenarioCount": 6,
+        "status": "observed_recently",
+        "isConfirmed": false,
+        "alreadyIncludedInForecast": true,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2710",
+          "tx-49b3265d8e44e751-2713",
+          "tx-49b3265d8e44e751-2715",
+          "tx-49b3265d8e44e751-2718",
+          "tx-49b3265d8e44e751-2734",
+          "tx-49b3265d8e44e751-2736",
+          "tx-49b3265d8e44e751-2742",
+          "tx-49b3265d8e44e751-2744",
+          "tx-49b3265d8e44e751-2745",
+          "tx-49b3265d8e44e751-2747",
+          "tx-49b3265d8e44e751-2760",
+          "tx-49b3265d8e44e751-2769",
+          "tx-49b3265d8e44e751-2776",
+          "tx-49b3265d8e44e751-2782",
+          "tx-49b3265d8e44e751-2788",
+          "tx-49b3265d8e44e751-2797",
+          "tx-49b3265d8e44e751-2798",
+          "tx-49b3265d8e44e751-2799"
+        ]
+      },
+      {
+        "accountId": "ACC000005",
+        "transactionType": "investment_deposit",
+        "category": "Invest Deposit",
+        "merchantId": null,
+        "direction": "outflow",
+        "scope": "account_type_category_aggregate",
+        "month": "2026-10",
+        "earliestDate": "2026-10-16",
+        "latestDate": "2026-10-16",
+        "expectedTotalCents": 27724,
+        "minScenarioTotalCents": 0,
+        "maxScenarioTotalCents": 43890,
+        "scenariosWithPayment": 4,
+        "scenarioCount": 6,
+        "status": "observed_recently",
+        "isConfirmed": false,
+        "alreadyIncludedInForecast": true,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2712",
+          "tx-49b3265d8e44e751-2743",
+          "tx-49b3265d8e44e751-2757",
+          "tx-49b3265d8e44e751-2796"
+        ]
+      }
+    ],
+    "warnings": [
+      "Only observed accounts are covered; external balances and commitments are unknown.",
+      "Recurring payments overlap category totals. Do not add both as separate expenses.",
+      "Evidence strength is a heuristic, not calibrated prediction accuracy.",
+      "Zero-activity months assume continuous export coverage after the first observed month.",
+      "Bills without merchant IDs are category aggregates, not identified providers.",
+      "Historical months are scenarios, not calibrated probabilities or guaranteed bounds.",
+      "The mean path can spread uncertain income across dates; it is not a promised payday.",
+      "Each source month repeats if the horizon crosses a month boundary; seasonal changes are not modeled.",
+      "Balances are end-of-day totals across observed accounts; intraday and individual-account shortfalls can differ.",
+      "Multiple-payment groups are replayed only on remaining dates; matching individual paid bills is not supported.",
+      "Unknown future one-off costs and external accounts are not covered. Do not use this alone to promise affordable savings.",
+      "Modeled income is a probability-weighted expectation shared by scenarios; salary uncertainty requires separate error calibration.",
+      "Calibration targets whole-path coverage on the synthetic population; distribution shifts and individual customers can violate it."
+    ],
+    "startingBalanceCents": 646614,
+    "accounts": [
+      {
+        "accountId": "ACC000005",
+        "balanceCents": 646614,
+        "balanceObservedDate": "2026-09-28",
+        "daysSinceLastTransaction": 2,
+        "firstObservedDate": "2024-10-02",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2800"
+        ]
+      }
+    ],
+    "sourceMonths": [
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09"
+    ],
+    "scenarioCount": 6,
+    "endingExpectedBalanceCents": 656346,
+    "lowestExpectedBalance": {
+      "date": "2026-10-14",
+      "amountCents": 526166
+    },
+    "lowestScenarioBalance": {
+      "date": "2026-10-14",
+      "amountCents": 512307
+    },
+    "belowBufferDates": [],
+    "possibleBelowBufferDates": [],
+    "startingBalanceBelowBuffer": false,
+    "scenarioPaths": [
+      {
+        "sourceMonth": "2026-04",
+        "balancesCents": [
+          646614,
+          568353,
+          568355,
+          559264,
+          559266,
+          559268,
+          559268,
+          517854,
+          517854,
+          517854,
+          517856,
+          517856,
+          517856,
+          512307,
+          690346,
+          646095,
+          634742,
+          634743,
+          634743,
+          634746,
+          634747,
+          634747,
+          634748,
+          634751,
+          634754,
+          628447,
+          628448,
+          628448,
+          613241,
+          646684
+        ]
+      },
+      {
+        "sourceMonth": "2026-05",
+        "balancesCents": [
+          646614,
+          569599,
+          569601,
+          565677,
+          559054,
+          551980,
+          551980,
+          551983,
+          545592,
+          545592,
+          531927,
+          531927,
+          528833,
+          521241,
+          696966,
+          696970,
+          685656,
+          685657,
+          685657,
+          670598,
+          656597,
+          653959,
+          653960,
+          653963,
+          653966,
+          653966,
+          653967,
+          651144,
+          656756,
+          690199
+        ]
+      },
+      {
+        "sourceMonth": "2026-06",
+        "balancesCents": [
+          646614,
+          646614,
+          565752,
+          565753,
+          565755,
+          565757,
+          565757,
+          565760,
+          565760,
+          520890,
+          520892,
+          520892,
+          520892,
+          520892,
+          691273,
+          651062,
+          651062,
+          651063,
+          641199,
+          641202,
+          641203,
+          641203,
+          641204,
+          641207,
+          641210,
+          641210,
+          641211,
+          641211,
+          646823,
+          680266
+        ]
+      },
+      {
+        "sourceMonth": "2026-07",
+        "balancesCents": [
+          646614,
+          646614,
+          565527,
+          565528,
+          563087,
+          556177,
+          548655,
+          548658,
+          546498,
+          540988,
+          537882,
+          525491,
+          525491,
+          522517,
+          700556,
+          658420,
+          655812,
+          653700,
+          653700,
+          653703,
+          650803,
+          650803,
+          643713,
+          643716,
+          635150,
+          635150,
+          624162,
+          613073,
+          618685,
+          652128
+        ]
+      },
+      {
+        "sourceMonth": "2026-08",
+        "balancesCents": [
+          640264,
+          636613,
+          631246,
+          631247,
+          631249,
+          551336,
+          543677,
+          543680,
+          543680,
+          541646,
+          536140,
+          531991,
+          515746,
+          515746,
+          693785,
+          693789,
+          669865,
+          669866,
+          669866,
+          669869,
+          666718,
+          666718,
+          663524,
+          657232,
+          657235,
+          651456,
+          651457,
+          643328,
+          641904,
+          669885
+        ]
+      },
+      {
+        "sourceMonth": "2026-09",
+        "balancesCents": [
+          564282,
+          564282,
+          564284,
+          564285,
+          564287,
+          564289,
+          564289,
+          564292,
+          564292,
+          564292,
+          564294,
+          564294,
+          564294,
+          564294,
+          742333,
+          698447,
+          696662,
+          696663,
+          696663,
+          696666,
+          696667,
+          688269,
+          688270,
+          688273,
+          688276,
+          688276,
+          688277,
+          559858,
+          565470,
+          598913
+        ]
+      }
+    ],
+    "cashFlowComponents": [
+      {
+        "transactionType": "housing_payment",
+        "category": "Housing",
+        "direction": "outflow",
+        "dailyAmountsCents": [
+          13722,
+          25879,
+          26992,
+          0,
+          0,
+          13319,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "totalCents": 79912,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2706",
+          "tx-49b3265d8e44e751-2717",
+          "tx-49b3265d8e44e751-2739",
+          "tx-49b3265d8e44e751-2746",
+          "tx-49b3265d8e44e751-2773",
+          "tx-49b3265d8e44e751-2794"
+        ]
+      },
+      {
+        "transactionType": "investment_deposit",
+        "category": "Invest Deposit",
+        "direction": "outflow",
+        "dailyAmountsCents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          27724,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "totalCents": 27724,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2712",
+          "tx-49b3265d8e44e751-2743",
+          "tx-49b3265d8e44e751-2757",
+          "tx-49b3265d8e44e751-2796"
+        ]
+      },
+      {
+        "transactionType": "purchase",
+        "category": "Entertainment",
+        "direction": "outflow",
+        "dailyAmountsCents": [
+          1058,
+          0,
+          0,
+          1515,
+          0,
+          0,
+          0,
+          6903,
+          0,
+          0,
+          0,
+          0,
+          1229,
+          0,
+          0,
+          0,
+          3901,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          632,
+          3470,
+          910
+        ],
+        "totalCents": 19618,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2716",
+          "tx-49b3265d8e44e751-2770",
+          "tx-49b3265d8e44e751-2779",
+          "tx-49b3265d8e44e751-2781",
+          "tx-49b3265d8e44e751-2789",
+          "tx-49b3265d8e44e751-2791"
+        ]
+      },
+      {
+        "transactionType": "purchase",
+        "category": "Groceries",
+        "direction": "outflow",
+        "dailyAmountsCents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          645,
+          0,
+          0,
+          0,
+          0,
+          2278,
+          0,
+          0,
+          1265,
+          0,
+          0,
+          1886,
+          0,
+          0,
+          1476,
+          0,
+          440,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "totalCents": 7990,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2723",
+          "tx-49b3265d8e44e751-2725",
+          "tx-49b3265d8e44e751-2727",
+          "tx-49b3265d8e44e751-2729",
+          "tx-49b3265d8e44e751-2730",
+          "tx-49b3265d8e44e751-2735"
+        ]
+      },
+      {
+        "transactionType": "purchase",
+        "category": "Health",
+        "direction": "outflow",
+        "dailyAmountsCents": [
+          0,
+          0,
+          895,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1221,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1173,
+          0
+        ],
+        "totalCents": 3289,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2772",
+          "tx-49b3265d8e44e751-2780",
+          "tx-49b3265d8e44e751-2790"
+        ]
+      },
+      {
+        "transactionType": "purchase",
+        "category": "Lifestyle",
+        "direction": "outflow",
+        "dailyAmountsCents": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          7478,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          21403,
+          0,
+          0
+        ],
+        "totalCents": 28881,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2740",
+          "tx-49b3265d8e44e751-2800"
+        ]
+      },
+      {
+        "transactionType": "purchase",
+        "category": "Transportation",
+        "direction": "outflow",
+        "dailyAmountsCents": [
+          0,
+          609,
+          0,
+          0,
+          1104,
+          1687,
+          2530,
+          0,
+          1425,
+          1257,
+          518,
+          2757,
+          1994,
+          496,
+          386,
+          0,
+          435,
+          352,
+          0,
+          1035,
+          2386,
+          0,
+          1714,
+          1049,
+          1428,
+          963,
+          1832,
+          1321,
+          0,
+          0
+        ],
+        "totalCents": 27278,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2778",
+          "tx-49b3265d8e44e751-2783",
+          "tx-49b3265d8e44e751-2784",
+          "tx-49b3265d8e44e751-2785",
+          "tx-49b3265d8e44e751-2786",
+          "tx-49b3265d8e44e751-2787"
+        ]
+      },
+      {
+        "transactionType": "salary",
+        "category": "Salary",
+        "direction": "inflow",
+        "dailyAmountsCents": [
+          0,
+          0,
+          2,
+          1,
+          2,
+          2,
+          0,
+          3,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          178039,
+          4,
+          0,
+          1,
+          0,
+          3,
+          1,
+          0,
+          1,
+          3,
+          3,
+          0,
+          1,
+          0,
+          5612,
+          33443
+        ],
+        "totalCents": 217123,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2711",
+          "tx-49b3265d8e44e751-2737",
+          "tx-49b3265d8e44e751-2741",
+          "tx-49b3265d8e44e751-2756",
+          "tx-49b3265d8e44e751-2792",
+          "tx-49b3265d8e44e751-2795"
+        ]
+      },
+      {
+        "transactionType": "utilities_payment",
+        "category": "Utilities",
+        "direction": "outflow",
+        "dailyAmountsCents": [
+          0,
+          0,
+          0,
+          654,
+          407,
+          0,
+          0,
+          0,
+          0,
+          0,
+          918,
+          0,
+          0,
+          925,
+          1276,
+          693,
+          1055,
+          0,
+          1644,
+          0,
+          957,
+          1400,
+          0,
+          0,
+          0,
+          1051,
+          0,
+          1720,
+          0,
+          0
+        ],
+        "totalCents": 12700,
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2776",
+          "tx-49b3265d8e44e751-2782",
+          "tx-49b3265d8e44e751-2788",
+          "tx-49b3265d8e44e751-2797",
+          "tx-49b3265d8e44e751-2798",
+          "tx-49b3265d8e44e751-2799"
+        ]
+      }
+    ],
+    "spendingEstimates": [],
+    "modeledIncomeGroupCount": 1,
+    "suppressedAlreadyObservedMonthlyGroups": [],
+    "evidence": [
+      {
+        "id": "tx-49b3265d8e44e751-2706",
+        "date": "2026-04-02",
+        "accountId": "ACC000005",
+        "amountCents": -78261,
+        "category": "Housing",
+        "transactionType": "housing_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2710",
+        "date": "2026-04-14",
+        "accountId": "ACC000005",
+        "amountCents": -5549,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2711",
+        "date": "2026-04-15",
+        "accountId": "ACC000005",
+        "amountCents": 228883,
+        "category": "Salary",
+        "transactionType": "salary"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2712",
+        "date": "2026-04-16",
+        "accountId": "ACC000005",
+        "amountCents": -40100,
+        "category": "Invest Deposit",
+        "transactionType": "investment_deposit"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2713",
+        "date": "2026-04-16",
+        "accountId": "ACC000005",
+        "amountCents": -4155,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2715",
+        "date": "2026-04-26",
+        "accountId": "ACC000005",
+        "amountCents": -6307,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2716",
+        "date": "2026-04-29",
+        "accountId": "ACC000005",
+        "amountCents": -20819,
+        "category": "Entertainment",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2717",
+        "date": "2026-05-02",
+        "accountId": "ACC000005",
+        "amountCents": -77015,
+        "category": "Housing",
+        "transactionType": "housing_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2718",
+        "date": "2026-05-04",
+        "accountId": "ACC000005",
+        "amountCents": -3925,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2723",
+        "date": "2026-05-11",
+        "accountId": "ACC000005",
+        "amountCents": -13667,
+        "category": "Groceries",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2725",
+        "date": "2026-05-14",
+        "accountId": "ACC000005",
+        "amountCents": -7592,
+        "category": "Groceries",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2727",
+        "date": "2026-05-17",
+        "accountId": "ACC000005",
+        "amountCents": -11314,
+        "category": "Groceries",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2729",
+        "date": "2026-05-20",
+        "accountId": "ACC000005",
+        "amountCents": -3039,
+        "category": "Groceries",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2730",
+        "date": "2026-05-20",
+        "accountId": "ACC000005",
+        "amountCents": -5814,
+        "category": "Groceries",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2734",
+        "date": "2026-05-21",
+        "accountId": "ACC000005",
+        "amountCents": -2838,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2735",
+        "date": "2026-05-22",
+        "accountId": "ACC000005",
+        "amountCents": -2638,
+        "category": "Groceries",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2736",
+        "date": "2026-05-28",
+        "accountId": "ACC000005",
+        "amountCents": -2823,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2737",
+        "date": "2026-05-31",
+        "accountId": "ACC000005",
+        "amountCents": 275192,
+        "category": "Salary",
+        "transactionType": "salary"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2739",
+        "date": "2026-06-03",
+        "accountId": "ACC000005",
+        "amountCents": -80864,
+        "category": "Housing",
+        "transactionType": "housing_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2740",
+        "date": "2026-06-10",
+        "accountId": "ACC000005",
+        "amountCents": -44870,
+        "category": "Lifestyle",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2741",
+        "date": "2026-06-15",
+        "accountId": "ACC000005",
+        "amountCents": 229539,
+        "category": "Salary",
+        "transactionType": "salary"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2742",
+        "date": "2026-06-15",
+        "accountId": "ACC000005",
+        "amountCents": -7658,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2743",
+        "date": "2026-06-16",
+        "accountId": "ACC000005",
+        "amountCents": -40215,
+        "category": "Invest Deposit",
+        "transactionType": "investment_deposit"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2744",
+        "date": "2026-06-19",
+        "accountId": "ACC000005",
+        "amountCents": -5915,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2745",
+        "date": "2026-06-19",
+        "accountId": "ACC000005",
+        "amountCents": -3949,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2746",
+        "date": "2026-07-03",
+        "accountId": "ACC000005",
+        "amountCents": -81089,
+        "category": "Housing",
+        "transactionType": "housing_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2747",
+        "date": "2026-07-05",
+        "accountId": "ACC000005",
+        "amountCents": -2443,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2756",
+        "date": "2026-07-15",
+        "accountId": "ACC000005",
+        "amountCents": 240527,
+        "category": "Salary",
+        "transactionType": "salary"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2757",
+        "date": "2026-07-16",
+        "accountId": "ACC000005",
+        "amountCents": -42140,
+        "category": "Invest Deposit",
+        "transactionType": "investment_deposit"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2760",
+        "date": "2026-07-21",
+        "accountId": "ACC000005",
+        "amountCents": -2901,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2769",
+        "date": "2026-07-28",
+        "accountId": "ACC000005",
+        "amountCents": -3162,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2770",
+        "date": "2026-08-01",
+        "accountId": "ACC000005",
+        "amountCents": -6350,
+        "category": "Entertainment",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2772",
+        "date": "2026-08-03",
+        "accountId": "ACC000005",
+        "amountCents": -5369,
+        "category": "Health",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2773",
+        "date": "2026-08-06",
+        "accountId": "ACC000005",
+        "amountCents": -79915,
+        "category": "Housing",
+        "transactionType": "housing_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2776",
+        "date": "2026-08-11",
+        "accountId": "ACC000005",
+        "amountCents": -5508,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2778",
+        "date": "2026-08-13",
+        "accountId": "ACC000005",
+        "amountCents": -8870,
+        "category": "Transportation",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2779",
+        "date": "2026-08-13",
+        "accountId": "ACC000005",
+        "amountCents": -7375,
+        "category": "Entertainment",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2780",
+        "date": "2026-08-17",
+        "accountId": "ACC000005",
+        "amountCents": -7325,
+        "category": "Health",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2781",
+        "date": "2026-08-17",
+        "accountId": "ACC000005",
+        "amountCents": -12054,
+        "category": "Entertainment",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2782",
+        "date": "2026-08-17",
+        "accountId": "ACC000005",
+        "amountCents": -4545,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2783",
+        "date": "2026-08-21",
+        "accountId": "ACC000005",
+        "amountCents": -3152,
+        "category": "Transportation",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2784",
+        "date": "2026-08-23",
+        "accountId": "ACC000005",
+        "amountCents": -3195,
+        "category": "Transportation",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2785",
+        "date": "2026-08-24",
+        "accountId": "ACC000005",
+        "amountCents": -6295,
+        "category": "Transportation",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2786",
+        "date": "2026-08-26",
+        "accountId": "ACC000005",
+        "amountCents": -2212,
+        "category": "Transportation",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2787",
+        "date": "2026-08-26",
+        "accountId": "ACC000005",
+        "amountCents": -3567,
+        "category": "Transportation",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2788",
+        "date": "2026-08-28",
+        "accountId": "ACC000005",
+        "amountCents": -4336,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2789",
+        "date": "2026-08-28",
+        "accountId": "ACC000005",
+        "amountCents": -3793,
+        "category": "Entertainment",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2790",
+        "date": "2026-08-29",
+        "accountId": "ACC000005",
+        "amountCents": -7036,
+        "category": "Health",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2791",
+        "date": "2026-08-30",
+        "accountId": "ACC000005",
+        "amountCents": -5462,
+        "category": "Entertainment",
+        "transactionType": "purchase"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2792",
+        "date": "2026-08-30",
+        "accountId": "ACC000005",
+        "amountCents": 251434,
+        "category": "Salary",
+        "transactionType": "salary"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2794",
+        "date": "2026-09-01",
+        "accountId": "ACC000005",
+        "amountCents": -82332,
+        "category": "Housing",
+        "transactionType": "housing_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2795",
+        "date": "2026-09-15",
+        "accountId": "ACC000005",
+        "amountCents": 250516,
+        "category": "Salary",
+        "transactionType": "salary"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2796",
+        "date": "2026-09-16",
+        "accountId": "ACC000005",
+        "amountCents": -43890,
+        "category": "Invest Deposit",
+        "transactionType": "investment_deposit"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2797",
+        "date": "2026-09-17",
+        "accountId": "ACC000005",
+        "amountCents": -1785,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2798",
+        "date": "2026-09-22",
+        "accountId": "ACC000005",
+        "amountCents": -4357,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2799",
+        "date": "2026-09-22",
+        "accountId": "ACC000005",
+        "amountCents": -4041,
+        "category": "Utilities",
+        "transactionType": "utilities_payment"
+      },
+      {
+        "id": "tx-49b3265d8e44e751-2800",
+        "date": "2026-09-28",
+        "accountId": "ACC000005",
+        "amountCents": -128419,
+        "category": "Lifestyle",
+        "transactionType": "purchase"
+      }
+    ],
+    "calibration": {
+      "method": "split-path-envelope-expansion",
+      "modelVersion": "conditioned-income-v2",
+      "modelDigest": "fc8b6701c1bd309b1ea523162813b73a6e457b48cb69c00b76f5cb2ac1225c97",
+      "calibrationThrough": "2026-08-30",
+      "horizonDays": 30,
+      "targetPathCoverage": 0.9,
+      "calibrationPaths": 4105,
+      "marginCents": 243853
+    }
+  },
+  "savings": {
+    "currency": "EUR",
+    "asOf": "2026-09-30",
+    "status": "needs_confirmation",
+    "suggestedSavingsCents": null,
+    "conditionalCapacityCents": 218454,
+    "bufferCents": 50000,
+    "movesMoney": false,
+    "reservedFutureCostsCents": 0,
+    "futureCommitments": [],
+    "limitingBalanceCents": 268454,
+    "horizonEnd": "2026-10-30",
+    "assumptions": [
+      "The supplied buffer is a user/product choice, not learned financial advice.",
+      "Only listed future costs are reserved; confirm other commitments before acting.",
+      "Capacity assumes a withdrawal now, no automatic money movement, and end-of-day liquidity.",
+      "A calibrated bound is not a guarantee of future affordability."
+    ]
+  },
+  "budget": {
+    "schemaVersion": "1.0.0",
+    "customerId": "CUST00005",
+    "asOf": "2026-09-30",
+    "currency": "EUR",
+    "status": "needs_confirmation",
+    "movesMoney": false,
+    "categories": [
+      {
+        "category": "Entertainment",
+        "historicalForecastCents": 19618,
+        "protectedCents": 0,
+        "previewLimitCents": 19509,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": -109,
+        "adjustable": true,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2716",
+          "tx-49b3265d8e44e751-2770",
+          "tx-49b3265d8e44e751-2779",
+          "tx-49b3265d8e44e751-2781",
+          "tx-49b3265d8e44e751-2789",
+          "tx-49b3265d8e44e751-2791"
+        ]
+      },
+      {
+        "category": "Groceries",
+        "historicalForecastCents": 7990,
+        "protectedCents": 7990,
+        "previewLimitCents": 7990,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2723",
+          "tx-49b3265d8e44e751-2725",
+          "tx-49b3265d8e44e751-2727",
+          "tx-49b3265d8e44e751-2729",
+          "tx-49b3265d8e44e751-2730",
+          "tx-49b3265d8e44e751-2735"
+        ]
+      },
+      {
+        "category": "Health",
+        "historicalForecastCents": 3289,
+        "protectedCents": 3289,
+        "previewLimitCents": 3289,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2772",
+          "tx-49b3265d8e44e751-2780",
+          "tx-49b3265d8e44e751-2790"
+        ]
+      },
+      {
+        "category": "Housing",
+        "historicalForecastCents": 79912,
+        "protectedCents": 79912,
+        "previewLimitCents": 79912,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2706",
+          "tx-49b3265d8e44e751-2717",
+          "tx-49b3265d8e44e751-2739",
+          "tx-49b3265d8e44e751-2746",
+          "tx-49b3265d8e44e751-2773",
+          "tx-49b3265d8e44e751-2794"
+        ]
+      },
+      {
+        "category": "Lifestyle",
+        "historicalForecastCents": 28881,
+        "protectedCents": 0,
+        "previewLimitCents": 28721,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": -160,
+        "adjustable": true,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2740",
+          "tx-49b3265d8e44e751-2800"
+        ]
+      },
+      {
+        "category": "Transportation",
+        "historicalForecastCents": 27278,
+        "protectedCents": 27278,
+        "previewLimitCents": 27278,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2778",
+          "tx-49b3265d8e44e751-2783",
+          "tx-49b3265d8e44e751-2784",
+          "tx-49b3265d8e44e751-2785",
+          "tx-49b3265d8e44e751-2786",
+          "tx-49b3265d8e44e751-2787"
+        ]
+      },
+      {
+        "category": "Utilities",
+        "historicalForecastCents": 12700,
+        "protectedCents": 12700,
+        "previewLimitCents": 12700,
+        "suggestedLimitCents": null,
+        "changeFromHistoryCents": 0,
+        "adjustable": false,
+        "source": "history_and_constraints",
+        "reason": "Bills and protected spending are retained; remaining amounts follow historical spending shares.",
+        "evidenceIds": [
+          "tx-49b3265d8e44e751-2776",
+          "tx-49b3265d8e44e751-2782",
+          "tx-49b3265d8e44e751-2788",
+          "tx-49b3265d8e44e751-2797",
+          "tx-49b3265d8e44e751-2798",
+          "tx-49b3265d8e44e751-2799"
+        ]
+      }
+    ],
+    "preview": {
+      "startingBalanceAfterSavingsCents": 636614,
+      "daily": [
+        {
+          "date": "2026-10-01",
+          "expectedBalanceCents": 621840,
+          "expectedNetChangeCents": -14774,
+          "conditionalLowerBalanceCents": 310435,
+          "conditionalUpperBalanceCents": 880473,
+          "cumulativeChangeFromOriginalCents": -9994
+        },
+        {
+          "date": "2026-10-02",
+          "expectedBalanceCents": 595352,
+          "expectedNetChangeCents": -26488,
+          "conditionalLowerBalanceCents": 310435,
+          "conditionalUpperBalanceCents": 880473,
+          "cumulativeChangeFromOriginalCents": -9994
+        },
+        {
+          "date": "2026-10-03",
+          "expectedBalanceCents": 567467,
+          "expectedNetChangeCents": -27885,
+          "conditionalLowerBalanceCents": 310437,
+          "conditionalUpperBalanceCents": 865105,
+          "cumulativeChangeFromOriginalCents": -9994
+        },
+        {
+          "date": "2026-10-04",
+          "expectedBalanceCents": 565306,
+          "expectedNetChangeCents": -2161,
+          "conditionalLowerBalanceCents": 305425,
+          "conditionalUpperBalanceCents": 865114,
+          "cumulativeChangeFromOriginalCents": -9986
+        },
+        {
+          "date": "2026-10-05",
+          "expectedBalanceCents": 563797,
+          "expectedNetChangeCents": -1509,
+          "conditionalLowerBalanceCents": 305215,
+          "conditionalUpperBalanceCents": 865116,
+          "cumulativeChangeFromOriginalCents": -9986
+        },
+        {
+          "date": "2026-10-06",
+          "expectedBalanceCents": 548149,
+          "expectedNetChangeCents": -15648,
+          "conditionalLowerBalanceCents": 297497,
+          "conditionalUpperBalanceCents": 799624,
+          "cumulativeChangeFromOriginalCents": -9986
+        },
+        {
+          "date": "2026-10-07",
+          "expectedBalanceCents": 545618,
+          "expectedNetChangeCents": -2531,
+          "conditionalLowerBalanceCents": 289838,
+          "conditionalUpperBalanceCents": 799624,
+          "cumulativeChangeFromOriginalCents": -9986
+        },
+        {
+          "date": "2026-10-08",
+          "expectedBalanceCents": 538757,
+          "expectedNetChangeCents": -6861,
+          "conditionalLowerBalanceCents": 264053,
+          "conditionalUpperBalanceCents": 799665,
+          "cumulativeChangeFromOriginalCents": -9948
+        },
+        {
+          "date": "2026-10-09",
+          "expectedBalanceCents": 537331,
+          "expectedNetChangeCents": -1426,
+          "conditionalLowerBalanceCents": 264053,
+          "conditionalUpperBalanceCents": 799665,
+          "cumulativeChangeFromOriginalCents": -9948
+        },
+        {
+          "date": "2026-10-10",
+          "expectedBalanceCents": 528637,
+          "expectedNetChangeCents": -8694,
+          "conditionalLowerBalanceCents": 264094,
+          "conditionalUpperBalanceCents": 798238,
+          "cumulativeChangeFromOriginalCents": -9907
+        },
+        {
+          "date": "2026-10-11",
+          "expectedBalanceCents": 524925,
+          "expectedNetChangeCents": -3712,
+          "conditionalLowerBalanceCents": 264096,
+          "conditionalUpperBalanceCents": 798240,
+          "cumulativeChangeFromOriginalCents": -9907
+        },
+        {
+          "date": "2026-10-12",
+          "expectedBalanceCents": 522168,
+          "expectedNetChangeCents": -2757,
+          "conditionalLowerBalanceCents": 264096,
+          "conditionalUpperBalanceCents": 798240,
+          "cumulativeChangeFromOriginalCents": -9907
+        },
+        {
+          "date": "2026-10-13",
+          "expectedBalanceCents": 518952,
+          "expectedNetChangeCents": -3216,
+          "conditionalLowerBalanceCents": 261993,
+          "conditionalUpperBalanceCents": 798247,
+          "cumulativeChangeFromOriginalCents": -9900
+        },
+        {
+          "date": "2026-10-14",
+          "expectedBalanceCents": 516266,
+          "expectedNetChangeCents": -2686,
+          "conditionalLowerBalanceCents": 258554,
+          "conditionalUpperBalanceCents": 798247,
+          "cumulativeChangeFromOriginalCents": -9900
+        },
+        {
+          "date": "2026-10-15",
+          "expectedBalanceCents": 692643,
+          "expectedNetChangeCents": 176377,
+          "conditionalLowerBalanceCents": 436593,
+          "conditionalUpperBalanceCents": 976286,
+          "cumulativeChangeFromOriginalCents": -9900
+        },
+        {
+          "date": "2026-10-16",
+          "expectedBalanceCents": 664231,
+          "expectedNetChangeCents": -28412,
+          "conditionalLowerBalanceCents": 392342,
+          "conditionalUpperBalanceCents": 932400,
+          "cumulativeChangeFromOriginalCents": -9900
+        },
+        {
+          "date": "2026-10-17",
+          "expectedBalanceCents": 655755,
+          "expectedNetChangeCents": -8476,
+          "conditionalLowerBalanceCents": 381011,
+          "conditionalUpperBalanceCents": 930637,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-18",
+          "expectedBalanceCents": 655404,
+          "expectedNetChangeCents": -351,
+          "conditionalLowerBalanceCents": 381012,
+          "conditionalUpperBalanceCents": 930638,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-19",
+          "expectedBalanceCents": 653760,
+          "expectedNetChangeCents": -1644,
+          "conditionalLowerBalanceCents": 381012,
+          "conditionalUpperBalanceCents": 930638,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-20",
+          "expectedBalanceCents": 651253,
+          "expectedNetChangeCents": -2507,
+          "conditionalLowerBalanceCents": 381015,
+          "conditionalUpperBalanceCents": 930641,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-21",
+          "expectedBalanceCents": 647911,
+          "expectedNetChangeCents": -3342,
+          "conditionalLowerBalanceCents": 381016,
+          "conditionalUpperBalanceCents": 930642,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-22",
+          "expectedBalanceCents": 646072,
+          "expectedNetChangeCents": -1839,
+          "conditionalLowerBalanceCents": 381016,
+          "conditionalUpperBalanceCents": 922244,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-23",
+          "expectedBalanceCents": 644359,
+          "expectedNetChangeCents": -1713,
+          "conditionalLowerBalanceCents": 381017,
+          "conditionalUpperBalanceCents": 922245,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-24",
+          "expectedBalanceCents": 643312,
+          "expectedNetChangeCents": -1047,
+          "conditionalLowerBalanceCents": 381020,
+          "conditionalUpperBalanceCents": 922248,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-25",
+          "expectedBalanceCents": 641887,
+          "expectedNetChangeCents": -1425,
+          "conditionalLowerBalanceCents": 381023,
+          "conditionalUpperBalanceCents": 922251,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-26",
+          "expectedBalanceCents": 639873,
+          "expectedNetChangeCents": -2014,
+          "conditionalLowerBalanceCents": 374716,
+          "conditionalUpperBalanceCents": 922251,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-27",
+          "expectedBalanceCents": 638042,
+          "expectedNetChangeCents": -1831,
+          "conditionalLowerBalanceCents": 370431,
+          "conditionalUpperBalanceCents": 922252,
+          "cumulativeChangeFromOriginalCents": -9878
+        },
+        {
+          "date": "2026-10-28",
+          "expectedBalanceCents": 613089,
+          "expectedNetChangeCents": -24953,
+          "conditionalLowerBalanceCents": 306250,
+          "conditionalUpperBalanceCents": 885242,
+          "cumulativeChangeFromOriginalCents": -9755
+        },
+        {
+          "date": "2026-10-29",
+          "expectedBalanceCents": 614077,
+          "expectedNetChangeCents": 988,
+          "conditionalLowerBalanceCents": 311881,
+          "conditionalUpperBalanceCents": 890873,
+          "cumulativeChangeFromOriginalCents": -9736
+        },
+        {
+          "date": "2026-10-30",
+          "expectedBalanceCents": 646615,
+          "expectedNetChangeCents": 32538,
+          "conditionalLowerBalanceCents": 345329,
+          "conditionalUpperBalanceCents": 924321,
+          "cumulativeChangeFromOriginalCents": -9731
+        }
+      ],
+      "endingExpectedBalanceCents": 646615,
+      "lowestConditionalBalanceCents": 258554,
+      "lowestConditionalBalanceDate": "2026-10-14",
+      "lowestExpectedBalance": {
+        "date": "2026-10-14",
+        "amountCents": 516266
+      },
+      "bufferShortfallCents": 0,
+      "incomeShortfallCents": 0,
+      "assumesPlanFollowed": true,
+      "calibrationCoverageClaimApplies": false
+    },
+    "savingsTargetCents": 10000,
+    "bufferCents": 50000,
+    "feasible": true,
+    "periodStart": "2026-10-01",
+    "periodEnd": "2026-10-30",
+    "periodDays": 30,
+    "expectedIncomeCents": 217123,
+    "otherAccountOutflowsCents": 27724,
+    "futureCostReserveCents": 0,
+    "futureCommitments": [],
+    "incomeAvailableForSpendingCents": 179399,
+    "totalHistoricalSpendingCents": 179668,
+    "totalPlannedSpendingCents": 179399,
+    "unallocatedIncomeCents": 0,
+    "confirmationRequired": true,
+    "savingsConfirmed": false,
+    "commitmentsConfirmed": false,
+    "constraintFailures": [],
+    "assumptions": [
+      "Limits cover the next forecast window, not a calendar month or money already spent.",
+      "Savings is previewed as a withdrawal now; future costs are reserved separately.",
+      "Expense changes occur on historical spending dates; spending earlier can break the buffer.",
+      "Conditional bounds retain the original error allowance but have not been calibrated under changed behavior.",
+      "Protected categories are a default policy, not inferred personal needs; users can supply preferences and floors.",
+      "Investment withdrawals and existing balances do not increase the recurring-income spending limit.",
+      "An infeasible result requires changing goals or constraints, not treating zero discretionary budgets as a recommendation."
+    ]
+  }
+}
