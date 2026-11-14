@@ -346,3 +346,21 @@ button:focus-visible, a:focus-visible { outline: 3px solid #82ddb0; outline-offs
 .g2-fineprint { margin:0; font-size:10px; line-height:1.45; color:#8a948d; }
 .g2-fineprint a { display:inline-flex; align-items:center; gap:3px; color:#007841; font-weight:600; text-decoration:none; }
 .g2-stop { align-self:center; }
+/* compact (collapsed) goal rows */
+.g2-compact { animation:none; }
+.g2-compact-main { display:flex; align-items:center; gap:12px; width:100%; padding:10px 12px 10px 10px; border:0; background:none; text-align:left; font-family:Inter, sans-serif; }
+.g2-thumb { display:grid; place-items:center; width:56px; height:56px; flex:none; border-radius:14px; background:#ebf7ec; overflow:hidden; }
+.g2-long .g2-thumb { background:#004628; }
+.g2-thumb .goal-art { width:84px; height:46px; margin:0; }
+.g2-compact-text { display:flex; flex:1; min-width:0; flex-direction:column; gap:3px; }
+.g2-compact-text strong { overflow:hidden; font-size:14px; font-weight:700; color:#18221c; text-overflow:ellipsis; white-space:nowrap; }
+.g2-compact-text small { font-size:11px; color:#68716a; font-variant-numeric:tabular-nums; }
+.g2-mini { height:5px; margin-top:3px; }
+.g2-mini span { border-radius:5px; }
+.g2-chev { flex:none; color:#9aa59d; }
+.g2-tick-compact { height:38px; margin:0 12px 12px; font-size:12px; }
+.g2-collapse { position:absolute; inset:0; z-index:0; border:0; background:transparent; cursor:pointer; }
+.g2-band > :not(.g2-collapse) { position:relative; z-index:1; }
+.g2-band .goal-art { pointer-events:none; }
+.short-goals-list { gap:8px; }
+.g2-band > .g2-delete { position:absolute; z-index:2; }

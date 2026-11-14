@@ -55,7 +55,7 @@ function GoalProgress({ progress, label }) {
 
 const shortDate = (date) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(`${date}T12:00:00`));
 
-function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, completeGoal }) {
+function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, completeGoal, expanded, onToggle }) {
   const [editing, setEditing] = useState(false);
   const [deposit, setDeposit] = useState('');
   const isFunded = goal.savedCents >= goal.targetCents;
@@ -75,8 +75,18 @@ function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, comple
   const quickAdd = (cents) => { if (cents <= 0) return; updateGoal({ savedCents: goal.savedCents + cents }); setLastAdd({ cents, id: Date.now() }); };
   const undoAdd = () => { if (!lastAdd) return; updateGoal({ savedCents: Math.max(0, goal.savedCents - lastAdd.cents) }); setLastAdd(null); };
   const startYear = Number(fixture.asOf.slice(0, 4)); const endYear = Number(goal.targetDate.slice(0, 4));
+  const whenText = horizon === 'long' ? `by ${new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' }).format(new Date(`${goal.targetDate}T12:00:00`))}` : `by ${shortDate(goal.targetDate)}`;
+  if (!expanded) return <article className={`g2-card g2-compact g2-${horizon} ${isFunded ? 'g2-funded' : ''}`}>
+    <button type="button" className="g2-compact-main" aria-expanded="false" onClick={onToggle}>
+      <span className="g2-thumb"><GoalArt theme={theme}/></span>
+      <span className="g2-compact-text"><strong>{goal.label || 'New goal'}</strong><small>{formatEuro(goal.savedCents)} of {formatEuro(goal.targetCents)} · {whenText}</small><span className="g2-track g2-mini"><span style={{ width: `${progress}%` }}/></span></span>
+      <ChevronRight size={18} className="g2-chev"/>
+    </button>
+    {isFunded && <button type="button" className="g2-tick g2-tick-compact" onClick={completeGoal}><Check size={15}/> Fully saved — tick it off</button>}
+  </article>;
   return <article className={`g2-card g2-${horizon} ${isFunded ? 'g2-funded' : ''}`}>
     <div className="g2-band">
+      <button type="button" className="g2-collapse" aria-expanded="true" aria-label={`Collapse ${goal.label || 'goal'}`} onClick={onToggle}/>
       <div className="g2-band-copy"><span className="g2-when">{horizon === 'long' ? `${months >= 24 ? `${Math.round(months / 12)} years` : `${months} months`} · by ${new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' }).format(new Date(`${goal.targetDate}T12:00:00`))}` : `By ${shortDate(goal.targetDate)}`}</span>{isFunded && <span className="g2-badge"><Check size={12}/> Fully saved</span>}</div>
       <GoalArt theme={theme}/>
       <button className="g2-delete" onClick={removeGoal} aria-label={`Delete ${goal.label || 'goal'}`}><X size={15}/></button>
@@ -92,7 +102,6 @@ function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, comple
             <div className="g2-stats" role="group" aria-label="Tap an amount to add it to your savings">
               {[['Monthly', neededMonthly], ['Weekly', Math.ceil(neededMonthly / 4)], ['To go', remainingCents]].map(([name, cents]) => <button type="button" key={name} onClick={() => quickAdd(cents)} aria-label={`Add ${formatEuro(cents)} (${name.toLowerCase()} amount) to ${goal.label || 'goal'}`}><span>{name}</span><strong>{formatEuro(cents)}</strong><em>+ Add</em></button>)}
             </div>
-            <p className="g2-stats-hint">Tap an amount to add it to what you’ve saved.</p>
             <form className="g2-deposit" onSubmit={addDeposit}><input inputMode="decimal" type="number" min="0" step="0.01" value={deposit} onChange={(event) => setDeposit(event.target.value)} placeholder="Add money saved, €" aria-label={`Add money saved toward ${goal.label || 'goal'}`}/><button type="submit" disabled={!euroToCents(deposit)}>Add</button></form>
           </>}
       {lastAdd && <div className="g2-toast" role="status" key={lastAdd.id}><Check size={14}/><span>Added {formatEuro(lastAdd.cents)}</span><button type="button" onClick={undoAdd}>Undo</button></div>}
@@ -142,13 +151,22 @@ const MONTHLY_PICKS = [2000, 5000, 10000, 20000];
 
 function SavingsAccountPlan({ plan, updatePlan }) {
   const [custom, setCustom] = useState('');
+  const [open, setOpen] = useState(false);
   const account = ACCOUNTS.find(item => item.id === plan.accountType) ?? ACCOUNTS[0];
   const monthly = plan.monthlyCents;
   const points = [1, 3, 5, 10].map(years => ({ years, cents: monthly * 12 * years }));
   const max = Math.max(1, points[points.length - 1].cents);
   const setMonthly = (cents) => cents > 0 && updatePlan({ monthlyCents: cents });
+  if (!open) return <article className={`g2-card g2-compact g2-long g2-account-plan ${plan.active ? 'is-active' : ''}`}>
+    <button type="button" className="g2-compact-main" aria-expanded="false" onClick={() => setOpen(true)}>
+      <span className="g2-thumb"><GoalArt theme="seed"/></span>
+      <span className="g2-compact-text"><strong>Just save into S-Pankki</strong><small>{plan.active ? `${formatEuro(monthly)} a month · ${account.name} · active` : 'No target — set aside a monthly amount'}</small></span>
+      <ChevronRight size={18} className="g2-chev"/>
+    </button>
+  </article>;
   return <article className={`g2-card g2-long g2-account-plan ${plan.active ? 'is-active' : ''}`}>
     <div className="g2-band">
+      <button type="button" className="g2-collapse" aria-expanded="true" aria-label="Collapse savings plan" onClick={() => setOpen(false)}/>
       <div className="g2-band-copy"><span className="g2-when">No target · just save</span>{plan.active && <span className="g2-badge"><Check size={12}/> Plan active</span>}</div>
       <GoalArt theme="seed"/>
     </div>
@@ -175,6 +193,7 @@ function SavingsAccountPlan({ plan, updatePlan }) {
 
 function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort, restoreShort, updateLong, mode, openEvidence, previewId, setPreviewId }) {
   const [adding, setAdding] = useState(false);
+  const [openId, setOpenId] = useState(null);
   const [showAchieved, setShowAchieved] = useState(false);
   const [horizon, setHorizon] = useState(() => { try { return sessionStorage.getItem('goals-horizon') || 'short'; } catch { return 'short'; } });
   const chooseHorizon = (value) => { setHorizon(value); setAdding(false); setShowAchieved(false); try { sessionStorage.setItem('goals-horizon', value); } catch { /* optional */ } };
@@ -189,13 +208,13 @@ function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort,
     </div>
     <section className="short-goals-list" role="tabpanel" aria-label={horizon === 'long' ? 'Long-term goals' : 'Short-term goals'}>
       <div className="list-section-heading"><div><h2>{horizon === 'long' ? 'Your big plans' : 'Your goals, your way'}</h2></div><span className="goals-count">{active.length} active{achieved.length ? ` · ${achieved.length} done` : ''}</span></div>
-      {active.length > 0 && <div className="g2-summary"><span>Together</span><strong>{formatEuro(monthlyCents)}<small> / month</small></strong><span>to reach {active.length === 1 ? 'it' : `all ${active.length}`} on time</span></div>}
+      {active.length > 0 && <div className="g2-summary"><span>Together</span><strong>{formatEuro(monthlyCents)}<small> / month</small></strong><span>to stay on track</span></div>}
       {active.length === 0 && !adding && <div className={`g2-empty g2-${horizon}`}><GoalArt theme={horizon === 'long' ? 'home' : 'travel'}/><strong>{horizon === 'long' ? 'What’s your big plan?' : 'What do you want next?'}</strong><p>Write down anything you’re saving for — {HORIZONS[horizon].empty}. Add as many as you like.</p></div>}
       {active.map((goal) => {
-        return <ShortTermGoal key={goal.id} horizon={horizon} goal={goal} updateGoal={(patch) => updateShort(goal.id, patch)} removeGoal={() => removeShort(goal.id)} completeGoal={() => completeShort(goal.id)}/>;
+        return <ShortTermGoal key={goal.id} horizon={horizon} goal={goal} updateGoal={(patch) => updateShort(goal.id, patch)} removeGoal={() => removeShort(goal.id)} completeGoal={() => completeShort(goal.id)} expanded={openId === goal.id} onToggle={() => setOpenId(openId === goal.id ? null : goal.id)}/>;
       })}
       {adding
-        ? <NewGoalForm key={horizon} horizon={horizon} onAdd={(goal) => { addShort(goal); setAdding(false); }} onCancel={() => setAdding(false)}/>
+        ? <NewGoalForm key={horizon} horizon={horizon} onAdd={(goal) => { const id = `goal-${Date.now()}`; addShort({ ...goal, id }); setOpenId(id); setAdding(false); }} onCancel={() => setAdding(false)}/>
         : <button className="g2-add" onClick={() => setAdding(true)}><span>+</span>Add a {horizon === 'long' ? 'long-term' : 'short-term'} goal</button>}
       {achieved.length > 0 && <div className="achieved-goals">
         <button type="button" className="achieved-toggle" aria-expanded={showAchieved} onClick={() => setShowAchieved(!showAchieved)}>Achieved ({achieved.length}) <ChevronRight size={15}/></button>
