@@ -48,6 +48,7 @@ Do not allow an explanation model to choose arbitrary customer IDs or SQL.
 | `goal` | Optional `{ label, targetCents, savedCents, targetDate }`. Already saved money must be separate from future period cash. |
 | `periods` | Required for a goal: consecutive `{ month, availableToSaveCents, plannedDeliveryCents, evidenceIds? }` from `asOf` through the goal month. |
 | `deliveryHistory` | Optional `{ id, date, amountCents }[]` of positive consumption amounts, at or before `asOf`. The adapter/customer must identify delivery; a broad restaurant category does not establish this. |
+| `deliveryAdjustable` | Optional boolean customer preference; `false` prevents delivery reduction suggestions and recovery previews. For profile APIs, a delivery category marked essential or non-adjustable in `spendingHistory` also blocks reductions. |
 | `newExpenses` | Optional `{ id, date, amountCents, label? }[]` of additional scenario expenses not already deducted from period cash. IDs must be unique and dates within the forecast window. |
 | `spendingHistory` | Optional complete-month consumption totals: `{ month, category, spentCents, basket, adjustable, evidenceIds? }[]`. Months must precede the reference month. |
 | `signals` | Optional `{ id, type: 'recurring_bill', dueDate, amountCents, confidence, evidenceIds }[]`. Confidence is `low`, `medium`, `high`, or `confirmed`; `confirmed` means customer-confirmed amount and date. Evidence is required. |
@@ -83,6 +84,12 @@ delivery per eligible period. A period qualifies only if that spending is alread
 projected. The result can still leave a goal gap, which the explanation reports.
 It assumes the alternative has no incremental cost; the customer can reject/correct
 this. Delivery flexibility is a fixture assumption, not an inference from age.
+Customer corrections apply to the home card, purchase previews, and recovery previews.
+When delivery is protected, the plan returns `recoveryBlockedReason: 'delivery_protected'`
+and the coach explains that it is keeping that spending unchanged. The original
+low-level `calculateGoalPlan` accepts `deliveryAdjustable`; callers using it directly
+must pass their resolved preference. The profile APIs resolve category corrections
+automatically (matching the delivery category case-insensitively).
 
 Category budgets use the rounded mean of supplied complete monthly totals. Include
 explicit zero rows for genuine zero-spend months; missing history is not zero.

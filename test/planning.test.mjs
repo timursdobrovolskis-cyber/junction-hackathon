@@ -203,3 +203,52 @@ test('experiment preview is unavailable with missing inputs, cash gaps, or no su
   input.periods[0].availableToSaveCents = 100000;
   assert.equal(calculateRecoveryScenario(input), null);
 });
+
+for (const [name, basket, adjustable] of [
+  ['non-adjustable', 'everyday', false],
+  ['regular essential', 'mandatory_regular', true],
+  ['irregular essential', 'mandatory_irregular', true],
+]) {
+  test(`coach and all previews respect ${name} delivery spending`, () => {
+    const input = profile();
+    input.spendingHistory = [{ month: '2026-10', category: 'Delivery', spentCents: 1900, basket, adjustable, evidenceIds: ['delivery-1'] }];
+    const original = structuredClone(input);
+    const card = createCoachAction(input, { reductionPercent: 20 });
+    assert.equal(card.action.kind, 'review_goal');
+    assert.equal(card.plan.projectedSavedCents, 21000);
+    assert.equal(card.plan.recoveryOption, undefined);
+    assert.equal(card.plan.recoveryBlockedReason, 'delivery_protected');
+    assert.equal(card.categoryBudgets[0].estimatedReductionCents, 0);
+    assert.match(card.action.explanation, /keeps delivery spending unchanged/);
+    assert.equal(calculateRecoveryScenario(input), null);
+    const purchase = calculatePurchaseScenario(input, { id: 'p', date: input.asOf, amountCents: 500 });
+    assert.equal(purchase.baseline.recoveryOption, undefined);
+    assert.equal(purchase.afterPurchase.recoveryOption, undefined);
+    assert.equal(purchase.afterPurchase.projectedSavedCents, 20500);
+    assert.deepEqual(input, original);
+  });
+}
+
+test('customer can opt out of delivery reductions without monthly category history', () => {
+  const input = { ...profile(), deliveryAdjustable: false };
+  assert.equal(calculateGoalPlan(input).recoveryBlockedReason, 'delivery_protected');
+  assert.equal(createCoachAction(input).action.kind, 'review_goal');
+  assert.equal(calculateRecoveryScenario(input), null);
+  input.deliveryAdjustable = 'false';
+  assert.throws(() => calculateGoalPlan(input), /boolean/);
+  assert.throws(() => createCoachAction(input), /boolean/);
+});
+
+test('an explicitly adjustable delivery category still supports the existing experiment', () => {
+  const input = profile();
+  input.spendingHistory = [{ month: '2026-10', category: 'delivery', spentCents: 1900, basket: 'everyday', adjustable: true }];
+  assert.equal(createCoachAction(input).action.kind, 'goal_recovery');
+  assert.equal(calculateRecoveryScenario(input).afterExperiment.projectedSavedCents, 24000);
+  input.deliveryAdjustable = false;
+  const protectedCard = createCoachAction(input, { reductionPercent: 20 });
+  assert.equal(protectedCard.action.kind, 'review_goal');
+  assert.equal(protectedCard.categoryBudgets[0].estimatedReductionCents, 0);
+  assert.equal(protectedCard.categoryBudgets[0].suggestedBudgetCents, 1900);
+  delete input.goal;
+  assert.equal(createCoachAction(input, { reductionPercent: 20 }).categoryBudgets[0].estimatedReductionCents, 0);
+});

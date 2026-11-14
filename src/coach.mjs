@@ -10,8 +10,9 @@ function medianCents(amounts) {
 
 // Period amounts are remaining cash AFTER projected spending, before newExpenses.
 // Historical delivery amounts are positive expense magnitudes, never signed bank rows.
-export function calculateGoalPlan({ goal, periods, deliveryHistory = [], newExpenses = [] }) {
+export function calculateGoalPlan({ goal, periods, deliveryHistory = [], newExpenses = [], deliveryAdjustable = true }) {
   requireValue(goal && typeof goal === 'object', 'goal is required');
+  requireValue(typeof deliveryAdjustable === 'boolean', 'deliveryAdjustable must be a boolean');
   cents(goal.targetCents, 'goal.targetCents');
   cents(goal.savedCents, 'goal.savedCents');
   if (goal.targetDate !== undefined) date(goal.targetDate, 'goal.targetDate');
@@ -58,7 +59,9 @@ export function calculateGoalPlan({ goal, periods, deliveryHistory = [], newExpe
   const cashShortfalls = breakdown.filter((period) => period.projectedContributionCents < 0)
     .map((period) => ({ month: period.month, shortfallCents: -period.projectedContributionCents }));
   const result = { projectedSavedCents, goalShortfallCents, breakdown, cashShortfalls };
-  if (goalShortfallCents === 0 || deliveryHistory.length === 0) return result;
+  if (goalShortfallCents === 0) return result;
+  if (!deliveryAdjustable) return { ...result, recoveryBlockedReason: 'delivery_protected' };
+  if (deliveryHistory.length === 0) return result;
 
   const estimatedSavingsPerDeliveryCents = medianCents(deliveryHistory.map((transaction) => transaction.amountCents));
   // A small experiment: at most one avoided delivery per period, only where already budgeted.

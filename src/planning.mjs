@@ -3,6 +3,7 @@ import { cents, date, evidenceIds, identifier, month, requireValue, sum, unique 
 
 const money = (value) => new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' }).format(value / 100);
 const baskets = ['mandatory_regular', 'mandatory_irregular', 'everyday'];
+const isDelivery = (category) => category.trim().toLowerCase() === 'delivery';
 
 /** Completed monthly consumption totals, including explicit zero-spend months. */
 export function calculateCategoryBudgets({ history, reductionPercent = 0 }) {
@@ -42,6 +43,9 @@ export function calculateCategoryBudgets({ history, reductionPercent = 0 }) {
 
 function validateProfile(profile) {
   identifier(profile.customerId, 'customerId');
+  if (profile.deliveryAdjustable !== undefined) {
+    requireValue(typeof profile.deliveryAdjustable === 'boolean', 'deliveryAdjustable must be a boolean');
+  }
   requireValue(profile.currency === 'EUR', 'only EUR is supported');
   date(profile.asOf, 'asOf');
   requireValue(['illustrative_fixture', 'historical_bank_data'].includes(profile.dataSource), 'dataSource must identify fixture or historical bank data');
@@ -80,13 +84,21 @@ function validateProfile(profile) {
   }
 }
 
+function calculateProfilePlan(profile, budgets = calculateCategoryBudgets({ history: profile.spendingHistory ?? [] })) {
+  // Customer corrections apply to every recommendation and preview, not just budgets.
+  const deliveryBudgets = budgets.filter((budget) => isDelivery(budget.category));
+  const deliveryAdjustable = profile.deliveryAdjustable !== false
+    && deliveryBudgets.every((budget) => budget.adjustable && budget.basket === 'everyday');
+  return calculateGoalPlan({ ...profile, deliveryAdjustable });
+}
+
 /** Pure preview. The purchase must not already be included in the input projection. */
 export function calculatePurchaseScenario(profile, purchase) {
   validateProfile(profile);
   date(purchase.date, 'purchase.date');
   requireValue(purchase.date >= profile.asOf, 'purchase cannot precede asOf');
-  const baseline = calculateGoalPlan(profile);
-  const afterPurchase = calculateGoalPlan({ ...profile, newExpenses: [...(profile.newExpenses ?? []), purchase] });
+  const baseline = calculateProfilePlan(profile);
+  const afterPurchase = calculateProfilePlan({ ...profile, newExpenses: [...(profile.newExpenses ?? []), purchase] });
   return {
     schemaVersion: 1, customerId: profile.customerId, currency: 'EUR',
     asOf: profile.asOf, dataSource: profile.dataSource,
@@ -106,7 +118,7 @@ export function calculatePurchaseScenario(profile, purchase) {
 /** Preview the suggested experiment without persisting or claiming realized savings. */
 export function calculateRecoveryScenario(profile) {
   validateProfile(profile);
-  const baseline = calculateGoalPlan(profile);
+  const baseline = calculateProfilePlan(profile);
   const option = baseline.recoveryOption;
   if (!option || profile.missingInputs.length || baseline.cashShortfalls.length) return null;
   const selectedMonths = new Set(option.months);
@@ -116,7 +128,7 @@ export function calculateRecoveryScenario(profile) {
     plannedDeliveryCents: period.plannedDeliveryCents - option.estimatedSavingsPerDeliveryCents,
   } : { ...period });
   // Do not offer a second experiment as though the first preview were actual history.
-  const afterExperiment = calculateGoalPlan({ ...profile, periods, deliveryHistory: [] });
+  const afterExperiment = calculateProfilePlan({ ...profile, periods, deliveryHistory: [] });
   return {
     schemaVersion: 1, customerId: profile.customerId, currency: 'EUR',
     asOf: profile.asOf, dataSource: profile.dataSource,
@@ -135,8 +147,11 @@ export function calculateRecoveryScenario(profile) {
 /** Data-owner handoff in; one mobile home-card action out. No LLM or network needed. */
 export function createCoachAction(profile, { reductionPercent = 0, directAnswer = false } = {}) {
   validateProfile(profile);
-  const categoryBudgets = calculateCategoryBudgets({ history: profile.spendingHistory ?? [], reductionPercent });
-  const plan = profile.goal ? calculateGoalPlan(profile) : undefined;
+  const categoryBudgets = calculateCategoryBudgets({ history: profile.spendingHistory ?? [], reductionPercent })
+    .map((budget) => profile.deliveryAdjustable === false && isDelivery(budget.category)
+      ? { ...budget, adjustable: false, suggestedBudgetCents: budget.baselineCents, estimatedReductionCents: 0 }
+      : budget);
+  const plan = profile.goal ? calculateProfilePlan(profile, categoryBudgets) : undefined;
   const signals = profile.signals ?? [];
   requireValue(Array.isArray(signals), 'signals must be an array');
   for (const signal of signals) {
@@ -193,7 +208,9 @@ export function createCoachAction(profile, { reductionPercent = 0, directAnswer 
     };
   } else if (plan?.goalShortfallCents) {
     action = { kind: 'review_goal', title: 'Adjust the plan to your priorities',
-      explanation: `Projected savings are ${money(plan.projectedSavedCents)}, leaving ${money(plan.goalShortfallCents)} to the target. There is not enough supported delivery spending to suggest an experiment.`,
+      explanation: `Projected savings are ${money(plan.projectedSavedCents)}, leaving ${money(plan.goalShortfallCents)} to the target. ${plan.recoveryBlockedReason === 'delivery_protected'
+        ? 'Your plan keeps delivery spending unchanged because you marked it as essential or non-adjustable.'
+        : 'There is not enough supported delivery spending to suggest an experiment.'}`,
       suggestedAction: 'Try a different contribution, target amount, or deadline.' };
   } else if (upcoming) {
     const confirmed = upcoming.confidence === 'confirmed';
