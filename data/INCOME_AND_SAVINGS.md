@@ -79,4 +79,4 @@ Results are written under `data/local/income-experiment/`; the script does not a
 
 ## Next work
 
-Integrate the calibrated forecast and unconfirmed savings preview into the UI/coach using these examples. To improve the model further, investigate spending and one-off expenses rather than presenting the modest payday gain as sufficient. Reducing the wide uncertainty margin is still necessary for more useful savings estimates. Category budgets remain unimplemented.
+Integrate the calibrated forecast and unconfirmed savings preview into the UI/coach using these examples. To improve the model further, investigate spending and one-off expenses rather than presenting the modest payday gain as sufficient. Reducing the wide uncertainty margin is still necessary for more useful savings estimates. [Category budgets and edit previews](CATEGORY_BUDGETS.md) are now implemented on top of these calculations.

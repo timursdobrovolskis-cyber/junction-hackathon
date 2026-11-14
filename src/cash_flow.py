@@ -83,6 +83,8 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
                   if cutoff.replace(day=1) in target_months else [])
     balance = profile["observedBalanceCents"]
     scenario_paths = []
+    component_paths = defaultdict(lambda: [[0] * horizon_days for _ in months])
+    component_evidence = defaultdict(set)
     # Events are annotations of scenario cash flows, never extra deductions.
     event_groups = defaultdict(lambda: {"dates": set(), "scenarioAmounts": [0] * len(months), "evidenceIds": set()})
     for scenario_index, source_month in enumerate(months):
@@ -106,6 +108,9 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
                 if projected_date not in date_indices:
                     continue
                 changes[date_indices[projected_date]] += row["amount_cents"]
+                component = (row["transaction_type"], row["category"], "inflow" if row["amount_cents"] > 0 else "outflow")
+                component_paths[component][scenario_index][date_indices[projected_date]] += abs(row["amount_cents"])
+                component_evidence[component].add(row["transaction_id"])
                 if pattern:
                     event = event_groups[(key, target_month.isoformat()[:7])]
                     event["dates"].add(projected_date.isoformat())
@@ -113,6 +118,9 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
                     event["evidenceIds"].add(row["transaction_id"])
         for income in modeled_income:
             changes[date_indices[date.fromisoformat(income["date"])]] += income["amountCents"]
+            component = (income["key"][1], income["key"][2], "inflow")
+            component_paths[component][scenario_index][date_indices[date.fromisoformat(income["date"])]] += income["amountCents"]
+            component_evidence[component].update(income["evidenceIds"])
             event = event_groups[(income["key"], income["date"][:7])]
             event["dates"].add(income["date"])
             event["scenarioAmounts"][scenario_index] += income["amountCents"]
@@ -124,12 +132,20 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
             path.append(running)
         scenario_paths.append({"sourceMonth": source_month, "balancesCents": path})
     daily = []
+    components = []
+    for (kind, category, direction), paths in sorted(component_paths.items()):
+        amounts = [rounded_mean([path[i] for path in paths]) for i in range(horizon_days)]
+        components.append({"transactionType": kind, "category": category, "direction": direction,
+                           "dailyAmountsCents": amounts, "totalCents": sum(amounts),
+                           "evidenceIds": sorted(component_evidence[(kind, category, direction)])[-6:]})
     previous = balance
     for i, day in enumerate(dates):
         values = [s["balancesCents"][i] for s in scenario_paths]
         center = rounded_mean(values)
         daily.append({"date": day.isoformat(), "expectedBalanceCents": center,
                       "expectedNetChangeCents": center - previous,
+                      "componentRoundingResidualCents": center - previous - sum(
+                          (1 if c["direction"] == "inflow" else -1) * c["dailyAmountsCents"][i] for c in components),
                       "lowerScenarioBalanceCents": min(values), "upperScenarioBalanceCents": max(values)})
         previous = center
     events = []
@@ -161,6 +177,7 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
     if income_model is not None:
         warnings.append("Modeled income is a probability-weighted expectation shared by scenarios; salary uncertainty requires separate error calibration.")
     ids = {i for event in events for i in event["evidenceIds"]}
+    ids.update(i for c in components for i in c["evidenceIds"])
     ids.update(i for account in profile["accounts"] for i in account["evidenceIds"])
     result.update({
         "status": "needs_review" if needs_review else "estimated",
@@ -173,6 +190,7 @@ def forecast_cash_flow(transactions, customer_id, as_of, horizon_days=30, buffer
         "possibleBelowBufferDates": [d["date"] for d in daily if d["lowerScenarioBalanceCents"] < buffer_cents],
         "startingBalanceBelowBuffer": balance < buffer_cents, "upcomingPayments": events,
         "scenarioPaths": scenario_paths,
+        "cashFlowComponents": components,
         "modeledIncomeGroupCount": len(replaced_income),
         "suppressedAlreadyObservedMonthlyGroups": [{"accountId": key[0], "transactionType": key[1],
                                                      "category": key[2], "merchantId": key[3], "direction": key[4]}
