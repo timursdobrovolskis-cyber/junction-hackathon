@@ -30,6 +30,11 @@ export function validateCalendar(value, expectedCustomer) {
   if (value.isIllustrative !== undefined && typeof value.isIllustrative !== 'boolean') throw new Error('Invalid illustration state');
   if (expectedCustomer === 'RISK-DEMO' && value.isIllustrative !== true) throw new Error('Demo must be labelled fictional');
   const cents = (amount) => Number.isSafeInteger(amount);
+  if (value.monthSummaries !== undefined) {
+    if (!value.monthSummaries || typeof value.monthSummaries !== 'object' || Array.isArray(value.monthSummaries)
+      || Object.entries(value.monthSummaries).some(([month, summary]) => !isDate(`${month}-01`) || !summary
+        || !['incomeCents', 'outflowCents', 'paymentCount'].every(key => cents(summary[key]) && summary[key] >= 0))) throw new Error('Invalid calendar summary');
+  }
   if (!cents(value.bufferCents) || value.bufferCents < 0) throw new Error('Invalid buffer');
   for (const event of value.events) {
     if (typeof event.id !== 'string' || typeof event.title !== 'string' || !isDate(event.earliestDate) || !isDate(event.latestDate)
@@ -50,6 +55,9 @@ export function validateCalendar(value, expectedCustomer) {
       if (!notice || !['warning', 'info'].includes(notice.severity) || notice.asOf !== value.asOf
         || !['id', 'kind', 'title', 'summary', 'explanation', 'action'].every(key => typeof notice[key] === 'string')
         || !Array.isArray(notice.evidenceIds) || !notice.evidenceIds.every(id => typeof id === 'string')) throw new Error('Invalid notification');
+      if (notice.timeline !== undefined && (!Array.isArray(notice.timeline) || notice.timeline.some(item => !item
+        || !isDate(item.date) || typeof item.label !== 'string' || !cents(item.amountCents) || item.amountCents < 0
+        || !['balance', 'inflow', 'outflow'].includes(item.direction)))) throw new Error('Invalid notification timeline');
       if (notice.metrics && (!Array.isArray(notice.metrics) || notice.metrics.some(m => typeof m.label !== 'string'
         || !(cents(m.amountCents) && m.amountCents >= 0 || cents(m.percent) && m.percent >= 0)))) throw new Error('Invalid notification metrics');
       if (notice.monthlyTotals && (!Array.isArray(notice.monthlyTotals) || notice.monthlyTotals.some(m => !isDate(`${m.month}-01`)
