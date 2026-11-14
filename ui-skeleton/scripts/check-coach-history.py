@@ -26,6 +26,9 @@ with sync_playwright() as p:
     ask('How much did I spend on groceries in October 2024?','€551.27')
     missing=ask('How much did I spend in October 2026?','No recorded history')
     assert '€0.00' not in missing['reply']
+    ask('How much money did I spend in 2025?','€20,792.23 recorded spending in 2025')
+    partial=ask('What was my total spending this year?','€16,167.94')
+    assert '2026-01-01 to 2026-09-30' in partial['reply']
     assert page.locator('#chat-log .reply-section-links').count()==0
     for width in [320,390,1024]:
         page.set_viewport_size({'width':width,'height':844})

@@ -6,7 +6,11 @@ const monthNames = ['january','february','march','april','may','june','july','au
 const monthLabel = month => new Date(month+'-01T12:00:00Z').toLocaleDateString('en-GB', {month:'long',year:'numeric',timeZone:'UTC'});
 const normalize = text => text.normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 const validDate = date => /^\d{4}-\d{2}-\d{2}$/.test(date) && !Number.isNaN(Date.parse(date)) && new Date(date+'T12:00:00Z').toISOString().slice(0,10)===date;
-const historicalIntent = text => /\b(?:how much (?:did|have) i (?:spend|spent|pay|paid)|what (?:did|have) i (?:spend|spent|pay|paid)|(?:show|list|what|which).*(?:biggest|largest|transactions|payments)|(?:historical|recorded|actual) spending|spending (?:on|at|in|for|last))\b/i.test(text);
+const historicalIntent = text => {
+  // Read requests about observed spending must not fall through to a forecast answer.
+  if (/\b(plan|budget|limits|target|savings|upcoming|forecast|scheduled|proposed|can i afford|should i|could i afford|will i|next month|next year)\b/i.test(text)) return false;
+  return /\b(?:how much (?:money )?(?:did|have) i (?:spend|spent|pay|paid)|what (?:did|have) i (?:spend|spent|pay|paid)|(?:show|list|what|which|summari[sz]e|tell me).*(?:biggest|largest|transactions|payments|spending|spent|expenses)|(?:historical|recorded|actual|annual|yearly|total) spending|spending (?:on|at|in|for|last)|how much.*(?:spent|spending))\b/i.test(text);
+};
 const presentation = (summary, nextQuestion='', evidence=[], bullets=[]) => ({title:'',summary,bullets,nextQuestion,evidence});
 
 // Parse a bounded read query. No user-supplied financial amounts or customer IDs are used.
@@ -16,7 +20,7 @@ export function parseHistoryQuestion(message, today, ledger=activity) {
   let period, label, relative=false;
   const dates=text.match(/\b\d{4}-\d{2}-\d{2}\b/g)??[];
   const named=[...text.matchAll(/\b(january|february|march|april|may|june|july|august|september|october|november|december)(?:\s+(\d{4}))?\b/gi)];
-  if (/\b(compare|versus|vs|difference|average)\b/i.test(text)) return {clarify:'Which single month or date range should I total first?'};
+  if (/\b(compare|versus|vs|difference|average)\b/i.test(text)) return {clarify:'Which single month, year or date range should I total first?'};
   if(dates.length) {
     if(dates.length>2 || dates.some(d=>!validDate(d)))return {clarify:'Which valid date range should I use (YYYY-MM-DD to YYYY-MM-DD)?'};
     period={start:dates[0],end:dates.at(-1)};label=dates.length===1?dates[0]:`${period.start} to ${period.end}`;
@@ -32,17 +36,24 @@ export function parseHistoryQuestion(message, today, ledger=activity) {
   } else {
     const month=text.match(/\b\d{4}-(?:0[1-9]|1[0-2])\b/)?.[0];
     if(month){period=monthPeriod(month);label=monthLabel(month);}
+    else {
+      const years=text.match(/\b(?:19|20)\d{2}\b/g)??[];
+      const relativeYear=text.match(/\b(last|this) year\b/i)?.[1]?.toLowerCase();
+      if(years.length>1)return {clarify:'Which single year or ISO date range should I total?'};
+      const year=years[0] ?? (relativeYear?String(Number(today.slice(0,4))-(relativeYear==='last'?1:0)):null);
+      if(year){period={start:year+'-01-01',end:year+'-12-31'};label=year;relative=!!relativeYear;}
+    }
   }
-  if(!period)return {clarify:'Which month or date range should I look up?'};
+  if(!period)return {clarify:'Which month, year or date range should I look up?'};
   const topMatch=text.match(/\b(?:top\s+)?(\d+|one|two|three|four|five|ten)?\s*(?:biggest|largest)\b/i);
   const numbers={one:1,two:2,three:3,four:4,five:5,ten:10};
   const limit=topMatch?Math.min(10,Math.max(1,numbers[topMatch[1]?.toLowerCase()]??Number(topMatch[1]??3))):null;
   const categories=[...new Set(ledger.transactions.map(t=>t.category))];
   const aliases={grocery:'Groceries',groceries:'Groceries',rent:'Housing',transport:'Transportation'};
-  const categoryText=text.match(/\bon\s+(.+?)(?=\s+(?:at|from|in|during|for|last month|this month|between)\b|$)/i)?.[1];
+  const categoryText=text.match(/\bon\s+(.+?)(?=\s+(?:at|from|in|during|for|last month|this month|last year|this year|between)\b|$)/i)?.[1];
   let category=null;
   if(categoryText && !validDate(categoryText)){category=categories.find(c=>normalize(c)===normalize(categoryText))??aliases[normalize(categoryText)];if(!category)return {clarify:`Which spending category do you mean by “${categoryText.slice(0,60)}”?`};}
-  const merchant=text.match(/\b(?:at|from)\s+(.+?)(?=\s+(?:in|during|last month|this month|between|on|for)\b|$)/i)?.[1]?.trim();
+  const merchant=text.match(/\b(?:at|from)\s+(.+?)(?=\s+(?:in|during|last month|this month|last year|this year|between|on|for)\b|$)/i)?.[1]?.trim();
   // "from DATE to DATE" is a range, not a merchant.
   return {period,label,relative,today,category,merchant:merchant&& !/^\d{4}-/.test(merchant)?merchant:null,limit};
 }
@@ -77,9 +88,13 @@ export function queryHistory(query, {ledger=activity, plan=accountPlan, customer
 export function historyAnswer(message, {customerId,today,previousQuestion,ledger=activity,plan=accountPlan}={}) {
   let query=parseHistoryQuestion(message,today,ledger);
   // Resolve a narrow clarification without treating chat history as transaction data.
-  if(!query && previousQuestion && /^(?:in |for )?(?:\d{4}-\d{2}(?:-\d{2})?(?: to \d{4}-\d{2}-\d{2})?|(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{4})?|last month|this month)[?.!]?$/i.test(message.trim())) {
+  const followUp=message.trim().replace(/^(?:what about|and|in|for)\s+/i,'').replace(/[?.!]+$/,'');
+  if(!query && previousQuestion && /^(?:\d{4}(?:-\d{2}(?:-\d{2})?)?(?: to \d{4}-\d{2}-\d{2})?|(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{4})?|last month|this month|last year|this year)$/i.test(followUp)) {
     const prior=parseHistoryQuestion(previousQuestion,today,ledger);
-    if(prior?.clarify)query=parseHistoryQuestion(previousQuestion+' in '+message,today,ledger);
+    if(prior?.period){
+      const updated=parseHistoryQuestion('How much did I spend in '+followUp,today,ledger);
+      if(updated?.period)query={...prior,...updated,category:prior.category,merchant:prior.merchant,limit:prior.limit};
+    } else if(prior?.clarify)query=parseHistoryQuestion(previousQuestion+' in '+followUp,today,ledger);
   }
   if(!query && previousQuestion) {
     const prior=parseHistoryQuestion(previousQuestion,today,ledger);
