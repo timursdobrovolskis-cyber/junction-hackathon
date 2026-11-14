@@ -41,24 +41,18 @@
   <main id="main" class="main-shell">
     <section id="home-page" class="page" aria-labelledby="home-title">
       <div class="welcome"><div><p class="welcome-label">Your money, at a glance</p><h1 id="home-title">Make room for life.</h1></div><span class="day-badge">Plan for<br><strong>Oct</strong></span></div>
-      <div class="balance-card">
+      <section class="balance-card home-budget budget-hero" aria-labelledby="home-budget-title">
         <svg class="card-art" viewBox="0 0 200 200" aria-hidden="true"><path d="M25 170 115 80M65 190 155 100M10 80 100 170M50 40 140 130"/></svg>
-        <div class="card-top"><span>Account balance</span><button class="icon-button subtle" id="amount-explanation" aria-label="About your account and forecast"><svg class="icon small"><use href="#i-info"/></svg></button></div>
-        <p class="hero-amount" aria-label="Loading account balance">—</p>
-        <div class="payday-pill"><span class="live-dot"></span>Loading account history…</div>
-        <div class="card-divider"></div>
-        <div class="card-bottom"><span>Last observed balance · not a spending limit.</span><span>EUR</span></div>
-      </div>
-      <button class="primary-button purchase-trigger" id="open-purchase">Check a purchase<svg class="icon"><use href="#i-arrow"/></svg></button>
-      <section class="home-budget" aria-labelledby="home-budget-title">
-        <div class="budget-section-heading"><h2 id="home-budget-title">Your budget</h2><a href="#budget">View all <span aria-hidden="true">↗</span></a></div>
+        <div class="budget-section-heading"><h2 id="home-budget-title">Your budget</h2><button class="icon-button subtle" id="amount-explanation" aria-label="How your budget is calculated"><svg class="icon small"><use href="#i-info"/></svg></button></div>
         <a class="home-budget-overview" href="#budget" aria-label="Open your category budget">
-          <div><p class="budget-eyebrow">1–30 OCTOBER</p><strong id="home-budget-total">—</strong><p>Planned across your categories</p></div>
+          <div><p class="budget-eyebrow">1–30 OCTOBER</p><strong id="home-budget-total">—</strong><p>Planned spending · all categories</p></div>
           <div id="home-budget-ring" class="budget-ring small-ring" aria-hidden="true"><span>Plan</span></div>
         </a>
         <div id="home-budget-categories" class="home-budget-categories"></div>
         <p id="home-budget-note" class="budget-caption">Loading your category limits…</p>
+        <a href="#budget" class="budget-hero-link">View category budgets <svg class="icon"><use href="#i-arrow"/></svg></a>
       </section>
+      <button class="primary-button purchase-trigger" id="open-purchase">Check a purchase<svg class="icon"><use href="#i-arrow"/></svg></button>
       <div class="set-aside" aria-label="Money set aside">
         <div><span class="tile-label"><svg class="icon small"><use href="#i-calendar"/></svg>Upcoming bills</span><strong>—</strong><small>Housing and utilities forecast</small></div>
         <div><span class="tile-label"><svg class="icon small"><use href="#i-check"/></svg>Planned savings</span><strong>—</strong><small>Target · needs confirmation</small></div>
