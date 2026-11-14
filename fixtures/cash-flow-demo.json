@@ -1,0 +1,2418 @@
+{
+  "modelVersion": "calendar-scenarios-v1",
+  "sourceRevision": "fbdecdedf1a1f49dd641c2e6b9f2b62d0dc0cc8f",
+  "sources": {
+    "tx_customers_junction.csv": {
+      "sha256": "c2511f4f04f825f561d0c37ee4c64c83cdcd358b27b23c1b311f87a951bc8cb3",
+      "bytes": 102050
+    },
+    "tx_junction_transactions.csv": {
+      "sha256": "49b3265d8e44e751de305a074dcffcda732bb79aa1e07b46fcca774ce76f1e63",
+      "bytes": 362796501
+    }
+  },
+  "forecasts": [
+    {
+      "schemaVersion": "1.0.0",
+      "modelVersion": "calendar-scenarios-v1",
+      "customerId": "CUST00001",
+      "asOf": "2026-09-30",
+      "currency": "EUR",
+      "horizonDays": 30,
+      "bufferCents": 0,
+      "status": "estimated",
+      "daily": [
+        {
+          "date": "2026-10-01",
+          "expectedBalanceCents": 466255,
+          "expectedNetChangeCents": -6103,
+          "lowerScenarioBalanceCents": 457158,
+          "upperScenarioBalanceCents": 472358
+        },
+        {
+          "date": "2026-10-02",
+          "expectedBalanceCents": 453413,
+          "expectedNetChangeCents": -12842,
+          "lowerScenarioBalanceCents": 414987,
+          "upperScenarioBalanceCents": 472358
+        },
+        {
+          "date": "2026-10-03",
+          "expectedBalanceCents": 441696,
+          "expectedNetChangeCents": -11717,
+          "lowerScenarioBalanceCents": 408067,
+          "upperScenarioBalanceCents": 470175
+        },
+        {
+          "date": "2026-10-04",
+          "expectedBalanceCents": 428558,
+          "expectedNetChangeCents": -13138,
+          "lowerScenarioBalanceCents": 408067,
+          "upperScenarioBalanceCents": 443759
+        },
+        {
+          "date": "2026-10-05",
+          "expectedBalanceCents": 391582,
+          "expectedNetChangeCents": -36976,
+          "lowerScenarioBalanceCents": 375890,
+          "upperScenarioBalanceCents": 421956
+        },
+        {
+          "date": "2026-10-06",
+          "expectedBalanceCents": 391310,
+          "expectedNetChangeCents": -272,
+          "lowerScenarioBalanceCents": 375890,
+          "upperScenarioBalanceCents": 421956
+        },
+        {
+          "date": "2026-10-07",
+          "expectedBalanceCents": 389877,
+          "expectedNetChangeCents": -1433,
+          "lowerScenarioBalanceCents": 373552,
+          "upperScenarioBalanceCents": 421956
+        },
+        {
+          "date": "2026-10-08",
+          "expectedBalanceCents": 384719,
+          "expectedNetChangeCents": -5158,
+          "lowerScenarioBalanceCents": 357917,
+          "upperScenarioBalanceCents": 421956
+        },
+        {
+          "date": "2026-10-09",
+          "expectedBalanceCents": 384116,
+          "expectedNetChangeCents": -603,
+          "lowerScenarioBalanceCents": 357917,
+          "upperScenarioBalanceCents": 421956
+        },
+        {
+          "date": "2026-10-10",
+          "expectedBalanceCents": 380258,
+          "expectedNetChangeCents": -3858,
+          "lowerScenarioBalanceCents": 352239,
+          "upperScenarioBalanceCents": 410757
+        },
+        {
+          "date": "2026-10-11",
+          "expectedBalanceCents": 376777,
+          "expectedNetChangeCents": -3481,
+          "lowerScenarioBalanceCents": 352239,
+          "upperScenarioBalanceCents": 410757
+        },
+        {
+          "date": "2026-10-12",
+          "expectedBalanceCents": 373339,
+          "expectedNetChangeCents": -3438,
+          "lowerScenarioBalanceCents": 351877,
+          "upperScenarioBalanceCents": 410757
+        },
+        {
+          "date": "2026-10-13",
+          "expectedBalanceCents": 369301,
+          "expectedNetChangeCents": -4038,
+          "lowerScenarioBalanceCents": 347874,
+          "upperScenarioBalanceCents": 410757
+        },
+        {
+          "date": "2026-10-14",
+          "expectedBalanceCents": 361556,
+          "expectedNetChangeCents": -7745,
+          "lowerScenarioBalanceCents": 333922,
+          "upperScenarioBalanceCents": 410757
+        },
+        {
+          "date": "2026-10-15",
+          "expectedBalanceCents": 476920,
+          "expectedNetChangeCents": 115364,
+          "lowerScenarioBalanceCents": 350937,
+          "upperScenarioBalanceCents": 595551
+        },
+        {
+          "date": "2026-10-16",
+          "expectedBalanceCents": 476581,
+          "expectedNetChangeCents": -339,
+          "lowerScenarioBalanceCents": 350937,
+          "upperScenarioBalanceCents": 595551
+        },
+        {
+          "date": "2026-10-17",
+          "expectedBalanceCents": 472017,
+          "expectedNetChangeCents": -4564,
+          "lowerScenarioBalanceCents": 350937,
+          "upperScenarioBalanceCents": 594632
+        },
+        {
+          "date": "2026-10-18",
+          "expectedBalanceCents": 447399,
+          "expectedNetChangeCents": -24618,
+          "lowerScenarioBalanceCents": 323767,
+          "upperScenarioBalanceCents": 547471
+        },
+        {
+          "date": "2026-10-19",
+          "expectedBalanceCents": 440219,
+          "expectedNetChangeCents": -7180,
+          "lowerScenarioBalanceCents": 311313,
+          "upperScenarioBalanceCents": 540843
+        },
+        {
+          "date": "2026-10-20",
+          "expectedBalanceCents": 429702,
+          "expectedNetChangeCents": -10517,
+          "lowerScenarioBalanceCents": 311313,
+          "upperScenarioBalanceCents": 536149
+        },
+        {
+          "date": "2026-10-21",
+          "expectedBalanceCents": 426453,
+          "expectedNetChangeCents": -3249,
+          "lowerScenarioBalanceCents": 311313,
+          "upperScenarioBalanceCents": 536149
+        },
+        {
+          "date": "2026-10-22",
+          "expectedBalanceCents": 423700,
+          "expectedNetChangeCents": -2753,
+          "lowerScenarioBalanceCents": 304335,
+          "upperScenarioBalanceCents": 534630
+        },
+        {
+          "date": "2026-10-23",
+          "expectedBalanceCents": 414463,
+          "expectedNetChangeCents": -9237,
+          "lowerScenarioBalanceCents": 297676,
+          "upperScenarioBalanceCents": 534630
+        },
+        {
+          "date": "2026-10-24",
+          "expectedBalanceCents": 405939,
+          "expectedNetChangeCents": -8524,
+          "lowerScenarioBalanceCents": 278816,
+          "upperScenarioBalanceCents": 532135
+        },
+        {
+          "date": "2026-10-25",
+          "expectedBalanceCents": 398281,
+          "expectedNetChangeCents": -7658,
+          "lowerScenarioBalanceCents": 275783,
+          "upperScenarioBalanceCents": 523931
+        },
+        {
+          "date": "2026-10-26",
+          "expectedBalanceCents": 392807,
+          "expectedNetChangeCents": -5474,
+          "lowerScenarioBalanceCents": 271002,
+          "upperScenarioBalanceCents": 523931
+        },
+        {
+          "date": "2026-10-27",
+          "expectedBalanceCents": 387904,
+          "expectedNetChangeCents": -4903,
+          "lowerScenarioBalanceCents": 271002,
+          "upperScenarioBalanceCents": 518346
+        },
+        {
+          "date": "2026-10-28",
+          "expectedBalanceCents": 382939,
+          "expectedNetChangeCents": -4965,
+          "lowerScenarioBalanceCents": 266470,
+          "upperScenarioBalanceCents": 509250
+        },
+        {
+          "date": "2026-10-29",
+          "expectedBalanceCents": 425409,
+          "expectedNetChangeCents": 42470,
+          "lowerScenarioBalanceCents": 264304,
+          "upperScenarioBalanceCents": 531366
+        },
+        {
+          "date": "2026-10-30",
+          "expectedBalanceCents": 449984,
+          "expectedNetChangeCents": 24575,
+          "lowerScenarioBalanceCents": 236915,
+          "upperScenarioBalanceCents": 531366
+        }
+      ],
+      "upcomingPayments": [
+        {
+          "accountId": "ACC000001",
+          "transactionType": "housing_payment",
+          "category": "Housing",
+          "merchantId": null,
+          "direction": "outflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-02",
+          "latestDate": "2026-10-05",
+          "expectedTotalCents": 52388,
+          "minScenarioTotalCents": 50402,
+          "maxScenarioTotalCents": 53934,
+          "scenariosWithPayment": 6,
+          "scenarioCount": 6,
+          "status": "observed_recently",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-436",
+            "tx-49b3265d8e44e751-464",
+            "tx-49b3265d8e44e751-486",
+            "tx-49b3265d8e44e751-502",
+            "tx-49b3265d8e44e751-521",
+            "tx-49b3265d8e44e751-556"
+          ]
+        },
+        {
+          "accountId": "ACC000001",
+          "transactionType": "utilities_payment",
+          "category": "Utilities",
+          "merchantId": null,
+          "direction": "outflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-03",
+          "latestDate": "2026-10-30",
+          "expectedTotalCents": 11937,
+          "minScenarioTotalCents": 8097,
+          "maxScenarioTotalCents": 16593,
+          "scenariosWithPayment": 6,
+          "scenarioCount": 6,
+          "status": "observed_recently",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-439",
+            "tx-49b3265d8e44e751-442",
+            "tx-49b3265d8e44e751-456",
+            "tx-49b3265d8e44e751-461",
+            "tx-49b3265d8e44e751-467",
+            "tx-49b3265d8e44e751-479",
+            "tx-49b3265d8e44e751-488",
+            "tx-49b3265d8e44e751-495",
+            "tx-49b3265d8e44e751-498",
+            "tx-49b3265d8e44e751-510",
+            "tx-49b3265d8e44e751-513",
+            "tx-49b3265d8e44e751-514",
+            "tx-49b3265d8e44e751-530",
+            "tx-49b3265d8e44e751-542",
+            "tx-49b3265d8e44e751-548",
+            "tx-49b3265d8e44e751-558",
+            "tx-49b3265d8e44e751-559",
+            "tx-49b3265d8e44e751-564"
+          ]
+        },
+        {
+          "accountId": "ACC000001",
+          "transactionType": "salary",
+          "category": "Salary",
+          "merchantId": null,
+          "direction": "inflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-15",
+          "latestDate": "2026-10-30",
+          "expectedTotalCents": 201461,
+          "minScenarioTotalCents": 0,
+          "maxScenarioTotalCents": 271523,
+          "scenariosWithPayment": 5,
+          "scenarioCount": 6,
+          "status": "observed_recently",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-444",
+            "tx-49b3265d8e44e751-483",
+            "tx-49b3265d8e44e751-499",
+            "tx-49b3265d8e44e751-532",
+            "tx-49b3265d8e44e751-565"
+          ]
+        },
+        {
+          "accountId": "ACC000001",
+          "transactionType": "investment_deposit",
+          "category": "Invest Deposit",
+          "merchantId": null,
+          "direction": "outflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-18",
+          "latestDate": "2026-10-30",
+          "expectedTotalCents": 15043,
+          "minScenarioTotalCents": 0,
+          "maxScenarioTotalCents": 23572,
+          "scenariosWithPayment": 4,
+          "scenarioCount": 6,
+          "status": "observed_recently",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-446",
+            "tx-49b3265d8e44e751-500",
+            "tx-49b3265d8e44e751-538",
+            "tx-49b3265d8e44e751-569"
+          ]
+        }
+      ],
+      "warnings": [
+        "Only observed accounts are covered; external balances and commitments are unknown.",
+        "Recurring payments overlap category totals. Do not add both as separate expenses.",
+        "Evidence strength is a heuristic, not calibrated prediction accuracy.",
+        "Zero-activity months assume continuous export coverage after the first observed month.",
+        "Bills without merchant IDs are category aggregates, not identified providers.",
+        "Historical months are scenarios, not calibrated probabilities or guaranteed bounds.",
+        "The mean path can spread uncertain income across dates; it is not a promised payday.",
+        "Each source month repeats if the horizon crosses a month boundary; seasonal changes are not modeled.",
+        "Balances are end-of-day totals across observed accounts; intraday and individual-account shortfalls can differ.",
+        "Multiple-payment groups are replayed only on remaining dates; matching individual paid bills is not supported.",
+        "Unknown future one-off costs and external accounts are not covered. Do not use this alone to promise affordable savings."
+      ],
+      "startingBalanceCents": 472358,
+      "accounts": [
+        {
+          "accountId": "ACC000001",
+          "balanceCents": 472358,
+          "balanceObservedDate": "2026-09-30",
+          "daysSinceLastTransaction": 0,
+          "firstObservedDate": "2024-10-03",
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-582"
+          ]
+        }
+      ],
+      "sourceMonths": [
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09"
+      ],
+      "scenarioCount": 6,
+      "endingExpectedBalanceCents": 449984,
+      "lowestExpectedBalance": {
+        "date": "2026-10-14",
+        "amountCents": 361556
+      },
+      "lowestScenarioBalance": {
+        "date": "2026-10-30",
+        "amountCents": 236915
+      },
+      "belowBufferDates": [],
+      "possibleBelowBufferDates": [],
+      "startingBalanceBelowBuffer": false,
+      "scenarioPaths": [
+        {
+          "sourceMonth": "2026-04",
+          "balancesCents": [
+            457158,
+            457158,
+            452421,
+            441715,
+            383783,
+            382149,
+            373552,
+            357917,
+            357917,
+            352239,
+            352239,
+            352239,
+            347874,
+            341252,
+            573397,
+            573397,
+            568640,
+            546284,
+            540843,
+            522761,
+            504258,
+            504258,
+            501114,
+            494641,
+            494641,
+            494641,
+            491959,
+            491959,
+            491959,
+            478600
+          ]
+        },
+        {
+          "sourceMonth": "2026-05",
+          "balancesCents": [
+            460878,
+            452004,
+            443759,
+            443759,
+            382660,
+            382660,
+            382660,
+            382660,
+            379041,
+            375153,
+            375153,
+            375153,
+            375153,
+            368370,
+            364954,
+            364954,
+            364954,
+            323767,
+            311313,
+            311313,
+            311313,
+            304335,
+            297676,
+            297676,
+            288514,
+            288514,
+            280811,
+            266470,
+            531366,
+            531366
+          ]
+        },
+        {
+          "sourceMonth": "2026-06",
+          "balancesCents": [
+            472358,
+            414987,
+            408067,
+            408067,
+            408067,
+            408067,
+            408067,
+            404634,
+            404634,
+            404634,
+            387475,
+            381823,
+            370898,
+            359849,
+            350937,
+            350937,
+            350937,
+            347297,
+            347297,
+            321589,
+            321589,
+            321589,
+            321589,
+            321589,
+            317897,
+            317897,
+            317897,
+            317897,
+            317897,
+            511512
+          ]
+        },
+        {
+          "sourceMonth": "2026-07",
+          "balancesCents": [
+            472358,
+            472358,
+            421956,
+            421956,
+            421956,
+            421956,
+            421956,
+            421956,
+            421956,
+            410757,
+            410757,
+            410757,
+            410757,
+            410757,
+            410757,
+            410757,
+            389884,
+            379708,
+            362892,
+            362892,
+            362892,
+            362892,
+            317277,
+            278816,
+            275783,
+            271002,
+            271002,
+            271002,
+            264304,
+            236915
+          ]
+        },
+        {
+          "sourceMonth": "2026-08",
+          "balancesCents": [
+            470175,
+            470175,
+            470175,
+            415529,
+            375890,
+            375890,
+            375890,
+            366850,
+            366850,
+            366850,
+            366850,
+            351877,
+            351124,
+            333922,
+            565921,
+            563888,
+            563056,
+            539864,
+            539864,
+            523508,
+            522514,
+            514494,
+            514494,
+            510777,
+            488919,
+            460859,
+            447409,
+            441058,
+            437676,
+            435808
+          ]
+        },
+        {
+          "sourceMonth": "2026-09",
+          "balancesCents": [
+            464605,
+            453796,
+            453796,
+            440324,
+            377138,
+            377138,
+            377138,
+            374299,
+            374299,
+            371912,
+            368185,
+            368185,
+            359998,
+            355185,
+            595551,
+            595551,
+            594632,
+            547471,
+            539105,
+            536149,
+            536149,
+            534630,
+            534630,
+            532135,
+            523931,
+            523931,
+            518346,
+            509250,
+            509250,
+            505701
+          ]
+        }
+      ],
+      "suppressedAlreadyObservedMonthlyGroups": [],
+      "evidence": [
+        {
+          "id": "tx-49b3265d8e44e751-436",
+          "date": "2026-04-05",
+          "accountId": "ACC000001",
+          "amountCents": -51952,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-439",
+          "date": "2026-04-07",
+          "accountId": "ACC000001",
+          "amountCents": -8597,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-442",
+          "date": "2026-04-13",
+          "accountId": "ACC000001",
+          "amountCents": -4365,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-444",
+          "date": "2026-04-15",
+          "accountId": "ACC000001",
+          "amountCents": 232145,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-446",
+          "date": "2026-04-18",
+          "accountId": "ACC000001",
+          "amountCents": -22356,
+          "category": "Invest Deposit",
+          "transactionType": "investment_deposit"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-456",
+          "date": "2026-04-30",
+          "accountId": "ACC000001",
+          "amountCents": -3631,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-461",
+          "date": "2026-05-03",
+          "accountId": "ACC000001",
+          "amountCents": -4396,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-464",
+          "date": "2026-05-05",
+          "accountId": "ACC000001",
+          "amountCents": -53741,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-467",
+          "date": "2026-05-10",
+          "accountId": "ACC000001",
+          "amountCents": -3888,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-479",
+          "date": "2026-05-27",
+          "accountId": "ACC000001",
+          "amountCents": -2210,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-483",
+          "date": "2026-05-29",
+          "accountId": "ACC000001",
+          "amountCents": 271523,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-486",
+          "date": "2026-06-02",
+          "accountId": "ACC000001",
+          "amountCents": -50576,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-488",
+          "date": "2026-06-08",
+          "accountId": "ACC000001",
+          "amountCents": -3433,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-495",
+          "date": "2026-06-20",
+          "accountId": "ACC000001",
+          "amountCents": -5792,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-498",
+          "date": "2026-06-25",
+          "accountId": "ACC000001",
+          "amountCents": -3692,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-499",
+          "date": "2026-06-30",
+          "accountId": "ACC000001",
+          "amountCents": 219484,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-500",
+          "date": "2026-06-30",
+          "accountId": "ACC000001",
+          "amountCents": -21136,
+          "category": "Invest Deposit",
+          "transactionType": "investment_deposit"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-502",
+          "date": "2026-07-03",
+          "accountId": "ACC000001",
+          "amountCents": -50402,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-510",
+          "date": "2026-07-23",
+          "accountId": "ACC000001",
+          "amountCents": -4193,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-513",
+          "date": "2026-07-26",
+          "accountId": "ACC000001",
+          "amountCents": -4781,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-514",
+          "date": "2026-07-29",
+          "accountId": "ACC000001",
+          "amountCents": -3952,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-521",
+          "date": "2026-08-04",
+          "accountId": "ACC000001",
+          "amountCents": -53724,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-530",
+          "date": "2026-08-14",
+          "accountId": "ACC000001",
+          "amountCents": -4847,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-532",
+          "date": "2026-08-15",
+          "accountId": "ACC000001",
+          "amountCents": 240831,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-538",
+          "date": "2026-08-18",
+          "accountId": "ACC000001",
+          "amountCents": -23192,
+          "category": "Invest Deposit",
+          "transactionType": "investment_deposit"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-542",
+          "date": "2026-08-24",
+          "accountId": "ACC000001",
+          "amountCents": -3717,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-548",
+          "date": "2026-08-29",
+          "accountId": "ACC000001",
+          "amountCents": -2033,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-556",
+          "date": "2026-09-05",
+          "accountId": "ACC000001",
+          "amountCents": -53934,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-558",
+          "date": "2026-09-08",
+          "accountId": "ACC000001",
+          "amountCents": -2839,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-559",
+          "date": "2026-09-10",
+          "accountId": "ACC000001",
+          "amountCents": -2387,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-564",
+          "date": "2026-09-15",
+          "accountId": "ACC000001",
+          "amountCents": -2871,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-565",
+          "date": "2026-09-15",
+          "accountId": "ACC000001",
+          "amountCents": 244781,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-569",
+          "date": "2026-09-18",
+          "accountId": "ACC000001",
+          "amountCents": -23572,
+          "category": "Invest Deposit",
+          "transactionType": "investment_deposit"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-582",
+          "date": "2026-09-30",
+          "accountId": "ACC000001",
+          "amountCents": -3549,
+          "category": "Restaurants",
+          "transactionType": "purchase"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "modelVersion": "calendar-scenarios-v1",
+      "customerId": "CUST00002",
+      "asOf": "2026-09-30",
+      "currency": "EUR",
+      "horizonDays": 30,
+      "bufferCents": 0,
+      "status": "estimated",
+      "daily": [
+        {
+          "date": "2026-10-01",
+          "expectedBalanceCents": 133258,
+          "expectedNetChangeCents": -20658,
+          "lowerScenarioBalanceCents": 64536,
+          "upperScenarioBalanceCents": 153916
+        },
+        {
+          "date": "2026-10-02",
+          "expectedBalanceCents": 128615,
+          "expectedNetChangeCents": -4643,
+          "lowerScenarioBalanceCents": 62141,
+          "upperScenarioBalanceCents": 153916
+        },
+        {
+          "date": "2026-10-03",
+          "expectedBalanceCents": 123363,
+          "expectedNetChangeCents": -5252,
+          "lowerScenarioBalanceCents": 59584,
+          "upperScenarioBalanceCents": 153916
+        },
+        {
+          "date": "2026-10-04",
+          "expectedBalanceCents": 90024,
+          "expectedNetChangeCents": -33339,
+          "lowerScenarioBalanceCents": 39812,
+          "upperScenarioBalanceCents": 153916
+        },
+        {
+          "date": "2026-10-05",
+          "expectedBalanceCents": 89756,
+          "expectedNetChangeCents": -268,
+          "lowerScenarioBalanceCents": 39812,
+          "upperScenarioBalanceCents": 153916
+        },
+        {
+          "date": "2026-10-06",
+          "expectedBalanceCents": 85643,
+          "expectedNetChangeCents": -4113,
+          "lowerScenarioBalanceCents": 39812,
+          "upperScenarioBalanceCents": 153916
+        },
+        {
+          "date": "2026-10-07",
+          "expectedBalanceCents": 76635,
+          "expectedNetChangeCents": -9008,
+          "lowerScenarioBalanceCents": 33992,
+          "upperScenarioBalanceCents": 153916
+        },
+        {
+          "date": "2026-10-08",
+          "expectedBalanceCents": 54848,
+          "expectedNetChangeCents": -21787,
+          "lowerScenarioBalanceCents": 24276,
+          "upperScenarioBalanceCents": 86785
+        },
+        {
+          "date": "2026-10-09",
+          "expectedBalanceCents": 53354,
+          "expectedNetChangeCents": -1494,
+          "lowerScenarioBalanceCents": 24276,
+          "upperScenarioBalanceCents": 86785
+        },
+        {
+          "date": "2026-10-10",
+          "expectedBalanceCents": 53021,
+          "expectedNetChangeCents": -333,
+          "lowerScenarioBalanceCents": 24276,
+          "upperScenarioBalanceCents": 86785
+        },
+        {
+          "date": "2026-10-11",
+          "expectedBalanceCents": 47793,
+          "expectedNetChangeCents": -5228,
+          "lowerScenarioBalanceCents": 21473,
+          "upperScenarioBalanceCents": 85466
+        },
+        {
+          "date": "2026-10-12",
+          "expectedBalanceCents": 46835,
+          "expectedNetChangeCents": -958,
+          "lowerScenarioBalanceCents": 19231,
+          "upperScenarioBalanceCents": 85466
+        },
+        {
+          "date": "2026-10-13",
+          "expectedBalanceCents": 46535,
+          "expectedNetChangeCents": -300,
+          "lowerScenarioBalanceCents": 17430,
+          "upperScenarioBalanceCents": 85466
+        },
+        {
+          "date": "2026-10-14",
+          "expectedBalanceCents": 45790,
+          "expectedNetChangeCents": -745,
+          "lowerScenarioBalanceCents": 15823,
+          "upperScenarioBalanceCents": 85466
+        },
+        {
+          "date": "2026-10-15",
+          "expectedBalanceCents": 179211,
+          "expectedNetChangeCents": 133421,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 224452
+        },
+        {
+          "date": "2026-10-16",
+          "expectedBalanceCents": 177114,
+          "expectedNetChangeCents": -2097,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 220098
+        },
+        {
+          "date": "2026-10-17",
+          "expectedBalanceCents": 172239,
+          "expectedNetChangeCents": -4875,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 218499
+        },
+        {
+          "date": "2026-10-18",
+          "expectedBalanceCents": 170274,
+          "expectedNetChangeCents": -1965,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 218499
+        },
+        {
+          "date": "2026-10-19",
+          "expectedBalanceCents": 167627,
+          "expectedNetChangeCents": -2647,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 218499
+        },
+        {
+          "date": "2026-10-20",
+          "expectedBalanceCents": 165198,
+          "expectedNetChangeCents": -2429,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 209272
+        },
+        {
+          "date": "2026-10-21",
+          "expectedBalanceCents": 163935,
+          "expectedNetChangeCents": -1263,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 205407
+        },
+        {
+          "date": "2026-10-22",
+          "expectedBalanceCents": 161762,
+          "expectedNetChangeCents": -2173,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 205407
+        },
+        {
+          "date": "2026-10-23",
+          "expectedBalanceCents": 155391,
+          "expectedNetChangeCents": -6371,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 202256
+        },
+        {
+          "date": "2026-10-24",
+          "expectedBalanceCents": 146649,
+          "expectedNetChangeCents": -8742,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 195787
+        },
+        {
+          "date": "2026-10-25",
+          "expectedBalanceCents": 139317,
+          "expectedNetChangeCents": -7332,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 179783
+        },
+        {
+          "date": "2026-10-26",
+          "expectedBalanceCents": 137754,
+          "expectedNetChangeCents": -1563,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 174370
+        },
+        {
+          "date": "2026-10-27",
+          "expectedBalanceCents": 132562,
+          "expectedNetChangeCents": -5192,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 165926
+        },
+        {
+          "date": "2026-10-28",
+          "expectedBalanceCents": 129447,
+          "expectedNetChangeCents": -3115,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 164652
+        },
+        {
+          "date": "2026-10-29",
+          "expectedBalanceCents": 127481,
+          "expectedNetChangeCents": -1966,
+          "lowerScenarioBalanceCents": 85466,
+          "upperScenarioBalanceCents": 164652
+        },
+        {
+          "date": "2026-10-30",
+          "expectedBalanceCents": 150260,
+          "expectedNetChangeCents": 22779,
+          "lowerScenarioBalanceCents": 108465,
+          "upperScenarioBalanceCents": 242708
+        }
+      ],
+      "upcomingPayments": [
+        {
+          "accountId": "ACC000002",
+          "transactionType": "utilities_payment",
+          "category": "Utilities",
+          "merchantId": null,
+          "direction": "outflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-03",
+          "latestDate": "2026-10-30",
+          "expectedTotalCents": 6803,
+          "minScenarioTotalCents": 0,
+          "maxScenarioTotalCents": 11368,
+          "scenariosWithPayment": 5,
+          "scenarioCount": 6,
+          "status": "needs_confirmation",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-1071",
+            "tx-49b3265d8e44e751-1073",
+            "tx-49b3265d8e44e751-1079",
+            "tx-49b3265d8e44e751-1090",
+            "tx-49b3265d8e44e751-1095",
+            "tx-49b3265d8e44e751-1106",
+            "tx-49b3265d8e44e751-1112",
+            "tx-49b3265d8e44e751-1118",
+            "tx-49b3265d8e44e751-1121",
+            "tx-49b3265d8e44e751-1148",
+            "tx-49b3265d8e44e751-1149",
+            "tx-49b3265d8e44e751-1184",
+            "tx-49b3265d8e44e751-1196",
+            "tx-49b3265d8e44e751-1211"
+          ]
+        },
+        {
+          "accountId": "ACC000002",
+          "transactionType": "salary",
+          "category": "Salary",
+          "merchantId": null,
+          "direction": "inflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-15",
+          "latestDate": "2026-10-30",
+          "expectedTotalCents": 162840,
+          "minScenarioTotalCents": 150488,
+          "maxScenarioTotalCents": 182704,
+          "scenariosWithPayment": 6,
+          "scenarioCount": 6,
+          "status": "observed_recently",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-1072",
+            "tx-49b3265d8e44e751-1098",
+            "tx-49b3265d8e44e751-1125",
+            "tx-49b3265d8e44e751-1156",
+            "tx-49b3265d8e44e751-1192",
+            "tx-49b3265d8e44e751-1229"
+          ]
+        }
+      ],
+      "warnings": [
+        "Only observed accounts are covered; external balances and commitments are unknown.",
+        "Recurring payments overlap category totals. Do not add both as separate expenses.",
+        "Evidence strength is a heuristic, not calibrated prediction accuracy.",
+        "Zero-activity months assume continuous export coverage after the first observed month.",
+        "Bills without merchant IDs are category aggregates, not identified providers.",
+        "Historical months are scenarios, not calibrated probabilities or guaranteed bounds.",
+        "The mean path can spread uncertain income across dates; it is not a promised payday.",
+        "Each source month repeats if the horizon crosses a month boundary; seasonal changes are not modeled.",
+        "Balances are end-of-day totals across observed accounts; intraday and individual-account shortfalls can differ.",
+        "Multiple-payment groups are replayed only on remaining dates; matching individual paid bills is not supported.",
+        "Unknown future one-off costs and external accounts are not covered. Do not use this alone to promise affordable savings."
+      ],
+      "startingBalanceCents": 153916,
+      "accounts": [
+        {
+          "accountId": "ACC000002",
+          "balanceCents": 153916,
+          "balanceObservedDate": "2026-09-30",
+          "daysSinceLastTransaction": 0,
+          "firstObservedDate": "2024-10-01",
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-1229"
+          ]
+        }
+      ],
+      "sourceMonths": [
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09"
+      ],
+      "scenarioCount": 6,
+      "endingExpectedBalanceCents": 150260,
+      "lowestExpectedBalance": {
+        "date": "2026-10-14",
+        "amountCents": 45790
+      },
+      "lowestScenarioBalance": {
+        "date": "2026-10-14",
+        "amountCents": 15823
+      },
+      "belowBufferDates": [],
+      "possibleBelowBufferDates": [],
+      "startingBalanceBelowBuffer": false,
+      "scenarioPaths": [
+        {
+          "sourceMonth": "2026-04",
+          "balancesCents": [
+            153916,
+            153916,
+            153916,
+            153916,
+            153916,
+            153916,
+            153916,
+            63818,
+            63818,
+            63818,
+            48031,
+            48031,
+            48031,
+            45169,
+            197036,
+            197036,
+            191444,
+            185334,
+            182403,
+            182403,
+            178687,
+            172088,
+            140695,
+            140695,
+            121709,
+            121709,
+            113067,
+            113067,
+            113067,
+            108465
+          ]
+        },
+        {
+          "sourceMonth": "2026-05",
+          "balancesCents": [
+            64536,
+            62141,
+            59584,
+            55119,
+            55119,
+            42064,
+            33992,
+            24276,
+            24276,
+            24276,
+            21473,
+            21473,
+            21473,
+            21473,
+            204177,
+            200952,
+            187725,
+            185347,
+            175332,
+            175332,
+            175332,
+            174245,
+            172298,
+            166959,
+            166959,
+            166959,
+            164652,
+            164652,
+            164652,
+            161188
+          ]
+        },
+        {
+          "sourceMonth": "2026-06",
+          "balancesCents": [
+            153916,
+            153916,
+            153916,
+            61827,
+            60221,
+            60221,
+            53598,
+            33185,
+            33185,
+            33185,
+            23520,
+            19231,
+            17430,
+            15823,
+            166311,
+            166311,
+            160634,
+            157886,
+            155972,
+            152632,
+            152632,
+            151610,
+            149872,
+            139024,
+            139024,
+            135055,
+            127656,
+            117131,
+            117131,
+            117131
+          ]
+        },
+        {
+          "sourceMonth": "2026-07",
+          "balancesCents": [
+            143626,
+            134522,
+            134522,
+            39812,
+            39812,
+            39812,
+            39812,
+            39812,
+            32867,
+            30871,
+            29078,
+            27618,
+            27618,
+            27618,
+            197824,
+            192820,
+            189664,
+            189110,
+            188092,
+            186085,
+            186085,
+            181758,
+            181758,
+            151960,
+            142962,
+            142962,
+            138605,
+            134818,
+            130953,
+            124425
+          ]
+        },
+        {
+          "sourceMonth": "2026-08",
+          "balancesCents": [
+            130789,
+            123138,
+            110486,
+            110486,
+            110486,
+            105675,
+            90031,
+            81213,
+            79190,
+            79190,
+            79190,
+            79190,
+            79190,
+            79190,
+            224452,
+            220098,
+            218499,
+            218499,
+            218499,
+            209272,
+            205407,
+            205407,
+            202256,
+            195787,
+            179783,
+            174370,
+            165926,
+            161546,
+            153618,
+            147640
+          ]
+        },
+        {
+          "sourceMonth": "2026-09",
+          "balancesCents": [
+            152763,
+            144058,
+            127756,
+            118983,
+            118983,
+            112168,
+            88459,
+            86785,
+            86785,
+            86785,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            85466,
+            242708
+          ]
+        }
+      ],
+      "suppressedAlreadyObservedMonthlyGroups": [],
+      "evidence": [
+        {
+          "id": "tx-49b3265d8e44e751-1071",
+          "date": "2026-04-14",
+          "accountId": "ACC000002",
+          "amountCents": -2862,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1072",
+          "date": "2026-04-15",
+          "accountId": "ACC000002",
+          "amountCents": 161241,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1073",
+          "date": "2026-04-15",
+          "accountId": "ACC000002",
+          "amountCents": -4261,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1079",
+          "date": "2026-04-21",
+          "accountId": "ACC000002",
+          "amountCents": -3716,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1090",
+          "date": "2026-05-03",
+          "accountId": "ACC000002",
+          "amountCents": -2557,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1095",
+          "date": "2026-05-08",
+          "accountId": "ACC000002",
+          "amountCents": -1472,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1098",
+          "date": "2026-05-15",
+          "accountId": "ACC000002",
+          "amountCents": 182704,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1106",
+          "date": "2026-05-23",
+          "accountId": "ACC000002",
+          "amountCents": -1947,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1112",
+          "date": "2026-06-07",
+          "accountId": "ACC000002",
+          "amountCents": -4431,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1118",
+          "date": "2026-06-11",
+          "accountId": "ACC000002",
+          "amountCents": -2648,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1121",
+          "date": "2026-06-12",
+          "accountId": "ACC000002",
+          "amountCents": -4289,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1125",
+          "date": "2026-06-15",
+          "accountId": "ACC000002",
+          "amountCents": 150488,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1148",
+          "date": "2026-07-09",
+          "accountId": "ACC000002",
+          "amountCents": -3684,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1149",
+          "date": "2026-07-09",
+          "accountId": "ACC000002",
+          "amountCents": -3261,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1156",
+          "date": "2026-07-15",
+          "accountId": "ACC000002",
+          "amountCents": 170445,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1184",
+          "date": "2026-08-03",
+          "accountId": "ACC000002",
+          "amountCents": -1588,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1192",
+          "date": "2026-08-15",
+          "accountId": "ACC000002",
+          "amountCents": 154921,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1196",
+          "date": "2026-08-17",
+          "accountId": "ACC000002",
+          "amountCents": -1599,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1211",
+          "date": "2026-08-30",
+          "accountId": "ACC000002",
+          "amountCents": -2500,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1229",
+          "date": "2026-09-30",
+          "accountId": "ACC000002",
+          "amountCents": 157242,
+          "category": "Salary",
+          "transactionType": "salary"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "modelVersion": "calendar-scenarios-v1",
+      "customerId": "CUST00003",
+      "asOf": "2026-09-30",
+      "currency": "EUR",
+      "horizonDays": 30,
+      "bufferCents": 0,
+      "status": "estimated",
+      "daily": [
+        {
+          "date": "2026-10-01",
+          "expectedBalanceCents": 664121,
+          "expectedNetChangeCents": -848,
+          "lowerScenarioBalanceCents": 659882,
+          "upperScenarioBalanceCents": 664969
+        },
+        {
+          "date": "2026-10-02",
+          "expectedBalanceCents": 651130,
+          "expectedNetChangeCents": -12991,
+          "lowerScenarioBalanceCents": 588075,
+          "upperScenarioBalanceCents": 664969
+        },
+        {
+          "date": "2026-10-03",
+          "expectedBalanceCents": 612537,
+          "expectedNetChangeCents": -38593,
+          "lowerScenarioBalanceCents": 585444,
+          "upperScenarioBalanceCents": 664459
+        },
+        {
+          "date": "2026-10-04",
+          "expectedBalanceCents": 612283,
+          "expectedNetChangeCents": -254,
+          "lowerScenarioBalanceCents": 583925,
+          "upperScenarioBalanceCents": 664459
+        },
+        {
+          "date": "2026-10-05",
+          "expectedBalanceCents": 599151,
+          "expectedNetChangeCents": -13132,
+          "lowerScenarioBalanceCents": 583925,
+          "upperScenarioBalanceCents": 664110
+        },
+        {
+          "date": "2026-10-06",
+          "expectedBalanceCents": 598701,
+          "expectedNetChangeCents": -450,
+          "lowerScenarioBalanceCents": 581222,
+          "upperScenarioBalanceCents": 664110
+        },
+        {
+          "date": "2026-10-07",
+          "expectedBalanceCents": 585386,
+          "expectedNetChangeCents": -13315,
+          "lowerScenarioBalanceCents": 581222,
+          "upperScenarioBalanceCents": 588075
+        },
+        {
+          "date": "2026-10-08",
+          "expectedBalanceCents": 585354,
+          "expectedNetChangeCents": -32,
+          "lowerScenarioBalanceCents": 581222,
+          "upperScenarioBalanceCents": 588075
+        },
+        {
+          "date": "2026-10-09",
+          "expectedBalanceCents": 584979,
+          "expectedNetChangeCents": -375,
+          "lowerScenarioBalanceCents": 581222,
+          "upperScenarioBalanceCents": 588075
+        },
+        {
+          "date": "2026-10-10",
+          "expectedBalanceCents": 584775,
+          "expectedNetChangeCents": -204,
+          "lowerScenarioBalanceCents": 581222,
+          "upperScenarioBalanceCents": 588075
+        },
+        {
+          "date": "2026-10-11",
+          "expectedBalanceCents": 584712,
+          "expectedNetChangeCents": -63,
+          "lowerScenarioBalanceCents": 581222,
+          "upperScenarioBalanceCents": 588075
+        },
+        {
+          "date": "2026-10-12",
+          "expectedBalanceCents": 584506,
+          "expectedNetChangeCents": -206,
+          "lowerScenarioBalanceCents": 579986,
+          "upperScenarioBalanceCents": 588075
+        },
+        {
+          "date": "2026-10-13",
+          "expectedBalanceCents": 584506,
+          "expectedNetChangeCents": 0,
+          "lowerScenarioBalanceCents": 579986,
+          "upperScenarioBalanceCents": 588075
+        },
+        {
+          "date": "2026-10-14",
+          "expectedBalanceCents": 584506,
+          "expectedNetChangeCents": 0,
+          "lowerScenarioBalanceCents": 579986,
+          "upperScenarioBalanceCents": 588075
+        },
+        {
+          "date": "2026-10-15",
+          "expectedBalanceCents": 713292,
+          "expectedNetChangeCents": 128786,
+          "lowerScenarioBalanceCents": 693560,
+          "upperScenarioBalanceCents": 743522
+        },
+        {
+          "date": "2026-10-16",
+          "expectedBalanceCents": 712810,
+          "expectedNetChangeCents": -482,
+          "lowerScenarioBalanceCents": 693458,
+          "upperScenarioBalanceCents": 740734
+        },
+        {
+          "date": "2026-10-17",
+          "expectedBalanceCents": 710981,
+          "expectedNetChangeCents": -1829,
+          "lowerScenarioBalanceCents": 693213,
+          "upperScenarioBalanceCents": 735967
+        },
+        {
+          "date": "2026-10-18",
+          "expectedBalanceCents": 710838,
+          "expectedNetChangeCents": -143,
+          "lowerScenarioBalanceCents": 692353,
+          "upperScenarioBalanceCents": 735967
+        },
+        {
+          "date": "2026-10-19",
+          "expectedBalanceCents": 709631,
+          "expectedNetChangeCents": -1207,
+          "lowerScenarioBalanceCents": 692353,
+          "upperScenarioBalanceCents": 734216
+        },
+        {
+          "date": "2026-10-20",
+          "expectedBalanceCents": 709457,
+          "expectedNetChangeCents": -174,
+          "lowerScenarioBalanceCents": 692353,
+          "upperScenarioBalanceCents": 734216
+        },
+        {
+          "date": "2026-10-21",
+          "expectedBalanceCents": 708955,
+          "expectedNetChangeCents": -502,
+          "lowerScenarioBalanceCents": 690795,
+          "upperScenarioBalanceCents": 734216
+        },
+        {
+          "date": "2026-10-22",
+          "expectedBalanceCents": 708569,
+          "expectedNetChangeCents": -386,
+          "lowerScenarioBalanceCents": 690795,
+          "upperScenarioBalanceCents": 734216
+        },
+        {
+          "date": "2026-10-23",
+          "expectedBalanceCents": 706695,
+          "expectedNetChangeCents": -1874,
+          "lowerScenarioBalanceCents": 689021,
+          "upperScenarioBalanceCents": 726535
+        },
+        {
+          "date": "2026-10-24",
+          "expectedBalanceCents": 706567,
+          "expectedNetChangeCents": -128,
+          "lowerScenarioBalanceCents": 688845,
+          "upperScenarioBalanceCents": 725945
+        },
+        {
+          "date": "2026-10-25",
+          "expectedBalanceCents": 706252,
+          "expectedNetChangeCents": -315,
+          "lowerScenarioBalanceCents": 688845,
+          "upperScenarioBalanceCents": 725519
+        },
+        {
+          "date": "2026-10-26",
+          "expectedBalanceCents": 703283,
+          "expectedNetChangeCents": -2969,
+          "lowerScenarioBalanceCents": 688845,
+          "upperScenarioBalanceCents": 725519
+        },
+        {
+          "date": "2026-10-27",
+          "expectedBalanceCents": 702756,
+          "expectedNetChangeCents": -527,
+          "lowerScenarioBalanceCents": 687236,
+          "upperScenarioBalanceCents": 725519
+        },
+        {
+          "date": "2026-10-28",
+          "expectedBalanceCents": 701917,
+          "expectedNetChangeCents": -839,
+          "lowerScenarioBalanceCents": 687236,
+          "upperScenarioBalanceCents": 722539
+        },
+        {
+          "date": "2026-10-29",
+          "expectedBalanceCents": 701822,
+          "expectedNetChangeCents": -95,
+          "lowerScenarioBalanceCents": 686666,
+          "upperScenarioBalanceCents": 722539
+        },
+        {
+          "date": "2026-10-30",
+          "expectedBalanceCents": 701412,
+          "expectedNetChangeCents": -410,
+          "lowerScenarioBalanceCents": 686666,
+          "upperScenarioBalanceCents": 721989
+        }
+      ],
+      "upcomingPayments": [
+        {
+          "accountId": "ACC000003",
+          "transactionType": "housing_payment",
+          "category": "Housing",
+          "merchantId": null,
+          "direction": "outflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-02",
+          "latestDate": "2026-10-07",
+          "expectedTotalCents": 76100,
+          "minScenarioTotalCents": 73454,
+          "maxScenarioTotalCents": 79127,
+          "scenariosWithPayment": 6,
+          "scenarioCount": 6,
+          "status": "observed_recently",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-1572",
+            "tx-49b3265d8e44e751-1590",
+            "tx-49b3265d8e44e751-1600",
+            "tx-49b3265d8e44e751-1613",
+            "tx-49b3265d8e44e751-1627",
+            "tx-49b3265d8e44e751-1649"
+          ]
+        },
+        {
+          "accountId": "ACC000003",
+          "transactionType": "utilities_payment",
+          "category": "Utilities",
+          "merchantId": null,
+          "direction": "outflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-03",
+          "latestDate": "2026-10-30",
+          "expectedTotalCents": 5930,
+          "minScenarioTotalCents": 3427,
+          "maxScenarioTotalCents": 9374,
+          "scenariosWithPayment": 6,
+          "scenarioCount": 6,
+          "status": "observed_recently",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-1580",
+            "tx-49b3265d8e44e751-1582",
+            "tx-49b3265d8e44e751-1584",
+            "tx-49b3265d8e44e751-1595",
+            "tx-49b3265d8e44e751-1596",
+            "tx-49b3265d8e44e751-1597",
+            "tx-49b3265d8e44e751-1601",
+            "tx-49b3265d8e44e751-1608",
+            "tx-49b3265d8e44e751-1609",
+            "tx-49b3265d8e44e751-1612",
+            "tx-49b3265d8e44e751-1619",
+            "tx-49b3265d8e44e751-1622",
+            "tx-49b3265d8e44e751-1628",
+            "tx-49b3265d8e44e751-1632",
+            "tx-49b3265d8e44e751-1642",
+            "tx-49b3265d8e44e751-1652",
+            "tx-49b3265d8e44e751-1653",
+            "tx-49b3265d8e44e751-1654"
+          ]
+        },
+        {
+          "accountId": "ACC000003",
+          "transactionType": "salary",
+          "category": "Salary",
+          "merchantId": null,
+          "direction": "inflow",
+          "scope": "account_type_category_aggregate",
+          "month": "2026-10",
+          "earliestDate": "2026-10-15",
+          "latestDate": "2026-10-15",
+          "expectedTotalCents": 129172,
+          "minScenarioTotalCents": 108847,
+          "maxScenarioTotalCents": 159914,
+          "scenariosWithPayment": 6,
+          "scenarioCount": 6,
+          "status": "observed_recently",
+          "isConfirmed": false,
+          "alreadyIncludedInForecast": true,
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-1575",
+            "tx-49b3265d8e44e751-1593",
+            "tx-49b3265d8e44e751-1606",
+            "tx-49b3265d8e44e751-1617",
+            "tx-49b3265d8e44e751-1633",
+            "tx-49b3265d8e44e751-1650"
+          ]
+        }
+      ],
+      "warnings": [
+        "Only observed accounts are covered; external balances and commitments are unknown.",
+        "Recurring payments overlap category totals. Do not add both as separate expenses.",
+        "Evidence strength is a heuristic, not calibrated prediction accuracy.",
+        "Zero-activity months assume continuous export coverage after the first observed month.",
+        "Bills without merchant IDs are category aggregates, not identified providers.",
+        "Historical months are scenarios, not calibrated probabilities or guaranteed bounds.",
+        "The mean path can spread uncertain income across dates; it is not a promised payday.",
+        "Each source month repeats if the horizon crosses a month boundary; seasonal changes are not modeled.",
+        "Balances are end-of-day totals across observed accounts; intraday and individual-account shortfalls can differ.",
+        "Multiple-payment groups are replayed only on remaining dates; matching individual paid bills is not supported.",
+        "Unknown future one-off costs and external accounts are not covered. Do not use this alone to promise affordable savings."
+      ],
+      "startingBalanceCents": 664969,
+      "accounts": [
+        {
+          "accountId": "ACC000003",
+          "balanceCents": 664969,
+          "balanceObservedDate": "2026-09-30",
+          "daysSinceLastTransaction": 0,
+          "firstObservedDate": "2024-10-03",
+          "evidenceIds": [
+            "tx-49b3265d8e44e751-1654"
+          ]
+        }
+      ],
+      "sourceMonths": [
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09"
+      ],
+      "scenarioCount": 6,
+      "endingExpectedBalanceCents": 701412,
+      "lowestExpectedBalance": {
+        "date": "2026-10-12",
+        "amountCents": 584506
+      },
+      "lowestScenarioBalance": {
+        "date": "2026-10-12",
+        "amountCents": 579986
+      },
+      "belowBufferDates": [],
+      "possibleBelowBufferDates": [],
+      "startingBalanceBelowBuffer": false,
+      "scenarioPaths": [
+        {
+          "sourceMonth": "2026-04",
+          "balancesCents": [
+            664969,
+            664661,
+            585534,
+            585534,
+            585534,
+            585534,
+            584901,
+            584901,
+            584901,
+            584901,
+            584713,
+            584713,
+            584713,
+            584713,
+            693560,
+            693458,
+            693213,
+            692353,
+            692353,
+            692353,
+            690795,
+            690795,
+            689021,
+            688845,
+            688845,
+            688845,
+            687236,
+            687236,
+            686666,
+            686666
+          ]
+        },
+        {
+          "sourceMonth": "2026-05",
+          "balancesCents": [
+            664969,
+            664459,
+            664459,
+            664459,
+            664110,
+            664110,
+            584858,
+            584664,
+            584664,
+            583442,
+            583442,
+            583442,
+            583442,
+            583442,
+            700774,
+            700774,
+            700774,
+            700774,
+            700774,
+            700774,
+            699321,
+            699321,
+            698273,
+            698273,
+            696808,
+            696808,
+            695256,
+            695256,
+            695256,
+            695256
+          ]
+        },
+        {
+          "sourceMonth": "2026-06",
+          "balancesCents": [
+            659882,
+            659882,
+            585444,
+            583925,
+            583925,
+            581222,
+            581222,
+            581222,
+            581222,
+            581222,
+            581222,
+            579986,
+            579986,
+            579986,
+            721864,
+            721864,
+            716279,
+            716279,
+            714101,
+            714101,
+            714101,
+            712062,
+            711321,
+            711321,
+            711321,
+            700037,
+            700037,
+            700037,
+            700037,
+            700037
+          ]
+        },
+        {
+          "sourceMonth": "2026-07",
+          "balancesCents": [
+            664969,
+            664969,
+            587508,
+            587508,
+            587404,
+            587404,
+            587404,
+            587404,
+            587404,
+            587404,
+            587209,
+            587209,
+            587209,
+            587209,
+            709792,
+            709792,
+            709412,
+            709412,
+            706102,
+            706102,
+            706102,
+            705825,
+            705825,
+            705825,
+            705825,
+            705608,
+            705608,
+            703551,
+            703551,
+            703551
+          ]
+        },
+        {
+          "sourceMonth": "2026-08",
+          "balancesCents": [
+            664969,
+            664732,
+            664199,
+            664199,
+            585858,
+            585858,
+            585858,
+            585858,
+            583608,
+            583608,
+            583608,
+            583608,
+            583608,
+            583608,
+            743522,
+            740734,
+            735967,
+            735967,
+            734216,
+            734216,
+            734216,
+            734216,
+            726535,
+            725945,
+            725519,
+            725519,
+            725519,
+            722539,
+            722539,
+            721989
+          ]
+        },
+        {
+          "sourceMonth": "2026-09",
+          "balancesCents": [
+            664969,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            588075,
+            710240,
+            710240,
+            710240,
+            710240,
+            710240,
+            709194,
+            709194,
+            709194,
+            709194,
+            709194,
+            709194,
+            702882,
+            702882,
+            702882,
+            702882,
+            700975
+          ]
+        }
+      ],
+      "suppressedAlreadyObservedMonthlyGroups": [],
+      "evidence": [
+        {
+          "id": "tx-49b3265d8e44e751-1572",
+          "date": "2026-04-03",
+          "accountId": "ACC000003",
+          "amountCents": -79127,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1575",
+          "date": "2026-04-15",
+          "accountId": "ACC000003",
+          "amountCents": 108847,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1580",
+          "date": "2026-04-21",
+          "accountId": "ACC000003",
+          "amountCents": -1558,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1582",
+          "date": "2026-04-23",
+          "accountId": "ACC000003",
+          "amountCents": -1591,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1584",
+          "date": "2026-04-27",
+          "accountId": "ACC000003",
+          "amountCents": -1609,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1590",
+          "date": "2026-05-07",
+          "accountId": "ACC000003",
+          "amountCents": -78262,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1593",
+          "date": "2026-05-15",
+          "accountId": "ACC000003",
+          "amountCents": 117332,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1595",
+          "date": "2026-05-23",
+          "accountId": "ACC000003",
+          "amountCents": -1048,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1596",
+          "date": "2026-05-25",
+          "accountId": "ACC000003",
+          "amountCents": -1465,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1597",
+          "date": "2026-05-27",
+          "accountId": "ACC000003",
+          "amountCents": -1552,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1600",
+          "date": "2026-06-03",
+          "accountId": "ACC000003",
+          "amountCents": -74438,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1601",
+          "date": "2026-06-04",
+          "accountId": "ACC000003",
+          "amountCents": -1519,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1606",
+          "date": "2026-06-15",
+          "accountId": "ACC000003",
+          "amountCents": 141878,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1608",
+          "date": "2026-06-19",
+          "accountId": "ACC000003",
+          "amountCents": -2178,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1609",
+          "date": "2026-06-22",
+          "accountId": "ACC000003",
+          "amountCents": -2039,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1612",
+          "date": "2026-07-03",
+          "accountId": "ACC000003",
+          "amountCents": -4007,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1613",
+          "date": "2026-07-03",
+          "accountId": "ACC000003",
+          "amountCents": -73454,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1617",
+          "date": "2026-07-15",
+          "accountId": "ACC000003",
+          "amountCents": 124893,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1619",
+          "date": "2026-07-19",
+          "accountId": "ACC000003",
+          "amountCents": -3310,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1622",
+          "date": "2026-07-28",
+          "accountId": "ACC000003",
+          "amountCents": -2057,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1627",
+          "date": "2026-08-05",
+          "accountId": "ACC000003",
+          "amountCents": -77042,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1628",
+          "date": "2026-08-05",
+          "accountId": "ACC000003",
+          "amountCents": -833,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1632",
+          "date": "2026-08-09",
+          "accountId": "ACC000003",
+          "amountCents": -956,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1633",
+          "date": "2026-08-15",
+          "accountId": "ACC000003",
+          "amountCents": 159914,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1642",
+          "date": "2026-08-28",
+          "accountId": "ACC000003",
+          "amountCents": -1638,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1649",
+          "date": "2026-09-02",
+          "accountId": "ACC000003",
+          "amountCents": -74276,
+          "category": "Housing",
+          "transactionType": "housing_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1650",
+          "date": "2026-09-15",
+          "accountId": "ACC000003",
+          "amountCents": 122165,
+          "category": "Salary",
+          "transactionType": "salary"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1652",
+          "date": "2026-09-26",
+          "accountId": "ACC000003",
+          "amountCents": -3013,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1653",
+          "date": "2026-09-26",
+          "accountId": "ACC000003",
+          "amountCents": -3299,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        },
+        {
+          "id": "tx-49b3265d8e44e751-1654",
+          "date": "2026-09-30",
+          "accountId": "ACC000003",
+          "amountCents": -1907,
+          "category": "Utilities",
+          "transactionType": "utilities_payment"
+        }
+      ]
+    }
+  ]
+}

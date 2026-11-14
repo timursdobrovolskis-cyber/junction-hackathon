@@ -1,5 +1,38 @@
 # Personal Economic Trainer
 
+## Current workflow and progress
+
+This is the shared overview of the build sequence and responsibilities. Update this section when a stage is implemented or its validation changes. Status below describes work verified in this local checkout; it does not establish what teammates have built elsewhere or what has been pushed to GitHub.
+
+We use one shared calculation engine to produce a separate result for each customer from their own history. All 5,100 synthetic customers now have profiles. These are individual calculations, not 5,100 separately trained models. In the intended app, each customer sees their own results.
+
+| Stage | What happens | Current status |
+| --- | --- | --- |
+| 1. Prepare data | Load transactions and customers, check balances, distinguish spending from account movements. | Done locally: 3,626,755 transactions, 5,100 customers, zero mismatches across checkable adjacent balances. Sweep destinations remain unknown. |
+| 2. Build profiles | Calculate income patterns, recurring bill groups, category spending, unusual expense candidates, and evidence. | Done locally for all 5,100 customers at cutoff 2026-09-30. Eleven tests and full-output consistency checks passed. |
+| 3. Forecast cash flow | Project daily balances for 30 days, upcoming payments, the lowest balance, and uncertainty. | v1 baseline evaluated across all 5,100 customers. Trained income v2 improves daily error 2.02% on 995 reserved customers; final-day error slightly worsens. Separately calibrated bounds cover 91.36% of complete paths, with a wide margin. |
+| 4. Estimate affordable savings | Find what could be set aside while preserving a chosen cash buffer throughout the forecast; account for known irregular costs beyond that horizon. | Conditional preview implemented using calibrated lower balances, an explicit buffer, and supplied future costs. Suggestions remain unconfirmed by default. Historical previews include three buffer breaches; no guarantee or money movement. |
+| 5. Generate category budgets | Allocate spending within income, commitments, and the savings plan. Recalculate the forecast when a budget changes. | Planned; depends on the shared forecast and savings calculations. |
+| 6. Connect coach and UI | Hand over calculated amounts, dates, assumptions, and evidence. Explain and display them, with previews of changes. | Profile, calibrated forecast, and conditional savings examples are ready. The existing coach goal fixture is a separate standalone example. UI/coach wiring is not implemented in this workstream. |
+
+Build a transparent baseline first. For each stage: implement it, check representative cases, validate against the available data, document the output, and hand it to the other lanes. A small payday-transition model is now trained on earlier observations, with separate development, calibration, and evaluation periods. Its modest held-out gain and remaining errors are documented rather than treating training itself as success.
+
+### Where to find the work
+
+- [Data preparation](data/README.md): source downloads, import commands, and verified coverage.
+- [Profile contract](data/PROFILE_CONTRACT.md): generation commands, output fields, detection rules, and limitations.
+- [Three customer examples](fixtures/customer-profiles.jsonl): synthetic profiles the UI and coach can consume now.
+- [Profile engine](src/financial_profile.py) and [batch runner](scripts/build_profiles.py): shared calculations and per-customer generation.
+- [Profile tests](tests/test_financial_profile.py): historical cutoff, income, spending, transfers, and evidence checks.
+- [Forecast contract](data/CASH_FLOW_CONTRACT.md) and [three forecast examples](fixtures/cash-flow-demo.json): daily balance paths, uncertain payment windows, and evidence for the UI and coach.
+- [Forecast evaluation](data/FORECAST_EVALUATION.md): measured errors, held-out partitions, limitations, and the next modeling priorities.
+- [Income v2 and savings](data/INCOME_AND_SAVINGS.md): trained payday model, calibrated uncertainty, conservative savings calculation, measured limitations, and integration commands.
+- [Calibrated forecast and savings examples](fixtures/savings-demo.json): three synthetic customers with a clearly labeled demo buffer.
+
+Next integrate the calibrated forecast and conditional savings preview, investigate spending and one-off expense errors, and then build category-budget suggestions. The uncertainty range remains wide; forecasts and savings previews must retain their assumptions and confirmation state.
+
+Raw data, the SQLite database, and all-customer outputs live under `data/local/` and are ignored by Git. Share the code, documentation, and small synthetic examples; teammates can reproduce the full output using the documented commands.
+
 ## Product direction
 
 Build a mobile coach for S-mobiili that helps customers at any life stage understand what is coming up and make a plan around what matters to them. On opening the app, the customer sees a useful observation or suggested action based on their transaction history. If they choose a savings goal, the coach uses that same history to suggest a contribution and timeline, then adjusts the projection as their finances change. The customer can inspect the evidence, correct assumptions, and choose whether to follow the plan.
@@ -18,8 +51,8 @@ Use [the shared fixture](fixtures/coach-demo.json) for the initial integration. 
 
 ## Learning from transaction data
 
-- Profile the bank dataset first. Check whether it has stable customer and transaction IDs, enough history per customer, merchant and category fields, and coverage of income, transfers, and balances. Normalize the fields that exist and carry through source transaction IDs.
-- Use the bank dataset to learn patterns across customers. Start with one measurable task, such as predicting the next date and typical amount of a recurring bill. Compare it with a baseline based on the observed interval and median amount. If the dataset has useful category labels, categorization can be a separate task.
+- Data preparation and descriptive profiles are implemented as described above. Customer IDs come from the source; transaction evidence IDs are generated from the source file hash and row number because the export has no transaction ID column.
+- Baseline and trained income-model errors have been measured; see both evaluation reports. Income timing yielded only a modest reserved-customer gain. Next investigate flexible spending and one-off costs while preserving separate evaluation data. The current export already supplies category labels.
 - At runtime, use the customer's own history to calculate their profile and choose what to show. Pass detected patterns, estimates, confidence, and evidence IDs to the planning engine. The engine calculates amounts and evaluates tradeoffs. An explanation model can turn the result into plain language with the app supplying the figures.
 - Evaluate on customers held out from training and predict later transactions using only earlier history. Track date and amount error and incorrect recurring bill predictions. Include profiles with sparse history or irregular income. When evidence is weak, show an observation or ask for a focused confirmation before relying on the forecast for a recommendation.
 - Demo the same flow with two customers whose histories produce different actions. For example, one gets a goal recovery option based on flexible spending, while another gets a reminder about a recurring bill before their next expected income.
@@ -27,7 +60,7 @@ Use [the shared fixture](fixtures/coach-demo.json) for the initial integration. 
 ## Calculation and data
 
 - Keep all amounts in integer euro cents. The engine owns calculations and returns figures, assumptions, and transaction IDs. The UI formats numbers. A language model can explain the result using those figures. The initial implementation can use a template.
-- Normalize the bank dataset behind an adapter. Preserve transaction IDs and categories. Until that adapter is ready, use the synthetic fixture, whose planning periods already include projected cash available before the new expense.
+- Use the prepared bank store and customer profile contract for data-driven calculations. Preserve generated evidence IDs and source categories. The earlier coach fixture already supplies projected cash available per period; it remains a standalone integration example until the forecast can provide those figures.
 - Count expenses once. Subtract the new expense from the period it falls in. Keep goal savings already set aside separate from future cash. Preview a spending reduction only if that spending is already in the projection.
 - Show projections as conditional on the inputs. If balances, bills, or income are missing, name what is missing and avoid implying the plan covers all of the customer's finances. Surface periods with negative projected cash separately, even if a later period makes up for them.
 - The initial [calculation module](src/coach.mjs) takes the goal, planning periods, delivery history, and new expenses. It returns the baseline projection, a breakdown by period, and a conditional recovery option. The app's next step is to render that result and source evidence.
@@ -37,7 +70,7 @@ Use [the shared fixture](fixtures/coach-demo.json) for the initial integration. 
 | Owner | Owns | Hands off |
 | --- | --- | --- |
 | Mobile app and integration | Set up the mobile web app. Build the home card, evidence view, and action preview. Own shared components and merges. | A runnable app that displays an insight and lets the customer inspect and try the proposed action. |
-| Data and predictions | Normalize bank transactions, identify recurring bills and subscriptions, and flag a developing spending pattern. | Two customer histories and a feed of detected signals with transaction IDs and any uncertainty. |
-| Planning and coach | Calculate category budgets, savings projections, and purchase scenarios. Turn the results into explanations and small experiments the customer can try. | A function that takes a customer profile and returns an action with calculated amounts and evidence. |
+| Data and calculations — this workstream | Prepare bank data, build customer profiles, then implement the shared forecast, affordable savings, and category budget calculations. | Versioned customer results with amounts, dates, assumptions, uncertainty, and transaction evidence. Profile and baseline forecast examples are ready. |
+| Coach and guidance | Explain the calculation engine's results and turn supported insights into suggestions and small experiments. Pass customer choices back to the engine for recalculation. | Customer-facing explanations and actions using the supplied figures and evidence. |
 
-Agree on two handoffs before splitting into branches. Data and predictions passes detected signals and evidence to Planning and coach, which passes the recommended action and calculated amounts to the mobile app. Use fixture examples for both handoffs so all three people can start in parallel. Integrate one insight with an explanation and action preview before adding more categories, settings, or coaching features.
+The data lane owns the financial arithmetic. The coach owns explanations, and the app lane owns presentation and integration. Start the coach and app against the shared profile and forecast examples, using the documented contracts. Integrate one insight with evidence and an action preview before adding more categories, settings, or coaching features. Keep separate work scoped to each lane, review changes through GitHub, and rerun the relevant checks when integrating.

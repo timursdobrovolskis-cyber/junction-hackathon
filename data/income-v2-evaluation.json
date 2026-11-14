@@ -1,0 +1,103 @@
+{
+  "acceptedOnDevelopment": true,
+  "modelVersion": "conditioned-income-v2",
+  "trainingThrough": "2026-04-30",
+  "developmentCutoffs": [
+    "2026-05-31",
+    "2026-06-15"
+  ],
+  "calibrationCutoff": "2026-07-31",
+  "evaluationCutoff": "2026-08-31",
+  "development": {
+    "windows": 8210,
+    "days": 246300,
+    "dailyMAECents": 70722,
+    "dailyBiasCents": 283,
+    "flatDailyMAECents": 80637,
+    "day30MAECents": 109287,
+    "flatDay30MAECents": 123444,
+    "lowestBalanceMAECents": 59544,
+    "flatLowestBalanceMAECents": 68760,
+    "scenarioEnvelopeCoveragePercent": 64.25,
+    "meanEnvelopeWidthCents": 165728,
+    "actualLowCashWindows": 1294,
+    "dailyMAEImprovementPercent": 12.3,
+    "centralLowCash": {
+      "flaggedWindows": 1135,
+      "truePositives": 879,
+      "precision": 0.7744,
+      "recall": 0.6793
+    },
+    "scenarioLowCash": {
+      "flaggedWindows": 2008,
+      "truePositives": 1173,
+      "precision": 0.5842,
+      "recall": 0.9065
+    },
+    "flatLowCash": {
+      "flaggedWindows": 1228,
+      "truePositives": 899,
+      "precision": 0.7321,
+      "recall": 0.6947
+    }
+  },
+  "evaluation": {
+    "windows": 995,
+    "days": 29850,
+    "dailyMAECents": 80270,
+    "dailyBiasCents": -127,
+    "flatDailyMAECents": 81923,
+    "day30MAECents": 84097,
+    "flatDay30MAECents": 82686,
+    "lowestBalanceMAECents": 52332,
+    "flatLowestBalanceMAECents": 51928,
+    "scenarioEnvelopeCoveragePercent": 59.99,
+    "meanEnvelopeWidthCents": 175317,
+    "actualLowCashWindows": 156,
+    "dailyMAEImprovementPercent": 2.02,
+    "centralLowCash": {
+      "flaggedWindows": 131,
+      "truePositives": 113,
+      "precision": 0.8626,
+      "recall": 0.7244
+    },
+    "scenarioLowCash": {
+      "flaggedWindows": 228,
+      "truePositives": 141,
+      "precision": 0.6184,
+      "recall": 0.9038
+    },
+    "flatLowCash": {
+      "flaggedWindows": 131,
+      "truePositives": 113,
+      "precision": 0.8626,
+      "recall": 0.7244
+    }
+  },
+  "calibration": {
+    "method": "split-path-envelope-expansion",
+    "modelVersion": "conditioned-income-v2",
+    "modelDigest": "fc8b6701c1bd309b1ea523162813b73a6e457b48cb69c00b76f5cb2ac1225c97",
+    "calibrationThrough": "2026-08-30",
+    "horizonDays": 30,
+    "targetPathCoverage": 0.9,
+    "calibrationPaths": 4105,
+    "marginCents": 243853
+  },
+  "coverage": {
+    "paths": 995,
+    "coveredPaths": 909,
+    "days": 29850,
+    "coveredDays": 29159,
+    "positiveSavingsPreviews": 529,
+    "previewBufferViolations": 3
+  },
+  "observedPathCoveragePercent": 91.36,
+  "observedDailyCoveragePercent": 97.69,
+  "comparisonNote": "flat* metric fields here refer to frozen calendar-scenarios-v1, not the original flat daily baseline.",
+  "limitations": [
+    "Evaluation customers were excluded from fitting, selection and calibration; their baseline metrics were inspected in the previous iteration.",
+    "Target coverage depends on distributional stability; it is not an individual guarantee.",
+    "Savings previews use an illustrative EUR 500 buffer and assume no supplied additional commitments. No funds are moved."
+  ]
+}
