@@ -4,6 +4,6 @@
   "buildCommand": "",
   "installCommand": "",
   "outputDirectory": "dist",
-  "functions": {"api/coach.js": {"includeFiles": "server/**", "maxDuration": 30}},
+  "functions": {"api/coach.js": {"includeFiles": "server/**", "maxDuration": 30}, "api/calendar.js": {"includeFiles": "server/calendar/**", "maxDuration": 20}},
   "redirects": [{ "source": "/", "destination": "/preview.html", "permanent": false }]
 }
