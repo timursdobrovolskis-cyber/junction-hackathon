@@ -67,11 +67,16 @@ export async function conversationReply(input, generate) {
   let source = 'planning';
   const advice = purchaseAdvice(input, previous);
   const answer = input.scenario === 'engine' ? accountAnswer(input.message) : null;
-  const historical = historyAnswer(input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
+  const combined=input.message.match(/^(.+?\b(?:spend|spent|spending|payments)\b.*?)\s+and\s+((?:how much|what|can|could).*\b(?:save|savings|set aside)\b.*)$/i);
+  const historical = historyAnswer(combined?.[1]??input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
     previousHistory:previous.messages.at(-1)?.presentation?.historyQuery,
     previousQuestion:previous.messages.findLast(m=>m.role==='user')?.text ?? input.history?.findLast(m=>m.role==='user')?.text});
-  const projection = savingsProjectionAnswer(input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
+  let projection = savingsProjectionAnswer(combined?.[2]??input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
     draft:previous.draft, previousProjection:previous.messages.at(-1)?.presentation?.projection});
+  if(combined && historical?.nextQuestion)projection=null;
+  if(combined && historical && projection){
+    projection={...projection,summary:historical.summary+' '+projection.summary,bullets:[...historical.bullets,...projection.bullets].slice(0,3),evidence:historical.evidence};
+  }
   if (projection) {
     next.draft = previous.draft; next.awaiting = previous.awaiting; next.context = previous.context;
     next.messages[next.messages.length-1] = {id:next.messages.at(-1).id,role:'assistant',text:presentationText(projection),presentation:projection,suggestions:[]};

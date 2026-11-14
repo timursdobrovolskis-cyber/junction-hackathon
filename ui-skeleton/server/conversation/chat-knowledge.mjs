@@ -9,6 +9,9 @@ export const coachingSources = Object.freeze({
 Object.values(coachingSources).forEach((source) => Object.freeze(source));
 
 const topics = [
+  { id: 'overdue_essentials', match: /\b(behind|overdue|late|missed)\b.{0,35}\b(rent|mortgage|essential bills?)\b|\b(rent|mortgage|essential bills?)\b.{0,35}\b(overdue|late|missed)\b/i,
+    answer: 'Prioritise overdue rent and essential bills. Keep money needed for them accessible; risky investments can lose value. Contact your landlord or provider to discuss a payment arrangement.',
+    question: '', suggestions: ['Back to my plan'], source: 'budgeting' },
   { id: 'irregular_income', match: /\b(irregular|variable|unpredictable|freelance|self.employed)\b.*\b(income|pay|work)|\b(income|pay|salary|earnings)\b.*\b(varies|changes|different|irregular|unpredictable)|^irregular income$/i,
     answer: 'When income varies, a strong month can make a fixed savings target look easier than it is. A cautious starting point is to plan essentials around a lower-income month, then review extra savings when more income actually arrives.',
     question: 'Is the uncertainty mainly how much you earn, when you get paid, or both?', suggestions: ['The amount varies', 'Payday changes', 'Both'], source: 'irregular' },
@@ -27,7 +30,7 @@ const topics = [
 ];
 
 export function findCoachingTopic(text) {
-  const topic = topics.find((entry) => entry.match.test(text));
+  const topic = topics.find((entry) => entry.match.test(text) && !(entry.id==='overdue_essentials' && /\b(not behind|not overdue|no overdue|not late)\b/i.test(text)));
   if (!topic) return null;
   return topic;
 }

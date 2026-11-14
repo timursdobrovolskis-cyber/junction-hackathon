@@ -43,14 +43,17 @@ export function projectContributions({customerId,asOf,endDate,monthlyCents}) {
 export function savingsProjectionAnswer(message,{customerId,today,draft,previousProjection}={}) {
   const previous=previousProjection?.customerId===customerId && previousProjection.asOf===today ? previousProjection:null;
   const amountOnly=message.trim().match(/^(?:what about |make it |change it to |actually,? |and |use |try |at )?(?:€\s*)?(\d+(?:[.,]\d+)?)(?:\s*(?:euros?|eur))?(?:\s*(?:a month|per month|monthly))?[?.!]?$/i);
-  const dateOnly=previous && /^(?:what about |and |by |until |till )?(?:the )?(?:end of )?(?:20\d{2}(?:-\d{2}-\d{2})?|(?:january|february|march|april|may|june|july|august|september|october|november|december) 20\d{2}|next year|this year)[?.!]?$/i.test(message.trim());
-  if(!futureIntent(message) && !(previous && (amountOnly||dateOnly)))return null;
+  const dateOnly=previous && /^(?:what about |and |by |until |till )?(?:the )?(?:end of )?(?:20\d{2}(?:-\d{2}-\d{2})?|(?:(?:\d{1,2})(?:st|nd|rd|th)? )?(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{1,2}(?:st|nd|rd|th)?,?)? 20\d{2}|next year|this year)[?.!]?$/i.test(message.trim());
+  const incomeShock=/\b(lose my job|lost my job|laid off|no income|income (?:stops|falls|drops)|salary (?:falls|drops)|pay cut)\b/i.test(message);
+  if(!futureIntent(message) && !(previous && (amountOnly||dateOnly||incomeShock)))return null;
   if(customerId!==accountPlan.customerId)return reply('A savings projection is not connected for this demo profile.');
   const pending=(summary,question,endDate=null)=>({...reply(summary,question),projection:{customerId,asOf:today,endDate,
     monthlyCents:previous?.monthlyCents??(draft?.goal?.period==='monthly'?draft.goal.amountCents:accountPlan.budget.savingsTargetCents)}});
   const endDate=dateOnly?targetDate(message,today):futureIntent(message)?targetDate(message,today):previous?.endDate;
   if(!endDate)return pending('I can illustrate future savings from a monthly contribution.','What target date should I use?');
   if(!validDate(endDate)||endDate<=today)return reply('Choose a date after this demo’s 30 September 2026 starting point.','What future date should I use?');
+  if(incomeShock)
+    return pending('Losing income could change what you can save; the current target may no longer fit.', 'How much could you still set aside monthly after essential costs?',endDate);
   if(/[$£]|\b(usd|dollars?|gbp|pounds?|weekly|yearly|annually|per year|per week)\b/i.test(message))return pending('This illustration uses monthly contributions in euros.','How much would you set aside each month in euros?',endDate);
   const amounts=[...message.matchAll(/€\s*(-?\d+(?:[.,]\d+)?)|(-?\d+(?:[.,]\d+)?)\s*(?:euros?|eur|a month|per month|monthly)\b/gi)];
   if(amounts.length && !(previous&&amountOnly&&!dateOnly) && (!/\b(monthly|per month|a month|each month)\b|\/month/i.test(message) || /\b(pay|cost|expense|rent|bill)\b/i.test(message)))
