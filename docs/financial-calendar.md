@@ -200,3 +200,20 @@ negative engine balance, with no automated transfer/cancellation action.
 The compact UI has three preview rows, a complete filtered payment-list dialog,
 short names on dates and a Filters & dates disclosure. The warning precedes the
 list. Real bank-data samples and their evidence remain separate.
+
+
+## Personal reminder controls
+
+The UI now offers Add event (one-off, monthly, yearly) and date/series deletion
+with Undo and a restorable Deleted events list. These are local calendar edits,
+validated and stored under calendar-edits-v1:<customerId>, not engine plan edits.
+They never change daily forecasts, warning evidence or automatic scheduled totals.
+The UI marks custom dates as Added by you and explains the unchanged calculations.
+Recurring dates clip to month end without drifting after February. Named
+categories have distinct colours and shapes for readable filter/grid markers.
+
+Google Calendar is now at the bottom. Its public feed exports the original
+server fixture; local additions/deletions are explicitly excluded. Customer
+isolation, failed-storage handling and stale-Undo checks are covered by tests.
+Private cross-device persistence or engine expense confirmation would need an
+additional authenticated integration; this feature does not claim either.

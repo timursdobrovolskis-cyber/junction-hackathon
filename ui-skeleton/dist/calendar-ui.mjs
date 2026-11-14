@@ -1,5 +1,7 @@
 import { eventsInRange, shiftMonth, validateCalendar, isDate, visibleEvents, eventGroup, calendarPeriod, movePeriod, restoreCalendarView, visibilityDefaults } from './calendar-model.mjs';
 
+import { emptyEdits, editsKey, readEdits, writeEdits, amountInCents, calendarWithEdits, deletedEvents } from './calendar-edits.mjs';
+
 const $ = (id) => document.getElementById(id);
 const page = $('calendar-page');
 const customers = { risk: 'RISK-DEMO', engine: 'CUST00005', regular: 'CUST00003', recurring: 'CALENDAR-DEMO', subscriptions: 'SUBSCRIPTIONS-DEMO' };
@@ -9,7 +11,93 @@ const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Riga', year: 
 const create = (tag, text, className) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (className) node.className = className; return node; };
 const read = (key) => { try { return localStorage.getItem(`calendar-v3:${key}`); } catch { return null; } };
 const remember = (key, value) => { try { localStorage.setItem(`calendar-v3:${key}`, value); } catch { /* Storage is optional. */ } };
+let edits = emptyEdits('RISK-DEMO'), editsBlocked = false, undoEdit;
 let data, anchor, view = 'month', visibility = { ...visibilityDefaults }, activeSource = 'risk', controller, busy = false;
+
+function currentEvents() { return calendarWithEdits(data, edits); }
+function editMessage(message, error = false) {
+  $('calendar-edit-message').textContent = message;
+  $('calendar-edit-message').classList.toggle('is-error', error);
+  $('calendar-edit-status').hidden = false;
+  if (error && $('calendar-detail').open) {
+    let detailError = $('calendar-dialog-edit-error');
+    if (!detailError) { detailError = create('p', '', 'calendar-form-error'); detailError.id = 'calendar-dialog-edit-error'; detailError.setAttribute('role', 'alert'); $('calendar-detail-body').prepend(detailError); }
+    detailError.textContent = message;
+  }
+}
+function changeEdits(change, message) {
+  if (!data || busy || editsBlocked) return false;
+  try {
+    const previous = readEdits(localStorage, data.customerId);
+    const next = structuredClone(previous); change(next); writeEdits(localStorage, next);
+    undoEdit = { previous, expected: JSON.stringify(next) }; edits = next;
+    render(); editMessage(message); $('calendar-undo').hidden = false; return true;
+  } catch (error) {
+    editMessage(error.message === 'Reminder limit' ? 'This customer has reached the limit of 100 personal reminders.' : 'Could not save this change on your device. Nothing was changed. Check browser storage and try again.', true);
+    return false;
+  }
+}
+function deleteEvent(event, series = false) {
+  if (changeEdits(next => {
+    const list = series ? next.removedSeries : next.removed;
+    const id = series ? event.localId : event.id;
+    if (!list.includes(id)) list.push(id);
+  }, `${event.title}${series ? ' and its repeats' : ` on ${dateLabel(event.date)}`} deleted from this calendar. Payments and forecasts are unchanged.`)) {
+    $('calendar-detail').close(); $('calendar-add').focus();
+  }
+}
+function openDeleted() {
+  if (!data || busy) return;
+  const entries = deletedEvents(data, edits);
+  const list = create('div');
+  if (!entries.length) list.append(create('p', 'No deleted events in this calendar.'));
+  for (const event of entries) {
+    const row = create('div', undefined, 'calendar-deleted-row');
+    const copy = create('span'); copy.append(create('strong', event.title), create('small', event.series ? 'All repeats' : dateLabel(event.date, {day:'numeric',month:'short',year:'numeric'})));
+    const restore = create('button', 'Restore', 'calendar-outline'); restore.type = 'button'; restore.setAttribute('aria-label', `Restore ${event.title}`);
+    restore.addEventListener('click', () => {
+      if (changeEdits(next => {
+        if (event.series) next.removedSeries = next.removedSeries.filter(id => id !== event.id);
+        else next.removed = next.removed.filter(id => id !== event.id);
+      }, `${event.title} restored.`)) openDeleted();
+    });
+    row.append(copy, restore); list.append(row);
+  }
+  showDialog('Deleted events', [list], $('calendar-deleted'));
+}
+function openAdd(day = anchor, returnFocus = $('calendar-add')) {
+  if (!data || busy || editsBlocked) return;
+  const form = create('form', undefined, 'calendar-event-form'); form.id = 'calendar-event-form';
+  function field(label, name, type, options) {
+    const wrapper = create('label', undefined, 'calendar-form-field'); wrapper.append(create('span', label));
+    const input = create(options ? 'select' : 'input'); input.id = `calendar-event-${name}`; input.name = name;
+    if (options) for (const [value, text] of options) { const option = create('option', text); option.value = value; input.append(option); }
+    else input.type = type;
+    input.required = true; wrapper.append(input); form.append(wrapper); return input;
+  }
+  const title = field('Event name', 'title', 'text'); title.maxLength = 80; title.placeholder = 'e.g. Dentist or gym membership';
+  const date = field('Date', 'date', 'date'); date.value = day; date.min = data.rangeStart; date.max = data.rangeEnd;
+  const amount = field('Amount (€)', 'amount', 'text'); amount.inputMode = 'decimal'; amount.placeholder = '0.00'; amount.maxLength = 11;
+  const kind = field('Category', 'kind', null, [['bill','Bill / expense'],['subscription','Subscription'],['income','Income']]);
+  const cadence = field('Repeat', 'cadence', null, [['once','Does not repeat'],['monthly','Every month'],['yearly','Every year']]);
+  const error = create('p', '', 'calendar-form-error'); error.id = 'calendar-form-error'; error.setAttribute('role','alert'); error.hidden = true;
+  form.append(create('p', 'Saved for this customer on this device. A reminder does not change your forecast, budget or Google subscription.', 'calendar-form-note'), error);
+  const submit = create('button', 'Add event', 'calendar-primary'); submit.type = 'submit'; form.append(submit);
+  form.addEventListener('submit', event => {
+    event.preventDefault(); error.hidden = true;
+    try {
+      if (!title.value.trim()) throw new Error('Give your event a name.');
+      if (!isDate(date.value) || date.value < data.rangeStart || date.value > data.rangeEnd) throw new Error('Choose a date within the available calendar range.');
+      const item = {id: crypto.randomUUID(), title: title.value.trim(), date: date.value, amountCents: amountInCents(amount.value), kind: kind.value, cadence: cadence.value};
+      if (!changeEdits(next => { if (next.items.length >= 100) throw new Error('Reminder limit'); next.items.push(item); }, `${item.title} added. Saved on this device.`)) {
+        error.textContent = $('calendar-edit-message').textContent; error.hidden = false; return;
+      }
+      anchor = item.date; visibility[eventGroup(item)] = true; saveView(); render();
+      $('calendar-detail').close(); $('calendar-add').focus();
+    } catch (problem) { error.textContent = problem.message; error.hidden = false; }
+  });
+  showDialog('Add an event', [form], returnFocus); title.focus();
+}
 
 function showDialog(title, content, returnFocus) {
   const dialog = $('calendar-detail');
@@ -24,13 +112,14 @@ function openEvent(event, returnFocus, back) {
   const content = [];
   if (back) { const button = create('button', '← Back to payments', 'calendar-subtle'); button.type = 'button'; button.addEventListener('click', back); content.push(button); }
   content.push(create('p', `${event.direction === 'inflow' ? '+' : '−'}${euro(event.amountCents)}`, 'calendar-detail-amount'));
-  content.push(create('p', `${dateLabel(event.date, { day: 'numeric', month: 'long', year: 'numeric' })} · Estimated ${event.cadence} payment`));
+  content.push(create('p', `${dateLabel(event.date, { day: 'numeric', month: 'long', year: 'numeric' })} · ${event.source === 'manual' ? 'Added by you' : 'Estimated payment'} · ${event.cadence === 'once' ? 'One-off' : event.cadence}`));
   content.push(create('p', event.explanation));
   if (event.observedDayRange) content.push(create('p', `Observed payment days: ${event.observedDayRange[0]}–${event.observedDayRange[1]} of the month. The calendar uses one estimated date; the actual posting date can differ.`));
   if (event.historicalAmountRange) content.push(create('p', `Recent payments ranged from ${euro(event.historicalAmountRange.minCents)} to ${euro(event.historicalAmountRange.maxCents)}.`));
   if (event.accountId) content.push(create('p', `Account: ${event.accountId}`));
   if (event.merchantId) content.push(create('p', `Merchant reference: ${event.merchantId}`));
   if (event.scope === 'account_type_category_aggregate') content.push(create('p', 'The data identifies the payment category, but does not name the payee.'));
+  if (event.source !== 'manual') {
   content.push(create('h3', event.source === 'subscription_schedule' ? 'Subscription payment history' : 'Supporting transactions'));
   const evidence = data.evidence.filter((row) => event.evidenceIds.includes(row.id));
   if (!evidence.length) content.push(create('p', 'This date comes from the supplied schedule; no historical transactions are available.'));
@@ -41,36 +130,45 @@ function openEvent(event, returnFocus, back) {
     }
     content.push(list);
   }
+  }
+  const remove = create('button', event.cadence === 'once' ? 'Delete from calendar' : 'Delete this date', 'calendar-delete'); remove.type = 'button'; remove.id = 'calendar-delete-event';
+  remove.addEventListener('click', () => deleteEvent(event)); content.push(remove);
+  if (event.localId && event.cadence !== 'once') {
+    const series = create('button', 'Delete all repeats', 'calendar-delete'); series.type = 'button'; series.id = 'calendar-delete-series';
+    series.addEventListener('click', () => deleteEvent(event, true)); content.push(series);
+  }
+  content.push(create('p', 'Deleting a reminder does not cancel the payment or subscription. You can restore it from Deleted events.', 'calendar-form-note'));
   content.push(create('p', 'Calendar reminders do not move money or change your balance forecast.', 'calendar-detail-note'));
   showDialog(event.title, content, returnFocus);
 }
 
 function eventButton(event, onClick) {
-  const button = create('button', undefined, `calendar-event event-${event.kind}`); button.type = 'button';
+  const button = create('button', undefined, `calendar-event event-${event.kind} category-${eventGroup(event)}`); button.type = 'button';
   const icon = create('span', undefined, 'calendar-event-icon'); icon.setAttribute('aria-hidden', 'true');
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.classList.add('icon');
   const use = document.createElementNS('http://www.w3.org/2000/svg', 'use'); use.setAttribute('href', event.cadence === 'yearly' ? '#i-calendar' : '#i-arrow');
   svg.append(use); if (event.cadence !== 'yearly') svg.style.transform = event.kind === 'income' ? 'rotate(45deg)' : 'rotate(-45deg)'; icon.append(svg);
-  const text = create('span', undefined, 'calendar-event-copy'); text.append(create('strong', event.title), create('small', `${dateLabel(event.date)} · Estimated`));
-  const amount = create('span', undefined, 'calendar-event-value'); amount.append(create('strong', `${event.direction === 'inflow' ? '+' : '−'}${euro(event.amountCents)}`), create('small', event.cadence === 'yearly' ? 'Yearly' : 'Monthly'));
+  const text = create('span', undefined, 'calendar-event-copy'); text.append(create('strong', event.title), create('small', `${dateLabel(event.date)} · ${event.source === 'manual' ? 'Added by you' : 'Estimated'}`));
+  const amount = create('span', undefined, 'calendar-event-value'); amount.append(create('strong', `${event.direction === 'inflow' ? '+' : '−'}${euro(event.amountCents)}`), create('small', event.cadence === 'yearly' ? 'Yearly' : event.cadence === 'once' ? 'One-off' : 'Monthly'));
   button.append(icon, text, amount); button.addEventListener('click', () => onClick(button)); return button;
 }
 
 function openDay(day) {
-  const entries = eventsInRange(visibleEvents(data.events, visibility), day, day);
+  const entries = eventsInRange(visibleEvents(currentEvents(), visibility), day, day);
   const list = create('div', undefined, 'calendar-day-payments');
   const returnFocus = document.querySelector(`[data-calendar-date="${day}"]`);
-  if (!entries.length) list.append(create('p', 'No payments match the checked categories on this date. Irregular spending is not shown.', 'calendar-empty'));
+  if (!entries.length) list.append(create('p', 'No payments match the checked categories on this date. You can add your own reminder below.', 'calendar-empty'));
   for (const event of entries) list.append(eventButton(event, () => openEvent(event, returnFocus, () => openDay(day))));
+  const add = create('button', '+ Add event on this date', 'calendar-outline'); add.type = 'button'; add.addEventListener('click', () => openAdd(day, returnFocus)); list.append(add);
   showDialog(dateLabel(day, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), [list], returnFocus);
 }
 
 function openAllPayments() {
   const period = calendarPeriod(view, anchor);
-  const entries = eventsInRange(visibleEvents(data.events, visibility), period.start, period.end);
+  const entries = eventsInRange(visibleEvents(currentEvents(), visibility), period.start, period.end);
   const list = create('div', undefined, 'calendar-day-payments');
   for (const event of entries) list.append(eventButton(event, () => openEvent(event, $('calendar-all-payments'), openAllPayments)));
-  showDialog(`${entries.length} payments · ${$('calendar-month').textContent}`, [create('p', 'Estimated dates · selected categories', 'calendar-detail-note'), list], $('calendar-all-payments'));
+  showDialog(`${entries.length} payments · ${$('calendar-month').textContent}`, [create('p', 'Selected categories · personal reminders and estimated payments', 'calendar-detail-note'), list], $('calendar-all-payments'));
 }
 
 function openNotice(notice, button) {
@@ -129,7 +227,7 @@ function connectCalendar() {
     content.push(create('p', 'A private calendar connection is needed for live account data. This demo only exports its public sample calendars.'));
   } else {
     const feed = new URL('/api/calendar-feed', 'https://junction-money-ui.vercel.app'); feed.searchParams.set('source', activeSource);
-    content.push(create('p', `Connect “${data.label}” as a separate calendar. It includes all payment categories for this selected sample, regardless of the app checkboxes; balances and transaction IDs are not shared.`));
+    content.push(create('p', `Connect “${data.label}” as a separate calendar. This public sample feed uses the original automatic events. Your added and deleted reminders on this device are not synced to Google. All original categories are included regardless of filters; balances and transaction IDs are not shared.`));
     const google = create('a', 'Open Google Calendar', 'calendar-connect');
     const destination = new URL('https://calendar.google.com/calendar/u/0/r'); destination.searchParams.set('cid', feed.href);
     google.href = destination.href; google.target = '_blank'; google.rel = 'noopener noreferrer'; google.id = 'calendar-google-link'; content.push(google);
@@ -154,6 +252,10 @@ function canMove(offset) {
 function render() {
   if (!data) return;
   $('calendar-connect').disabled = busy;
+  $('calendar-add').disabled = busy || editsBlocked;
+  $('calendar-deleted').disabled = busy || editsBlocked;
+  $('calendar-deleted').textContent = `Deleted events (${deletedEvents(data, edits).length})`;
+  $('calendar-personal-note').hidden = !edits.items.length && !edits.removed.length;
   $('calendar-data-label').textContent = data.isIllustrative ? 'Demo household · fictional transactions' : data.sourceNotice;
   $('calendar-data-label').classList.toggle('is-demo', Boolean(data.isIllustrative));
   renderNotices();
@@ -179,12 +281,12 @@ function render() {
   const totals = data.monthSummaries?.[anchor.slice(0, 7)];
   summary.hidden = view !== 'month' || !totals;
   if (totals && view === 'month') {
-    for (const [label, value] of [['Scheduled in', euro(totals.incomeCents)], ['Scheduled out', euro(totals.outflowCents)]]) {
+    for (const [label, value] of [['Automatic scheduled in', euro(totals.incomeCents)], ['Automatic scheduled out', euro(totals.outflowCents)]]) {
       const item = create('div'); item.append(create('small', label), create('strong', value)); summary.append(item);
     }
-    summary.append(create('p', `${totals.paymentCount} payments · all categories · excludes irregular spending`));
+    summary.append(create('p', `${totals.paymentCount} automatic payments · excludes your calendar edits and irregular spending`));
   }
-  const shown = visibleEvents(data.events, visibility);
+  const shown = visibleEvents(currentEvents(), visibility);
   const events = eventsInRange(shown, period.start, period.end);
   const grid = $('calendar-grid'); grid.replaceChildren(); grid.dataset.view = view;
   page.querySelector('.calendar-weekdays').hidden = view === 'day';
@@ -237,7 +339,9 @@ async function load(source) {
     const result = validateCalendar(await response.json(), customers[source]);
     if (request !== controller) return;
     if (data) saveView();
-    data = result; activeSource = source;
+    data = result; activeSource = source; undoEdit = undefined; $('calendar-undo').hidden = true; $('calendar-edit-status').hidden = true;
+    try { edits = readEdits(localStorage, data.customerId); editsBlocked = false; }
+    catch { edits = emptyEdits(data.customerId); editsBlocked = true; editMessage('Your saved calendar edits could not be loaded. Try reloading or enabling browser storage. Existing saved entries have not been overwritten.', true); }
     ({ view, anchor, visibility } = restoreCalendarView(read(`${source}:view`), data.rangeStart, data.rangeEnd));
     remember('source', source); $('calendar-source').value = source;
     $('calendar-source-note').textContent = data.sourceNotice;
@@ -257,6 +361,22 @@ function changeDate(next) {
   anchor = clampDate(next); saveView(); render();
   $('calendar-options').open = false;
 }
+$('calendar-add').addEventListener('click', () => openAdd());
+$('calendar-deleted').addEventListener('click', openDeleted);
+$('calendar-undo').addEventListener('click', () => {
+  if (!undoEdit || busy) return;
+  try {
+    if (JSON.stringify(readEdits(localStorage, data.customerId)) !== undoEdit.expected) throw new Error('Changed in another tab');
+    writeEdits(localStorage, undoEdit.previous); edits = undoEdit.previous; undoEdit = undefined;
+    $('calendar-undo').hidden = true; render(); editMessage('Change undone.');
+  } catch { editMessage('Could not undo safely. Your calendar may have changed in another tab. Reload to see the latest events.', true); }
+});
+window.addEventListener('storage', event => {
+  if (data && (event.key === editsKey(data.customerId) || event.key === null)) {
+    try { edits = readEdits(localStorage, data.customerId); editsBlocked = false; undoEdit = undefined; $('calendar-undo').hidden = true; if (!$('calendar-event-form')) $('calendar-detail').close(); render(); editMessage('Calendar updated from another tab.'); }
+    catch { editsBlocked = true; render(); editMessage('Could not read calendar edits from another tab. Reload to try again.', true); }
+  }
+});
 $('calendar-connect').addEventListener('click', connectCalendar);
 $('calendar-all-payments').addEventListener('click', openAllPayments);
 $('calendar-source').addEventListener('change', (event) => load(event.target.value));
