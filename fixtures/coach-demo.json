@@ -7,15 +7,22 @@
     "savedCents": 15000,
     "targetDate": "2027-01-31"
   },
+  "longTermGoal": {
+    "label": "Future wealth",
+    "horizonYears": 10,
+    "risk": "Balanced",
+    "annualReturnAssumption": 0.06,
+    "investmentProvider": "S-Pankki funds"
+  },
   "periods": [
     { "month": "2026-11", "availableToSaveCents": 6000, "plannedDeliveryCents": 2000 },
     { "month": "2026-12", "availableToSaveCents": 3000, "plannedDeliveryCents": 2000 },
     { "month": "2027-01", "availableToSaveCents": 3000, "plannedDeliveryCents": 2000 }
   ],
   "deliveryHistory": [
-    { "id": "delivery-1", "date": "2026-10-21", "amountCents": 900 },
-    { "id": "delivery-2", "date": "2026-10-28", "amountCents": 1000 },
-    { "id": "delivery-3", "date": "2026-11-04", "amountCents": 1200 }
+    { "id": "delivery-1", "date": "2026-10-21", "merchant": "Everyday delivery", "amountCents": 900 },
+    { "id": "delivery-2", "date": "2026-10-28", "merchant": "Everyday delivery", "amountCents": 1000 },
+    { "id": "delivery-3", "date": "2026-11-04", "merchant": "Everyday delivery", "amountCents": 1200 }
   ],
   "scenarios": {
     "beforeExpense": {
@@ -24,7 +31,7 @@
     },
     "afterExpense": {
       "newExpenses": [
-        { "id": "expense-1", "date": "2026-11-14", "label": "Bike repair", "amountCents": 6000 }
+        { "id": "expense-1", "date": "2026-11-14", "label": "Bike repair", "merchant": "Bike repair shop", "amountCents": 6000 }
       ],
       "expected": {
         "projectedSavedCents": 21000,

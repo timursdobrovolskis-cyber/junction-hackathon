@@ -2,7 +2,9 @@
   "name": "before-planning-coach",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev:app": "npm --prefix ui-skeleton run dev",
     "dev:chat": "node scripts/serve_chat.mjs",
@@ -14,6 +16,19 @@
     "demo:api-coach": "node examples/financial-coach-demo.mjs",
     "check:coach-api": "node scripts/check_coach_api.mjs",
     "check:saved-plans": "node scripts/check_saved_plan_api.mjs",
-    "demo:saved-plans": "node examples/saved-plan-demo.mjs"
-  }
+    "demo:saved-plans": "node examples/saved-plan-demo.mjs",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "version": "0.1.0",
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest",
+    "tailwindcss": "latest",
+    "@tailwindcss/vite": "latest"
+  },
+  "devDependencies": {}
 }
