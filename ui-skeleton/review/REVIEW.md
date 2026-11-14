@@ -35,3 +35,7 @@ Short/long-term goals and Calendar now sit beside Home and Coach in the same iPh
 ## Account-backed coach and structured replies
 
 Added four compact suggestion cards, an Ideas toggle, a shared account header and structured response blocks with metrics, bullets and expandable evidence. Home and Coach now share CUST00005’s observed account snapshot; no live bank connection is claimed. Verified Home balance €6,466.14, bills €926.13, savings target €100, account-based payment replies and live structured Gemini output. Compact coach width and scroll width both measured 331px. 61 automated tests pass. Screenshots: 09-coach-suggestion-cards.jpg and 10-structured-account-answer.jpg.
+
+## Coach scrolling repair
+
+Replaced nested transcript scrolling with one full-height reading surface and a separate composer above navigation. Replies reveal their beginning without reopening the keyboard; readers who scroll away get a Read new reply button. Removed repeated scroll-to-bottom layout work. Verified standard/compact phone frames, expanded evidence to the bottom, multi-turn replies, reading position during a live Gemini request, reply shortcut, and Home/Goals/Calendar navigation. All 61 tests pass. Physical iOS keyboard behavior still needs device testing. Screenshot: 11-coach-single-scroll.jpg.

@@ -70,17 +70,22 @@
     </section>
 
     <section id="coach-page" class="page coach-page" aria-labelledby="coach-title" hidden>
+      <div id="coach-scroll" class="coach-scroll" tabindex="0" role="region" aria-label="Coach conversation and account details">
       <div class="coach-page-heading"><span class="coach-avatar" aria-hidden="true"><svg class="icon"><use href="#i-coach"/></svg></span><div><p class="coach-kicker">Your money, talked through</p><h1 id="coach-title">A little clarity.</h1></div></div>
       <div class="coach-account"><span class="account-dot" aria-hidden="true"></span><div><strong id="coach-account-label">Loading account…</strong><span id="coach-source" class="coach-source"></span></div><strong id="coach-account-balance"></strong></div>
       <details class="coach-account-details"><summary>Account and forecast details</summary><section class="coach-summary" aria-label="Selected account plan"><h2 id="coach-summary-title">Your account, in focus.</h2><div id="coach-facts" class="coach-facts"></div><p id="coach-explanation"></p><div id="coach-details"></div></section></details>
       <div id="coach-starters" class="coach-starters" aria-label="Things your coach can help with"></div>
       <details id="coach-draft" class="coach-draft" hidden><summary>Your draft <span id="draft-count"></span></summary><dl id="draft-items"></dl><p>Kept on this device. Your forecast hasn’t changed yet.</p><button type="button" id="clear-draft" class="inline-link">Clear draft</button></details>
       <div class="conversation-heading"><h2>Your conversation</h2><div class="conversation-tools"><button id="coach-more-ideas" type="button" aria-expanded="false" aria-controls="coach-starters" hidden>Ideas</button><button id="clear-chat" type="button">Clear chat</button></div></div>
-      <div id="chat-log" class="chat-log" tabindex="0" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation with your coach"></div>
+      <div id="chat-log" class="chat-log" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation with your coach"></div>
       <div id="coach-prompts" class="quick-prompts" aria-label="Suggested questions"></div>
+      <p class="chat-privacy">Messages are processed by Google Gemini. Goals and expenses stay in a draft on this device until their impact is checked.</p>
+      </div>
+      <div class="coach-composer">
+      <button id="coach-new-reply" type="button" class="new-reply" hidden>Read new reply ↓</button>
       <form id="chat-form" class="chat-form"><label for="chat-input">Ask your coach</label><div class="composer"><textarea id="chat-input" name="message" rows="2" maxlength="1200" placeholder="What’s on your mind?" required></textarea><button type="submit" id="chat-send" aria-label="Send message"><svg class="icon"><use href="#i-arrow"/></svg></button></div></form>
       <p id="chat-status" class="chat-status" role="status">Connecting to your coach…</p><p id="chat-error" class="form-error" role="alert" hidden></p><button type="button" id="chat-retry" class="inline-link" hidden>Try again</button>
-      <p class="chat-privacy">Messages are processed by Google Gemini. Goals and expenses stay in a draft on this device until their impact is checked.</p>
+      </div>
     </section>
     <section id="goals-page" class="page goals-page" aria-labelledby="goals-title" hidden>
       <div class="goals-heading"><p>MAKE SPACE FOR WHAT MATTERS</p><h1 id="goals-title">Your goals.</h1></div>

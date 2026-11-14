@@ -40,6 +40,7 @@ function navigate() {
   if (location.hash === '#main') return;
   const pages = ['home', 'goals', 'calendar', 'coach'];
   const current = pages.includes(location.hash.slice(1)) && $(location.hash.slice(1) + '-page') ? location.hash.slice(1) : 'home';
+  document.body.classList.toggle('coach-open', current === 'coach');
   pages.forEach(name => {
     if (!$(name + '-page')) return;
     const active = name === current;

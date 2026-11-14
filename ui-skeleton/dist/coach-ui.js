@@ -52,8 +52,30 @@
       }
       article.append(details);
     }
-    el('chat-log').append(article); el('chat-log').scrollTop = el('chat-log').scrollHeight; return article;
+    el('chat-log').append(article); return article;
   }
+  let latestReply;
+  const scroll = el('coach-scroll');
+  function revealMessage(article) {
+    if (!article || el('coach-page').hidden) return;
+    scroll.scrollTop += article.getBoundingClientRect().top - scroll.getBoundingClientRect().top - 12;
+    el('coach-new-reply').hidden = true;
+  }
+  function isVisible(article) {
+    const a = article.getBoundingClientRect(), viewport = scroll.getBoundingClientRect();
+    return !el('coach-page').hidden && a.bottom > viewport.top && a.top < viewport.bottom;
+  }
+  el('coach-new-reply').addEventListener('click', () => revealMessage(latestReply));
+  scroll.addEventListener('scroll', () => {
+    if (latestReply && isVisible(latestReply)) el('coach-new-reply').hidden = true;
+  }, { passive: true });
+  // Follow the visible viewport when a mobile keyboard changes its height.
+  function sizeCoach() {
+    document.documentElement.style.setProperty('--coach-viewport', `${window.visualViewport?.height ?? window.innerHeight}px`);
+  }
+  window.visualViewport?.addEventListener('resize', sizeCoach);
+  window.addEventListener('resize', sizeCoach);
+  sizeCoach();
   function renderPrompts() {
     const defaults = [];
     const prompts = session?.messages.at(-1)?.suggestions ?? defaults;
@@ -79,7 +101,7 @@
     el('draft-count').textContent = String(list.children.length);
   }
   function clearMessages() {
-    generation++; controller?.abort(); turns = []; el('chat-log').replaceChildren(); el('chat-input').value = '';
+    generation++; controller?.abort(); latestReply = undefined; el('coach-new-reply').hidden = true; scroll.scrollTop = 0; turns = []; el('chat-log').replaceChildren(); el('chat-input').value = '';
     el('chat-error').hidden = true; el('chat-retry').hidden = true;
     if (session) { session.messages = []; persist(); }
     setBusy(false); renderPrompts();
@@ -104,9 +126,13 @@
   }
   async function submit(message) {
     if (busy || !ready || !message.trim()) return;
+    el('chat-input').blur();
+    el('coach-new-reply').hidden = true;
     const requestGeneration = generation; const user = addMessage('user', message);
     const pending = addMessage('assistant', 'Thinking through your question…'); pending.classList.add('message-pending');
     el('chat-error').hidden = true; el('chat-retry').hidden = true; el('chat-status').textContent = 'Your coach is replying…'; setBusy(true);
+    revealMessage(pending);
+    let replyToReveal;
     const requestController = new AbortController(); controller = requestController;
     const timeout = setTimeout(() => requestController.abort(), 30000);
     try {
@@ -115,7 +141,10 @@
       const data = await response.json(); if (requestGeneration !== generation) return;
       if (!response.ok || typeof data.reply !== 'string') throw new Error(data.error || 'The coach couldn’t reply. Try again.');
       if (!data.session || data.session.customerId !== profileIds[scenario]) throw new Error('The reply did not match this profile. Please try again.');
-      pending.remove(); addMessage('assistant', data.reply, data.sources, data.presentation);
+      const followReply = isVisible(pending);
+      pending.remove(); latestReply = addMessage('assistant', data.reply, data.sources, data.presentation);
+      if (followReply) replyToReveal = latestReply;
+      else el('coach-new-reply').hidden = false;
       session = data.session; turns = session.messages.map(m => ({ role: m.role, text: m.text.slice(0, 2400) }));
       const stored = persist(); el('chat-input').value = ''; renderDraft();
       el('chat-status').textContent = stored ? (data.source === 'planning' ? 'Draft kept on this device · forecast unchanged' : 'Your coach has replied') : 'Keep this tab open—device storage is unavailable.';
@@ -124,7 +153,7 @@
       pending.remove(); user.remove(); el('chat-input').value = message;
       el('chat-error').textContent = error.name === 'AbortError' ? 'The reply took too long. Please try again.' : error.message;
       el('chat-error').hidden = false; el('chat-retry').hidden = false; el('chat-status').textContent = 'Your draft is unchanged';
-    } finally { clearTimeout(timeout); if (requestGeneration === generation) { setBusy(false); renderPrompts(); el('chat-input').focus({ preventScroll: true }); } }
+    } finally { clearTimeout(timeout); if (requestGeneration === generation) { setBusy(false); renderPrompts(); if (replyToReveal) revealMessage(replyToReveal); } }
   }
   el('chat-form').addEventListener('submit', event => { event.preventDefault(); submit(el('chat-input').value.trim()); });
   el('chat-input').addEventListener('keydown', event => { if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) { event.preventDefault(); el('chat-form').requestSubmit(); } });
