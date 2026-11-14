@@ -1,0 +1,77 @@
+{
+  "customerId": "CUST00005",
+  "accountIds": [
+    "ACC000005"
+  ],
+  "source": "bank_provided_synthetic_data",
+  "sourceRevision": "fbdecdedf1a1f49dd641c2e6b9f2b62d0dc0cc8f",
+  "coverage": {
+    "start": "2026-09-01",
+    "end": "2026-09-30"
+  },
+  "transactions": [
+    {
+      "id": "tx-49b3265d8e44e751-2794",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-01",
+      "category": "Housing",
+      "amountCents": -82332,
+      "type": "housing_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2795",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-15",
+      "category": "Salary",
+      "amountCents": 250516,
+      "type": "salary"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2796",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-16",
+      "category": "Invest Deposit",
+      "amountCents": -43890,
+      "type": "investment_deposit"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2797",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-17",
+      "category": "Utilities",
+      "amountCents": -1785,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2798",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-22",
+      "category": "Utilities",
+      "amountCents": -4357,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2799",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-22",
+      "category": "Utilities",
+      "amountCents": -4041,
+      "type": "utilities_payment"
+    },
+    {
+      "id": "tx-49b3265d8e44e751-2800",
+      "customerId": "CUST00005",
+      "accountId": "ACC000005",
+      "date": "2026-09-28",
+      "category": "Lifestyle",
+      "amountCents": -128419,
+      "type": "purchase"
+    }
+  ]
+}

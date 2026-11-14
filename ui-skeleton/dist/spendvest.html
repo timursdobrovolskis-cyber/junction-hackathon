@@ -12,10 +12,12 @@
   <link rel="stylesheet" href="spendvest.css">
   <link rel="stylesheet" href="calendar.css">
   <link rel="stylesheet" href="goals.css">
+  <link rel="stylesheet" href="budget.css">
   <script type="module" src="calendar-ui.mjs"></script>
   <script type="module" src="goals-ui.mjs"></script>
   <script src="app.js" defer></script>
   <script src="coach-ui.js" defer></script>
+  <script type="module" src="budget-ui.mjs"></script>
 </head>
 <body class="vest-theme">
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -48,6 +50,15 @@
         <div class="card-bottom"><span>Last observed balance · not a spending limit.</span><span>EUR</span></div>
       </div>
       <button class="primary-button purchase-trigger" id="open-purchase">Check a purchase<svg class="icon"><use href="#i-arrow"/></svg></button>
+      <section class="home-budget" aria-labelledby="home-budget-title">
+        <div class="budget-section-heading"><h2 id="home-budget-title">Your budget</h2><a href="#budget">View all <span aria-hidden="true">↗</span></a></div>
+        <a class="home-budget-overview" href="#budget" aria-label="Open your category budget">
+          <div><p class="budget-eyebrow">1–30 OCTOBER</p><strong id="home-budget-total">—</strong><p>Planned across your categories</p></div>
+          <div id="home-budget-ring" class="budget-ring small-ring" aria-hidden="true"><span>Plan</span></div>
+        </a>
+        <div id="home-budget-categories" class="home-budget-categories"></div>
+        <p id="home-budget-note" class="budget-caption">Loading your category limits…</p>
+      </section>
       <div class="set-aside" aria-label="Money set aside">
         <div><span class="tile-label"><svg class="icon small"><use href="#i-calendar"/></svg>Upcoming bills</span><strong>—</strong><small>Housing and utilities forecast</small></div>
         <div><span class="tile-label"><svg class="icon small"><use href="#i-check"/></svg>Planned savings</span><strong>—</strong><small>Target · needs confirmation</small></div>
@@ -85,6 +96,25 @@
       <button id="coach-new-reply" type="button" class="new-reply" hidden>Read new reply ↓</button>
       <form id="chat-form" class="chat-form"><label for="chat-input">Ask your coach</label><div class="composer"><textarea id="chat-input" name="message" rows="2" maxlength="1200" placeholder="What’s on your mind?" required></textarea><button type="submit" id="chat-send" aria-label="Send message"><svg class="icon"><use href="#i-arrow"/></svg></button></div></form>
       <p id="chat-status" class="chat-status" role="status">Connecting to your coach…</p><p id="chat-error" class="form-error" role="alert" hidden></p><button type="button" id="chat-retry" class="inline-link" hidden>Try again</button>
+      </div>
+    </section>
+    <section id="budget-page" class="page budget-page" aria-labelledby="budget-title" hidden>
+      <a href="#home" class="budget-back">← Home</a>
+      <div class="budget-heading"><h1 id="budget-title">Your budget.</h1><p>Know where it goes. Plan what comes next.</p></div>
+      <div class="budget-periods" role="group" aria-label="Budget period"><button type="button" data-budget-period="plan" aria-pressed="true">October plan</button><button type="button" data-budget-period="history" aria-pressed="false">September spent</button></div>
+      <p id="budget-loading" role="status">Loading your budget…</p>
+      <button id="budget-retry" class="inline-link" type="button" hidden>Try again</button>
+      <div id="budget-content" hidden>
+        <section class="budget-overview" aria-label="Spending overview">
+          <div id="budget-ring" class="budget-ring" role="img"><span id="budget-ring-label"></span></div>
+          <div class="budget-overview-copy"><p id="budget-total-label"></p><strong id="budget-total"></strong><p id="budget-dates"></p><span id="budget-badge" class="budget-badge"></span></div>
+        </section>
+        <div id="budget-totals" class="budget-totals"></div>
+        <p id="budget-insight" class="budget-insight"></p>
+        <div class="budget-section-heading"><h2 id="budget-list-title">By category</h2><span id="budget-list-caption"></span></div>
+        <div id="budget-categories" class="budget-categories"></div>
+        <details class="budget-method"><summary>How this is worked out</summary><p id="budget-method-copy"></p><p id="budget-method-period"></p><p id="budget-method-assumptions"></p></details>
+        <button type="button" class="budget-coach-link" data-go-coach>Talk through my budget <svg class="icon"><use href="#i-arrow"/></svg></button>
       </div>
     </section>
     <section id="goals-page" class="page goals-page" aria-labelledby="goals-title" hidden>
