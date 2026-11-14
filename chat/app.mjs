@@ -27,7 +27,16 @@ function renderDraft() {
   if (goal) item('Savings goal', money(goal.amountCents), goal.period === 'monthly' ? 'Each month · Requested target' : 'In total · Requested target');
   if (bufferCents !== null) item('Cash buffer', money(bufferCents), 'Your preference');
   if (priorities.length) item('Things that matter', priorities.map((p) => p.name).join(', '), 'To protect when comparing options');
-  for (const expense of expenses) item(expense.label, money(expense.amountCents), `${expense.date} · ${expense.inclusion === 'unsure' ? 'Needs review' : expense.inclusion === 'additional' ? 'Extra cost' : 'Already included'}`);
+  for (const expense of expenses) {
+    item(expense.label, money(expense.amountCents), `${expense.date} · ${expense.inclusion === 'unsure' ? 'Needs review' : expense.inclusion === 'additional' ? 'Extra cost' : 'Already included'}`);
+    const actions = node('div', undefined, 'expense-actions');
+    for (const action of ['Edit', 'Remove']) {
+      const button = node('button', action, 'quiet'); button.type = 'button'; button.disabled = busy;
+      button.setAttribute('aria-label', `${action} ${expense.label} on ${expense.date}`);
+      button.addEventListener('click', () => send(`${action} ${expense.id}`)); actions.append(button);
+    }
+    draft.lastElementChild.append(actions);
+  }
   if (!goal && bufferCents === null && !priorities.length && !expenses.length) draft.append(node('p', 'Your goals and priorities will appear here as we talk. Start with whatever is on your mind.', 'draft-empty'));
 }
 function render() {
@@ -35,8 +44,17 @@ function render() {
   // Append only new bubbles so screen readers do not re-announce the transcript.
   if (messages.children.length > session.messages.length) messages.replaceChildren();
   for (const message of session.messages.slice(messages.children.length)) {
-    const bubble = node('p', undefined, `message ${message.role}`);
+    const bubble = node('div', undefined, `message ${message.role}`);
     bubble.append(node('span', message.role === 'user' ? 'You' : 'Coach', 'message-label'), document.createTextNode(message.text));
+    if (message.sources?.length) {
+      const sources = node('details', undefined, 'sources');
+      sources.append(node('summary', 'General guidance · Sources'));
+      for (const source of message.sources) {
+        const link = node('a', source.title); link.href = source.url; link.target = '_blank'; link.rel = 'noopener noreferrer'; sources.append(link);
+      }
+      sources.append(node('small', 'UK educational sources; this is not a check of your finances.'));
+      bubble.append(sources);
+    }
     messages.append(bubble);
   }
   el('suggestions').replaceChildren();

@@ -17,6 +17,9 @@ For a chat interface you can try without an API, run `npm run dev:chat` and open
 http://localhost:3000. The [chat guide](docs/chat-coach.md) covers conversations,
 browser-local drafts, and the handoff for a future conversational API. This is
 a clearly labelled rule-based demo; it does not calculate affordability.
+The [conversation upgrade](docs/conversation-research.md) adds contextual
+corrections, educational answers with sources, remembered priorities, and
+expense editing. Try “save €400 monthly but don’t cut my gym”, then “actually €300”.
 
 The [saved-plan guide](docs/saved-plans.md) adds durable expenses/preferences, payment matching, and two engine-calculated recovery choices. Run `npm run demo:saved-plans` with the local engine running, or `npm run check:saved-plans` for the automated save/restart/replay walkthrough.
 

@@ -19,12 +19,21 @@ saved-plan API, and `src/coach.mjs` are unchanged.
 5. Choose `Extra cost`, then `Add expense`.
 6. Ask `Show my draft`, reload, and check that the conversation and draft remain.
 
+For the upgraded flow, try `I want to save €400 monthly but don’t cut my gym`,
+then `actually, €300`, then `sounds good`. Ask `What is an emergency fund?` or
+`My income changes every month`. You can interrupt a pending goal to ask a
+question and then continue without restarting. See the
+[research and conversation examples](conversation-research.md) for sources and
+the boundaries of this rule-based upgrade.
+
 You can also set a buffer, ask what a buffer means, explore spending categories,
 cancel a pending change, or replace a goal. Only explicit confirmation adds goals,
 buffers, and expenses to the draft. Stated priorities are remembered immediately.
 An identical label/amount/date expense is not appended twice. Unknown messages
-do not mutate the draft. Dates are requested explicitly instead of guessing
-what “next Friday” means. Euro amounts accept a decimal point or comma with up
+do not mutate the draft. Tomorrow and weekdays resolve to an exact displayed
+date for confirmation; a weekday means its next future occurrence relative to
+the conversation date. Ambiguous dates such as “next week” still need clarification.
+Euro amounts accept a decimal point or comma with up
 to two digits; thousands separators and multiple amounts require clarification.
 Dollar/pound inputs ask for explicit euro confirmation; no conversion occurs.
 
@@ -39,6 +48,9 @@ authenticated customer session or the shared bank-data fixture.
 
 - `src/chat-coach.mjs`: pure `createChatSession`, `respondToChat`, validation,
   customer-scoped storage helpers, and an async `demoChatProvider.reply` adapter.
+- `src/chat-knowledge.mjs`: original, curated educational answers and approved
+  source links. This is used by the demo adapter without external API calls.
+- `fixtures/chat-conversations.json`: original fictional evaluation dialogues.
 - `chat/app.mjs`: transcript, quick replies, editable message box, draft panel,
   pending/error handling, persistence, reset, and safe text rendering.
 - `chat/index.html` and `chat/style.css`: responsive demo shell, keyboard support,
@@ -69,7 +81,9 @@ duplicate expenses, customer isolation, restoration and unavailable storage.
 `npm test` includes the existing coach and financial integration unit tests.
 
 The current demo does not answer arbitrary questions, retrieve actual spending,
-calculate forecasts, interpret every phrasing/date, or modify individual recorded
-expenses. Use Start over to clear the demo draft. Do not describe this bounded
+calculate forecasts, or interpret every phrasing/date. Use Edit/Remove in the
+draft panel, or say `Change repair to €250` / `Remove repair`; ambiguous records
+ask you to select an ID. These operations change only the local draft. Use
+Start over to clear the demo draft. Do not describe this bounded
 conversation prototype as the finished AI coach. LLM interpretation and engine
 integration are the next connection steps when those APIs are ready.

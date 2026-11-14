@@ -19,7 +19,7 @@ Build a transparent baseline first. For each stage: implement it, check represen
 
 ### Where to find the work
 
-- [Conversational coach prototype](docs/chat-coach.md): run `npm run dev:chat` for a responsive chat UI with multi-turn goals, expenses, priorities, confirmations, and browser-local memory. It uses a bounded demo reply adapter; LLM replies and live engine connections remain pending.
+- [Conversational coach prototype](docs/chat-coach.md): run `npm run dev:chat` for a responsive chat UI with multi-turn goals, expenses, priorities, confirmations, and browser-local memory. The [conversation upgrade](docs/conversation-research.md) adds contextual corrections, source-linked education, question detours, date phrases, and confirmed expense edits/removal, with ten original evaluation conversations. It uses a bounded demo reply adapter; LLM replies and live engine connections remain pending.
 
 - [Combined financial engine](data/FINANCIAL_ENGINE.md): one CLI/API call for forecast, savings, budgets, and edit previews; original engine checks remain passing alongside saved-plan coverage.
 - [Spending experiment](data/SPENDING_MODEL_EXPERIMENT.md): one bounded v3 trial worsened reserved-customer daily error by 1.53%; v2 remains the supported default.

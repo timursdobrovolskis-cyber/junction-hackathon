@@ -6,6 +6,7 @@ const assets = new Map([
   ['/', ['chat/index.html', 'text/html']], ['/chat/', ['chat/index.html', 'text/html']],
   ['/chat/style.css', ['chat/style.css', 'text/css']], ['/chat/app.mjs', ['chat/app.mjs', 'text/javascript']],
   ['/src/chat-coach.mjs', ['src/chat-coach.mjs', 'text/javascript']],
+  ['/src/chat-knowledge.mjs', ['src/chat-knowledge.mjs', 'text/javascript']],
 ]);
 const port = Number(process.env.CHAT_PORT ?? 3000);
 if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('CHAT_PORT must be a valid port');
