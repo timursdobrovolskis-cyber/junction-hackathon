@@ -37,10 +37,10 @@
     article.append(label);
     const node = (tag, text, cls) => { const n=document.createElement(tag); n.textContent=text; if(cls)n.className=cls; return n; };
     if (role === 'assistant' && presentation && typeof presentation.summary === 'string') {
-      if(presentation.title)article.append(node('h3',presentation.title,'reply-title'));
+      if(presentation.title&&!presentation.summary)article.append(node('h3',presentation.title,'reply-title'));
       article.append(node('p',presentation.summary,'reply-summary'));
       if(Array.isArray(presentation.metrics)&&presentation.metrics.length){const grid=node('div','','reply-metrics');for(const m of presentation.metrics.slice(0,3)){const cell=node('div','');cell.append(node('span',m.label),node('strong',m.value));grid.append(cell);}article.append(grid);}
-      if(Array.isArray(presentation.bullets)&&presentation.bullets.length){const list=node('ul','','reply-points');for(const t of presentation.bullets.slice(0,3))list.append(node('li',t));article.append(list);}
+      if(Array.isArray(presentation.bullets)&&presentation.bullets.length){const [first,...rest]=presentation.bullets.slice(0,3);article.append(node('p',first,'reply-point'));if(rest.length){const more=node('details','','reply-more');more.append(node('summary','More'));const list=node('ul','','reply-points');for(const t of rest)list.append(node('li',t));more.append(list);article.append(more);}}
       if(presentation.nextQuestion)article.append(node('p',presentation.nextQuestion,'reply-question'));
       if(Array.isArray(presentation.evidence)&&presentation.evidence.length){const details=node('details','','reply-evidence');details.append(node('summary','View the basis'));for(const e of presentation.evidence.slice(0,12)){const row=node('div','','reply-evidence-row');row.append(node('span',e.label),node('strong',e.value));if(e.id)row.append(node('small',e.id));details.append(row);}article.append(details);}
     } else article.append(node('p',text));

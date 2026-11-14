@@ -57,7 +57,7 @@ export function accountAnswer(message) {
     return {
       title:'',summary:suggestedSavingsCents == null ? target : `The October forecast suggests saving ${money(suggestedSavingsCents)} once.`,
       bullets:suggestedSavingsCents == null && conditionalCapacityCents != null
-        ? [`The forecast estimates up to ${money(conditionalCapacityCents)} in one-time savings while keeping a ${money(bufferCents)} cash buffer. Confirm upcoming costs before raising your target.`] : [],
+        ? [`Up to ${money(conditionalCapacityCents)} one-time, keeping a ${money(bufferCents)} buffer. Confirm upcoming costs first.`] : [],
       nextQuestion:'',suggestions:['I have an expense coming up'],
     };
   }
