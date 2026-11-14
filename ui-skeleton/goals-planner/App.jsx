@@ -170,16 +170,22 @@ function LongTermGoal({ goal, updateGoal, mode }) {
 function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort, restoreShort, updateLong, mode, openEvidence, previewId, setPreviewId }) {
   const [adding, setAdding] = useState(false);
   const [showAchieved, setShowAchieved] = useState(false);
+  const [horizon, setHorizon] = useState(() => { try { return sessionStorage.getItem('goals-horizon') || 'short'; } catch { return 'short'; } });
+  const chooseHorizon = (value) => { setHorizon(value); try { sessionStorage.setItem('goals-horizon', value); } catch { /* optional */ } };
   const active = goals.shortTermGoals.filter(goal => !goal.complete);
   const achieved = goals.shortTermGoals.filter(goal => goal.complete);
   const shortMonthlyCents = active.reduce((sum, goal) => sum + Math.ceil(Math.max(0, goal.targetCents - goal.savedCents) / monthsUntil(goal.targetDate)), 0);
   const plannedMonthlyCents = shortMonthlyCents + goals.longTerm.monthlyCents;
   const safeMonthlyCents = safeSurplusCents(mode);
   return <div className="goal-sections">
-    <div className="goals-intro playful-intro"><strong>Two horizons, one plan ✨</strong><p>Stack as many short-term goals as you like. When one is fully saved, tick it off and it moves to your achievements.</p><span><Check size={14}/> Your goals are saved on this device for Coach</span></div>
+    <div className="horizon-switch" role="tablist" aria-label="Goal horizon">
+      <button type="button" role="tab" aria-selected={horizon === 'short'} className={horizon === 'short' ? 'active' : ''} onClick={() => chooseHorizon('short')}><strong>Short term</strong><small>Weeks to 12 months</small></button>
+      <button type="button" role="tab" aria-selected={horizon === 'long'} className={horizon === 'long' ? 'active' : ''} onClick={() => chooseHorizon('long')}><strong>Long term</strong><small>2+ years</small></button>
+    </div>
     <div className="goal-budget-strip"><div><small>GOALS’ MONTHLY PLAN</small><strong>{formatEuro(plannedMonthlyCents)}</strong></div><span>Demo safe surplus<br/><b>{formatEuro(safeMonthlyCents)} / month</b></span></div>
     {plannedMonthlyCents > safeMonthlyCents && <div className="surplus-warning" role="status"><Sparkles size={16}/><span>These goal amounts add up to more than the current demo surplus. Adjust the amounts or dates to keep your everyday cash buffer in mind.</span></div>}
-    <section className="short-goals-list"><div className="list-section-heading"><div><div className="eyebrow">SHORT-TERM · WEEKS TO 12 MONTHS</div><h2>Your goals, your way</h2></div><span className="goals-count">{active.length} active{achieved.length ? ` · ${achieved.length} done` : ''}</span></div>
+    {horizon === 'short' && <section className="short-goals-list" role="tabpanel"><div className="list-section-heading"><div><h2>Your goals, your way</h2></div><span className="goals-count">{active.length} active{achieved.length ? ` · ${achieved.length} done` : ''}</span></div>
+      <p className="horizon-hint">Write down anything you want. Stack as many as you like — when one is fully saved, tick it off.</p>
       {active.length === 0 && !adding && <div className="card goals-empty"><strong>No active goals</strong><p>Write down anything you want to save for — a trip, a gadget, a gift.</p></div>}
       {active.map((goal) => {
         const result = makePlanResult(mode, goal);
@@ -193,8 +199,8 @@ function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort,
         <button type="button" className="achieved-toggle" aria-expanded={showAchieved} onClick={() => setShowAchieved(!showAchieved)}>🏆 Achieved ({achieved.length}) <ChevronRight size={15}/></button>
         {showAchieved && <ul>{achieved.map(goal => <li key={goal.id}><Check size={14}/><span>{goal.label || 'Goal'} · {formatEuro(goal.targetCents)}</span><button type="button" className="text-button" onClick={() => restoreShort(goal.id)}>Undo</button></li>)}</ul>}
       </div>}
-    </section>
-    <LongTermGoal goal={goals.longTerm} updateGoal={updateLong} mode={mode}/>
+    </section>}
+    {horizon === 'long' && <div role="tabpanel"><LongTermGoal goal={goals.longTerm} updateGoal={updateLong} mode={mode}/></div>}
   </div>;
 }
 

@@ -217,3 +217,14 @@ button:focus-visible, a:focus-visible { outline: 3px solid #82ddb0; outline-offs
 .achieved-goals ul { margin:0; padding:0; list-style:none; }
 .achieved-goals li { display:flex; align-items:center; gap:6px; padding:6px 0; font-size:11px; color:#60786a; text-decoration:line-through; }
 .achieved-goals li span { flex:1; } .achieved-goals li .text-button { text-decoration:none; }
+.horizon-switch { position:sticky; top:0; z-index:5; display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; border-radius:16px; background:#e7efe9; }
+.horizon-switch button { display:flex; flex-direction:column; align-items:center; gap:1px; padding:9px 6px; border:0; border-radius:12px; color:#4b6555; background:transparent; transition:background .2s ease, color .2s ease, box-shadow .2s ease; }
+.horizon-switch button strong { font:800 13px 'Plus Jakarta Sans',sans-serif; }
+.horizon-switch button small { font-size:9px; opacity:.75; }
+.horizon-switch button.active { color:#fff; background:#007841; box-shadow:0 4px 12px rgba(0,120,65,.25); }
+.horizon-hint { margin:2px 2px 0; font-size:11px; color:#60786a; }
+.account-product-links { display:flex; flex-direction:column; gap:6px; margin:8px 0 12px; }
+.account-product-links a { display:grid; grid-template-columns:1fr auto; column-gap:8px; align-items:center; padding:10px 12px; border:1px solid #dce9df; border-radius:12px; color:#18221c; background:#f7fcf7; text-decoration:none; }
+.account-product-links strong { font-size:12px; font-weight:800; }
+.account-product-links span { grid-column:1; font-size:10px; color:#60786a; }
+.account-product-links svg { grid-column:2; grid-row:1 / span 2; color:#007841; }
