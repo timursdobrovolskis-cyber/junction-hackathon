@@ -2,9 +2,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { ArrowDownLeft, ArrowRight, Bell, Check, ChevronRight, ExternalLink, House, Leaf, Menu, MessageCircle, PiggyBank, ShieldCheck, Sparkles, X } from 'lucide-react';
 import fixture from './coach-demo.json';
 import { calculateGoalPlan } from './coach.mjs';
+import { GoalArt, QUICK_PICKS, themeFor } from './GoalArt.jsx';
 
 const STORAGE_KEY = 'smobiili-goals-v1';
-const formatEuro = (cents) => `€${(cents / 100).toFixed(cents % 100 === 0 ? 0 : 2)}`;
+const formatEuro = (cents) => '€' + (cents / 100).toLocaleString('en-IE', { minimumFractionDigits: cents % 100 === 0 ? 0 : 2, maximumFractionDigits: 2 });
 const formatDate = (date) => new Intl.DateTimeFormat('fi-FI', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(`${date}T12:00:00`));
 const formatMonth = (month) => new Intl.DateTimeFormat('en', { month: 'short' }).format(new Date(`${month}-01T12:00:00`));
 const dateLabel = new Intl.DateTimeFormat('en', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(`${fixture.asOf}T12:00:00`));
@@ -52,48 +53,52 @@ function GoalProgress({ progress, label }) {
   return <div className="progress-ring playful-ring" style={{ '--progress': `${progress}%` }}><div className="ring-inner"><span className="ring-check"><PiggyBank size={16} /></span><span className="ring-caption">SAVING FOR</span><strong>{label || 'Your goal'}</strong></div></div>;
 }
 
-function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, completeGoal, result, baseline, mode, onEvidence, preview, setPreview }) {
-  const [editing, setEditing] = useState(!goal.label);
-  const [showDetails, setShowDetails] = useState(false);
+const shortDate = (date) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(`${date}T12:00:00`));
+
+function ShortTermGoal({ goal, horizon = 'short', updateGoal, removeGoal, completeGoal }) {
+  const [editing, setEditing] = useState(false);
   const [deposit, setDeposit] = useState('');
   const isFunded = goal.savedCents >= goal.targetCents;
   const progress = Math.max(0, Math.min(100, Math.round(goal.savedCents / Math.max(1, goal.targetCents) * 100)));
   const remainingCents = Math.max(0, goal.targetCents - goal.savedCents);
-  const neededMonthly = Math.ceil(remainingCents / monthsUntil(goal.targetDate));
-  const recovered = preview && result.recoveryOption;
+  const months = monthsUntil(goal.targetDate);
+  const neededMonthly = Math.ceil(remainingCents / months);
+  const theme = themeFor(goal.label);
   const addDeposit = (event) => {
     event.preventDefault();
     const cents = euroToCents(deposit);
     if (cents > 0) updateGoal({ savedCents: goal.savedCents + cents });
     setDeposit('');
   };
-  return <section className={`card goal-card short-goal-card compact-goal ${isFunded ? 'is-funded' : ''}`}>
-    <div className="goal-section-heading"><span className="goal-emoji">{isFunded ? '🎉' : '🌱'}</span><div><div className="eyebrow">BY {formatDate(goal.targetDate).toUpperCase()}</div><h2>{goal.label || 'New goal'}</h2></div><button className="goal-remove" onClick={removeGoal} aria-label={`Delete ${goal.label || 'goal'}`}><X size={17}/></button></div>
-    <div className="stack-progress" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress} aria-label={`${goal.label || 'Goal'} progress`}><span style={{ width: `${progress}%` }}/></div>
-    <div className="stack-amounts"><strong>{formatEuro(goal.savedCents)}</strong><span>of {formatEuro(goal.targetCents)} · {progress}%</span></div>
-    {isFunded
-      ? <button type="button" className="tick-off-button" onClick={completeGoal}><Check size={16}/> You made it — tick it off</button>
-      : <>
-          <div className="contribution-line"><span>{formatEuro(remainingCents)} to go</span><strong>{formatEuro(neededMonthly)} / month · {formatEuro(Math.ceil(neededMonthly / 4))} / week</strong></div>
-          <form className="deposit-row" onSubmit={addDeposit}><input inputMode="decimal" type="number" min="0" step="0.01" value={deposit} onChange={(event) => setDeposit(event.target.value)} placeholder="Add saved €" aria-label={`Add money saved toward ${goal.label || 'goal'}`}/><button type="submit" disabled={!euroToCents(deposit)}>Add</button></form>
-        </>}
-    <div className="goal-toggles"><button type="button" className="text-button" aria-expanded={editing} onClick={() => setEditing(!editing)}>{editing ? 'Done editing' : 'Edit goal'}</button>{horizon === 'short' && <button type="button" className="text-button" aria-expanded={showDetails} onClick={() => setShowDetails(!showDetails)}>{showDetails ? 'Hide plan details' : 'Plan details'} <ChevronRight size={15}/></button>}</div>
-    {editing && <div className="goal-edit-grid">
-      <label className="field-label">What are you saving for?<input value={goal.label} maxLength={32} onChange={(event) => updateGoal({ label: event.target.value })} placeholder="e.g. A weekend trip" /></label>
-      <div className="goal-field-row">
-        <label className="field-label">Target amount<input type="number" min="1" step="0.01" value={(goal.targetCents / 100).toFixed(2)} onChange={(event) => updateGoal({ targetCents: euroToCents(event.target.value) })} /></label>
-        <label className="field-label">Saved so far<input type="number" min="0" step="0.01" value={(goal.savedCents / 100).toFixed(2)} onChange={(event) => updateGoal({ savedCents: euroToCents(event.target.value) })} /></label>
-      </div>
-      <label className="field-label">When would you like it?<input type="date" min={fixture.asOf} max={HORIZONS[horizon].max} value={goal.targetDate} onChange={(event) => event.target.value && updateGoal({ targetDate: event.target.value })} /></label>
-    </div>}
-    {horizon === 'short' && showDetails && <div className="goal-details">
-      <div className="goal-preview-row"><div className="goal-numbers"><span className="eyebrow">DEMO CASH-FLOW PREVIEW</span><div className="projection">{formatEuro(recovered ? result.recoveryOption.projectedSavedIfFollowedCents : result.projectedSavedCents)}</div><div className="goal-target">projected toward your {formatEuro(goal.targetCents)} goal</div></div></div>
-      <div className={`insight ${mode === 'afterExpense' ? 'alert-insight' : ''}`}><span className="insight-icon">{mode === 'afterExpense' ? <Sparkles size={18} /> : <Leaf size={18} />}</span><p>{mode === 'afterExpense' ? <>The unexpected €60 expense brings this preview from <strong>{formatEuro(baseline.projectedSavedCents)}</strong> to <strong>{formatEuro(result.projectedSavedCents)}</strong>. You can try trimming three €10 delivery purchases to recover <strong>€30</strong>.</> : <>The current cash-flow preview reaches <strong>{formatEuro(result.projectedSavedCents)}</strong>. Keep adjusting your goal and timing to find a plan that feels right.</>}</p></div>
-      <div className="card-actions">{result.recoveryOption && <button className={`primary-button ${recovered ? 'active-preview' : ''}`} aria-pressed={Boolean(recovered)} onClick={() => setPreview(recovered ? null : goal.id)}>{recovered ? <><Check size={18} /> Recovery preview on</> : <>Try recovery idea <ArrowRight size={18} /></>}</button>}<button className="text-button" onClick={onEvidence}>Inspect Evidence <ChevronRight size={17} /></button></div>
-      {recovered && <div className="preview-note" role="status"><span className="preview-dot" /> Preview only: {result.recoveryOption.months.length} monthly delivery trims could add {formatEuro(result.recoveryOption.estimatedSavingsCents)} to the projection. No money moves.</div>}
-      <div className="safety-check"><ShieldCheck size={17}/><span><strong>Daily safety buffer check</strong><br/>A €500 floor is illustrative. This demo has no daily balance feed; confirm your live cash balance before saving.</span></div>
-    </div>}
-  </section>;
+  const startYear = Number(fixture.asOf.slice(0, 4)); const endYear = Number(goal.targetDate.slice(0, 4));
+  return <article className={`g2-card g2-${horizon} ${isFunded ? 'g2-funded' : ''}`}>
+    <div className="g2-band">
+      <div className="g2-band-copy"><span className="g2-when">{horizon === 'long' ? `${months >= 24 ? `${Math.round(months / 12)} years` : `${months} months`} · by ${new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' }).format(new Date(`${goal.targetDate}T12:00:00`))}` : `By ${shortDate(goal.targetDate)}`}</span>{isFunded && <span className="g2-badge"><Check size={12}/> Fully saved</span>}</div>
+      <GoalArt theme={theme}/>
+      <button className="g2-delete" onClick={removeGoal} aria-label={`Delete ${goal.label || 'goal'}`}><X size={15}/></button>
+    </div>
+    <div className="g2-body">
+      <h3>{goal.label || 'New goal'}</h3>
+      <div className="g2-amounts"><strong>{formatEuro(goal.savedCents)}</strong><span>of {formatEuro(goal.targetCents)}</span><em>{progress}%</em></div>
+      <div className="g2-track" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress} aria-label={`${goal.label || 'Goal'} progress`}><span style={{ width: `${progress}%` }}/><i style={{ left: '25%' }}/><i style={{ left: '50%' }}/><i style={{ left: '75%' }}/></div>
+      {horizon === 'long' && <div className="g2-years"><span>{startYear}</span><span>{endYear}</span></div>}
+      {isFunded
+        ? <button type="button" className="g2-tick" onClick={completeGoal}><Check size={16}/> Tick it off</button>
+        : <>
+            <dl className="g2-stats"><div><dt>Monthly</dt><dd>{formatEuro(neededMonthly)}</dd></div><div><dt>Weekly</dt><dd>{formatEuro(Math.ceil(neededMonthly / 4))}</dd></div><div><dt>To go</dt><dd>{formatEuro(remainingCents)}</dd></div></dl>
+            <form className="g2-deposit" onSubmit={addDeposit}><input inputMode="decimal" type="number" min="0" step="0.01" value={deposit} onChange={(event) => setDeposit(event.target.value)} placeholder="Add money saved, €" aria-label={`Add money saved toward ${goal.label || 'goal'}`}/><button type="submit" disabled={!euroToCents(deposit)}>Add</button></form>
+          </>}
+      <button type="button" className="g2-edit-toggle" aria-expanded={editing} onClick={() => setEditing(!editing)}>{editing ? 'Done' : 'Edit goal'}</button>
+      {editing && <div className="g2-edit">
+        <label>Name<input value={goal.label} maxLength={32} onChange={(event) => updateGoal({ label: event.target.value })}/></label>
+        <div className="g2-row">
+          <label>Target €<input type="number" min="1" step="0.01" value={(goal.targetCents / 100).toFixed(2)} onChange={(event) => updateGoal({ targetCents: euroToCents(event.target.value) })}/></label>
+          <label>Saved €<input type="number" min="0" step="0.01" value={(goal.savedCents / 100).toFixed(2)} onChange={(event) => updateGoal({ savedCents: euroToCents(event.target.value) })}/></label>
+        </div>
+        <label>Date<input type="date" min={fixture.asOf} max={HORIZONS[horizon].max} value={goal.targetDate} onChange={(event) => event.target.value && updateGoal({ targetDate: event.target.value })}/></label>
+      </div>}
+    </div>
+  </article>;
 }
 
 function NewGoalForm({ horizon, onAdd, onCancel }) {
@@ -106,69 +111,19 @@ function NewGoalForm({ horizon, onAdd, onCancel }) {
     if (!label.trim() || targetCents <= 0) return;
     onAdd({ label: label.trim(), targetCents, targetDate: date, horizon });
   };
-  return <form className="card new-goal-form" onSubmit={submit}>
-    <div className="eyebrow">NEW {horizon === 'long' ? 'LONG-TERM' : 'SHORT-TERM'} GOAL</div>
-    <label className="field-label">What do you want?<input autoFocus value={label} maxLength={32} onChange={(event) => setLabel(event.target.value)} placeholder={HORIZONS[horizon].placeholder}/></label>
-    <div className="goal-field-row">
-      <label className="field-label">How much (€)?<input inputMode="decimal" type="number" min="1" step="0.01" value={amount} onChange={(event) => setAmount(event.target.value)} placeholder="300"/></label>
-      <label className="field-label">By when?<input type="date" min={fixture.asOf} max={HORIZONS[horizon].max} value={date} onChange={(event) => event.target.value && setDate(event.target.value)}/></label>
-    </div>
-    <div className="new-goal-actions"><button type="button" className="text-button" onClick={onCancel}>Cancel</button><button type="submit" className="primary-button" disabled={!label.trim() || targetCents <= 0}>Add goal <ArrowRight size={16}/></button></div>
-  </form>;
-}
-
-function LongTermGoal({ goal, updateGoal, mode }) {
-  const [selectedMonth, setSelectedMonth] = useState(goal.years * 12);
-  const safeSurplus = safeSurplusCents(mode);
-  const monthlyCents = Math.max(0, goal.monthlyCents);
-  const monthCount = goal.years * 12;
-  const chartData = Array.from({ length: monthCount + 1 }, (_, month) => ({ month, savedCents: monthlyCents * month }));
-  const activeMonth = Math.min(selectedMonth, monthCount);
-  const activePoint = chartData[activeMonth];
-  const maxValue = Math.max(1, chartData[monthCount].savedCents);
-  const chartWidth = 320;
-  const chartHeight = 150;
-  const pointX = (month) => (month / monthCount) * chartWidth;
-  const pointY = (cents) => chartHeight - (cents / maxValue) * chartHeight;
-  const savingsPath = chartData.map((point, index) => `${index ? 'L' : 'M'} ${pointX(point.month).toFixed(2)} ${pointY(point.savedCents).toFixed(2)}`).join(' ');
-  const savingsAreaPath = `${savingsPath} L ${chartWidth} ${chartHeight} L 0 ${chartHeight} Z`;
-  const cursorX = pointX(activeMonth);
-  const cursorY = pointY(activePoint.savedCents);
-  const periodLabel = activeMonth === 0 ? 'Starting point' : `Year ${Math.ceil(activeMonth / 12)} · Month ${activeMonth}`;
-  const pointerSelect = (event) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const ratio = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
-    setSelectedMonth(Math.round(ratio * monthCount));
-  };
-  const aboveSurplus = monthlyCents > safeSurplus;
-  return <section className="card goal-card long-term-card">
-    <div className="goal-section-heading"><span className="goal-emoji">🌳</span><div><div className="eyebrow">LONG-TERM · 2+ YEARS</div><h2>Build your future, month by month</h2></div></div>
-    <p className="goal-description">Explore S-Pankki savings accounts and set your own monthly saving amount. This plan is only a preview; it won’t open an account or move money.</p>
-    <label className="field-label account-type-field">S-Pankki savings account<select value={goal.accountType} onChange={(event) => updateGoal({ accountType: event.target.value })}><option>S-Tuottotili</option><option>S-Määräaikaistili</option></select></label>
-    <a className="fund-banner fund-link" href="https://www.s-pankki.fi/fi/tilit/saastotilit/" target="_blank" rel="noreferrer"><span className="fund-icon"><PiggyBank size={19}/></span><span><strong>Explore S-Pankki savings accounts</strong><small>Compare account types and current terms</small></span><ExternalLink size={16}/></a>
-    <div className="account-product-links"><a href="https://www.s-pankki.fi/fi/tilit/s-tuottotili/" target="_blank" rel="noreferrer"><strong>S-Tuottotili</strong><span>Ongoing savings with flexible deposits and withdrawals</span><ExternalLink size={14}/></a><a href="https://www.s-pankki.fi/fi/tilit/s-maaraaikaistili/" target="_blank" rel="noreferrer"><strong>S-Määräaikaistili</strong><span>Deposit savings for an agreed term; check current terms</span><ExternalLink size={14}/></a></div>
-    <label className="field-label contribution-field">Try a monthly saving amount<input type="number" min="0" step="1" value={(monthlyCents / 100).toFixed(2)} onChange={(event) => updateGoal({ monthlyCents: euroToCents(event.target.value) })} /><span>{goal.accountType === 'S-Määräaikaistili' ? 'Use this as a monthly savings target; a fixed-term deposit is set up separately for an agreed period.' : 'Use this as a monthly target for flexible savings; account deposits are set up separately with S-Pankki.'}</span></label>
-    <label className="range-label">Adjust amount <strong>{formatEuro(monthlyCents)} / month</strong><input type="range" min="0" max="1000" step="5" value={Math.min(monthlyCents, 100000)} onChange={(event) => updateGoal({ monthlyCents: Number(event.target.value) * 100 })} aria-label="Monthly savings amount in euros" /></label>
-    <div className="surplus-line"><span>Demo safe monthly surplus</span><strong>{formatEuro(safeSurplus)}</strong></div>
-    {aboveSurplus && <div className="surplus-warning" role="status"><Sparkles size={16}/><span>Your chosen monthly amount is above this demo’s detected surplus. Check your cash buffer and adjust if needed.</span></div>}
-    <label className="field-label time-horizon-field">Saving horizon<select value={goal.years} onChange={(event) => updateGoal({ years: Number(event.target.value) })}>{[2,5,10,15,20,25,30].map(year => <option key={year} value={year}>{year} years</option>)}</select></label>
-    <div className="savings-timeline"><div className="savings-timeline-heading"><strong>{goal.years}-year savings timeline</strong><span>No interest included</span></div>
-      <div className="savings-compare"><div><small>Monthly amount</small><strong>{formatEuro(monthlyCents)}</strong></div><div><small>Total deposits</small><strong>{formatEuro(chartData[monthCount].savedCents)}</strong></div></div>
-      <div className="savings-chart-wrap">
-        <div className="chart-cursor-tooltip" style={{ left: `${Math.max(18, Math.min(82, activeMonth / monthCount * 100))}%` }} aria-live="polite"><strong>{periodLabel}</strong><span>Saved by then {formatEuro(activePoint.savedCents)}</span><span>Monthly plan {formatEuro(monthlyCents)}</span></div>
-        <svg className="savings-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} preserveAspectRatio="none" role="img" aria-label={`${goal.years}-year savings-account deposits timeline; interest is not included`} onPointerMove={pointerSelect} onPointerDown={pointerSelect}>
-          {[0.25,0.5,0.75,1].map(fraction => <line key={fraction} x1="0" x2={chartWidth} y1={chartHeight * (1 - fraction)} y2={chartHeight * (1 - fraction)} className="chart-gridline"/>)}
-          <path d={savingsAreaPath} className="chart-savings-area"/><path d={savingsPath} className="chart-savings-line"/>
-          <line x1={cursorX} x2={cursorX} y1="0" y2={chartHeight} className="chart-cursor-line"/><circle cx={cursorX} cy={cursorY} r="4.5" className="chart-cursor-savings"/>
-        </svg>
+  return <form className={`g2-card g2-new g2-${horizon}`} onSubmit={submit}>
+    <div className="g2-band"><div className="g2-band-copy"><span className="g2-when">New {horizon === 'long' ? 'long-term' : 'short-term'} goal</span></div><GoalArt theme={themeFor(label)}/></div>
+    <div className="g2-body">
+      <label className="g2-big-label">What are you saving for?<input autoFocus value={label} maxLength={32} onChange={(event) => setLabel(event.target.value)} placeholder={HORIZONS[horizon].placeholder}/></label>
+      <div className="g2-chips">{QUICK_PICKS[horizon].map(pick => <button type="button" key={pick} className={label === pick ? 'on' : ''} onClick={() => setLabel(pick)}>{pick}</button>)}</div>
+      <div className="g2-row">
+        <label>Amount €<input inputMode="decimal" type="number" min="1" step="0.01" value={amount} onChange={(event) => setAmount(event.target.value)} placeholder={horizon === 'long' ? '8000' : '300'}/></label>
+        <label>By<input type="date" min={fixture.asOf} max={HORIZONS[horizon].max} value={date} onChange={(event) => event.target.value && setDate(event.target.value)}/></label>
       </div>
-      <div className="chart-axis-labels"><span>Now</span><span>Year {goal.years}</span></div>
-      <input className="chart-scrubber" type="range" min="0" max={monthCount} value={activeMonth} onChange={(event) => setSelectedMonth(Number(event.target.value))} aria-label="Explore savings account deposits by month"/>
-      <div className="savings-legend"><span><i/>Monthly deposits · interest not included</span></div>
-      <small className="simulation-note">This timeline multiplies your chosen monthly amount by the selected horizon. It does not estimate account interest, fees, or account terms. No account is opened and no money moves.</small>
+      {targetCents > 0 && <p className="g2-preview-line">That’s about <strong>{formatEuro(Math.ceil(targetCents / monthsUntil(date)))} a month</strong> until {shortDate(date)}.</p>}
+      <div className="g2-form-actions"><button type="button" className="g2-ghost" onClick={onCancel}>Cancel</button><button type="submit" className="g2-primary" disabled={!label.trim() || targetCents <= 0}>Add goal</button></div>
     </div>
-    {mode === 'afterExpense' && <div className="insight alert-insight"><span className="insight-icon"><Sparkles size={18}/></span><p>After the unexpected expense, protect your cash buffer first. If needed, lower this monthly saving plan before changing essential spending.</p></div>}
-  </section>;
+  </form>;
 }
 
 function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort, restoreShort, updateLong, mode, openEvidence, previewId, setPreviewId }) {
@@ -188,22 +143,20 @@ function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort,
     </div>
     <section className="short-goals-list" role="tabpanel" aria-label={horizon === 'long' ? 'Long-term goals' : 'Short-term goals'}>
       <div className="list-section-heading"><div><h2>{horizon === 'long' ? 'Your big plans' : 'Your goals, your way'}</h2></div><span className="goals-count">{active.length} active{achieved.length ? ` · ${achieved.length} done` : ''}</span></div>
-      {active.length > 0 && <p className="horizon-hint">Together: <strong>{formatEuro(monthlyCents)} / month</strong> to reach them all on time.</p>}
-      {active.length === 0 && !adding && <div className="card goals-empty"><strong>No {horizon === 'long' ? 'long-term' : 'short-term'} goals yet</strong><p>Write down anything you want to save for — {HORIZONS[horizon].empty}. Add as many as you like.</p></div>}
+      {active.length > 0 && <div className="g2-summary"><span>Together</span><strong>{formatEuro(monthlyCents)}<small> / month</small></strong><span>to reach {active.length === 1 ? 'it' : `all ${active.length}`} on time</span></div>}
+      {active.length === 0 && !adding && <div className={`g2-empty g2-${horizon}`}><GoalArt theme={horizon === 'long' ? 'home' : 'travel'}/><strong>{horizon === 'long' ? 'What’s your big plan?' : 'What do you want next?'}</strong><p>Write down anything you’re saving for — {HORIZONS[horizon].empty}. Add as many as you like.</p></div>}
       {active.map((goal) => {
-        const result = makePlanResult(mode, goal);
-        const baseline = makePlanResult('beforeExpense', goal);
-        return <ShortTermGoal key={goal.id} horizon={horizon} goal={goal} updateGoal={(patch) => updateShort(goal.id, patch)} removeGoal={() => removeShort(goal.id)} completeGoal={() => completeShort(goal.id)} result={result} baseline={baseline} mode={mode} onEvidence={() => openEvidence(goal, result)} preview={previewId === goal.id} setPreview={setPreviewId}/>;
+        return <ShortTermGoal key={goal.id} horizon={horizon} goal={goal} updateGoal={(patch) => updateShort(goal.id, patch)} removeGoal={() => removeShort(goal.id)} completeGoal={() => completeShort(goal.id)}/>;
       })}
       {adding
         ? <NewGoalForm key={horizon} horizon={horizon} onAdd={(goal) => { addShort(goal); setAdding(false); }} onCancel={() => setAdding(false)}/>
-        : <button className="add-goal-button" onClick={() => setAdding(true)}><span>＋</span>Add a {horizon === 'long' ? 'long-term' : 'short-term'} goal</button>}
+        : <button className="g2-add" onClick={() => setAdding(true)}><span>+</span>Add a {horizon === 'long' ? 'long-term' : 'short-term'} goal</button>}
       {achieved.length > 0 && <div className="achieved-goals">
-        <button type="button" className="achieved-toggle" aria-expanded={showAchieved} onClick={() => setShowAchieved(!showAchieved)}>🏆 Achieved ({achieved.length}) <ChevronRight size={15}/></button>
+        <button type="button" className="achieved-toggle" aria-expanded={showAchieved} onClick={() => setShowAchieved(!showAchieved)}>Achieved ({achieved.length}) <ChevronRight size={15}/></button>
         {showAchieved && <ul>{achieved.map(goal => <li key={goal.id}><Check size={14}/><span>{goal.label || 'Goal'} · {formatEuro(goal.targetCents)}</span><button type="button" className="text-button" onClick={() => restoreShort(goal.id)}>Undo</button></li>)}</ul>}
       </div>}
       {horizon === 'long' && <div className="accounts-explore">
-        <button type="button" className="achieved-toggle" aria-expanded={showAccounts} onClick={() => setShowAccounts(!showAccounts)}>🌳 Grow it with S-Pankki savings accounts <ChevronRight size={15}/></button>
+        <button type="button" className="achieved-toggle" aria-expanded={showAccounts} onClick={() => setShowAccounts(!showAccounts)}>Grow it with S-Pankki savings accounts <ChevronRight size={15}/></button>
         {showAccounts && <LongTermGoal goal={goals.longTerm} updateGoal={updateLong} mode={mode}/>}
       </div>}
     </section>

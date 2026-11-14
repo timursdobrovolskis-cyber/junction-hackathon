@@ -1,11 +1,10 @@
 const frame = document.getElementById('goals-planner');
-const scenario = document.getElementById('goals-scenario');
 const purchase = document.getElementById('purchase-goal');
 const money = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' });
 
 function showGoals() {
   if (location.hash !== '#goals') return;
-  const source = `goals-planner/index.html?scenario=${scenario.value}`;
+  const source = 'goals-planner/index.html?scenario=beforeExpense';
   if (frame.getAttribute('src') !== source) frame.setAttribute('src', source);
   purchase.hidden = true;
   try {
@@ -18,6 +17,5 @@ function showGoals() {
   } catch { /* Storage is optional. */ }
 }
 
-scenario.addEventListener('change', showGoals);
 window.addEventListener('hashchange', showGoals);
 showGoals();
