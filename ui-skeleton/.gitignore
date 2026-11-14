@@ -1,0 +1,9 @@
+.vercel/
+.vercel
+
+.env*
+!.env.example
+
+# This buildless prototype keeps its editable source in dist.
+!dist/
+!dist/**

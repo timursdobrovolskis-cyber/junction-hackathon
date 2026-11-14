@@ -1,0 +1,22 @@
+{
+  "description": "Synthetic demo requests. October expenses are hypothetical customer inputs. The September housing replay uses an observed sponsor transaction and requires explicit review because its merchant is missing.",
+  "feasible": {
+    "customerId": "CUST00003", "asOf": "2026-09-30", "bufferCents": 50000, "savingsTargetCents": 10000,
+    "plannedExpenses": [{"id": "repair-100", "date": "2026-10-07", "amountCents": 10000, "category": "Transportation", "label": "Hypothetical car repair", "inclusion": "additional"}]
+  },
+  "twoRecoveryOptions": {
+    "customerId": "CUST00003", "asOf": "2026-09-30", "bufferCents": 50000, "savingsTargetCents": 10000,
+    "plannedExpenses": [{"id": "repair-200", "date": "2026-10-07", "amountCents": 20000, "category": "Transportation", "label": "Hypothetical car repair", "inclusion": "additional"}]
+  },
+  "neitherOptionFits": {
+    "customerId": "CUST00001", "asOf": "2026-09-30", "bufferCents": 50000, "savingsTargetCents": 10000,
+    "plannedExpenses": [{"id": "repair-200", "date": "2026-10-07", "amountCents": 20000, "category": "Transportation", "label": "Hypothetical car repair", "inclusion": "additional"}]
+  },
+  "ambiguousMatch": {
+    "record": {"customerId": "CUST00001", "asOf": "2026-08-31", "bufferCents": 50000, "savingsTargetCents": 10000,
+      "plannedExpenses": [{"id": "september-bill", "date": "2026-09-05", "amountCents": 53934, "category": "Housing", "accountId": "ACC000001", "inclusion": "additional"}]},
+    "reconcileAsOf": "2026-09-05",
+    "observedTransactionId": "tx-49b3265d8e44e751-556",
+    "expected": "Review the observed housing payment. Missing merchant evidence prevents automatic settlement."
+  }
+}

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="A quiet place to understand your money. Interactive design sketch with illustrative figures.">
+  <title>Money — a little clearer</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="calendar.css">
+  <script src="app.js" defer></script>
+  <script type="module" src="calendar-ui.mjs"></script>
+</head>
+<body>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="i-coach" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H7l-4 3v-8a8 8 0 1 1 17-3Z"/><path d="M8 10h8m-8 4h5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4m8-4v4M4 11h16"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="app-header">
+    <a href="#home" class="wordmark" aria-label="Money home">
+      <svg viewBox="0 0 32 32" class="brand-mark" aria-hidden="true"><path d="M5 23V10a5 5 0 0 1 10 0v13M15 23V10a5 5 0 0 1 10 0v13"/></svg>
+      <span>money<span class="wordmark-dot">.</span></span>
+    </a>
+    <button class="demo-label" id="about-preview"><span class="status-dot"></span>Design preview<svg class="icon small"><use href="#i-info"/></svg></button>
+  </header>
+
+  <main id="main" class="main-shell">
+    <section id="home-page" class="page" aria-labelledby="home-title">
+      <div class="money-hero">
+        <div class="eyebrow-line"><h1 id="home-title">Available until payday</h1><button class="icon-button subtle" id="amount-explanation" aria-label="How the sample amount is calculated"><svg class="icon small"><use href="#i-info"/></svg></button></div>
+        <p class="hero-amount" aria-label="640 euros"><span class="currency-symbol">€</span>640<span class="amount-decimals">.00</span></p>
+        <p class="payday-line">A little breathing room until <span>28 Nov.</span></p>
+        <span class="estimate-label">Expected payday · sample figures</span>
+        <button class="primary-button purchase-trigger" id="open-purchase">Check a purchase<svg class="icon"><use href="#i-arrow"/></svg></button>
+      </div>
+
+      <div class="coach-note">
+        <span class="coach-symbol" aria-hidden="true"><svg class="icon"><use href="#i-coach"/></svg></span>
+        <div class="coach-note-copy"><p>Your bills have their own breathing room.</p><button class="inline-link" id="open-coach-note" aria-expanded="false" aria-controls="coach-note-details">A note from your coach<svg class="icon tiny"><use href="#i-chevron"/></svg></button></div>
+      </div>
+      <div id="coach-note-details" class="coach-note-details" hidden>
+        <p>In this example, €240 is set aside for upcoming bills before the spending estimate is shown. Your savings and cash buffer have their own space, too.</p>
+        <button class="inline-link" data-go-coach>Explore with your coach<svg class="icon tiny"><use href="#i-arrow"/></svg></button>
+      </div>
+
+      <div class="plan-section">
+        <button class="plan-toggle" id="plan-toggle" aria-expanded="false" aria-controls="plan-details"><span>View my plan</span><svg class="icon"><use href="#i-chevron"/></svg></button>
+        <section id="plan-details" class="plan-details" aria-label="Illustrative plan breakdown" hidden>
+          <p class="section-caption">An example of how it fits together</p>
+          <dl class="plan-rows">
+            <div><dt>Current balance</dt><dd>€1,340.00</dd></div>
+            <div><dt>Upcoming bills</dt><dd>− €240.00</dd></div>
+            <div><dt>Set aside for savings</dt><dd>− €160.00</dd></div>
+            <div><dt>Your cash buffer</dt><dd>− €300.00</dd></div>
+            <div class="plan-total"><dt>Available until payday</dt><dd>€640.00</dd></div>
+          </dl>
+          <p class="detail-footnote">Illustrative amounts for this design preview. Your personal estimate will come from your plan.</p>
+        </section>
+      </div>
+      <p class="home-footnote">Your money. A little clearer.</p>
+    </section>
+
+    <section id="coach-page" class="page coach-page" aria-labelledby="coach-title" hidden>
+      <span class="section-kicker">YOUR COACH</span>
+      <h1 id="coach-title">A plan that<br>feels like you.</h1>
+      <p class="coach-intro">A little clarity, whenever you need it.<br>What’s on your mind?</p>
+      <div class="coach-topics" aria-label="Choose a coaching topic">
+        <button data-topic="An expense is coming up"><span>An expense is coming up</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+        <button data-topic="I’d like to save a little more"><span>I’d like to save a little more</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+        <button data-topic="Help me understand my plan"><span>Help me understand my plan</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+      </div>
+      <p class="coach-preview-note">A preview of your space to talk things through.</p>
+    </section>
+    <section id="calendar-page" class="page calendar-page" aria-labelledby="calendar-title" hidden>
+      <div class="calendar-heading"><span class="calendar-mark" aria-hidden="true"><svg class="icon"><use href="#i-calendar"/></svg></span><div><p>A LITTLE LOOK AHEAD</p><h1 id="calendar-title">Financial calendar</h1></div></div>
+      <label for="calendar-source" class="calendar-source-label">Customer / sample data</label>
+      <select id="calendar-source" class="calendar-source-select"><option value="regular" selected>CUST00003 · income &amp; bills</option><option value="engine">CUST00005 · transaction history</option><option value="recurring">Demo · rent, bills &amp; annual renewal</option><option value="subscriptions">Demo · subscription schedules</option></select>
+      <p id="calendar-source-note" class="calendar-source-note">Payments and recurring costs, with their evidence.</p>
+      <p id="calendar-status" class="calendar-status" role="status"></p>
+      <p id="calendar-error" class="calendar-error" role="alert" hidden></p>
+      <button type="button" id="calendar-connect" class="calendar-connect" disabled>Connect to Google Calendar</button>
+      <div class="calendar-reset-row"><button type="button" id="calendar-reset-month">First month</button><button type="button" id="calendar-retry">Refresh</button></div>
+      <div class="calendar-toolbar"><button type="button" id="calendar-prev" aria-label="Previous month" disabled>‹</button><h2 id="calendar-month" aria-live="polite">Your calendar</h2><button type="button" id="calendar-next" aria-label="Next month" disabled>›</button></div>
+      <label class="calendar-jump-label" for="calendar-jump">Jump to month</label><select id="calendar-jump" class="calendar-source-select" aria-label="Jump to month"></select>
+      <div class="calendar-weekdays" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+      <div id="calendar-grid" class="calendar-grid" role="group" aria-label="Select a date"></div>
+      <div class="calendar-legend"><span><i></i>Bills</span><span><i class="income"></i>Income</span><span><i class="subscription"></i>Subscriptions</span></div>
+      <section class="calendar-notifications" aria-labelledby="calendar-notifications-title"><h2 id="calendar-notifications-title">Spending alerts &amp; reminders</h2><p id="calendar-analysis-date" class="calendar-analysis-date"></p><div id="calendar-notifications" aria-live="polite"></div></section>
+      <div class="calendar-filters" role="group" aria-label="Filter calendar entries"><button type="button" data-calendar-filter="all" aria-pressed="true">All</button><button type="button" data-calendar-filter="bills" aria-pressed="false">Costs</button><button type="button" data-calendar-filter="income" aria-pressed="false">Income</button><button type="button" data-calendar-filter="subscriptions" aria-pressed="false">Subscriptions</button><button type="button" data-calendar-filter="yearly" aria-pressed="false">Yearly</button></div>
+      <div class="calendar-agenda-heading"><h2 id="calendar-selection">This month</h2><span id="calendar-count"></span></div>
+      <button type="button" id="calendar-clear-day" class="calendar-subtle" hidden>Show the whole month</button>
+      <div id="calendar-agenda" class="calendar-agenda" aria-live="polite"></div>
+      <p id="calendar-warning" class="calendar-notice"></p><p id="calendar-coverage" class="calendar-coverage"></p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a href="#home" id="nav-home" class="nav-link active" aria-current="page"><svg class="icon"><use href="#i-home"/></svg><span>Home</span></a>
+    <a href="#coach" id="nav-coach" class="nav-link"><svg class="icon"><use href="#i-coach"/></svg><span>Coach</span></a>
+    <a href="#calendar" id="nav-calendar" class="nav-link"><svg class="icon"><use href="#i-calendar"/></svg><span>Calendar</span></a>
+  </nav>
+
+  <dialog id="purchase-dialog" class="sheet purchase-sheet" aria-labelledby="purchase-title">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <header class="sheet-header"><span class="section-kicker">A LITTLE LOOK AHEAD</span><button class="icon-button close-button" data-close aria-label="Close purchase check"><svg class="icon"><use href="#i-close"/></svg></button></header>
+    <h2 id="purchase-title">Thinking of<br>something?</h2>
+    <p class="sheet-intro">See where a purchase could fit.</p>
+    <form id="purchase-form">
+      <label for="purchase-amount" class="field-label">How much?</label>
+      <div class="amount-field"><span aria-hidden="true">€</span><input id="purchase-amount" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0" value="200" maxlength="12" aria-describedby="purchase-error" required><span class="amount-currency">EUR</span></div>
+      <div class="date-field"><label for="purchase-date"><svg class="icon"><use href="#i-calendar"/></svg><span>When?</span></label><input id="purchase-date" name="date" type="date" value="2026-11-21" required></div>
+      <p id="purchase-error" class="form-error" role="alert" hidden></p>
+      <button type="submit" class="primary-button">Check the impact<svg class="icon"><use href="#i-arrow"/></svg></button>
+      <p class="sheet-footnote">Design preview · no money is moved</p>
+    </form>
+    <div id="purchase-preview-state" class="preview-state" role="status" hidden><span class="preview-state-icon"><svg class="icon"><use href="#i-check"/></svg></span><div><strong id="purchase-preview-title"></strong><p>The interaction is ready to try. Personalised results will appear here once connected to your plan.</p></div></div>
+  </dialog>
+
+  <dialog id="info-dialog" class="sheet info-sheet" aria-labelledby="info-title">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <header class="sheet-header"><span class="section-kicker">A FIRST LOOK</span><button class="icon-button close-button" data-close aria-label="Close information"><svg class="icon"><use href="#i-close"/></svg></button></header>
+    <h2 id="info-title">A little space<br>for your money.</h2>
+    <p id="info-copy">This is an interactive design sketch. All figures and dates are illustrative. It isn’t connected to an account, and no information is saved or sent.</p>
+    <button class="primary-button" data-close>Got it<svg class="icon"><use href="#i-check"/></svg></button>
+  </dialog>
+  <dialog id="calendar-detail" class="sheet calendar-detail" aria-labelledby="calendar-detail-title">
+    <header class="sheet-header"><span class="section-kicker">CALENDAR DETAILS</span><button type="button" id="calendar-detail-close" class="icon-button" aria-label="Close payment details"><svg class="icon"><use href="#i-close"/></svg></button></header>
+    <h2 id="calendar-detail-title"></h2><div id="calendar-detail-body" class="calendar-detail-body"></div>
+  </dialog>
+</body>
+</html>

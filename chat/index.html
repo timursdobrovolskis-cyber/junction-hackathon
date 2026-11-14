@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153e35">
+  <title>BEFORE · Your financial coach</title>
+  <link rel="stylesheet" href="/chat/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Before home">before<span>●</span></a>
+      <div class="top-actions"><span class="mode"><i></i> Conversation demo</span><button id="reset" class="quiet">Start over</button></div>
+    </header>
+    <main>
+      <section class="conversation" aria-labelledby="chat-title">
+        <div class="intro"><div class="eyebrow">YOUR MONEY. YOUR PRIORITIES.</div><h1 id="chat-title">Let’s work it out.</h1><p>A little more clarity. A plan that feels like you.</p></div>
+        <div class="coach-label"><span class="avatar" aria-hidden="true">b.</span><div><strong>Your financial coach</strong><small>Demo replies · No API connected</small></div></div>
+        <div id="messages" class="messages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions"></div>
+        <div id="suggestions" class="suggestions" aria-label="Suggested replies"></div>
+        <form id="composer" class="composer">
+          <label class="sr-only" for="message">Message your coach</label>
+          <textarea id="message" rows="1" maxlength="2000" placeholder="Tell me what’s on your mind…" required></textarea>
+          <button id="send" class="send" type="submit" aria-label="Send message">↑</button>
+        </form>
+        <p id="status" class="status" role="status">Your draft stays in this browser. No bank connection or money movement.</p>
+      </section>
+      <aside aria-labelledby="draft-title">
+        <div class="draft-card"><div class="eyebrow">WHAT WE’RE WORKING TOWARDS</div><h2 id="draft-title">Your draft</h2><p class="draft-description">Built from what you tell me.</p><div id="draft"></div><div class="draft-note"><span aria-hidden="true">◷</span><p>Affordability not checked yet.<br>We’ll check how this fits when your financial data is connected.</p></div></div>
+        <div class="aside-note"><span class="leaf" aria-hidden="true">✳</span><p>You decide what matters.<br>We’ll build around that.</p></div>
+      </aside>
+    </main>
+    <footer>BEFORE / PERSONAL ECONOMIC TRAINER <span>Junction prototype</span></footer>
+  </div>
+  <dialog id="reset-dialog"><h2>Start a fresh conversation?</h2><p>This clears this demo customer’s chat and draft from this browser.</p><div class="dialog-actions"><button id="keep-chat" class="quiet">Keep chatting</button><button id="confirm-reset" class="primary">Start over</button></div></dialog>
+  <script type="module" src="/chat/app.mjs"></script>
+</body>
+</html>

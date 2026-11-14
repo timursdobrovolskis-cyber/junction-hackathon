@@ -1,12 +1,26 @@
 {
-  "name": "personal-economic-trainer",
+  "name": "before-planning-coach",
   "private": true,
-  "version": "0.1.0",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
+    "dev:app": "npm --prefix ui-skeleton run dev",
+    "dev:chat": "node scripts/serve_chat.mjs",
+    "test": "node --test",
+    "demo": "node examples/coach-demo.mjs",
+    "demo:history": "node examples/history-demo.mjs",
+    "demo:coach": "node examples/engine-coach-demo.mjs",
+    "demo:budget-coach": "node examples/budget-coach-demo.mjs",
+    "demo:api-coach": "node examples/financial-coach-demo.mjs",
+    "check:coach-api": "node scripts/check_coach_api.mjs",
+    "check:saved-plans": "node scripts/check_saved_plan_api.mjs",
+    "demo:saved-plans": "node examples/saved-plan-demo.mjs",
     "dev": "vite",
     "build": "vite build"
   },
+  "version": "0.1.0",
   "dependencies": {
     "@vitejs/plugin-react": "latest",
     "vite": "latest",
