@@ -62,3 +62,7 @@ Vercel project: `agentsquared/junction-money-ui`. `GEMINI_API_KEY` is configured
 Official logo: https://www.s-pankki.fi/Assets/img/logos/s-pankki-logo-107x46.svg
 
 Public website token palette: brand `#00AA46`, strong `#007841`, deep `#004628`, pale `#EBF7EC`, light `#F7FCF7`, button accent `#91FA9B`. Original research lives in the working repository's `docs/design/S_PANKKI_STYLE_REFERENCE.md`. The interface remains labelled as a hackathon concept; it is not an official bank service.
+
+## Next planned work
+
+See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for purchase-impact integration and the shared customer plan. Keep replies customer-facing; the persistent Sample data label and data panel carry provenance, rather than repeating illustrative/demo language in every response.

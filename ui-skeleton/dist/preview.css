@@ -8,3 +8,14 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 
 .preview-brand>img{width:100px;height:43px;object-fit:contain}.preview-brand>span{color:#666}.phone-link h1{color:#004628}@media(max-width:600px){.preview-brand>img{width:84px;height:36px}}
+
+/* Keep all preview controls reachable on narrow screens and at full zoom. */
+.preview-stage{display:block}
+.device-area{width:max-content;max-width:none;margin-inline:auto}
+@media(max-width:600px){
+  .preview-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 12px}
+  .preview-controls label{min-width:0}
+  .preview-controls select{width:100%;max-width:none;min-height:44px;font-size:12px}
+  .open-app,#copy-preview{min-height:44px;text-align:center;font-size:12px}
+  .open-app{border:1px solid #e0e7d8;border-radius:30px}
+}

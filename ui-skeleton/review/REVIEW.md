@@ -19,3 +19,7 @@ Design process reference: Anthropic frontend-design SKILL.md (read from its offi
 ## Device preview and S-Pankki branding
 
 Added an interactive iframe inside a CSS phone frame, device-size and zoom controls, a working copy-link button, and a locally generated QR SVG for the direct production app URL. Verified embedded Home/Coach navigation and device/zoom selection. The official S-Pankki logo and green palette replace the placeholder branding. Screenshot: `04-s-pankki-device-preview.jpg`. The browser instrumentation reported MutationObserver errors; none of the application scripts creates a MutationObserver, and the checked preview interactions worked.
+
+## Customer-facing copy and narrow-screen preview
+
+Replaced repeated illustrative/demo copy with direct plan language, while keeping a persistent Sample data label and a data-information panel. Simplified the coach context and instructions to avoid unsolicited demo reminders. Purchase-impact integration is documented in `IMPLEMENTATION_PLAN.md`; the UI does not yet show calculated purchase impacts. At 320px, preview controls now use two rows and the page has no horizontal overflow at fit zoom. Device/zoom selections survive reloads and are included in copied preview links. Existing five API tests pass.

@@ -5,15 +5,15 @@ const result = JSON.parse(readFileSync(new URL('./coach/financial-plan-demo.json
 const coach = createFinancialCoachResponse(result);
 export const contexts = {
   design: {
-    id: 'design', label: 'Home example', source: 'Illustrative November plan. Not a bank-connected calculation.',
+    id: 'design', label: 'Current plan', source: 'Sample data · November 2026.',
     title: 'Your essentials have their own space.',
-    explanation: 'In this example, €240 is reserved for bills, €160 for savings and €300 as a cash buffer. The remaining €640 is shown as spending room until the example payday on 28 November.',
+    explanation: '€240 is set aside for bills, €160 for savings and €300 as a cash buffer. You have €640 left until your expected payday on 28 November.',
     question: 'What would you like to understand about this plan?',
     facts: [{label:'Spending room',value:'€640'}, {label:'Planned savings',value:'€160'}, {label:'Cash buffer',value:'€300'}],
-    details: ['Opening balance: €1,340.', 'Bills: €240. Savings: €160. Buffer: €300. Spending: €640.', 'All values are illustrative. No purchase checks or changed plans are calculated here.'],
+    details: ['Opening balance: €1,340.', 'Bills: €240. Savings: €160. Buffer: €300. Spending: €640.', 'Expected payday: 28 November. Bills, savings and buffer are excluded from spending room.'],
   },
   engine: {
-    id: 'engine', label: 'Transaction example', source: 'Synthetic customer CUST00005. Transactions through 30 Sep 2026; plan for 1–30 Oct. Separate from the Home example.',
+    id: 'engine', label: 'Another profile', source: 'Synthetic customer CUST00005. Transactions through 30 Sep 2026; plan for 1–30 Oct. Separate from the Home example.',
     title: 'A draft plan, ready to explore.', explanation: coach.insight.explanation,
     question: coach.followUp?.question ?? coach.followUp?.prompt,
     facts: [{label:'Category spending',value:'€1,793.99'}, {label:'Savings target',value:'€100'}, {label:'Cash buffer',value:'€500'}],
