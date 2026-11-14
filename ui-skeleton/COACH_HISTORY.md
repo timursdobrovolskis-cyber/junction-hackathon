@@ -34,7 +34,12 @@ Forecasts, October demo replay and proposed budgets never count as actual spendi
   historical profile, so it means **August 2026**. Answers name the month.
 - English month names (optional year), YYYY-MM, calendar years, last/this year, ISO dates and ISO date ranges are
   supported. A missing/ambiguous period gets one question; a simple month/year reply
-  can resolve it. Comparisons require selecting one period first in this version.
+  can resolve it. Comparisons support two named months, YYYY-MM periods or years;
+  partial coverage is labelled and does not produce a full-period difference.
+- Multiple categories joined with “and”, commas or “&” after “on” are combined
+  as a union. Follow-up periods retain those filters.
+- Recorded income includes positive salary and other-income transactions; salary
+  questions can filter salary only. Refunds and investment transfers are excluded.
 - Spending and ranked spending payments follow Budget: purchases, housing and
   utilities; income, transfers and investments are excluded. Refunds are separate.
 - No-overlap periods are unavailable, not zero. Partial periods identify their

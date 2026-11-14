@@ -18,7 +18,7 @@ It is not a verified statement of affordability or a forecast of future income,
 bills, inflation or unusual costs. Those limitations are visible in every reply.
 
 Supported deadlines: ISO dates, full English month/year names (month-end), and
-calendar years (year-end). A missing date gets a clarification. The next reply
+calendar years (year-end), and “next N months/years” anchored to the demo date. A missing date gets a clarification. The next reply
 can change the monthly amount (for example, “€200”) or deadline (“What about
 2028?”). Calculations are capped at 120 contributions and €10,000/month. Other
 currencies/cadences, past/invalid dates and foreign profiles are not silently used.
@@ -30,7 +30,7 @@ read-only calculation and follow-up inputs. Follow-up inputs are validated again
 and never authorize saving a plan or moving money. Changing date/amount in this
 illustration changes neither the underlying forecast nor the Goals page.
 
-Validation: `npm --prefix ui-skeleton test` (113 tests), including the exact
+Validation: `npm --prefix ui-skeleton test` (153 tests), including the exact
 reported question, repeated contributions/deadlines, leap-year and mid-month
 boundaries, missing dates, customer isolation, invalid amounts and preservation
 of confirmation flows. Browser check:

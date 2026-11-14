@@ -1,3 +1,4 @@
+import { historyComparisonAnswer } from './history-comparison.mjs';
 import { savingsProjectionAnswer } from './savings-projection.mjs';
 import { historyAnswer } from './transaction-history.mjs';
 import { accountAnswer, accountPlan } from './account.mjs';
@@ -68,7 +69,7 @@ export async function conversationReply(input, generate) {
   const advice = purchaseAdvice(input, previous);
   const answer = input.scenario === 'engine' ? accountAnswer(input.message) : null;
   const combined=input.message.match(/^(.+?\b(?:spend|spent|spending|payments)\b.*?)\s+and\s+((?:how much|what|can|could).*\b(?:save|savings|set aside)\b.*)$/i);
-  const historical = historyAnswer(combined?.[1]??input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
+  const historical = historyComparisonAnswer(input.message,{customerId:profileIds[input.scenario],today:conversationDate(input.scenario)}) ?? historyAnswer(combined?.[1]??input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
     previousHistory:previous.messages.at(-1)?.presentation?.historyQuery,
     previousQuestion:previous.messages.findLast(m=>m.role==='user')?.text ?? input.history?.findLast(m=>m.role==='user')?.text});
   let projection = savingsProjectionAnswer(combined?.[2]??input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),

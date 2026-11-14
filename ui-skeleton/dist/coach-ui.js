@@ -1,4 +1,5 @@
-(() => {
+(async () => {
+  const {restoreCoachMemory}=await import('./coach-memory.mjs');
   const el = id => document.getElementById(id);
   const profileIds = { design: 'home-sample', engine: 'CUST00005' };
   const sourceText = { design: 'Layout sample', engine: 'History through 30 Sep · plan for October' };
@@ -7,18 +8,14 @@
   const storageKey = () => `s-pankki:coach:v1:${profileIds[scenario]}`;
   function persist() {
     try {
-      if (session) localStorage.setItem(storageKey(), JSON.stringify({ ...session, messages: [], awaiting: null, context: { topic: null, repairCount: 0, lastEditable: null } }));
+      if (session) localStorage.setItem(storageKey(), JSON.stringify(session));
       return true;
     }
     catch { return false; }
   }
   function restore() {
     try {
-      const s = JSON.parse(localStorage.getItem(storageKey()));
-      if (s?.version === 1 && s.customerId === profileIds[scenario] && s.mode === 'demo'
-          && s.draft?.status === 'not_calculated' && Array.isArray(s.draft.expenses) && Array.isArray(s.draft.priorities)) {
-        return { ...s, messages: [], awaiting: null, context: { topic: null, repairCount: 0, lastEditable: null } };
-      }
+      return restoreCoachMemory(localStorage.getItem(storageKey()),profileIds[scenario]);
     } catch { /* Start clean when storage is absent or invalid. */ }
     return undefined;
   }
@@ -111,7 +108,7 @@
       session.awaiting = null;
       session.context = { topic: null, repairCount: 0, lastEditable: null };
       persist();
-    }
+    } else { try { localStorage.removeItem(storageKey()); } catch {} }
     setBusy(false); renderPrompts();
     el('chat-status').textContent = 'Conversation cleared. Your draft is kept.';
   }
