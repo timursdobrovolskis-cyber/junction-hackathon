@@ -96,7 +96,9 @@ export function historyAnswer(message, {customerId,today,previousQuestion,ledger
   if(result.status==='unavailable')return presentation('I couldn’t verify the transaction history for this account.');
   if(result.status==='missing')return presentation(`No recorded history covers ${query.label}. Available history runs from ${result.coverage.start} to ${result.coverage.end}; forecast amounts aren’t actual spending.`);
   if(result.status==='merchant_unavailable')return presentation(`I can’t identify ${query.merchant} in ${query.label}: this ledger has anonymous merchant IDs, without store names.`, 'Do you have its merchant ID, or should I look up a spending category?');
-  if(result.status==='merchant_partial')return presentation(result.knownCents>0?`${money(result.knownCents)} is identifiable${scope} in ${query.label}, but missing merchant details mean this isn’t a complete merchant total.`:`I can’t confirm a total${scope} in ${query.label}: some transactions have no merchant details.`);
+  if(result.status==='merchant_partial')return presentation(result.knownCents>0?`${money(result.knownCents)} is identifiable${scope} in ${query.label}, but missing merchant details mean this isn’t a complete merchant total.`:`I can’t confirm a total${scope} in ${query.label}: some transactions have no merchant details.`, '',
+    result.rows.filter(t=>t.amountCents<0).slice(0,12).map(t=>({id:t.id,label:`${t.date} · ${t.merchantName??t.merchantId??t.category}`,value:money(-t.amountCents)})),
+    result.partial?[`Partial date coverage: ${result.start} to ${result.end}.`]:[]);
   if(result.status==='partial' && result.count===0)return presentation(`No matching spending appears in the available history (${result.start} to ${result.end}). Coverage is partial, so the total for ${query.label} is unknown.`);
   const evidence=result.rows.slice(0,12).map(t=>({id:t.id,label:`${t.date} · ${t.merchantName??t.merchantId??t.category}`,value:money(-t.amountCents)}));
   const note=result.status==='partial'?`Partial history only: ${result.start} to ${result.end}; this is not a full-period total.`:query.relative?`Relative dates use the demo date, ${today}.`:'';
