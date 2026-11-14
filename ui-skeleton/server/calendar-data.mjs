@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { validateCalendar } from '../dist/calendar-model.mjs';
 
 // Public synthetic examples only. Never add private account records to this map.
-export const calendarExamples = Object.fromEntries(['engine', 'regular', 'recurring', 'subscriptions'].map((key) => [key,
+export const calendarExamples = Object.fromEntries(['risk', 'engine', 'regular', 'recurring', 'subscriptions'].map((key) => [key,
   JSON.parse(readFileSync(new URL(`./calendar/${key}.json`, import.meta.url)))]));
 
 export function usesLiveEngine(source) {

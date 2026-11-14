@@ -20,8 +20,8 @@ export function calendarICS(calendar) {
     const next = new Date(`${event.date}T00:00:00Z`); next.setUTCDate(next.getUTCDate() + 1);
     lines.push('BEGIN:VEVENT', `UID:${escapeICal(event.id)}@junction-money-ui.vercel.app`, `DTSTAMP:${stamp}`,
       `DTSTART;VALUE=DATE:${compactDate(event.date)}`, `DTEND;VALUE=DATE:${compactDate(next.toISOString().slice(0, 10))}`,
-      `SUMMARY:${escapeICal(`${event.title} (estimated)`)}`,
-      `DESCRIPTION:${escapeICal(`Estimated ${event.cadence} payment. Dates and amounts may change. Check the app for details. This reminder does not move money.`)}`,
+      `SUMMARY:${escapeICal(`${calendar.isIllustrative ? 'DEMO · ' : ''}${event.title} (estimated)`)}`,
+      `DESCRIPTION:${escapeICal(`${calendar.isIllustrative ? 'Fictional demonstration, not your account data. ' : ''}Estimated ${event.cadence} payment. Dates and amounts may change. Check the app for details. This reminder does not move money.`)}`,
       'STATUS:TENTATIVE', 'TRANSP:TRANSPARENT', 'END:VEVENT');
   }
   lines.push('END:VCALENDAR');
