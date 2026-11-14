@@ -1,3 +1,4 @@
+import { savingsProjectionAnswer } from './savings-projection.mjs';
 import { historyAnswer } from './transaction-history.mjs';
 import { accountAnswer, accountPlan } from './account.mjs';
 import { formatPlanning, presentationText, validatePresentation } from './reply-format.mjs';
@@ -68,7 +69,13 @@ export async function conversationReply(input, generate) {
   const answer = input.scenario === 'engine' ? accountAnswer(input.message) : null;
   const historical = historyAnswer(input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
     previousQuestion:previous.messages.findLast(m=>m.role==='user')?.text ?? input.history?.findLast(m=>m.role==='user')?.text});
-  if (historical) {
+  const projection = savingsProjectionAnswer(input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
+    draft:previous.draft, previousProjection:previous.messages.at(-1)?.presentation?.projection});
+  if (projection) {
+    next.draft = previous.draft; next.awaiting = previous.awaiting; next.context = previous.context;
+    next.messages[next.messages.length-1] = {id:next.messages.at(-1).id,role:'assistant',text:presentationText(projection),presentation:projection,suggestions:[]};
+    source = 'projection';
+  } else if (historical) {
     next.draft = previous.draft; next.awaiting = previous.awaiting; next.context = previous.context;
     next.messages[next.messages.length-1] = {id:next.messages.at(-1).id,role:'assistant',text:presentationText(historical),presentation:historical,suggestions:previous.awaiting?['Continue','Cancel']:[]};
     source = 'history';
