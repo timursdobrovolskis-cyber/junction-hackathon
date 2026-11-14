@@ -3,24 +3,18 @@ import { account, accountPlan } from './account.mjs';
 import { buildLiveBudget } from './budget-live.mjs';
 export const activity = JSON.parse(readFileSync(new URL('./budget/activity.json', import.meta.url)));
 const spendingTypes = new Set(['purchase', 'housing_payment', 'utilities_payment']);
+export const isBudgetSpending = tx => spendingTypes.has(tx.type);
 
 // Only compare a budget and transactions inside the very same date window.
 export function buildBudgetView(plan, ledger, mode = 'plan', historyMonth = ledger.coverage.end.slice(0,7)) {
   if (!['plan', 'history'].includes(mode)) throw new Error('Unknown budget period');
-  const accountIds = plan.forecast.accounts.map(a => a.accountId);
-  if (ledger.customerId !== plan.customerId || ledger.accountIds.some(id => !accountIds.includes(id))) throw new Error('Account mismatch');
-  const seen = new Set();
-  for (const tx of ledger.transactions) {
-    if (tx.customerId !== plan.customerId || !accountIds.includes(tx.accountId) || seen.has(tx.id)
-      || !Number.isSafeInteger(tx.amountCents) || tx.date < ledger.coverage.start || tx.date > ledger.coverage.end) throw new Error('Invalid account activity');
-    seen.add(tx.id);
-  }
+  const accountIds = validateLedger(plan, ledger);
   const period = mode === 'plan'
     ? { start: plan.budget.periodStart, end: plan.budget.periodEnd }
     : monthPeriod(historyMonth);
   const covered = ledger.coverage.start <= period.start && ledger.coverage.end >= period.start;
   const through = covered ? (ledger.coverage.end < period.end ? ledger.coverage.end : period.end) : null;
-  const transactions = ledger.transactions.filter(tx => tx.date >= period.start && tx.date <= period.end && spendingTypes.has(tx.type));
+  const transactions = ledger.transactions.filter(tx => tx.date >= period.start && tx.date <= period.end && isBudgetSpending(tx));
   const planned = mode === 'plan' ? plan.budget.categories : [];
   const names = [...new Set([...planned.map(c => c.category), ...transactions.map(t => t.category)])];
   const categories = names.map(category => {
@@ -113,4 +107,16 @@ export function getBudgetView(selection='plan') {
     {category:largePayment.category,text:`One ${largePayment.category.toLowerCase()} payment of ${money(-largePayment.amountCents)} represents ${Math.round(-largePayment.amountCents/view.spentCents*100)}% of this month’s spending. Check whether it was a one-off before planning the same amount again.`}:null;
   const live=view.mode==='plan'?buildLiveBudget(accountPlan,activity):null;
   return {...view,selectedMonth:month,catalog,comparison,series,explanation,paymentInsight,accountLabel:account.label,live};
+}
+
+export function validateLedger(plan, ledger) {
+  const accountIds = plan.forecast.accounts.map(a => a.accountId);
+  if (ledger.customerId !== plan.customerId || ledger.accountIds.some(id => !accountIds.includes(id))) throw new Error('Account mismatch');
+  const seen = new Set();
+  for (const tx of ledger.transactions) {
+    if (tx.customerId !== plan.customerId || !accountIds.includes(tx.accountId) || seen.has(tx.id)
+      || !Number.isSafeInteger(tx.amountCents) || tx.date < ledger.coverage.start || tx.date > ledger.coverage.end) throw new Error('Invalid account activity');
+    seen.add(tx.id);
+  }
+  return accountIds;
 }

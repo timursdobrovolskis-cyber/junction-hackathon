@@ -8,6 +8,7 @@ const buckets = new Map();
 const windowMs = 60_000;
 export function validateInput(body) {
   if (!body || !['design','engine'].includes(body.scenario) || typeof body.message !== 'string' || !body.message.trim() || body.message.length > 1200) throw new Error('invalid');
+  // Chat transcript only. Historical spending is queried server-side by conversationReply.
   const history = body.history ?? [];
   if (!Array.isArray(history) || history.length > 8 || history.some(m => !m || !['user','assistant'].includes(m.role) || typeof m.text !== 'string' || m.text.length > 2400)) throw new Error('invalid');
   const input = { scenario:body.scenario, message:body.message.trim(), history };
