@@ -17,7 +17,8 @@
       "date": "2024-10-02",
       "category": "Groceries",
       "amountCents": -6910,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0010"
     },
     {
       "id": "tx-49b3265d8e44e751-2372",
@@ -26,7 +27,8 @@
       "date": "2024-10-02",
       "category": "Housing",
       "amountCents": -79217,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2373",
@@ -35,7 +37,8 @@
       "date": "2024-10-02",
       "category": "Transportation",
       "amountCents": -2573,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0036"
     },
     {
       "id": "tx-49b3265d8e44e751-2374",
@@ -44,7 +47,8 @@
       "date": "2024-10-02",
       "category": "Groceries",
       "amountCents": -3996,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0016"
     },
     {
       "id": "tx-49b3265d8e44e751-2375",
@@ -53,7 +57,8 @@
       "date": "2024-10-03",
       "category": "Groceries",
       "amountCents": -4536,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0073"
     },
     {
       "id": "tx-49b3265d8e44e751-2376",
@@ -62,7 +67,8 @@
       "date": "2024-10-04",
       "category": "Transportation",
       "amountCents": -1939,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2377",
@@ -71,7 +77,8 @@
       "date": "2024-10-07",
       "category": "Transportation",
       "amountCents": -2430,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0023"
     },
     {
       "id": "tx-49b3265d8e44e751-2378",
@@ -80,7 +87,8 @@
       "date": "2024-10-09",
       "category": "Groceries",
       "amountCents": -10368,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0044"
     },
     {
       "id": "tx-49b3265d8e44e751-2379",
@@ -89,7 +97,8 @@
       "date": "2024-10-11",
       "category": "Utilities",
       "amountCents": -2403,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2380",
@@ -98,7 +107,8 @@
       "date": "2024-10-11",
       "category": "Transportation",
       "amountCents": -6225,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0050"
     },
     {
       "id": "tx-49b3265d8e44e751-2381",
@@ -107,7 +117,8 @@
       "date": "2024-10-11",
       "category": "Transportation",
       "amountCents": -2444,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0047"
     },
     {
       "id": "tx-49b3265d8e44e751-2382",
@@ -116,7 +127,8 @@
       "date": "2024-10-12",
       "category": "Transportation",
       "amountCents": -5395,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0053"
     },
     {
       "id": "tx-49b3265d8e44e751-2383",
@@ -125,7 +137,8 @@
       "date": "2024-10-12",
       "category": "Utilities",
       "amountCents": -3114,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2384",
@@ -134,7 +147,8 @@
       "date": "2024-10-13",
       "category": "Transportation",
       "amountCents": -8471,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0025"
     },
     {
       "id": "tx-49b3265d8e44e751-2385",
@@ -143,7 +157,8 @@
       "date": "2024-10-13",
       "category": "Transportation",
       "amountCents": -9180,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0036"
     },
     {
       "id": "tx-49b3265d8e44e751-2386",
@@ -152,7 +167,8 @@
       "date": "2024-10-16",
       "category": "Transportation",
       "amountCents": -3475,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0008"
     },
     {
       "id": "tx-49b3265d8e44e751-2387",
@@ -161,7 +177,8 @@
       "date": "2024-10-16",
       "category": "Groceries",
       "amountCents": -4548,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0012"
     },
     {
       "id": "tx-49b3265d8e44e751-2388",
@@ -170,7 +187,8 @@
       "date": "2024-10-16",
       "category": "Transportation",
       "amountCents": -2121,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2389",
@@ -179,7 +197,8 @@
       "date": "2024-10-16",
       "category": "Groceries",
       "amountCents": -14061,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0079"
     },
     {
       "id": "tx-49b3265d8e44e751-2390",
@@ -188,7 +207,8 @@
       "date": "2024-10-17",
       "category": "Transportation",
       "amountCents": -2972,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0043"
     },
     {
       "id": "tx-49b3265d8e44e751-2391",
@@ -197,7 +217,8 @@
       "date": "2024-10-18",
       "category": "Groceries",
       "amountCents": -8399,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0076"
     },
     {
       "id": "tx-49b3265d8e44e751-2392",
@@ -206,7 +227,8 @@
       "date": "2024-10-18",
       "category": "Transportation",
       "amountCents": -6624,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0029"
     },
     {
       "id": "tx-49b3265d8e44e751-2393",
@@ -215,7 +237,8 @@
       "date": "2024-10-22",
       "category": "Groceries",
       "amountCents": -2309,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0021"
     },
     {
       "id": "tx-49b3265d8e44e751-2394",
@@ -224,7 +247,8 @@
       "date": "2024-10-23",
       "category": "Transportation",
       "amountCents": -735,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0037"
     },
     {
       "id": "tx-49b3265d8e44e751-2395",
@@ -233,7 +257,8 @@
       "date": "2024-10-29",
       "category": "Salary",
       "amountCents": 254812,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2396",
@@ -242,7 +267,8 @@
       "date": "2024-10-30",
       "category": "Invest Deposit",
       "amountCents": -44643,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2397",
@@ -251,7 +277,8 @@
       "date": "2024-10-30",
       "category": "Transportation",
       "amountCents": -8486,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0051"
     },
     {
       "id": "tx-49b3265d8e44e751-2398",
@@ -260,7 +287,8 @@
       "date": "2024-10-30",
       "category": "Transportation",
       "amountCents": -3169,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0007"
     },
     {
       "id": "tx-49b3265d8e44e751-2399",
@@ -269,7 +297,8 @@
       "date": "2024-11-01",
       "category": "Groceries",
       "amountCents": -5599,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0062"
     },
     {
       "id": "tx-49b3265d8e44e751-2400",
@@ -278,7 +307,8 @@
       "date": "2024-11-02",
       "category": "Groceries",
       "amountCents": -8500,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0032"
     },
     {
       "id": "tx-49b3265d8e44e751-2401",
@@ -287,7 +317,8 @@
       "date": "2024-11-02",
       "category": "Groceries",
       "amountCents": -8993,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0066"
     },
     {
       "id": "tx-49b3265d8e44e751-2402",
@@ -296,7 +327,8 @@
       "date": "2024-11-02",
       "category": "Groceries",
       "amountCents": -13216,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0075"
     },
     {
       "id": "tx-49b3265d8e44e751-2403",
@@ -305,7 +337,8 @@
       "date": "2024-11-03",
       "category": "Housing",
       "amountCents": -76910,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2404",
@@ -314,7 +347,8 @@
       "date": "2024-11-03",
       "category": "Home & Tech",
       "amountCents": -38968,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HMT-0043"
     },
     {
       "id": "tx-49b3265d8e44e751-2405",
@@ -323,7 +357,8 @@
       "date": "2024-11-04",
       "category": "Utilities",
       "amountCents": -5134,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2406",
@@ -332,7 +367,8 @@
       "date": "2024-11-04",
       "category": "Groceries",
       "amountCents": -4341,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0032"
     },
     {
       "id": "tx-49b3265d8e44e751-2407",
@@ -341,7 +377,8 @@
       "date": "2024-11-05",
       "category": "Utilities",
       "amountCents": -3867,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2408",
@@ -350,7 +387,8 @@
       "date": "2024-11-07",
       "category": "Entertainment",
       "amountCents": -4396,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0014"
     },
     {
       "id": "tx-49b3265d8e44e751-2409",
@@ -359,7 +397,8 @@
       "date": "2024-11-08",
       "category": "Entertainment",
       "amountCents": -5643,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0027"
     },
     {
       "id": "tx-49b3265d8e44e751-2410",
@@ -368,7 +407,8 @@
       "date": "2024-11-09",
       "category": "Utilities",
       "amountCents": -5210,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2411",
@@ -377,7 +417,8 @@
       "date": "2024-11-15",
       "category": "Salary",
       "amountCents": 211704,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2412",
@@ -386,7 +427,8 @@
       "date": "2024-11-16",
       "category": "Invest Deposit",
       "amountCents": -37091,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2413",
@@ -395,7 +437,8 @@
       "date": "2024-11-17",
       "category": "Groceries",
       "amountCents": -9134,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0050"
     },
     {
       "id": "tx-49b3265d8e44e751-2414",
@@ -404,7 +447,8 @@
       "date": "2024-11-20",
       "category": "Entertainment",
       "amountCents": -4887,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0006"
     },
     {
       "id": "tx-49b3265d8e44e751-2415",
@@ -413,7 +457,8 @@
       "date": "2024-11-21",
       "category": "Entertainment",
       "amountCents": -3369,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0045"
     },
     {
       "id": "tx-49b3265d8e44e751-2416",
@@ -422,7 +467,8 @@
       "date": "2024-11-24",
       "category": "Groceries",
       "amountCents": -3068,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0034"
     },
     {
       "id": "tx-49b3265d8e44e751-2417",
@@ -431,7 +477,8 @@
       "date": "2024-11-25",
       "category": "Entertainment",
       "amountCents": -3346,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0036"
     },
     {
       "id": "tx-49b3265d8e44e751-2418",
@@ -440,7 +487,8 @@
       "date": "2024-11-26",
       "category": "Groceries",
       "amountCents": -2730,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0075"
     },
     {
       "id": "tx-49b3265d8e44e751-2419",
@@ -449,7 +497,8 @@
       "date": "2024-12-02",
       "category": "Groceries",
       "amountCents": -4844,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0047"
     },
     {
       "id": "tx-49b3265d8e44e751-2420",
@@ -458,7 +507,8 @@
       "date": "2024-12-04",
       "category": "Utilities",
       "amountCents": -3439,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2421",
@@ -467,7 +517,8 @@
       "date": "2024-12-05",
       "category": "Transportation",
       "amountCents": -7815,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0027"
     },
     {
       "id": "tx-49b3265d8e44e751-2422",
@@ -476,7 +527,8 @@
       "date": "2024-12-06",
       "category": "Housing",
       "amountCents": -78664,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2423",
@@ -485,7 +537,8 @@
       "date": "2024-12-09",
       "category": "Transportation",
       "amountCents": -6793,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0011"
     },
     {
       "id": "tx-49b3265d8e44e751-2424",
@@ -494,7 +547,8 @@
       "date": "2024-12-09",
       "category": "Transportation",
       "amountCents": -3022,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0036"
     },
     {
       "id": "tx-49b3265d8e44e751-2425",
@@ -503,7 +557,8 @@
       "date": "2024-12-10",
       "category": "Utilities",
       "amountCents": -3055,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2426",
@@ -512,7 +567,8 @@
       "date": "2024-12-10",
       "category": "Transportation",
       "amountCents": -2624,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0020"
     },
     {
       "id": "tx-49b3265d8e44e751-2427",
@@ -521,7 +577,8 @@
       "date": "2024-12-15",
       "category": "Salary",
       "amountCents": 219581,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2428",
@@ -530,7 +587,8 @@
       "date": "2024-12-16",
       "category": "Invest Deposit",
       "amountCents": -38471,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2429",
@@ -539,7 +597,8 @@
       "date": "2024-12-17",
       "category": "Transportation",
       "amountCents": -2658,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2430",
@@ -548,7 +607,8 @@
       "date": "2024-12-17",
       "category": "Transportation",
       "amountCents": -4729,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0008"
     },
     {
       "id": "tx-49b3265d8e44e751-2431",
@@ -557,7 +617,8 @@
       "date": "2024-12-18",
       "category": "Transportation",
       "amountCents": -3544,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0037"
     },
     {
       "id": "tx-49b3265d8e44e751-2432",
@@ -566,7 +627,8 @@
       "date": "2024-12-19",
       "category": "Utilities",
       "amountCents": -3669,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2433",
@@ -575,7 +637,8 @@
       "date": "2024-12-22",
       "category": "Groceries",
       "amountCents": -5241,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0035"
     },
     {
       "id": "tx-49b3265d8e44e751-2434",
@@ -584,7 +647,8 @@
       "date": "2024-12-26",
       "category": "Groceries",
       "amountCents": -12201,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0071"
     },
     {
       "id": "tx-49b3265d8e44e751-2435",
@@ -593,7 +657,8 @@
       "date": "2024-12-27",
       "category": "Transportation",
       "amountCents": -5055,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0038"
     },
     {
       "id": "tx-49b3265d8e44e751-2436",
@@ -602,7 +667,8 @@
       "date": "2024-12-28",
       "category": "Groceries",
       "amountCents": -7117,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0064"
     },
     {
       "id": "tx-49b3265d8e44e751-2437",
@@ -611,7 +677,8 @@
       "date": "2024-12-30",
       "category": "Transportation",
       "amountCents": -4286,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0050"
     },
     {
       "id": "tx-49b3265d8e44e751-2438",
@@ -620,7 +687,8 @@
       "date": "2024-12-30",
       "category": "Groceries",
       "amountCents": -3781,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0017"
     },
     {
       "id": "tx-49b3265d8e44e751-2439",
@@ -629,7 +697,8 @@
       "date": "2024-12-30",
       "category": "Lifestyle",
       "amountCents": -35812,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-LIF-0047"
     },
     {
       "id": "tx-49b3265d8e44e751-2440",
@@ -638,7 +707,8 @@
       "date": "2025-01-06",
       "category": "Utilities",
       "amountCents": -5943,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2441",
@@ -647,7 +717,8 @@
       "date": "2025-01-08",
       "category": "Housing",
       "amountCents": -80644,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2442",
@@ -656,7 +727,8 @@
       "date": "2025-01-11",
       "category": "Lifestyle",
       "amountCents": -54495,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-LIF-0035"
     },
     {
       "id": "tx-49b3265d8e44e751-2443",
@@ -665,7 +737,8 @@
       "date": "2025-01-25",
       "category": "Utilities",
       "amountCents": -2405,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2444",
@@ -674,7 +747,8 @@
       "date": "2025-01-30",
       "category": "Salary",
       "amountCents": 241648,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2445",
@@ -683,7 +757,8 @@
       "date": "2025-01-31",
       "category": "Utilities",
       "amountCents": -5767,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2446",
@@ -692,7 +767,8 @@
       "date": "2025-01-31",
       "category": "Invest Deposit",
       "amountCents": -42337,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2447",
@@ -701,7 +777,8 @@
       "date": "2025-02-02",
       "category": "Housing",
       "amountCents": -83141,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2448",
@@ -710,7 +787,8 @@
       "date": "2025-02-06",
       "category": "Groceries",
       "amountCents": -5200,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0007"
     },
     {
       "id": "tx-49b3265d8e44e751-2449",
@@ -719,7 +797,8 @@
       "date": "2025-02-06",
       "category": "Utilities",
       "amountCents": -3178,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2450",
@@ -728,7 +807,8 @@
       "date": "2025-02-11",
       "category": "Utilities",
       "amountCents": -3177,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2451",
@@ -737,7 +817,8 @@
       "date": "2025-02-15",
       "category": "Health",
       "amountCents": -13347,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HEA-0001"
     },
     {
       "id": "tx-49b3265d8e44e751-2452",
@@ -746,7 +827,8 @@
       "date": "2025-02-15",
       "category": "Salary",
       "amountCents": 217625,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2453",
@@ -755,7 +837,8 @@
       "date": "2025-02-16",
       "category": "Invest Deposit",
       "amountCents": -38128,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2454",
@@ -764,7 +847,8 @@
       "date": "2025-02-16",
       "category": "Utilities",
       "amountCents": -2723,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2455",
@@ -773,7 +857,8 @@
       "date": "2025-02-17",
       "category": "Health",
       "amountCents": -9773,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HEA-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2456",
@@ -782,7 +867,8 @@
       "date": "2025-02-18",
       "category": "Lifestyle",
       "amountCents": -33795,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-LIF-0029"
     },
     {
       "id": "tx-49b3265d8e44e751-2457",
@@ -791,7 +877,8 @@
       "date": "2025-02-19",
       "category": "Groceries",
       "amountCents": -4837,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0034"
     },
     {
       "id": "tx-49b3265d8e44e751-2458",
@@ -800,7 +887,8 @@
       "date": "2025-02-21",
       "category": "Groceries",
       "amountCents": -3426,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0041"
     },
     {
       "id": "tx-49b3265d8e44e751-2459",
@@ -809,7 +897,8 @@
       "date": "2025-02-21",
       "category": "Groceries",
       "amountCents": -6499,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0063"
     },
     {
       "id": "tx-49b3265d8e44e751-2460",
@@ -818,7 +907,8 @@
       "date": "2025-02-21",
       "category": "Groceries",
       "amountCents": -12522,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0010"
     },
     {
       "id": "tx-49b3265d8e44e751-2461",
@@ -827,7 +917,8 @@
       "date": "2025-02-26",
       "category": "Health",
       "amountCents": -12661,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2462",
@@ -836,7 +927,8 @@
       "date": "2025-03-01",
       "category": "Groceries",
       "amountCents": -13051,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0055"
     },
     {
       "id": "tx-49b3265d8e44e751-2463",
@@ -845,7 +937,8 @@
       "date": "2025-03-02",
       "category": "Groceries",
       "amountCents": -8982,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0075"
     },
     {
       "id": "tx-49b3265d8e44e751-2464",
@@ -854,7 +947,8 @@
       "date": "2025-03-06",
       "category": "Housing",
       "amountCents": -79622,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2465",
@@ -863,7 +957,8 @@
       "date": "2025-03-08",
       "category": "Groceries",
       "amountCents": -5708,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0032"
     },
     {
       "id": "tx-49b3265d8e44e751-2466",
@@ -872,7 +967,8 @@
       "date": "2025-03-10",
       "category": "Utilities",
       "amountCents": -2834,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2467",
@@ -881,7 +977,8 @@
       "date": "2025-03-10",
       "category": "Groceries",
       "amountCents": -3248,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0057"
     },
     {
       "id": "tx-49b3265d8e44e751-2468",
@@ -890,7 +987,8 @@
       "date": "2025-03-11",
       "category": "Utilities",
       "amountCents": -2586,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2469",
@@ -899,7 +997,8 @@
       "date": "2025-03-12",
       "category": "Groceries",
       "amountCents": -1482,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0026"
     },
     {
       "id": "tx-49b3265d8e44e751-2470",
@@ -908,7 +1007,8 @@
       "date": "2025-03-12",
       "category": "Groceries",
       "amountCents": -4354,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0065"
     },
     {
       "id": "tx-49b3265d8e44e751-2471",
@@ -917,7 +1017,8 @@
       "date": "2025-03-13",
       "category": "Groceries",
       "amountCents": -8261,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0032"
     },
     {
       "id": "tx-49b3265d8e44e751-2472",
@@ -926,7 +1027,8 @@
       "date": "2025-03-15",
       "category": "Salary",
       "amountCents": 245516,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2473",
@@ -935,7 +1037,8 @@
       "date": "2025-03-15",
       "category": "Groceries",
       "amountCents": -3050,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0055"
     },
     {
       "id": "tx-49b3265d8e44e751-2474",
@@ -944,7 +1047,8 @@
       "date": "2025-03-16",
       "category": "Groceries",
       "amountCents": -7321,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0073"
     },
     {
       "id": "tx-49b3265d8e44e751-2475",
@@ -953,7 +1057,8 @@
       "date": "2025-03-16",
       "category": "Invest Deposit",
       "amountCents": -43014,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2476",
@@ -962,7 +1067,8 @@
       "date": "2025-03-17",
       "category": "Groceries",
       "amountCents": -2903,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0068"
     },
     {
       "id": "tx-49b3265d8e44e751-2477",
@@ -971,7 +1077,8 @@
       "date": "2025-03-17",
       "category": "Groceries",
       "amountCents": -14012,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0063"
     },
     {
       "id": "tx-49b3265d8e44e751-2478",
@@ -980,7 +1087,8 @@
       "date": "2025-03-21",
       "category": "Groceries",
       "amountCents": -6213,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0012"
     },
     {
       "id": "tx-49b3265d8e44e751-2479",
@@ -989,7 +1097,8 @@
       "date": "2025-03-25",
       "category": "Groceries",
       "amountCents": -5708,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0001"
     },
     {
       "id": "tx-49b3265d8e44e751-2480",
@@ -998,7 +1107,8 @@
       "date": "2025-03-27",
       "category": "Groceries",
       "amountCents": -6740,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0002"
     },
     {
       "id": "tx-49b3265d8e44e751-2481",
@@ -1007,7 +1117,8 @@
       "date": "2025-03-28",
       "category": "Groceries",
       "amountCents": -8680,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0015"
     },
     {
       "id": "tx-49b3265d8e44e751-2482",
@@ -1016,7 +1127,8 @@
       "date": "2025-03-28",
       "category": "Groceries",
       "amountCents": -5333,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0075"
     },
     {
       "id": "tx-49b3265d8e44e751-2483",
@@ -1025,7 +1137,8 @@
       "date": "2025-03-29",
       "category": "Groceries",
       "amountCents": -7936,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0015"
     },
     {
       "id": "tx-49b3265d8e44e751-2484",
@@ -1034,7 +1147,8 @@
       "date": "2025-03-29",
       "category": "Groceries",
       "amountCents": -11306,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0075"
     },
     {
       "id": "tx-49b3265d8e44e751-2485",
@@ -1043,7 +1157,8 @@
       "date": "2025-03-30",
       "category": "Utilities",
       "amountCents": -1723,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2486",
@@ -1052,7 +1167,8 @@
       "date": "2025-03-30",
       "category": "Groceries",
       "amountCents": -14991,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0053"
     },
     {
       "id": "tx-49b3265d8e44e751-2487",
@@ -1061,7 +1177,8 @@
       "date": "2025-03-31",
       "category": "Groceries",
       "amountCents": -3460,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0048"
     },
     {
       "id": "tx-49b3265d8e44e751-2488",
@@ -1070,7 +1187,8 @@
       "date": "2025-04-02",
       "category": "Transportation",
       "amountCents": -1173,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0027"
     },
     {
       "id": "tx-49b3265d8e44e751-2489",
@@ -1079,7 +1197,8 @@
       "date": "2025-04-06",
       "category": "Housing",
       "amountCents": -78554,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2490",
@@ -1088,7 +1207,8 @@
       "date": "2025-04-07",
       "category": "Transportation",
       "amountCents": -4721,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0023"
     },
     {
       "id": "tx-49b3265d8e44e751-2491",
@@ -1097,7 +1217,8 @@
       "date": "2025-04-08",
       "category": "Transportation",
       "amountCents": -5846,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0062"
     },
     {
       "id": "tx-49b3265d8e44e751-2492",
@@ -1106,7 +1227,8 @@
       "date": "2025-04-09",
       "category": "Transportation",
       "amountCents": -4070,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0014"
     },
     {
       "id": "tx-49b3265d8e44e751-2493",
@@ -1115,7 +1237,8 @@
       "date": "2025-04-10",
       "category": "Utilities",
       "amountCents": -4719,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2494",
@@ -1124,7 +1247,8 @@
       "date": "2025-04-11",
       "category": "Transportation",
       "amountCents": -4846,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0029"
     },
     {
       "id": "tx-49b3265d8e44e751-2495",
@@ -1133,7 +1257,8 @@
       "date": "2025-04-11",
       "category": "Transportation",
       "amountCents": -4109,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0026"
     },
     {
       "id": "tx-49b3265d8e44e751-2496",
@@ -1142,7 +1267,8 @@
       "date": "2025-04-13",
       "category": "Transportation",
       "amountCents": -7726,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0031"
     },
     {
       "id": "tx-49b3265d8e44e751-2497",
@@ -1151,7 +1277,8 @@
       "date": "2025-04-14",
       "category": "Transportation",
       "amountCents": -2798,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0023"
     },
     {
       "id": "tx-49b3265d8e44e751-2498",
@@ -1160,7 +1287,8 @@
       "date": "2025-04-14",
       "category": "Transportation",
       "amountCents": -3871,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0016"
     },
     {
       "id": "tx-49b3265d8e44e751-2499",
@@ -1169,7 +1297,8 @@
       "date": "2025-04-15",
       "category": "Salary",
       "amountCents": 236330,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2500",
@@ -1178,7 +1307,8 @@
       "date": "2025-04-15",
       "category": "Utilities",
       "amountCents": -2597,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2501",
@@ -1187,7 +1317,8 @@
       "date": "2025-04-16",
       "category": "Invest Deposit",
       "amountCents": -41405,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2502",
@@ -1196,7 +1327,8 @@
       "date": "2025-04-16",
       "category": "Transportation",
       "amountCents": -4070,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0061"
     },
     {
       "id": "tx-49b3265d8e44e751-2503",
@@ -1205,7 +1337,8 @@
       "date": "2025-04-17",
       "category": "Transportation",
       "amountCents": -4559,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0036"
     },
     {
       "id": "tx-49b3265d8e44e751-2504",
@@ -1214,7 +1347,8 @@
       "date": "2025-04-17",
       "category": "Transportation",
       "amountCents": -10064,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0037"
     },
     {
       "id": "tx-49b3265d8e44e751-2505",
@@ -1223,7 +1357,8 @@
       "date": "2025-04-18",
       "category": "Transportation",
       "amountCents": -2666,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2506",
@@ -1232,7 +1367,8 @@
       "date": "2025-04-18",
       "category": "Transportation",
       "amountCents": -2503,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0013"
     },
     {
       "id": "tx-49b3265d8e44e751-2507",
@@ -1241,7 +1377,8 @@
       "date": "2025-04-21",
       "category": "Transportation",
       "amountCents": -2724,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2508",
@@ -1250,7 +1387,8 @@
       "date": "2025-04-23",
       "category": "Transportation",
       "amountCents": -4781,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0046"
     },
     {
       "id": "tx-49b3265d8e44e751-2509",
@@ -1259,7 +1397,8 @@
       "date": "2025-04-23",
       "category": "Utilities",
       "amountCents": -6641,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2510",
@@ -1268,7 +1407,8 @@
       "date": "2025-04-25",
       "category": "Transportation",
       "amountCents": -6352,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0023"
     },
     {
       "id": "tx-49b3265d8e44e751-2511",
@@ -1277,7 +1417,8 @@
       "date": "2025-04-29",
       "category": "Transportation",
       "amountCents": -3433,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0009"
     },
     {
       "id": "tx-49b3265d8e44e751-2512",
@@ -1286,7 +1427,8 @@
       "date": "2025-04-30",
       "category": "Transportation",
       "amountCents": -4203,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0018"
     },
     {
       "id": "tx-49b3265d8e44e751-2513",
@@ -1295,7 +1437,8 @@
       "date": "2025-04-30",
       "category": "Transportation",
       "amountCents": -5923,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0005"
     },
     {
       "id": "tx-49b3265d8e44e751-2514",
@@ -1304,7 +1447,8 @@
       "date": "2025-05-03",
       "category": "Groceries",
       "amountCents": -5392,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0009"
     },
     {
       "id": "tx-49b3265d8e44e751-2515",
@@ -1313,7 +1457,8 @@
       "date": "2025-05-03",
       "category": "Housing",
       "amountCents": -77100,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2516",
@@ -1322,7 +1467,8 @@
       "date": "2025-05-11",
       "category": "Utilities",
       "amountCents": -5722,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2517",
@@ -1331,7 +1477,8 @@
       "date": "2025-05-12",
       "category": "Groceries",
       "amountCents": -4642,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0068"
     },
     {
       "id": "tx-49b3265d8e44e751-2518",
@@ -1340,7 +1487,8 @@
       "date": "2025-05-13",
       "category": "Utilities",
       "amountCents": -5432,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2519",
@@ -1349,7 +1497,8 @@
       "date": "2025-05-15",
       "category": "Utilities",
       "amountCents": -5284,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2520",
@@ -1358,7 +1507,8 @@
       "date": "2025-05-15",
       "category": "Salary",
       "amountCents": 224351,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2521",
@@ -1367,7 +1517,8 @@
       "date": "2025-05-16",
       "category": "Invest Deposit",
       "amountCents": -39306,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2522",
@@ -1376,7 +1527,8 @@
       "date": "2025-05-17",
       "category": "Groceries",
       "amountCents": -3432,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0019"
     },
     {
       "id": "tx-49b3265d8e44e751-2523",
@@ -1385,7 +1537,8 @@
       "date": "2025-05-21",
       "category": "Groceries",
       "amountCents": -10626,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0034"
     },
     {
       "id": "tx-49b3265d8e44e751-2524",
@@ -1394,7 +1547,8 @@
       "date": "2025-05-23",
       "category": "Groceries",
       "amountCents": -3376,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0065"
     },
     {
       "id": "tx-49b3265d8e44e751-2525",
@@ -1403,7 +1557,8 @@
       "date": "2025-05-26",
       "category": "Groceries",
       "amountCents": -3667,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0036"
     },
     {
       "id": "tx-49b3265d8e44e751-2526",
@@ -1412,7 +1567,8 @@
       "date": "2025-05-30",
       "category": "Groceries",
       "amountCents": -10671,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0064"
     },
     {
       "id": "tx-49b3265d8e44e751-2527",
@@ -1421,7 +1577,8 @@
       "date": "2025-05-31",
       "category": "Groceries",
       "amountCents": -11146,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0046"
     },
     {
       "id": "tx-49b3265d8e44e751-2528",
@@ -1430,7 +1587,8 @@
       "date": "2025-06-01",
       "category": "Transportation",
       "amountCents": -3058,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0036"
     },
     {
       "id": "tx-49b3265d8e44e751-2529",
@@ -1439,7 +1597,8 @@
       "date": "2025-06-03",
       "category": "Housing",
       "amountCents": -78144,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2530",
@@ -1448,7 +1607,8 @@
       "date": "2025-06-04",
       "category": "Transportation",
       "amountCents": -4095,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0034"
     },
     {
       "id": "tx-49b3265d8e44e751-2531",
@@ -1457,7 +1617,8 @@
       "date": "2025-06-04",
       "category": "Utilities",
       "amountCents": -3364,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2532",
@@ -1466,7 +1627,8 @@
       "date": "2025-06-04",
       "category": "Utilities",
       "amountCents": -5695,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2533",
@@ -1475,7 +1637,8 @@
       "date": "2025-06-06",
       "category": "Transportation",
       "amountCents": -7171,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0034"
     },
     {
       "id": "tx-49b3265d8e44e751-2534",
@@ -1484,7 +1647,8 @@
       "date": "2025-06-09",
       "category": "Transportation",
       "amountCents": -5589,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0060"
     },
     {
       "id": "tx-49b3265d8e44e751-2535",
@@ -1493,7 +1657,8 @@
       "date": "2025-06-10",
       "category": "Transportation",
       "amountCents": -5438,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0057"
     },
     {
       "id": "tx-49b3265d8e44e751-2536",
@@ -1502,7 +1667,8 @@
       "date": "2025-06-12",
       "category": "Transportation",
       "amountCents": -2466,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0061"
     },
     {
       "id": "tx-49b3265d8e44e751-2537",
@@ -1511,7 +1677,8 @@
       "date": "2025-06-12",
       "category": "Transportation",
       "amountCents": -3459,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0042"
     },
     {
       "id": "tx-49b3265d8e44e751-2538",
@@ -1520,7 +1687,8 @@
       "date": "2025-06-13",
       "category": "Transportation",
       "amountCents": -11041,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0058"
     },
     {
       "id": "tx-49b3265d8e44e751-2539",
@@ -1529,7 +1697,8 @@
       "date": "2025-06-13",
       "category": "Utilities",
       "amountCents": -3276,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2540",
@@ -1538,7 +1707,8 @@
       "date": "2025-06-14",
       "category": "Transportation",
       "amountCents": -2881,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0036"
     },
     {
       "id": "tx-49b3265d8e44e751-2541",
@@ -1547,7 +1717,8 @@
       "date": "2025-06-14",
       "category": "Transportation",
       "amountCents": -3460,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0062"
     },
     {
       "id": "tx-49b3265d8e44e751-2542",
@@ -1556,7 +1727,8 @@
       "date": "2025-06-15",
       "category": "Salary",
       "amountCents": 255179,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2543",
@@ -1565,7 +1737,8 @@
       "date": "2025-06-16",
       "category": "Transportation",
       "amountCents": -3197,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0054"
     },
     {
       "id": "tx-49b3265d8e44e751-2544",
@@ -1574,7 +1747,8 @@
       "date": "2025-06-16",
       "category": "Invest Deposit",
       "amountCents": -44707,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2545",
@@ -1583,7 +1757,8 @@
       "date": "2025-06-17",
       "category": "Transportation",
       "amountCents": -3387,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0026"
     },
     {
       "id": "tx-49b3265d8e44e751-2546",
@@ -1592,7 +1767,8 @@
       "date": "2025-06-17",
       "category": "Transportation",
       "amountCents": -4454,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0029"
     },
     {
       "id": "tx-49b3265d8e44e751-2547",
@@ -1601,7 +1777,8 @@
       "date": "2025-06-18",
       "category": "Transportation",
       "amountCents": -5442,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2548",
@@ -1610,7 +1787,8 @@
       "date": "2025-06-19",
       "category": "Transportation",
       "amountCents": -5930,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0051"
     },
     {
       "id": "tx-49b3265d8e44e751-2549",
@@ -1619,7 +1797,8 @@
       "date": "2025-06-20",
       "category": "Transportation",
       "amountCents": -3400,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0044"
     },
     {
       "id": "tx-49b3265d8e44e751-2550",
@@ -1628,7 +1807,8 @@
       "date": "2025-06-21",
       "category": "Transportation",
       "amountCents": -4055,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0025"
     },
     {
       "id": "tx-49b3265d8e44e751-2551",
@@ -1637,7 +1817,8 @@
       "date": "2025-06-21",
       "category": "Transportation",
       "amountCents": -3765,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0039"
     },
     {
       "id": "tx-49b3265d8e44e751-2552",
@@ -1646,7 +1827,8 @@
       "date": "2025-06-24",
       "category": "Transportation",
       "amountCents": -3134,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2553",
@@ -1655,7 +1837,8 @@
       "date": "2025-06-25",
       "category": "Transportation",
       "amountCents": -5820,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0013"
     },
     {
       "id": "tx-49b3265d8e44e751-2554",
@@ -1664,7 +1847,8 @@
       "date": "2025-06-27",
       "category": "Transportation",
       "amountCents": -3503,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2555",
@@ -1673,7 +1857,8 @@
       "date": "2025-06-27",
       "category": "Transportation",
       "amountCents": -2227,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0044"
     },
     {
       "id": "tx-49b3265d8e44e751-2556",
@@ -1682,7 +1867,8 @@
       "date": "2025-06-28",
       "category": "Transportation",
       "amountCents": -8377,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0054"
     },
     {
       "id": "tx-49b3265d8e44e751-2557",
@@ -1691,7 +1877,8 @@
       "date": "2025-06-30",
       "category": "Transportation",
       "amountCents": -2624,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0029"
     },
     {
       "id": "tx-49b3265d8e44e751-2558",
@@ -1700,7 +1887,8 @@
       "date": "2025-06-30",
       "category": "Transportation",
       "amountCents": -3004,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2559",
@@ -1709,7 +1897,8 @@
       "date": "2025-07-02",
       "category": "Housing",
       "amountCents": -79866,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2560",
@@ -1718,7 +1907,8 @@
       "date": "2025-07-04",
       "category": "Groceries",
       "amountCents": -6922,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0066"
     },
     {
       "id": "tx-49b3265d8e44e751-2561",
@@ -1727,7 +1917,8 @@
       "date": "2025-07-04",
       "category": "Groceries",
       "amountCents": -4457,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0025"
     },
     {
       "id": "tx-49b3265d8e44e751-2562",
@@ -1736,7 +1927,8 @@
       "date": "2025-07-09",
       "category": "Groceries",
       "amountCents": -4683,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0043"
     },
     {
       "id": "tx-49b3265d8e44e751-2563",
@@ -1745,7 +1937,8 @@
       "date": "2025-07-09",
       "category": "Groceries",
       "amountCents": -12313,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0057"
     },
     {
       "id": "tx-49b3265d8e44e751-2564",
@@ -1754,7 +1947,8 @@
       "date": "2025-07-11",
       "category": "Groceries",
       "amountCents": -4236,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0004"
     },
     {
       "id": "tx-49b3265d8e44e751-2565",
@@ -1763,7 +1957,8 @@
       "date": "2025-07-13",
       "category": "Utilities",
       "amountCents": -2785,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2566",
@@ -1772,7 +1967,8 @@
       "date": "2025-07-13",
       "category": "Groceries",
       "amountCents": -4953,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0019"
     },
     {
       "id": "tx-49b3265d8e44e751-2567",
@@ -1781,7 +1977,8 @@
       "date": "2025-07-15",
       "category": "Salary",
       "amountCents": 246212,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2568",
@@ -1790,7 +1987,8 @@
       "date": "2025-07-16",
       "category": "Invest Deposit",
       "amountCents": -43136,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2569",
@@ -1799,7 +1997,8 @@
       "date": "2025-07-16",
       "category": "Utilities",
       "amountCents": -5085,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2570",
@@ -1808,7 +2007,8 @@
       "date": "2025-07-17",
       "category": "Groceries",
       "amountCents": -5065,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0013"
     },
     {
       "id": "tx-49b3265d8e44e751-2571",
@@ -1817,7 +2017,8 @@
       "date": "2025-07-17",
       "category": "Utilities",
       "amountCents": -3009,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2572",
@@ -1826,7 +2027,8 @@
       "date": "2025-07-19",
       "category": "Groceries",
       "amountCents": -12817,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0055"
     },
     {
       "id": "tx-49b3265d8e44e751-2573",
@@ -1835,7 +2037,8 @@
       "date": "2025-07-19",
       "category": "Groceries",
       "amountCents": -4021,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0001"
     },
     {
       "id": "tx-49b3265d8e44e751-2574",
@@ -1844,7 +2047,8 @@
       "date": "2025-07-20",
       "category": "Groceries",
       "amountCents": -7280,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0003"
     },
     {
       "id": "tx-49b3265d8e44e751-2575",
@@ -1853,7 +2057,8 @@
       "date": "2025-07-20",
       "category": "Groceries",
       "amountCents": -10159,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0049"
     },
     {
       "id": "tx-49b3265d8e44e751-2576",
@@ -1862,7 +2067,8 @@
       "date": "2025-07-27",
       "category": "Groceries",
       "amountCents": -6940,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0001"
     },
     {
       "id": "tx-49b3265d8e44e751-2577",
@@ -1871,7 +2077,8 @@
       "date": "2025-07-27",
       "category": "Groceries",
       "amountCents": -5667,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0019"
     },
     {
       "id": "tx-49b3265d8e44e751-2578",
@@ -1880,7 +2087,8 @@
       "date": "2025-07-30",
       "category": "Groceries",
       "amountCents": -8497,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0029"
     },
     {
       "id": "tx-49b3265d8e44e751-2579",
@@ -1889,7 +2097,8 @@
       "date": "2025-07-31",
       "category": "Groceries",
       "amountCents": -4435,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0020"
     },
     {
       "id": "tx-49b3265d8e44e751-2580",
@@ -1898,7 +2107,8 @@
       "date": "2025-08-02",
       "category": "Groceries",
       "amountCents": -10936,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0015"
     },
     {
       "id": "tx-49b3265d8e44e751-2581",
@@ -1907,7 +2117,8 @@
       "date": "2025-08-03",
       "category": "Housing",
       "amountCents": -77957,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2582",
@@ -1916,7 +2127,8 @@
       "date": "2025-08-05",
       "category": "Utilities",
       "amountCents": -5054,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2583",
@@ -1925,7 +2137,8 @@
       "date": "2025-08-08",
       "category": "Groceries",
       "amountCents": -2110,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0043"
     },
     {
       "id": "tx-49b3265d8e44e751-2584",
@@ -1934,7 +2147,8 @@
       "date": "2025-08-08",
       "category": "Groceries",
       "amountCents": -9554,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0050"
     },
     {
       "id": "tx-49b3265d8e44e751-2585",
@@ -1943,7 +2157,8 @@
       "date": "2025-08-15",
       "category": "Salary",
       "amountCents": 217153,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2586",
@@ -1952,7 +2167,8 @@
       "date": "2025-08-16",
       "category": "Invest Deposit",
       "amountCents": -38045,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2587",
@@ -1961,7 +2177,8 @@
       "date": "2025-08-21",
       "category": "Groceries",
       "amountCents": -9396,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0016"
     },
     {
       "id": "tx-49b3265d8e44e751-2588",
@@ -1970,7 +2187,8 @@
       "date": "2025-08-22",
       "category": "Groceries",
       "amountCents": -6502,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0040"
     },
     {
       "id": "tx-49b3265d8e44e751-2589",
@@ -1979,7 +2197,8 @@
       "date": "2025-08-24",
       "category": "Groceries",
       "amountCents": -9001,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2590",
@@ -1988,7 +2207,8 @@
       "date": "2025-08-25",
       "category": "Groceries",
       "amountCents": -4347,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0034"
     },
     {
       "id": "tx-49b3265d8e44e751-2591",
@@ -1997,7 +2217,8 @@
       "date": "2025-08-27",
       "category": "Utilities",
       "amountCents": -4218,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2592",
@@ -2006,7 +2227,8 @@
       "date": "2025-08-29",
       "category": "Groceries",
       "amountCents": -6208,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0064"
     },
     {
       "id": "tx-49b3265d8e44e751-2593",
@@ -2015,7 +2237,8 @@
       "date": "2025-08-29",
       "category": "Groceries",
       "amountCents": -6292,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0001"
     },
     {
       "id": "tx-49b3265d8e44e751-2594",
@@ -2024,7 +2247,8 @@
       "date": "2025-08-31",
       "category": "Utilities",
       "amountCents": -4422,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2595",
@@ -2033,7 +2257,8 @@
       "date": "2025-09-04",
       "category": "Transportation",
       "amountCents": -3633,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0026"
     },
     {
       "id": "tx-49b3265d8e44e751-2596",
@@ -2042,7 +2267,8 @@
       "date": "2025-09-04",
       "category": "Transportation",
       "amountCents": -3621,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0031"
     },
     {
       "id": "tx-49b3265d8e44e751-2597",
@@ -2051,7 +2277,8 @@
       "date": "2025-09-05",
       "category": "Transportation",
       "amountCents": -4707,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0065"
     },
     {
       "id": "tx-49b3265d8e44e751-2598",
@@ -2060,7 +2287,8 @@
       "date": "2025-09-08",
       "category": "Housing",
       "amountCents": -81295,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2599",
@@ -2069,7 +2297,8 @@
       "date": "2025-09-09",
       "category": "Utilities",
       "amountCents": -3745,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2600",
@@ -2078,7 +2307,8 @@
       "date": "2025-09-10",
       "category": "Transportation",
       "amountCents": -3802,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0017"
     },
     {
       "id": "tx-49b3265d8e44e751-2601",
@@ -2087,7 +2317,8 @@
       "date": "2025-09-11",
       "category": "Transportation",
       "amountCents": -3229,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2602",
@@ -2096,7 +2327,8 @@
       "date": "2025-09-11",
       "category": "Transportation",
       "amountCents": -3587,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0023"
     },
     {
       "id": "tx-49b3265d8e44e751-2603",
@@ -2105,7 +2337,8 @@
       "date": "2025-09-14",
       "category": "Transportation",
       "amountCents": -4986,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0019"
     },
     {
       "id": "tx-49b3265d8e44e751-2604",
@@ -2114,7 +2347,8 @@
       "date": "2025-09-15",
       "category": "Salary",
       "amountCents": 275598,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2605",
@@ -2123,7 +2357,8 @@
       "date": "2025-09-16",
       "category": "Invest Deposit",
       "amountCents": -48285,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2606",
@@ -2132,7 +2367,8 @@
       "date": "2025-09-17",
       "category": "Transportation",
       "amountCents": -8254,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0032"
     },
     {
       "id": "tx-49b3265d8e44e751-2607",
@@ -2141,7 +2377,8 @@
       "date": "2025-09-18",
       "category": "Transportation",
       "amountCents": -3306,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0057"
     },
     {
       "id": "tx-49b3265d8e44e751-2608",
@@ -2150,7 +2387,8 @@
       "date": "2025-09-19",
       "category": "Transportation",
       "amountCents": -2879,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0023"
     },
     {
       "id": "tx-49b3265d8e44e751-2609",
@@ -2159,7 +2397,8 @@
       "date": "2025-09-22",
       "category": "Transportation",
       "amountCents": -2648,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0019"
     },
     {
       "id": "tx-49b3265d8e44e751-2610",
@@ -2168,7 +2407,8 @@
       "date": "2025-09-22",
       "category": "Transportation",
       "amountCents": -3439,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0042"
     },
     {
       "id": "tx-49b3265d8e44e751-2611",
@@ -2177,7 +2417,8 @@
       "date": "2025-09-23",
       "category": "Utilities",
       "amountCents": -5815,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2612",
@@ -2186,7 +2427,8 @@
       "date": "2025-09-27",
       "category": "Utilities",
       "amountCents": -3475,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2613",
@@ -2195,7 +2437,8 @@
       "date": "2025-09-30",
       "category": "Transportation",
       "amountCents": -9554,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0053"
     },
     {
       "id": "tx-49b3265d8e44e751-2614",
@@ -2204,7 +2447,8 @@
       "date": "2025-10-01",
       "category": "Housing",
       "amountCents": -78443,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2615",
@@ -2213,7 +2457,8 @@
       "date": "2025-10-02",
       "category": "Groceries",
       "amountCents": -7926,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0012"
     },
     {
       "id": "tx-49b3265d8e44e751-2616",
@@ -2222,7 +2467,8 @@
       "date": "2025-10-07",
       "category": "Utilities",
       "amountCents": -3880,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2617",
@@ -2231,7 +2477,8 @@
       "date": "2025-10-08",
       "category": "Groceries",
       "amountCents": -8906,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2618",
@@ -2240,7 +2487,8 @@
       "date": "2025-10-10",
       "category": "Groceries",
       "amountCents": -4414,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0028"
     },
     {
       "id": "tx-49b3265d8e44e751-2619",
@@ -2249,7 +2497,8 @@
       "date": "2025-10-15",
       "category": "Salary",
       "amountCents": 265356,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2620",
@@ -2258,7 +2507,8 @@
       "date": "2025-10-16",
       "category": "Invest Deposit",
       "amountCents": -46490,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2621",
@@ -2267,7 +2517,8 @@
       "date": "2025-10-16",
       "category": "Groceries",
       "amountCents": -5980,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0065"
     },
     {
       "id": "tx-49b3265d8e44e751-2622",
@@ -2276,7 +2527,8 @@
       "date": "2025-10-18",
       "category": "Utilities",
       "amountCents": -4818,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2623",
@@ -2285,7 +2537,8 @@
       "date": "2025-10-20",
       "category": "Groceries",
       "amountCents": -5428,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0028"
     },
     {
       "id": "tx-49b3265d8e44e751-2624",
@@ -2294,7 +2547,8 @@
       "date": "2025-10-27",
       "category": "Utilities",
       "amountCents": -3994,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2625",
@@ -2303,7 +2557,8 @@
       "date": "2025-10-27",
       "category": "Groceries",
       "amountCents": -5786,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0049"
     },
     {
       "id": "tx-49b3265d8e44e751-2626",
@@ -2312,7 +2567,8 @@
       "date": "2025-10-29",
       "category": "Groceries",
       "amountCents": -7088,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0007"
     },
     {
       "id": "tx-49b3265d8e44e751-2627",
@@ -2321,7 +2577,8 @@
       "date": "2025-11-04",
       "category": "Utilities",
       "amountCents": -4038,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2628",
@@ -2330,7 +2587,8 @@
       "date": "2025-11-06",
       "category": "Housing",
       "amountCents": -77264,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2629",
@@ -2339,7 +2597,8 @@
       "date": "2025-11-08",
       "category": "Travel",
       "amountCents": -22335,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRV-0019"
     },
     {
       "id": "tx-49b3265d8e44e751-2630",
@@ -2348,7 +2607,8 @@
       "date": "2025-11-12",
       "category": "Utilities",
       "amountCents": -5206,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2631",
@@ -2357,7 +2617,8 @@
       "date": "2025-11-13",
       "category": "Health",
       "amountCents": -6799,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HEA-0008"
     },
     {
       "id": "tx-49b3265d8e44e751-2632",
@@ -2366,7 +2627,8 @@
       "date": "2025-11-19",
       "category": "Health",
       "amountCents": -21606,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HEA-0013"
     },
     {
       "id": "tx-49b3265d8e44e751-2633",
@@ -2375,7 +2637,8 @@
       "date": "2025-11-20",
       "category": "Utilities",
       "amountCents": -3400,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2634",
@@ -2384,7 +2647,8 @@
       "date": "2025-11-27",
       "category": "Health",
       "amountCents": -12897,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HEA-0004"
     },
     {
       "id": "tx-49b3265d8e44e751-2635",
@@ -2393,7 +2657,8 @@
       "date": "2025-11-30",
       "category": "Salary",
       "amountCents": 228888,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2636",
@@ -2402,7 +2667,8 @@
       "date": "2025-11-30",
       "category": "Invest Deposit",
       "amountCents": -40101,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2637",
@@ -2411,7 +2677,8 @@
       "date": "2025-12-01",
       "category": "Groceries",
       "amountCents": -8540,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0028"
     },
     {
       "id": "tx-49b3265d8e44e751-2638",
@@ -2420,7 +2687,8 @@
       "date": "2025-12-03",
       "category": "Groceries",
       "amountCents": -8640,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0032"
     },
     {
       "id": "tx-49b3265d8e44e751-2639",
@@ -2429,7 +2697,8 @@
       "date": "2025-12-05",
       "category": "Restaurants",
       "amountCents": -2988,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0072"
     },
     {
       "id": "tx-49b3265d8e44e751-2640",
@@ -2438,7 +2707,8 @@
       "date": "2025-12-06",
       "category": "Restaurants",
       "amountCents": -3373,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0019"
     },
     {
       "id": "tx-49b3265d8e44e751-2641",
@@ -2447,7 +2717,8 @@
       "date": "2025-12-08",
       "category": "Housing",
       "amountCents": -76872,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2642",
@@ -2456,7 +2727,8 @@
       "date": "2025-12-08",
       "category": "Restaurants",
       "amountCents": -4699,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0072"
     },
     {
       "id": "tx-49b3265d8e44e751-2643",
@@ -2465,7 +2737,8 @@
       "date": "2025-12-09",
       "category": "Restaurants",
       "amountCents": -4912,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0016"
     },
     {
       "id": "tx-49b3265d8e44e751-2644",
@@ -2474,7 +2747,8 @@
       "date": "2025-12-11",
       "category": "Utilities",
       "amountCents": -2618,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2645",
@@ -2483,7 +2757,8 @@
       "date": "2025-12-12",
       "category": "Groceries",
       "amountCents": -5538,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0065"
     },
     {
       "id": "tx-49b3265d8e44e751-2646",
@@ -2492,7 +2767,8 @@
       "date": "2025-12-12",
       "category": "Utilities",
       "amountCents": -2290,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2647",
@@ -2501,7 +2777,8 @@
       "date": "2025-12-15",
       "category": "Salary",
       "amountCents": 264530,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2648",
@@ -2510,7 +2787,8 @@
       "date": "2025-12-16",
       "category": "Invest Deposit",
       "amountCents": -46346,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2649",
@@ -2519,7 +2797,8 @@
       "date": "2025-12-16",
       "category": "Restaurants",
       "amountCents": -2312,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0011"
     },
     {
       "id": "tx-49b3265d8e44e751-2650",
@@ -2528,7 +2807,8 @@
       "date": "2025-12-19",
       "category": "Restaurants",
       "amountCents": -4673,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0013"
     },
     {
       "id": "tx-49b3265d8e44e751-2651",
@@ -2537,7 +2817,8 @@
       "date": "2025-12-20",
       "category": "Groceries",
       "amountCents": -4723,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0064"
     },
     {
       "id": "tx-49b3265d8e44e751-2652",
@@ -2546,7 +2827,8 @@
       "date": "2025-12-22",
       "category": "Groceries",
       "amountCents": -8093,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0065"
     },
     {
       "id": "tx-49b3265d8e44e751-2653",
@@ -2555,7 +2837,8 @@
       "date": "2025-12-22",
       "category": "Groceries",
       "amountCents": -6491,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0029"
     },
     {
       "id": "tx-49b3265d8e44e751-2654",
@@ -2564,7 +2847,8 @@
       "date": "2025-12-24",
       "category": "Utilities",
       "amountCents": -2763,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2655",
@@ -2573,7 +2857,8 @@
       "date": "2025-12-26",
       "category": "Restaurants",
       "amountCents": -8410,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0084"
     },
     {
       "id": "tx-49b3265d8e44e751-2656",
@@ -2582,7 +2867,8 @@
       "date": "2025-12-27",
       "category": "Restaurants",
       "amountCents": -4777,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0049"
     },
     {
       "id": "tx-49b3265d8e44e751-2657",
@@ -2591,7 +2877,8 @@
       "date": "2025-12-27",
       "category": "Restaurants",
       "amountCents": -3191,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0017"
     },
     {
       "id": "tx-49b3265d8e44e751-2658",
@@ -2600,7 +2887,8 @@
       "date": "2025-12-28",
       "category": "Restaurants",
       "amountCents": -4347,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-RES-0082"
     },
     {
       "id": "tx-49b3265d8e44e751-2659",
@@ -2609,7 +2897,8 @@
       "date": "2025-12-28",
       "category": "Home & Tech",
       "amountCents": -13671,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2660",
@@ -2618,7 +2907,8 @@
       "date": "2026-01-03",
       "category": "Transportation",
       "amountCents": -2239,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0015"
     },
     {
       "id": "tx-49b3265d8e44e751-2661",
@@ -2627,7 +2917,8 @@
       "date": "2026-01-05",
       "category": "Utilities",
       "amountCents": -5290,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2662",
@@ -2636,7 +2927,8 @@
       "date": "2026-01-05",
       "category": "Lifestyle",
       "amountCents": -16634,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-LIF-0045"
     },
     {
       "id": "tx-49b3265d8e44e751-2663",
@@ -2645,7 +2937,8 @@
       "date": "2026-01-05",
       "category": "Housing",
       "amountCents": -76956,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2664",
@@ -2654,7 +2947,8 @@
       "date": "2026-01-08",
       "category": "Transportation",
       "amountCents": -3514,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0005"
     },
     {
       "id": "tx-49b3265d8e44e751-2665",
@@ -2663,7 +2957,8 @@
       "date": "2026-01-08",
       "category": "Transportation",
       "amountCents": -5310,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0058"
     },
     {
       "id": "tx-49b3265d8e44e751-2666",
@@ -2672,7 +2967,8 @@
       "date": "2026-01-09",
       "category": "Transportation",
       "amountCents": -6224,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0029"
     },
     {
       "id": "tx-49b3265d8e44e751-2667",
@@ -2681,7 +2977,8 @@
       "date": "2026-01-10",
       "category": "Transportation",
       "amountCents": -8067,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0006"
     },
     {
       "id": "tx-49b3265d8e44e751-2668",
@@ -2690,7 +2987,8 @@
       "date": "2026-01-12",
       "category": "Transportation",
       "amountCents": -3556,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0005"
     },
     {
       "id": "tx-49b3265d8e44e751-2669",
@@ -2699,7 +2997,8 @@
       "date": "2026-01-12",
       "category": "Transportation",
       "amountCents": -2862,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0009"
     },
     {
       "id": "tx-49b3265d8e44e751-2670",
@@ -2708,7 +3007,8 @@
       "date": "2026-01-13",
       "category": "Transportation",
       "amountCents": -3211,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0025"
     },
     {
       "id": "tx-49b3265d8e44e751-2671",
@@ -2717,7 +3017,8 @@
       "date": "2026-01-13",
       "category": "Utilities",
       "amountCents": -4172,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2672",
@@ -2726,7 +3027,8 @@
       "date": "2026-01-14",
       "category": "Transportation",
       "amountCents": -1039,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2673",
@@ -2735,7 +3037,8 @@
       "date": "2026-01-14",
       "category": "Transportation",
       "amountCents": -5477,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2674",
@@ -2744,7 +3047,8 @@
       "date": "2026-01-15",
       "category": "Transportation",
       "amountCents": -4159,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0051"
     },
     {
       "id": "tx-49b3265d8e44e751-2675",
@@ -2753,7 +3057,8 @@
       "date": "2026-01-15",
       "category": "Salary",
       "amountCents": 276220,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2676",
@@ -2762,7 +3067,8 @@
       "date": "2026-01-16",
       "category": "Invest Deposit",
       "amountCents": -48394,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2677",
@@ -2771,7 +3077,8 @@
       "date": "2026-01-22",
       "category": "Transportation",
       "amountCents": -3993,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2678",
@@ -2780,7 +3087,8 @@
       "date": "2026-01-25",
       "category": "Utilities",
       "amountCents": -5918,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2679",
@@ -2789,7 +3097,8 @@
       "date": "2026-01-25",
       "category": "Transportation",
       "amountCents": -4804,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2680",
@@ -2798,7 +3107,8 @@
       "date": "2026-01-26",
       "category": "Transportation",
       "amountCents": -4390,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2681",
@@ -2807,7 +3117,8 @@
       "date": "2026-01-27",
       "category": "Transportation",
       "amountCents": -3608,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0061"
     },
     {
       "id": "tx-49b3265d8e44e751-2682",
@@ -2816,7 +3127,8 @@
       "date": "2026-01-29",
       "category": "Transportation",
       "amountCents": -8364,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2683",
@@ -2825,7 +3137,8 @@
       "date": "2026-02-03",
       "category": "Utilities",
       "amountCents": -2491,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2684",
@@ -2834,7 +3147,8 @@
       "date": "2026-02-05",
       "category": "Lifestyle",
       "amountCents": -52660,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-LIF-0024"
     },
     {
       "id": "tx-49b3265d8e44e751-2685",
@@ -2843,7 +3157,8 @@
       "date": "2026-02-07",
       "category": "Housing",
       "amountCents": -78544,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2686",
@@ -2852,7 +3167,8 @@
       "date": "2026-02-12",
       "category": "Utilities",
       "amountCents": -2546,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2687",
@@ -2861,7 +3177,8 @@
       "date": "2026-02-15",
       "category": "Salary",
       "amountCents": 238415,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2688",
@@ -2870,7 +3187,8 @@
       "date": "2026-02-16",
       "category": "Invest Deposit",
       "amountCents": -41770,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2689",
@@ -2879,7 +3197,8 @@
       "date": "2026-02-22",
       "category": "Travel",
       "amountCents": -57987,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRV-0026"
     },
     {
       "id": "tx-49b3265d8e44e751-2690",
@@ -2888,7 +3207,8 @@
       "date": "2026-02-26",
       "category": "Utilities",
       "amountCents": -2845,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2691",
@@ -2897,7 +3217,8 @@
       "date": "2026-03-02",
       "category": "Housing",
       "amountCents": -83336,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2692",
@@ -2906,7 +3227,8 @@
       "date": "2026-03-02",
       "category": "Groceries",
       "amountCents": -3004,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0051"
     },
     {
       "id": "tx-49b3265d8e44e751-2693",
@@ -2915,7 +3237,8 @@
       "date": "2026-03-06",
       "category": "Groceries",
       "amountCents": -13260,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0042"
     },
     {
       "id": "tx-49b3265d8e44e751-2694",
@@ -2924,7 +3247,8 @@
       "date": "2026-03-07",
       "category": "Utilities",
       "amountCents": -3734,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2695",
@@ -2933,7 +3257,8 @@
       "date": "2026-03-07",
       "category": "Utilities",
       "amountCents": -5220,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2696",
@@ -2942,7 +3267,8 @@
       "date": "2026-03-07",
       "category": "Groceries",
       "amountCents": -5142,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0064"
     },
     {
       "id": "tx-49b3265d8e44e751-2697",
@@ -2951,7 +3277,8 @@
       "date": "2026-03-11",
       "category": "Groceries",
       "amountCents": -4582,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0007"
     },
     {
       "id": "tx-49b3265d8e44e751-2698",
@@ -2960,7 +3287,8 @@
       "date": "2026-03-15",
       "category": "Salary",
       "amountCents": 235246,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2699",
@@ -2969,7 +3297,8 @@
       "date": "2026-03-16",
       "category": "Utilities",
       "amountCents": -4350,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2700",
@@ -2978,7 +3307,8 @@
       "date": "2026-03-16",
       "category": "Invest Deposit",
       "amountCents": -41215,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2701",
@@ -2987,7 +3317,8 @@
       "date": "2026-03-16",
       "category": "Groceries",
       "amountCents": -3189,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0053"
     },
     {
       "id": "tx-49b3265d8e44e751-2702",
@@ -2996,7 +3327,8 @@
       "date": "2026-03-17",
       "category": "Groceries",
       "amountCents": -4964,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0066"
     },
     {
       "id": "tx-49b3265d8e44e751-2703",
@@ -3005,7 +3337,8 @@
       "date": "2026-03-21",
       "category": "Groceries",
       "amountCents": -7606,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0080"
     },
     {
       "id": "tx-49b3265d8e44e751-2704",
@@ -3014,7 +3347,8 @@
       "date": "2026-03-30",
       "category": "Groceries",
       "amountCents": -6010,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0006"
     },
     {
       "id": "tx-49b3265d8e44e751-2705",
@@ -3023,7 +3357,8 @@
       "date": "2026-03-30",
       "category": "Groceries",
       "amountCents": -17535,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0032"
     },
     {
       "id": "tx-49b3265d8e44e751-2706",
@@ -3032,7 +3367,8 @@
       "date": "2026-04-02",
       "category": "Housing",
       "amountCents": -78261,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2707",
@@ -3041,7 +3377,8 @@
       "date": "2026-04-04",
       "category": "Entertainment",
       "amountCents": -9092,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0052"
     },
     {
       "id": "tx-49b3265d8e44e751-2708",
@@ -3050,7 +3387,8 @@
       "date": "2026-04-08",
       "category": "Entertainment",
       "amountCents": -20100,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0022"
     },
     {
       "id": "tx-49b3265d8e44e751-2709",
@@ -3059,7 +3397,8 @@
       "date": "2026-04-08",
       "category": "Entertainment",
       "amountCents": -21317,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0034"
     },
     {
       "id": "tx-49b3265d8e44e751-2710",
@@ -3068,7 +3407,8 @@
       "date": "2026-04-14",
       "category": "Utilities",
       "amountCents": -5549,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2711",
@@ -3077,7 +3417,8 @@
       "date": "2026-04-15",
       "category": "Salary",
       "amountCents": 228883,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2712",
@@ -3086,7 +3427,8 @@
       "date": "2026-04-16",
       "category": "Invest Deposit",
       "amountCents": -40100,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2713",
@@ -3095,7 +3437,8 @@
       "date": "2026-04-16",
       "category": "Utilities",
       "amountCents": -4155,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2714",
@@ -3104,7 +3447,8 @@
       "date": "2026-04-17",
       "category": "Entertainment",
       "amountCents": -11353,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0034"
     },
     {
       "id": "tx-49b3265d8e44e751-2715",
@@ -3113,7 +3457,8 @@
       "date": "2026-04-26",
       "category": "Utilities",
       "amountCents": -6307,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2716",
@@ -3122,7 +3467,8 @@
       "date": "2026-04-29",
       "category": "Entertainment",
       "amountCents": -20819,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0016"
     },
     {
       "id": "tx-49b3265d8e44e751-2717",
@@ -3131,7 +3477,8 @@
       "date": "2026-05-02",
       "category": "Housing",
       "amountCents": -77015,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2718",
@@ -3140,7 +3487,8 @@
       "date": "2026-05-04",
       "category": "Utilities",
       "amountCents": -3925,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2719",
@@ -3149,7 +3497,8 @@
       "date": "2026-05-05",
       "category": "Transportation",
       "amountCents": -6625,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0058"
     },
     {
       "id": "tx-49b3265d8e44e751-2720",
@@ -3158,7 +3507,8 @@
       "date": "2026-05-06",
       "category": "Transportation",
       "amountCents": -3208,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0023"
     },
     {
       "id": "tx-49b3265d8e44e751-2721",
@@ -3167,7 +3517,8 @@
       "date": "2026-05-06",
       "category": "Groceries",
       "amountCents": -3868,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0054"
     },
     {
       "id": "tx-49b3265d8e44e751-2722",
@@ -3176,7 +3527,8 @@
       "date": "2026-05-09",
       "category": "Transportation",
       "amountCents": -6391,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0038"
     },
     {
       "id": "tx-49b3265d8e44e751-2723",
@@ -3185,7 +3537,8 @@
       "date": "2026-05-11",
       "category": "Groceries",
       "amountCents": -13667,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0028"
     },
     {
       "id": "tx-49b3265d8e44e751-2724",
@@ -3194,7 +3547,8 @@
       "date": "2026-05-13",
       "category": "Transportation",
       "amountCents": -3094,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2725",
@@ -3203,7 +3557,8 @@
       "date": "2026-05-14",
       "category": "Groceries",
       "amountCents": -7592,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0050"
     },
     {
       "id": "tx-49b3265d8e44e751-2726",
@@ -3212,7 +3567,8 @@
       "date": "2026-05-15",
       "category": "Transportation",
       "amountCents": -2314,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0012"
     },
     {
       "id": "tx-49b3265d8e44e751-2727",
@@ -3221,7 +3577,8 @@
       "date": "2026-05-17",
       "category": "Groceries",
       "amountCents": -11314,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0030"
     },
     {
       "id": "tx-49b3265d8e44e751-2728",
@@ -3230,7 +3587,8 @@
       "date": "2026-05-20",
       "category": "Transportation",
       "amountCents": -6209,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0027"
     },
     {
       "id": "tx-49b3265d8e44e751-2729",
@@ -3239,7 +3597,8 @@
       "date": "2026-05-20",
       "category": "Groceries",
       "amountCents": -3039,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0073"
     },
     {
       "id": "tx-49b3265d8e44e751-2730",
@@ -3248,7 +3607,8 @@
       "date": "2026-05-20",
       "category": "Groceries",
       "amountCents": -5814,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0032"
     },
     {
       "id": "tx-49b3265d8e44e751-2731",
@@ -3257,7 +3617,8 @@
       "date": "2026-05-21",
       "category": "Transportation",
       "amountCents": -2733,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0033"
     },
     {
       "id": "tx-49b3265d8e44e751-2732",
@@ -3266,7 +3627,8 @@
       "date": "2026-05-21",
       "category": "Transportation",
       "amountCents": -4398,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0046"
     },
     {
       "id": "tx-49b3265d8e44e751-2733",
@@ -3275,7 +3637,8 @@
       "date": "2026-05-21",
       "category": "Transportation",
       "amountCents": -4033,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0005"
     },
     {
       "id": "tx-49b3265d8e44e751-2734",
@@ -3284,7 +3647,8 @@
       "date": "2026-05-21",
       "category": "Utilities",
       "amountCents": -2838,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2735",
@@ -3293,7 +3657,8 @@
       "date": "2026-05-22",
       "category": "Groceries",
       "amountCents": -2638,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-GRO-0042"
     },
     {
       "id": "tx-49b3265d8e44e751-2736",
@@ -3302,7 +3667,8 @@
       "date": "2026-05-28",
       "category": "Utilities",
       "amountCents": -2823,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2737",
@@ -3311,7 +3677,8 @@
       "date": "2026-05-31",
       "category": "Salary",
       "amountCents": 275192,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2738",
@@ -3320,7 +3687,8 @@
       "date": "2026-05-31",
       "category": "Invest Deposit",
       "amountCents": -48214,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2739",
@@ -3329,7 +3697,8 @@
       "date": "2026-06-03",
       "category": "Housing",
       "amountCents": -80864,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2740",
@@ -3338,7 +3707,8 @@
       "date": "2026-06-10",
       "category": "Lifestyle",
       "amountCents": -44870,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-LIF-0059"
     },
     {
       "id": "tx-49b3265d8e44e751-2741",
@@ -3347,7 +3717,8 @@
       "date": "2026-06-15",
       "category": "Salary",
       "amountCents": 229539,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2742",
@@ -3356,7 +3727,8 @@
       "date": "2026-06-15",
       "category": "Utilities",
       "amountCents": -7658,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2743",
@@ -3365,7 +3737,8 @@
       "date": "2026-06-16",
       "category": "Invest Deposit",
       "amountCents": -40215,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2744",
@@ -3374,7 +3747,8 @@
       "date": "2026-06-19",
       "category": "Utilities",
       "amountCents": -5915,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2745",
@@ -3383,7 +3757,8 @@
       "date": "2026-06-19",
       "category": "Utilities",
       "amountCents": -3949,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2746",
@@ -3392,7 +3767,8 @@
       "date": "2026-07-03",
       "category": "Housing",
       "amountCents": -81089,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2747",
@@ -3401,7 +3777,8 @@
       "date": "2026-07-05",
       "category": "Utilities",
       "amountCents": -2443,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2748",
@@ -3410,7 +3787,8 @@
       "date": "2026-07-06",
       "category": "Transportation",
       "amountCents": -6912,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2749",
@@ -3419,7 +3797,8 @@
       "date": "2026-07-07",
       "category": "Transportation",
       "amountCents": -7522,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0005"
     },
     {
       "id": "tx-49b3265d8e44e751-2750",
@@ -3428,7 +3807,8 @@
       "date": "2026-07-09",
       "category": "Transportation",
       "amountCents": -2160,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0030"
     },
     {
       "id": "tx-49b3265d8e44e751-2751",
@@ -3437,7 +3817,8 @@
       "date": "2026-07-10",
       "category": "Transportation",
       "amountCents": -5510,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2752",
@@ -3446,7 +3827,8 @@
       "date": "2026-07-11",
       "category": "Transportation",
       "amountCents": -3108,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0053"
     },
     {
       "id": "tx-49b3265d8e44e751-2753",
@@ -3455,7 +3837,8 @@
       "date": "2026-07-12",
       "category": "Transportation",
       "amountCents": -7936,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0037"
     },
     {
       "id": "tx-49b3265d8e44e751-2754",
@@ -3464,7 +3847,8 @@
       "date": "2026-07-12",
       "category": "Transportation",
       "amountCents": -4455,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0012"
     },
     {
       "id": "tx-49b3265d8e44e751-2755",
@@ -3473,7 +3857,8 @@
       "date": "2026-07-14",
       "category": "Transportation",
       "amountCents": -2974,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0037"
     },
     {
       "id": "tx-49b3265d8e44e751-2756",
@@ -3482,7 +3867,8 @@
       "date": "2026-07-15",
       "category": "Salary",
       "amountCents": 240527,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2757",
@@ -3491,7 +3877,8 @@
       "date": "2026-07-16",
       "category": "Invest Deposit",
       "amountCents": -42140,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2758",
@@ -3500,7 +3887,8 @@
       "date": "2026-07-17",
       "category": "Transportation",
       "amountCents": -2608,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0054"
     },
     {
       "id": "tx-49b3265d8e44e751-2759",
@@ -3509,7 +3897,8 @@
       "date": "2026-07-18",
       "category": "Transportation",
       "amountCents": -2113,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2760",
@@ -3518,7 +3907,8 @@
       "date": "2026-07-21",
       "category": "Utilities",
       "amountCents": -2901,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2761",
@@ -3527,7 +3917,8 @@
       "date": "2026-07-23",
       "category": "Transportation",
       "amountCents": -7091,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0033"
     },
     {
       "id": "tx-49b3265d8e44e751-2762",
@@ -3536,7 +3927,8 @@
       "date": "2026-07-25",
       "category": "Transportation",
       "amountCents": -8569,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0017"
     },
     {
       "id": "tx-49b3265d8e44e751-2763",
@@ -3545,7 +3937,8 @@
       "date": "2026-07-27",
       "category": "Transportation",
       "amountCents": -4370,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0012"
     },
     {
       "id": "tx-49b3265d8e44e751-2764",
@@ -3554,7 +3947,8 @@
       "date": "2026-07-27",
       "category": "Transportation",
       "amountCents": -3607,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0023"
     },
     {
       "id": "tx-49b3265d8e44e751-2765",
@@ -3563,7 +3957,8 @@
       "date": "2026-07-27",
       "category": "Transportation",
       "amountCents": -3012,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0046"
     },
     {
       "id": "tx-49b3265d8e44e751-2766",
@@ -3572,7 +3967,8 @@
       "date": "2026-07-28",
       "category": "Transportation",
       "amountCents": -2191,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0013"
     },
     {
       "id": "tx-49b3265d8e44e751-2767",
@@ -3581,7 +3977,8 @@
       "date": "2026-07-28",
       "category": "Transportation",
       "amountCents": -3577,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0049"
     },
     {
       "id": "tx-49b3265d8e44e751-2768",
@@ -3590,7 +3987,8 @@
       "date": "2026-07-28",
       "category": "Transportation",
       "amountCents": -2159,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0051"
     },
     {
       "id": "tx-49b3265d8e44e751-2769",
@@ -3599,7 +3997,8 @@
       "date": "2026-07-28",
       "category": "Utilities",
       "amountCents": -3162,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2770",
@@ -3608,7 +4007,8 @@
       "date": "2026-08-01",
       "category": "Entertainment",
       "amountCents": -6350,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0051"
     },
     {
       "id": "tx-49b3265d8e44e751-2771",
@@ -3617,7 +4017,8 @@
       "date": "2026-08-02",
       "category": "Transportation",
       "amountCents": -3651,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0038"
     },
     {
       "id": "tx-49b3265d8e44e751-2772",
@@ -3626,7 +4027,8 @@
       "date": "2026-08-03",
       "category": "Health",
       "amountCents": -5369,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HEA-0033"
     },
     {
       "id": "tx-49b3265d8e44e751-2773",
@@ -3635,7 +4037,8 @@
       "date": "2026-08-06",
       "category": "Housing",
       "amountCents": -79915,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2774",
@@ -3644,7 +4047,8 @@
       "date": "2026-08-07",
       "category": "Transportation",
       "amountCents": -7659,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0050"
     },
     {
       "id": "tx-49b3265d8e44e751-2775",
@@ -3653,7 +4057,8 @@
       "date": "2026-08-10",
       "category": "Transportation",
       "amountCents": -2034,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0053"
     },
     {
       "id": "tx-49b3265d8e44e751-2776",
@@ -3662,7 +4067,8 @@
       "date": "2026-08-11",
       "category": "Utilities",
       "amountCents": -5508,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2777",
@@ -3671,7 +4077,8 @@
       "date": "2026-08-12",
       "category": "Transportation",
       "amountCents": -4149,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0019"
     },
     {
       "id": "tx-49b3265d8e44e751-2778",
@@ -3680,7 +4087,8 @@
       "date": "2026-08-13",
       "category": "Transportation",
       "amountCents": -8870,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0015"
     },
     {
       "id": "tx-49b3265d8e44e751-2779",
@@ -3689,7 +4097,8 @@
       "date": "2026-08-13",
       "category": "Entertainment",
       "amountCents": -7375,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0051"
     },
     {
       "id": "tx-49b3265d8e44e751-2780",
@@ -3698,7 +4107,8 @@
       "date": "2026-08-17",
       "category": "Health",
       "amountCents": -7325,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HEA-0003"
     },
     {
       "id": "tx-49b3265d8e44e751-2781",
@@ -3707,7 +4117,8 @@
       "date": "2026-08-17",
       "category": "Entertainment",
       "amountCents": -12054,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0053"
     },
     {
       "id": "tx-49b3265d8e44e751-2782",
@@ -3716,7 +4127,8 @@
       "date": "2026-08-17",
       "category": "Utilities",
       "amountCents": -4545,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2783",
@@ -3725,7 +4137,8 @@
       "date": "2026-08-21",
       "category": "Transportation",
       "amountCents": -3152,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2784",
@@ -3734,7 +4147,8 @@
       "date": "2026-08-23",
       "category": "Transportation",
       "amountCents": -3195,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0007"
     },
     {
       "id": "tx-49b3265d8e44e751-2785",
@@ -3743,7 +4157,8 @@
       "date": "2026-08-24",
       "category": "Transportation",
       "amountCents": -6295,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0048"
     },
     {
       "id": "tx-49b3265d8e44e751-2786",
@@ -3752,7 +4167,8 @@
       "date": "2026-08-26",
       "category": "Transportation",
       "amountCents": -2212,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0038"
     },
     {
       "id": "tx-49b3265d8e44e751-2787",
@@ -3761,7 +4177,8 @@
       "date": "2026-08-26",
       "category": "Transportation",
       "amountCents": -3567,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-TRN-0037"
     },
     {
       "id": "tx-49b3265d8e44e751-2788",
@@ -3770,7 +4187,8 @@
       "date": "2026-08-28",
       "category": "Utilities",
       "amountCents": -4336,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2789",
@@ -3779,7 +4197,8 @@
       "date": "2026-08-28",
       "category": "Entertainment",
       "amountCents": -3793,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0052"
     },
     {
       "id": "tx-49b3265d8e44e751-2790",
@@ -3788,7 +4207,8 @@
       "date": "2026-08-29",
       "category": "Health",
       "amountCents": -7036,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-HEA-0014"
     },
     {
       "id": "tx-49b3265d8e44e751-2791",
@@ -3797,7 +4217,8 @@
       "date": "2026-08-30",
       "category": "Entertainment",
       "amountCents": -5462,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-ENT-0028"
     },
     {
       "id": "tx-49b3265d8e44e751-2792",
@@ -3806,7 +4227,8 @@
       "date": "2026-08-30",
       "category": "Salary",
       "amountCents": 251434,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2793",
@@ -3815,7 +4237,8 @@
       "date": "2026-08-31",
       "category": "Invest Deposit",
       "amountCents": -44051,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2794",
@@ -3824,7 +4247,8 @@
       "date": "2026-09-01",
       "category": "Housing",
       "amountCents": -82332,
-      "type": "housing_payment"
+      "type": "housing_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2795",
@@ -3833,7 +4257,8 @@
       "date": "2026-09-15",
       "category": "Salary",
       "amountCents": 250516,
-      "type": "salary"
+      "type": "salary",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2796",
@@ -3842,7 +4267,8 @@
       "date": "2026-09-16",
       "category": "Invest Deposit",
       "amountCents": -43890,
-      "type": "investment_deposit"
+      "type": "investment_deposit",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2797",
@@ -3851,7 +4277,8 @@
       "date": "2026-09-17",
       "category": "Utilities",
       "amountCents": -1785,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2798",
@@ -3860,7 +4287,8 @@
       "date": "2026-09-22",
       "category": "Utilities",
       "amountCents": -4357,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2799",
@@ -3869,7 +4297,8 @@
       "date": "2026-09-22",
       "category": "Utilities",
       "amountCents": -4041,
-      "type": "utilities_payment"
+      "type": "utilities_payment",
+      "merchantId": null
     },
     {
       "id": "tx-49b3265d8e44e751-2800",
@@ -3878,7 +4307,8 @@
       "date": "2026-09-28",
       "category": "Lifestyle",
       "amountCents": -128419,
-      "type": "purchase"
+      "type": "purchase",
+      "merchantId": "MRC-LIF-0044"
     }
   ]
 }

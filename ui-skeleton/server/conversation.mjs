@@ -1,3 +1,4 @@
+import { historyAnswer } from './transaction-history.mjs';
 import { accountAnswer, accountPlan } from './account.mjs';
 import { formatPlanning, presentationText, validatePresentation } from './reply-format.mjs';
 import { createChatSession, purchaseDetails, purchaseIntent, respondToChat, validateChatSession } from './conversation/chat-coach.mjs';
@@ -65,7 +66,13 @@ export async function conversationReply(input, generate) {
   let source = 'planning';
   const advice = purchaseAdvice(input, previous);
   const answer = input.scenario === 'engine' ? accountAnswer(input.message) : null;
-  if (advice) {
+  const historical = historyAnswer(input.message, {customerId:profileIds[input.scenario], today:conversationDate(input.scenario),
+    previousQuestion:previous.messages.findLast(m=>m.role==='user')?.text ?? input.history?.findLast(m=>m.role==='user')?.text});
+  if (historical) {
+    next.draft = previous.draft; next.awaiting = previous.awaiting; next.context = previous.context;
+    next.messages[next.messages.length-1] = {id:next.messages.at(-1).id,role:'assistant',text:presentationText(historical),presentation:historical,suggestions:previous.awaiting?['Continue','Cancel']:[]};
+    source = 'history';
+  } else if (advice) {
     const { goal, summary } = advice;
     next.awaiting = goal ? { kind: 'goal_confirm', goal } : null;
     next.draft = previous.draft;
