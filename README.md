@@ -12,6 +12,7 @@ Start with [the build plan and current workflow](BUILD_PLAN.md) for the product 
 ## Run the planning and coach module
 
 Start with the shared-engine coach: [frontend and input contract](docs/engine-coach.md).
+The [budget coach contract](docs/budget-coach.md) covers all four budget examples and real Python engine recalculation after category edits.
 It explains the three entries in `fixtures/savings-demo.json` and captures customer
 answers for recalculation. Requires Node.js 22 or later; Python 3 is also needed for
 the engine integration test. No additional packages or API keys are needed.
@@ -19,6 +20,7 @@ the engine integration test. No additional packages or API keys are needed.
 ```sh
 npm test
 npm run demo:coach
+npm run demo:budget-coach
 npm run demo
 npm run demo:history
 ```
