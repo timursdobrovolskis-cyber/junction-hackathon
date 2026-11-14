@@ -1,1 +1,13 @@
-{"name":"junction-money-ui","private":true,"type":"module","scripts":{"dev":"node --env-file-if-exists=.env.local dev.mjs","test":"node --test test/*.test.mjs"},"engines":{"node":">=22"}}
+{
+  "name": "junction-money-ui",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env.local dev.mjs",
+    "test": "node --test test/*.test.mjs",
+    "deploy": "node scripts/deploy.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

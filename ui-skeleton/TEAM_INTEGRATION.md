@@ -58,3 +58,21 @@ Home → Your budget → View all opens `#budget`. The October plan uses the sam
 The source export ends 30 September; no October actuals exist. `spentCents` and `remainingCents` are therefore **null**, never fabricated zeros. September is its own history view, never deducted from October limits. The calculation supports same-period posted spending, negative remaining amounts, unbudgeted categories, and partial coverage. Budget changes/recalculation are not enabled by this page.
 
 `server/budget/activity.json` contains only seven synthetic September transactions for the selected account, exported from the prepared SQLite database by `python3 ui-skeleton/server/budget/build-fixture.py` from repository root. Do not package the full database. To wire a real account feed, supply matching customer/account identities, a trustworthy coverage start/end, all posted activity in that window, and the matching plan period. Keep missing coverage distinct from no transactions. Authentication and a live bank connection remain outside this prototype.
+
+
+## One production source
+
+Deployments replace the whole website. Publishing an older feature checkout can
+remove someone else's Calendar, Budget or Coach changes even if their files are
+still on GitHub. The shared production source is `codex/frontend-coach-preview`.
+Merge feature PRs into it and update the local checkout before publishing.
+
+Run `npm run deploy` inside `ui-skeleton` using the existing linked
+`agentsquared/junction-money-ui` project. The command fetches the shared branch,
+rejects dirty checkouts or any HEAD other than that exact shared commit, runs all
+UI tests, then deploys. `npm run deploy -- --check` performs only the checks.
+Vercel CLI flags can be forwarded after `--`. It never resets or discards work.
+
+Use this command instead of raw `vercel --prod` for team releases. Manual CLI or
+Vercel dashboard deployments can bypass the local guard; this does not change
+team permissions or claim to prevent an owner from publishing an older build.
