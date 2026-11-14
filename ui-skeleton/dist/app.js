@@ -38,16 +38,17 @@ $('amount-explanation').addEventListener('click', () => {
 
 function navigate() {
   if (location.hash === '#main') return;
-  const coach = location.hash === '#coach';
-  $('home-page').hidden = coach;
-  $('coach-page').hidden = !coach;
-  ['home', 'coach'].forEach((name) => {
-    const active = (name === 'coach') === coach;
-    $(`nav-${name}`).classList.toggle('active', active);
-    if (active) $(`nav-${name}`).setAttribute('aria-current', 'page');
-    else $(`nav-${name}`).removeAttribute('aria-current');
+  const pages = ['home', 'goals', 'calendar', 'coach'];
+  const current = pages.includes(location.hash.slice(1)) && $(location.hash.slice(1) + '-page') ? location.hash.slice(1) : 'home';
+  pages.forEach(name => {
+    if (!$(name + '-page')) return;
+    const active = name === current;
+    $(name + '-page').hidden = !active;
+    $('nav-' + name).classList.toggle('active', active);
+    if (active) $('nav-' + name).setAttribute('aria-current', 'page');
+    else $('nav-' + name).removeAttribute('aria-current');
   });
-  document.title = document.body.classList.contains('vest-theme') ? (coach ? 'Your coach — S-Pankki concept' : 'S-Pankki — financial coach concept') : (coach ? 'Your coach — Money' : 'Money — a little clearer');
+  document.title = ({ home: 'Your money', goals: 'Your goals', calendar: 'Financial calendar', coach: 'Your coach' })[current] + ' — S-Pankki concept';
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 window.addEventListener('hashchange', navigate);
@@ -88,7 +89,7 @@ $('purchase-form').addEventListener('submit', (event) => {
 
 const defaultInfo = {
   title: 'A little space for your money.',
-  copy: document.body.classList.contains('vest-theme') ? 'This is a hackathon concept, not an official banking service. Home uses illustrative figures. The Coach offers a separate historical transaction example and Gemini explanations. Chat messages go to Google Gemini; no bank account is connected and no plan changes are saved.' : 'This is an interactive design sketch. All figures and dates are illustrative. It isn’t connected to an account, and no information is saved or sent.',
+  copy: document.body.classList.contains('vest-theme') ? 'This is a hackathon concept, not an official banking service. Home and Goals use separate sample plans. Calendar offers a historical customer and a separate recurring-payment sample. The Coach offers historical transaction context, draft planning and Gemini explanations. Chat messages go to Google Gemini; no bank account is connected. Chat and draft preferences are kept in this browser, separately for each sample profile; no financial plan is recalculated or saved to a bank.' : 'This is an interactive design sketch. All figures and dates are illustrative. It isn’t connected to an account, and no information is saved or sent.',
 };
 $('about-preview').addEventListener('click', () => {
   $('info-title').textContent = defaultInfo.title;

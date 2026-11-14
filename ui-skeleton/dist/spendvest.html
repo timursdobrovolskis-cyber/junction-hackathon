@@ -10,6 +10,10 @@
   <link rel="preload" href="assets/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="spendvest.css">
+  <link rel="stylesheet" href="calendar.css">
+  <link rel="stylesheet" href="goals.css">
+  <script type="module" src="calendar-ui.mjs"></script>
+  <script type="module" src="goals-ui.mjs"></script>
   <script src="app.js" defer></script>
   <script src="coach-ui.js" defer></script>
 </head>
@@ -17,6 +21,7 @@
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-goal" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
     <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
     <symbol id="i-coach" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H7l-4 3v-8a8 8 0 1 1 17-3Z"/><path d="M8 10h8m-8 4h5"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
@@ -75,17 +80,46 @@
       <div class="scenario-picker" role="group" aria-label="Choose a plan"><button type="button" data-scenario="design" aria-pressed="true">Current plan</button><button type="button" data-scenario="engine" aria-pressed="false">Another profile</button></div>
       <p id="coach-source" class="coach-source">Loading your plan…</p>
       <section class="coach-summary" aria-label="Selected plan"><h2 id="coach-summary-title">Let’s look at your plan.</h2><div id="coach-facts" class="coach-facts"></div><details class="coach-detail"><summary>What’s included</summary><p id="coach-explanation"></p><div id="coach-details"></div></details></section>
+      <details id="coach-draft" class="coach-draft" hidden><summary>Your draft <span id="draft-count"></span></summary><dl id="draft-items"></dl><p>Kept on this device. Your forecast hasn’t changed yet.</p><button type="button" id="clear-draft" class="inline-link">Clear draft</button></details>
       <div class="conversation-heading"><h2>Talk it through</h2><button id="clear-chat" type="button">Clear chat</button></div>
       <div id="chat-log" class="chat-log" tabindex="0" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation with your coach"></div>
-      <div class="quick-prompts" aria-label="Suggested questions"><button type="button" data-prompt="Explain this plan in simple words.">Explain my plan</button><button type="button" data-prompt="What should I consider before saving more?">Saving more</button><button type="button" data-prompt="I have an unexpected expense. What information would you need before updating this plan?">An upcoming cost</button></div>
+      <div id="coach-prompts" class="quick-prompts" aria-label="Suggested questions"></div>
       <form id="chat-form" class="chat-form"><label for="chat-input">Ask your coach</label><div class="composer"><textarea id="chat-input" name="message" rows="2" maxlength="1200" placeholder="What’s on your mind?" required></textarea><button type="submit" id="chat-send" aria-label="Send message"><svg class="icon"><use href="#i-arrow"/></svg></button></div></form>
       <p id="chat-status" class="chat-status" role="status">Connecting to your coach…</p><p id="chat-error" class="form-error" role="alert" hidden></p><button type="button" id="chat-retry" class="inline-link" hidden>Try again</button>
-      <p class="chat-privacy">Messages are processed by Google Gemini. Your coach can explain your plan; changes aren’t saved here.</p>
+      <p class="chat-privacy">Messages are processed by Google Gemini. Goals and expenses stay in a draft on this device until their impact is checked.</p>
+    </section>
+    <section id="goals-page" class="page goals-page" aria-labelledby="goals-title" hidden>
+      <div class="goals-heading"><p>MAKE SPACE FOR WHAT MATTERS</p><h1 id="goals-title">Your goals.</h1></div>
+      <div class="goals-switch" role="group" aria-label="Goal timeframe"><button type="button" data-goal-mode="short" aria-pressed="true">Short term</button><button type="button" data-goal-mode="long" aria-pressed="false">Long term</button></div>
+      <label for="goals-scenario">Savings scenario</label><select id="goals-scenario"><option value="afterExpense">With a €60 bike repair</option><option value="beforeExpense">Before the bike repair</option></select>
+      <section id="short-goal" class="goal-card" aria-label="Short-term savings"><h2>That trip is closer.</h2><p class="goal-kicker">Projected by 31 January 2027</p><p id="goal-projection" class="goal-amount">—</p><p id="goal-target" class="goal-subtitle"></p><progress id="goal-progress" aria-label="Projected progress toward your trip" max="24000" value="0"></progress><p id="goal-saved" class="goal-saved"></p><p id="goal-insight" class="goal-insight"></p><button type="button" id="goal-recovery" class="primary-button" aria-pressed="false" hidden>Explore a small adjustment</button><p id="goal-recovery-copy" class="goal-note" role="status" hidden></p><details class="goal-evidence"><summary>What’s behind this projection</summary><div id="goal-periods"></div><ul id="goal-evidence"></ul><p>This savings sample is separate from Home and Calendar. The projection assumes the planned contributions are made; it does not check daily cash balances.</p></details></section>
+      <section id="long-goal" class="goal-card" aria-label="Long-term savings illustration" hidden><h2>A little, over time.</h2><p class="goal-kicker">Explore how a regular contribution could grow.</p><form id="growth-form"><div class="growth-fields"><label for="growth-monthly">Monthly contribution assumption (€)<input id="growth-monthly" inputmode="decimal" value="20" required></label><label for="growth-years">Years<input id="growth-years" type="number" min="2" max="40" value="10" required></label><label for="growth-rate">Annual return assumption<select id="growth-rate"><option value="-3">−3%</option><option value="0">0%</option><option value="3">3%</option><option value="6" selected>6%</option><option value="9">9%</option></select></label></div><button class="primary-button" type="submit">Update illustration</button></form><p id="growth-title" class="goal-kicker" style="margin-top:22px">After 10 years</p><p id="growth-value" class="goal-amount">—</p><div class="growth-total"><span>Total contributions</span><strong id="growth-contributed">—</strong></div><details class="goal-evidence"><summary>Assumptions and limits</summary><p id="goal-assumptions"></p></details><p class="goal-note">An illustration, not a guaranteed return. Contributions still need a cash-flow check.</p></section>
+      <p id="goals-error" class="form-error" role="alert" hidden></p><p id="goals-status" class="goals-status" role="status"></p><button type="button" id="goals-retry" class="inline-link">Refresh goals</button>
+    </section>
+    <section id="calendar-page" class="page calendar-page" aria-labelledby="calendar-title" hidden>
+      <div class="calendar-heading"><span class="calendar-mark" aria-hidden="true"><svg class="icon"><use href="#i-calendar"/></svg></span><div><p>A LITTLE LOOK AHEAD</p><h1 id="calendar-title">Financial calendar</h1></div></div>
+      <label for="calendar-source" class="calendar-source-label">Calendar view</label>
+      <select id="calendar-source" class="calendar-source-select"><option value="engine">Transaction forecast · October 2026</option><option value="recurring">Monthly &amp; yearly costs · November 2026</option></select>
+      <p id="calendar-status" class="sr-only" role="status"></p>
+      <p id="calendar-error" class="calendar-error" role="alert" hidden></p>
+      <div class="calendar-reset-row"><button type="button" id="calendar-reset-month">First forecast month</button><button type="button" id="calendar-retry">Refresh</button></div>
+      <div class="calendar-toolbar"><button type="button" id="calendar-prev" aria-label="Previous month" disabled>‹</button><h2 id="calendar-month" aria-live="polite">Your calendar</h2><button type="button" id="calendar-next" aria-label="Next month" disabled>›</button></div>
+      <div class="calendar-weekdays" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+      <div id="calendar-grid" class="calendar-grid" role="group" aria-label="Select a date"></div>
+      <div class="calendar-legend"><span><i></i>Cost window</span><span><i class="income"></i>Income window</span><span><i class="risk"></i>Buffer risk</span></div>
+      <div class="calendar-filters" role="group" aria-label="Filter calendar entries"><button type="button" data-calendar-filter="all" aria-pressed="true">All</button><button type="button" data-calendar-filter="bills" aria-pressed="false">Costs</button><button type="button" data-calendar-filter="income" aria-pressed="false">Income</button><button type="button" data-calendar-filter="yearly" aria-pressed="false">Yearly</button></div>
+      <div class="calendar-agenda-heading"><h2 id="calendar-selection">This month</h2><span id="calendar-count"></span></div>
+      <button type="button" id="calendar-clear-day" class="calendar-subtle" hidden>Show the whole month</button>
+      <div id="calendar-balance" class="calendar-balance" aria-live="polite"></div>
+      <div id="calendar-agenda" class="calendar-agenda" aria-live="polite"></div>
+      <details class="goal-evidence"><summary>Calendar details</summary><p id="calendar-source-note" class="calendar-source-note"></p><p id="calendar-warning" class="calendar-notice"></p><p id="calendar-coverage" class="calendar-coverage"></p></details>
     </section>
   </main>
 
   <nav class="bottom-nav" aria-label="Main navigation">
     <a href="#home" id="nav-home" class="nav-link active" aria-current="page"><svg class="icon"><use href="#i-home"/></svg><span>Home</span></a>
+    <a href="#goals" id="nav-goals" class="nav-link"><svg class="icon"><use href="#i-goal"/></svg><span>Goals</span></a>
+    <a href="#calendar" id="nav-calendar" class="nav-link"><svg class="icon"><use href="#i-calendar"/></svg><span>Calendar</span></a>
     <a href="#coach" id="nav-coach" class="nav-link"><svg class="icon"><use href="#i-coach"/></svg><span>Coach</span></a>
   </nav>
 
@@ -105,6 +139,8 @@
     <div id="purchase-preview-state" class="preview-state" role="status" hidden><span class="preview-state-icon"><svg class="icon"><use href="#i-check"/></svg></span><div><strong id="purchase-preview-title"></strong><p>Your purchase check isn’t connected yet. We can’t calculate its impact on your plan right now.</p></div></div>
   </dialog>
 
+  <dialog id="draft-reset-dialog" class="sheet info-sheet" aria-labelledby="draft-reset-title"><h2 id="draft-reset-title">Clear your draft?</h2><p>This clears the conversation and draft for this profile on this device. Your financial plan stays unchanged.</p><button type="button" class="primary-button" data-close>Keep my draft</button><button type="button" class="inline-link" id="confirm-draft-reset">Clear draft and chat</button></dialog>
+
   <dialog id="info-dialog" class="sheet info-sheet" aria-labelledby="info-title">
     <div class="sheet-handle" aria-hidden="true"></div>
     <header class="sheet-header"><span class="section-kicker">ABOUT YOUR DATA</span><button class="icon-button close-button" data-close aria-label="Close information"><svg class="icon"><use href="#i-close"/></svg></button></header>
@@ -112,6 +148,10 @@
     <p id="info-copy">This is an interactive design sketch. All figures and dates are illustrative. It isn’t connected to an account, and no information is saved or sent.</p>
     
     <button class="primary-button" data-close>Got it<svg class="icon"><use href="#i-check"/></svg></button>
+  </dialog>
+  <dialog id="calendar-detail" class="sheet calendar-detail" aria-labelledby="calendar-detail-title">
+    <header class="sheet-header"><span class="section-kicker">PAYMENT DETAILS</span><button type="button" id="calendar-detail-close" class="icon-button" aria-label="Close payment details"><svg class="icon"><use href="#i-close"/></svg></button></header>
+    <h2 id="calendar-detail-title"></h2><div id="calendar-detail-body" class="calendar-detail-body"></div>
   </dialog>
 </body>
 </html>

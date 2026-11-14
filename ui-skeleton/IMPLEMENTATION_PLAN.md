@@ -27,3 +27,11 @@ Acceptance: a dated extra purchase lowers the projected path only from that date
 - Connect the selected customer's results across Home and Coach.
 - Integrate the teammate's confirmed plan-change flow before claiming changes are saved.
 - Test the same customer through Home → purchase check → Coach, including failed requests and switching profiles.
+
+## Conversation integration completed
+
+Goals, buffers, priorities and dated expenses now use the teammate's structured confirmation flow inside the iPhone Coach screen. Gemini answers general questions with the selected plan and requested draft as separate context. Drafts and conversations persist on this browser per profile. They remain uncalculated. Next: deploy/connect the saved-plan service, preview changed inputs, then save only after explicit user choice.
+
+## Goals and Calendar integrated
+
+Home, Goals, Calendar and Coach now share the app navigation and phone preview. Short-term goals use the teammate’s original goal calculation and recovery option. Long-term projections expose contribution/rate/horizon assumptions without claiming safe surplus or enabling investment. Calendar preserves forecast windows, recurring candidates and evidence. The samples still represent different profiles; unifying all screens around one selected customer and connecting the saved-plan service remains next.

@@ -66,3 +66,13 @@ Public website token palette: brand `#00AA46`, strong `#007841`, deep `#004628`,
 ## Next planned work
 
 See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for purchase-impact integration and the shared customer plan. Keep replies customer-facing; the persistent Sample data label and data panel carry provenance, rather than repeating illustrative/demo language in every response.
+
+## Integrated conversation mechanism
+
+The app now uses the teammate's conversation state machine from `feat/planning-coach` at `47b7b64` alongside Gemini. See `server/conversation.mjs` and `server/conversation/` (upstream source preserved). API responses include `session`, `suggestions`, `sources`, `draftOnly: true`, `planChanged: false`, and `source: "planning" | "gemini"`.
+
+Supported goal, buffer, priority and expense inputs go through validated structured turns. Confirmation prompts cannot be replaced by Gemini. General questions use Gemini with server-owned financial facts and a separately labelled requested draft. Model text never mutates the draft. The frontend retains conversation/draft state per sample profile in localStorage. Clear chat keeps the draft; Clear draft asks before removing it. Requests for the October profile resolve relative dates against 30 September, and the Home sample against 14 November.
+
+This is a working conversational integration, not the saved-plan API integration. Browser drafts do not update Home amounts, call the Python engine, synchronize across devices, or save to the backend. Next connect `financial-coach-client.mjs` / `saved-plan-client.mjs` against a reachable authenticated deployment of the existing plan service. Preserve preview → explicit choice → save, revision checks and failed-request state. Do not describe a browser draft as an affordable or bank-saved plan.
+
+Verification: 47 tests (upstream conversation suite plus adapter/API tests), interactive corrected-goal confirmation, browser reload persistence, profile isolation and live Gemini explanation. The calendar and short/long-term goals are also integrated into the shared UI; see TEAM_INTEGRATION.md for source revisions and limits.
