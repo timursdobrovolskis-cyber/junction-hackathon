@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowDownLeft, ArrowRight, Bell, Check, ChevronRight, ExternalLink, House, Leaf, Menu, MessageCircle, PiggyBank, ShieldCheck, Sparkles, TrendingUp, X } from 'lucide-react';
+import { ArrowDownLeft, ArrowRight, Bell, Check, ChevronRight, ExternalLink, House, Leaf, Menu, MessageCircle, PiggyBank, ShieldCheck, Sparkles, X } from 'lucide-react';
 import fixture from '../../fixtures/coach-demo.json';
 import { calculateGoalPlan } from '../coach.mjs';
 
@@ -10,16 +10,15 @@ const formatMonth = (month) => new Intl.DateTimeFormat('en', { month: 'short' })
 const dateLabel = new Intl.DateTimeFormat('en', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(`${fixture.asOf}T12:00:00`));
 const defaults = {
   shortTermGoals: [{ id: 'goal-demo-1', label: fixture.goal.label, targetCents: fixture.goal.targetCents, savedCents: fixture.goal.savedCents, targetDate: fixture.goal.targetDate, complete: false }],
-  longTerm: { monthlyCents: 2000, risk: fixture.longTermGoal.risk, years: fixture.longTermGoal.horizonYears },
+  longTerm: { monthlyCents: fixture.longTermGoal.monthlyContributionCents, accountType: fixture.longTermGoal.accountType, years: fixture.longTermGoal.horizonYears },
 };
-const annualRates = { Conservative: 0.03, Balanced: 0.06, Growth: 0.09 };
 
 function loadGoals() {
   try {
     const saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY));
     if (!saved?.longTerm) return defaults;
     const shortTermGoals = saved.shortTermGoals ?? (saved.shortTerm ? [{ id: 'goal-demo-1', ...saved.shortTerm, complete: false }] : defaults.shortTermGoals);
-    return { ...defaults, ...saved, shortTermGoals, longTerm: { ...defaults.longTerm, ...saved.longTerm } };
+    return { ...defaults, ...saved, shortTermGoals, longTerm: { ...defaults.longTerm, ...saved.longTerm, accountType: saved.longTerm.accountType ?? 'S-Tuottotili' } };
   } catch {
     return defaults;
   }
@@ -101,27 +100,18 @@ function LongTermGoal({ goal, updateGoal, mode }) {
   const safeSurplus = safeSurplusCents(mode);
   const monthlyCents = Math.max(0, goal.monthlyCents);
   const monthCount = goal.years * 12;
-  const chartData = [{ month: 0, contributedCents: 0, projectedCents: 0 }];
-  let projectedValue = 0;
-  for (let month = 1; month <= monthCount; month += 1) {
-    projectedValue = Math.round(projectedValue * (1 + annualRates[goal.risk] / 12) + monthlyCents);
-    chartData.push({ month, contributedCents: monthlyCents * month, projectedCents: projectedValue });
-  }
-  const projectedCents = chartData[monthCount].projectedCents;
-  const contributedCents = chartData[monthCount].contributedCents;
+  const chartData = Array.from({ length: monthCount + 1 }, (_, month) => ({ month, savedCents: monthlyCents * month }));
   const activeMonth = Math.min(selectedMonth, monthCount);
   const activePoint = chartData[activeMonth];
-  const maxValue = Math.max(1, projectedCents);
+  const maxValue = Math.max(1, chartData[monthCount].savedCents);
   const chartWidth = 320;
   const chartHeight = 150;
   const pointX = (month) => (month / monthCount) * chartWidth;
   const pointY = (cents) => chartHeight - (cents / maxValue) * chartHeight;
-  const projectedPath = chartData.map((point, index) => `${index ? 'L' : 'M'} ${pointX(point.month).toFixed(2)} ${pointY(point.projectedCents).toFixed(2)}`).join(' ');
-  const contributedPath = chartData.map((point, index) => `${index ? 'L' : 'M'} ${pointX(point.month).toFixed(2)} ${pointY(point.contributedCents).toFixed(2)}`).join(' ');
-  const growthAreaPath = `${projectedPath} ${chartData.slice().reverse().map((point) => `L ${pointX(point.month).toFixed(2)} ${pointY(point.contributedCents).toFixed(2)}`).join(' ')} Z`;
+  const savingsPath = chartData.map((point, index) => `${index ? 'L' : 'M'} ${pointX(point.month).toFixed(2)} ${pointY(point.savedCents).toFixed(2)}`).join(' ');
+  const savingsAreaPath = `${savingsPath} L ${chartWidth} ${chartHeight} L 0 ${chartHeight} Z`;
   const cursorX = pointX(activeMonth);
-  const cursorProjectedY = pointY(activePoint.projectedCents);
-  const cursorContributedY = pointY(activePoint.contributedCents);
+  const cursorY = pointY(activePoint.savedCents);
   const periodLabel = activeMonth === 0 ? 'Starting point' : `Year ${Math.ceil(activeMonth / 12)} · Month ${activeMonth}`;
   const pointerSelect = (event) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -131,30 +121,31 @@ function LongTermGoal({ goal, updateGoal, mode }) {
   const aboveSurplus = monthlyCents > safeSurplus;
   return <section className="card goal-card long-term-card">
     <div className="goal-section-heading"><span className="goal-emoji">🌳</span><div><div className="eyebrow">LONG-TERM · 2+ YEARS</div><h2>Build your future, month by month</h2></div></div>
-    <p className="goal-description">Curious about S-Pankki products? Browse the official fund information. The amount below is only for a personal, editable illustration.</p>
-    <a className="fund-banner fund-link" href="https://www.s-pankki.fi/fi/saastaminen-ja-sijoittaminen/rahastot/" target="_blank" rel="noreferrer"><span className="fund-icon"><TrendingUp size={19}/></span><span><strong>Explore S-Pankki products</strong><small>Official fund details, risks and information</small></span><ExternalLink size={16}/></a>
-    <label className="field-label contribution-field">Try a monthly amount<input type="number" min="0" step="1" value={(monthlyCents / 100).toFixed(2)} onChange={(event) => updateGoal({ monthlyCents: euroToCents(event.target.value) })} /><span>Set an amount to see how a regular contribution could add up.</span></label>
-    <label className="range-label">Adjust amount <strong>{formatEuro(monthlyCents)} / month</strong><input type="range" min="0" max="1000" step="5" value={Math.min(monthlyCents, 100000)} onChange={(event) => updateGoal({ monthlyCents: Number(event.target.value) * 100 })} aria-label="Monthly investment contribution in euros" /></label>
+    <p className="goal-description">Explore S-Pankki savings accounts and set your own monthly saving amount. This plan is only a preview; it won’t open an account or move money.</p>
+    <label className="field-label account-type-field">S-Pankki savings account<select value={goal.accountType} onChange={(event) => updateGoal({ accountType: event.target.value })}><option>S-Tuottotili</option><option>S-Määräaikaistili</option></select></label>
+    <a className="fund-banner fund-link" href="https://www.s-pankki.fi/fi/tilit/saastotilit/" target="_blank" rel="noreferrer"><span className="fund-icon"><PiggyBank size={19}/></span><span><strong>Explore S-Pankki savings accounts</strong><small>Compare account types and current terms</small></span><ExternalLink size={16}/></a>
+    <div className="account-product-links"><a href="https://www.s-pankki.fi/fi/tilit/s-tuottotili/" target="_blank" rel="noreferrer"><strong>S-Tuottotili</strong><span>Ongoing savings with flexible deposits and withdrawals</span><ExternalLink size={14}/></a><a href="https://www.s-pankki.fi/fi/tilit/s-maaraaikaistili/" target="_blank" rel="noreferrer"><strong>S-Määräaikaistili</strong><span>Deposit savings for an agreed term; check current terms</span><ExternalLink size={14}/></a></div>
+    <label className="field-label contribution-field">Try a monthly saving amount<input type="number" min="0" step="1" value={(monthlyCents / 100).toFixed(2)} onChange={(event) => updateGoal({ monthlyCents: euroToCents(event.target.value) })} /><span>{goal.accountType === 'S-Määräaikaistili' ? 'Use this as a monthly savings target; a fixed-term deposit is set up separately for an agreed period.' : 'Use this as a monthly target for flexible savings; account deposits are set up separately with S-Pankki.'}</span></label>
+    <label className="range-label">Adjust amount <strong>{formatEuro(monthlyCents)} / month</strong><input type="range" min="0" max="1000" step="5" value={Math.min(monthlyCents, 100000)} onChange={(event) => updateGoal({ monthlyCents: Number(event.target.value) * 100 })} aria-label="Monthly savings amount in euros" /></label>
     <div className="surplus-line"><span>Demo safe monthly surplus</span><strong>{formatEuro(safeSurplus)}</strong></div>
-    {aboveSurplus && <div className="surplus-warning" role="status"><Sparkles size={16}/><span>Your chosen contribution is above this demo’s detected surplus. Check your cash buffer and adjust if needed.</span></div>}
-    <div className="goal-field-row long-controls"><label className="field-label">Simulation scenario<select value={goal.risk} onChange={(event) => updateGoal({ risk: event.target.value })}><option>Conservative</option><option>Balanced</option><option>Growth</option></select></label><label className="field-label">Time to grow<select value={goal.years} onChange={(event) => updateGoal({ years: Number(event.target.value) })}>{[2,5,10,15,20,25,30].map(year => <option key={year} value={year}>{year} years</option>)}</select></label></div>
-    <div className="simulation-context"><ShieldCheck size={16}/><span>This is an educational comparison, not a suggestion to buy a fund. No account access, order, or transfer is connected here.</span></div>
-    <div className="growth-box"><div className="growth-heading"><strong>{goal.years}-year illustration</strong><span>Non-guaranteed simulation</span></div>
-      <div className="growth-compare"><div><small>Cash contributed</small><strong>{formatEuro(contributedCents)}</strong></div><div><small>Projected fund value</small><strong>{formatEuro(projectedCents)}</strong></div></div>
-      <div className="growth-chart-wrap">
-        <div className="chart-cursor-tooltip" style={{ left: `${Math.max(18, Math.min(82, activeMonth / monthCount * 100))}%` }} aria-live="polite"><strong>{periodLabel}</strong><span>Contributed {formatEuro(activePoint.contributedCents)}</span><span>Fund illustration {formatEuro(activePoint.projectedCents)}</span><span>Estimated growth {formatEuro(Math.max(0, activePoint.projectedCents - activePoint.contributedCents))}</span></div>
-        <svg className="growth-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} preserveAspectRatio="none" role="img" aria-label={`${goal.years}-year chart comparing monthly contributions with an illustrative fund value`} onPointerMove={pointerSelect} onPointerDown={pointerSelect}>
+    {aboveSurplus && <div className="surplus-warning" role="status"><Sparkles size={16}/><span>Your chosen monthly amount is above this demo’s detected surplus. Check your cash buffer and adjust if needed.</span></div>}
+    <label className="field-label time-horizon-field">Saving horizon<select value={goal.years} onChange={(event) => updateGoal({ years: Number(event.target.value) })}>{[2,5,10,15,20,25,30].map(year => <option key={year} value={year}>{year} years</option>)}</select></label>
+    <div className="savings-timeline"><div className="savings-timeline-heading"><strong>{goal.years}-year savings timeline</strong><span>No interest included</span></div>
+      <div className="savings-compare"><div><small>Monthly amount</small><strong>{formatEuro(monthlyCents)}</strong></div><div><small>Total deposits</small><strong>{formatEuro(chartData[monthCount].savedCents)}</strong></div></div>
+      <div className="savings-chart-wrap">
+        <div className="chart-cursor-tooltip" style={{ left: `${Math.max(18, Math.min(82, activeMonth / monthCount * 100))}%` }} aria-live="polite"><strong>{periodLabel}</strong><span>Saved by then {formatEuro(activePoint.savedCents)}</span><span>Monthly plan {formatEuro(monthlyCents)}</span></div>
+        <svg className="savings-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} preserveAspectRatio="none" role="img" aria-label={`${goal.years}-year savings-account deposits timeline; interest is not included`} onPointerMove={pointerSelect} onPointerDown={pointerSelect}>
           {[0.25,0.5,0.75,1].map(fraction => <line key={fraction} x1="0" x2={chartWidth} y1={chartHeight * (1 - fraction)} y2={chartHeight * (1 - fraction)} className="chart-gridline"/>)}
-          <path d={growthAreaPath} className="chart-growth-area"/><path d={contributedPath} className="chart-contribution-line"/><path d={projectedPath} className="chart-projection-line"/>
-          <line x1={cursorX} x2={cursorX} y1="0" y2={chartHeight} className="chart-cursor-line"/><circle cx={cursorX} cy={cursorProjectedY} r="4" className="chart-cursor-projected"/><circle cx={cursorX} cy={cursorContributedY} r="4" className="chart-cursor-contributed"/>
+          <path d={savingsAreaPath} className="chart-savings-area"/><path d={savingsPath} className="chart-savings-line"/>
+          <line x1={cursorX} x2={cursorX} y1="0" y2={chartHeight} className="chart-cursor-line"/><circle cx={cursorX} cy={cursorY} r="4.5" className="chart-cursor-savings"/>
         </svg>
       </div>
       <div className="chart-axis-labels"><span>Now</span><span>Year {goal.years}</span></div>
-      <input className="chart-scrubber" type="range" min="0" max={monthCount} value={activeMonth} onChange={(event) => setSelectedMonth(Number(event.target.value))} aria-label="Explore contributions and projected fund value by month"/>
-      <div className="growth-legend"><span><i className="contributed-dot"/>Contributions over time</span><span><i/>Estimated compounded growth</span></div>
-      <small className="simulation-note">Assumes {Math.round(annualRates[goal.risk] * 100)}% annual return, compounded monthly. Returns are not guaranteed and can be negative. This is an illustration, not a product recommendation. No money moves.</small>
+      <input className="chart-scrubber" type="range" min="0" max={monthCount} value={activeMonth} onChange={(event) => setSelectedMonth(Number(event.target.value))} aria-label="Explore savings account deposits by month"/>
+      <div className="savings-legend"><span><i/>Monthly deposits · interest not included</span></div>
+      <small className="simulation-note">This timeline multiplies your chosen monthly amount by the selected horizon. It does not estimate account interest, fees, or account terms. No account is opened and no money moves.</small>
     </div>
-    {mode === 'afterExpense' && <div className="insight alert-insight"><span className="insight-icon"><Sparkles size={18}/></span><p>After the unexpected expense, protect your cash buffer first. If needed, pause or lower this monthly investment before changing essential spending.</p></div>}
+    {mode === 'afterExpense' && <div className="insight alert-insight"><span className="insight-icon"><Sparkles size={18}/></span><p>After the unexpected expense, protect your cash buffer first. If needed, lower this monthly saving plan before changing essential spending.</p></div>}
   </section>;
 }
 
@@ -182,14 +173,14 @@ function CoachPage({ goals, onOpenGoals }) {
   const [question, setQuestion] = useState('');
   const shortGoals = goals.shortTermGoals;
   const longGoal = goals.longTerm;
-  const response = question === 'monthly' ? `You set ${formatEuro(longGoal.monthlyCents)} a month as your long-term illustration for ${longGoal.years} years. It’s saved here for next time.` : `You have ${shortGoals.length} short-term ${shortGoals.length === 1 ? 'goal' : 'goals'}: ${shortGoals.map(goal => `${goal.label || 'Untitled'} (${formatEuro(goal.targetCents)} by ${formatDate(goal.targetDate)})`).join('; ')}. I’ll remember them on this device.`;
+  const response = question === 'monthly' ? `You set ${formatEuro(longGoal.monthlyCents)} a month as a ${longGoal.accountType} savings plan over ${longGoal.years} years. It’s saved here for next time.` : `You have ${shortGoals.length} short-term ${shortGoals.length === 1 ? 'goal' : 'goals'}: ${shortGoals.map(goal => `${goal.label || 'Untitled'} (${formatEuro(goal.targetCents)} by ${formatDate(goal.targetDate)})`).join('; ')}. I’ll remember them on this device.`;
   return <div className="coach-page">
     <section className="coach-welcome"><div className="coach-avatar"><Sparkles size={20}/></div><div><div className="eyebrow">YOUR MONEY COACH</div><h2>Hi! I remember your goals.</h2><p>Your saved plan is here whenever we talk.</p></div></section>
     <div className="coach-bubble"><span className="coach-bubble-icon"><MessageCircle size={17}/></span><p>{response}</p></div>
     <div className="coach-prompts"><button onClick={() => setQuestion('short')}>What am I saving for?</button><button onClick={() => setQuestion('monthly')}>What’s my monthly fund amount?</button></div>
     <section className="card remembered-goals"><div className="card-heading"><div><div className="eyebrow">SAVED GOALS</div><h2>What we’re working toward</h2></div><span className="remembered-sparkle">✦</span></div>
       {shortGoals.map(goal => <div className="remembered-goal-row" key={goal.id}><span className="remembered-emoji">{goal.complete ? '🎉' : '🌱'}</span><div><small>SHORT-TERM{goal.complete ? ' · COMPLETE' : ''}</small><strong>{goal.label || 'Your short-term goal'}</strong><span>{formatEuro(goal.targetCents)} target · {formatDate(goal.targetDate)} · {formatEuro(goal.savedCents)} saved</span></div></div>)}
-      <div className="remembered-goal-row"><span className="remembered-emoji">🌳</span><div><small>LONG-TERM EXPLORATION</small><strong>{formatEuro(longGoal.monthlyCents)} monthly scenario</strong><span>{longGoal.risk} illustration · {longGoal.years} years</span></div></div>
+      <div className="remembered-goal-row"><span className="remembered-emoji">🌳</span><div><small>LONG-TERM SAVING</small><strong>{formatEuro(longGoal.monthlyCents)} monthly · {longGoal.accountType}</strong><span>{longGoal.years}-year deposit timeline</span></div></div>
       <button className="text-button edit-goals-button" onClick={onOpenGoals}>Adjust my goals <ChevronRight size={17}/></button>
     </section>
     <div className="coach-memory-note"><ShieldCheck size={16}/><span>Saved in this browser on this device. A secure bank account sync is not connected in this demo.</span></div>
@@ -253,7 +244,7 @@ export default function App() {
       <div className="welcome-row"><div><span className="welcome-overline">DEMO CUSTOMER · {dateLabel.toUpperCase()}</span><h1>{title}</h1></div><div className="avatar" aria-hidden="true">1</div></div>
       {activeTab === 'goals' ? <GoalPlanner goals={goals} updateShort={updateShort} removeShort={removeShort} addShort={addShort} updateLong={updateLong} mode={mode} openEvidence={(goal, result) => setEvidenceData({ goal, result, mode })} previewId={previewGoalId} setPreviewId={setPreviewGoalId}/>
         : activeTab === 'coach' ? <CoachPage goals={goals} onOpenGoals={() => setActiveTab('goals')}/>
-          : <div className="home-page"><section className="home-hero"><div className="home-hero-copy"><span className="eyebrow">A PLAN THAT FITS YOU</span><h2>Small steps. Big plans. 🌈</h2><p>Tell us what matters, then make a monthly plan that feels doable.</p><button className="primary-button" onClick={() => setActiveTab('goals')}>Set my goals <ArrowRight size={18}/></button></div><div className="home-illustration" aria-hidden="true">🌱</div></section><section className="card home-summary"><div className="eyebrow">YOUR SAVED GOALS</div>{goals.shortTermGoals.map(goal => <div className="home-summary-item" key={goal.id}><span>{goal.complete ? '🎉' : '🌱'}</span><div><strong>{goal.label || 'Short-term goal'}</strong><small>{formatEuro(goal.targetCents)} by {formatDate(goal.targetDate)}{goal.complete ? ' · Complete' : ''}</small></div></div>)}<div className="home-summary-item"><span>🌳</span><div><strong>{formatEuro(goals.longTerm.monthlyCents)} monthly illustration</strong><small>{goals.longTerm.years}-year scenario · {goals.longTerm.risk}</small></div></div><button className="text-button" onClick={() => setActiveTab('coach')}>Ask Coach to recall my goals <ChevronRight size={17}/></button></section></div>}
+          : <div className="home-page"><section className="home-hero"><div className="home-hero-copy"><span className="eyebrow">A PLAN THAT FITS YOU</span><h2>Small steps. Big plans. 🌈</h2><p>Tell us what matters, then make a monthly plan that feels doable.</p><button className="primary-button" onClick={() => setActiveTab('goals')}>Set my goals <ArrowRight size={18}/></button></div><div className="home-illustration" aria-hidden="true">🌱</div></section><section className="card home-summary"><div className="eyebrow">YOUR SAVED GOALS</div>{goals.shortTermGoals.map(goal => <div className="home-summary-item" key={goal.id}><span>{goal.complete ? '🎉' : '🌱'}</span><div><strong>{goal.label || 'Short-term goal'}</strong><small>{formatEuro(goal.targetCents)} by {formatDate(goal.targetDate)}{goal.complete ? ' · Complete' : ''}</small></div></div>)}<div className="home-summary-item"><span>🌳</span><div><strong>{formatEuro(goals.longTerm.monthlyCents)} monthly saving plan</strong><small>{goals.longTerm.accountType} · {goals.longTerm.years}-year timeline</small></div></div><button className="text-button" onClick={() => setActiveTab('coach')}>Ask Coach to recall my goals <ChevronRight size={17}/></button></section></div>}
     </main>
     <BottomNav activeTab={activeTab} setActiveTab={setActiveTab}/>
     {evidenceData && <EvidenceModal result={evidenceData.result} goal={evidenceData.goal} mode={evidenceData.mode} onClose={() => setEvidenceData(null)}/>}

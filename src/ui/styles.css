@@ -87,19 +87,17 @@ button:focus-visible, a:focus-visible { outline: 3px solid #82ddb0; outline-offs
 .risk-label select { padding:7px 9px; border:1px solid var(--line); border-radius:8px; color:var(--forest); background:white; font:inherit; }
 .auto-options { display:flex; flex-direction:column; gap:9px; margin:10px 1px 14px; }
 .auto-options label { display:flex; align-items:center; gap:8px; color:#52655b; font-size:10px; }.auto-options input { accent-color:var(--emerald); }
-.growth-box { padding:12px; border:1px solid #dceee2; border-radius:12px; background:#f5faf6; }
-.growth-heading,.growth-compare { display:flex; justify-content:space-between; gap:8px; }.growth-heading strong { font-size:11px; }.growth-heading span { color:#718078; font-size:9px; }
-.growth-compare { margin:13px 0 10px; }.growth-compare div { display:flex; flex-direction:column; gap:4px; }.growth-compare small { color:var(--muted); font-size:9px; }.growth-compare strong { color:var(--forest); font:700 16px 'Plus Jakarta Sans',sans-serif; }
-.growth-bar { height:10px; overflow:hidden; border-radius:8px; background:#93c6a7; }.growth-bar span { display:block; height:100%; border-radius:8px; background:var(--emerald); }
-.growth-legend { display:flex; flex-direction:column; gap:5px; margin:9px 0; color:#596b60; font-size:9px; }.growth-legend span { display:flex; align-items:center; gap:6px; }.growth-legend i { width:7px; height:7px; border-radius:50%; background:#93c6a7; }.growth-legend .contributed-dot { background:var(--emerald); }
-.growth-chart-wrap { position:relative; margin-top:48px; touch-action:pan-y; cursor:crosshair; }
-.growth-chart { display:block; width:100%; height:140px; overflow:visible; }
+.savings-timeline { padding:12px; border:1px solid #dceee2; border-radius:12px; background:#f5faf6; }
+.savings-timeline-heading,.savings-compare { display:flex; justify-content:space-between; gap:8px; }.savings-timeline-heading strong { font-size:11px; }.savings-timeline-heading span { color:#718078; font-size:9px; }
+.savings-compare { margin:13px 0 10px; }.savings-compare div { display:flex; flex-direction:column; gap:4px; }.savings-compare small { color:var(--muted); font-size:9px; }.savings-compare strong { color:var(--forest); font:700 16px 'Plus Jakarta Sans',sans-serif; }
+.savings-legend { display:flex; flex-direction:column; gap:5px; margin:9px 0; color:#596b60; font-size:9px; }.savings-legend span { display:flex; align-items:center; gap:6px; }.savings-legend i { width:7px; height:7px; border-radius:50%; background:#248c50; }
+.savings-chart-wrap { position:relative; margin-top:48px; touch-action:pan-y; cursor:crosshair; }
+.savings-chart { display:block; width:100%; height:140px; overflow:visible; }
 .chart-gridline { stroke:#e4ece6; stroke-width:1; vector-effect:non-scaling-stroke; }
-.chart-growth-area { fill:#4fbb7b2b; stroke:none; }
-.chart-projection-line,.chart-contribution-line { fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
-.chart-projection-line { stroke:#008f4a; }.chart-contribution-line { stroke:#d8a844; stroke-width:2; }
+.chart-savings-area { fill:#4fbb7b2b; stroke:none; }
+.chart-savings-line { fill:none; stroke:#008f4a; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
 .chart-cursor-line { stroke:#526f5c; stroke-width:1.2; stroke-dasharray:3 3; vector-effect:non-scaling-stroke; }
-.chart-cursor-projected { fill:#008f4a; stroke:white; stroke-width:2; vector-effect:non-scaling-stroke; }.chart-cursor-contributed { fill:#d8a844; stroke:white; stroke-width:2; vector-effect:non-scaling-stroke; }
+.chart-cursor-savings { fill:#008f4a; stroke:white; stroke-width:2; vector-effect:non-scaling-stroke; }
 .chart-cursor-tooltip { position:absolute; z-index:1; top:-46px; display:flex; min-width:138px; flex-direction:column; gap:2px; padding:7px 9px; border:1px solid #dce9df; border-radius:9px; color:#5f7066; background:#fff; box-shadow:0 3px 10px #12331c12; font-size:8px; transform:translateX(-50%); pointer-events:none; }
 .chart-cursor-tooltip strong { margin-bottom:1px; color:#28513a; font-size:9px; }
 .chart-axis-labels { display:flex; justify-content:space-between; color:#859187; font-size:8px; }

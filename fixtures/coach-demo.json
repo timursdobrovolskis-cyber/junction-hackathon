@@ -8,11 +8,11 @@
     "targetDate": "2027-01-31"
   },
   "longTermGoal": {
-    "label": "Future wealth",
+    "label": "Future savings",
     "horizonYears": 10,
-    "risk": "Balanced",
-    "annualReturnAssumption": 0.06,
-    "investmentProvider": "S-Pankki funds"
+    "monthlyContributionCents": 2000,
+    "accountType": "S-Tuottotili",
+    "provider": "S-Pankki"
   },
   "periods": [
     { "month": "2026-11", "availableToSaveCents": 6000, "plannedDeliveryCents": 2000 },
