@@ -9,3 +9,5 @@ dev.mjs
 .env*
 
 /goals-planner/
+
+scripts/
