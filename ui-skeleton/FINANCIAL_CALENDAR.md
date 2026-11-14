@@ -5,7 +5,7 @@ Run `npm run dev` inside `ui-skeleton` and open
 http://127.0.0.1:4174/spendvest.html#calendar. `PORT=4176 npm run dev` chooses another
 port. No Gemini key or Python service is needed for the saved calendar samples.
 
-- Monthly calendar covering the current partial month and 24 future months;
+- Day, week and month views covering the current partial month and 24 future months;
   previous/next controls and a month/year selector, remembered per sample.
 - One estimated date per regular salary, bill or renewal. No multi-day windows,
   irregular payments, one-off costs or buffer-risk overlays. Monthly bills can
@@ -21,7 +21,7 @@ port. No Gemini key or Python service is needed for the saved calendar samples.
 - Refresh keeps the selected month. Failed requests keep the previous customer's
   label and values together. Browser storage is optional.
 
-`GET /api/calendar?source=regular|engine|recurring|subscriptions` serves generated
+`GET /api/calendar?source=risk|regular|engine|recurring|subscriptions` serves generated
 schema 2.0 JSON. Each event has `date == earliestDate == latestDate`. Financial
 amounts and scheduling originate in Python or supplied subscription schedules;
 the browser only formats amounts, filters dates and renders evidence.
@@ -47,7 +47,7 @@ Full scheduling rules, backend interface and fixture regeneration:
 
 ## Checks
 
-Run `npm test` here: 68 checks including the team's Coach/Goals tests and calendar
+Run `npm test` here: 81 checks including the team's Coach/Goals tests and calendar
 API validation, date boundaries, isolation, exact-day filters and yearly
 subscriptions. Browser checks cover 320/390/1024px layouts, date and evidence
 dialogs, Escape/focus restoration, February 2028, reload persistence, all four
@@ -72,7 +72,7 @@ use Other calendars → + → From URL in the desktop browser. A URL subscriptio
 refreshes at Google's chosen intervals; a downloaded file is a fixed snapshot.
 Changing this app's sample does not remove a calendar already added in Google.
 
-`GET /api/calendar-feed?source=regular|engine|recurring|subscriptions` is a public
+`GET /api/calendar-feed?source=risk|regular|engine|recurring|subscriptions` is a public
 feed of the bundled synthetic sample only. It exports tentative all-day names
 and dates with stable IDs; no amounts, account balances or transaction IDs.
 Live-engine sample sources disable export and return 409 from the feed. Real
@@ -84,3 +84,30 @@ cover source isolation, private-data blocking, stable UIDs, next-day dates,
 Unicode folding, CRLF escaping and header behavior. Browser checks cover bill
 details, warning metrics/evidence and the Google link/download flow. Actual Add
 inside a user's Google account is not automated or claimed as tested.
+
+
+## Unified calendar views
+
+Day, Week and Month share a selected date and checkbox selection. Navigation
+moves one day, seven days or one month respectively, with Monday-first weeks and
+coverage boundaries. The month selector becomes an exact-date picker in day/week
+views. Clicking a grid date opens only payments matching the current checkboxes.
+Income, Bills, Subscriptions, Yearly renewals and Alerts start selected. Yearly
+renewals form their own group, so unchecking monthly Subscriptions does not hide
+an independently checked annual renewal. The separate legend and old filter
+buttons are removed. Selections persist per sample under calendar-v3 storage.
+
+The old data selector is inside Calendar details & example data; it never mixes
+customers. New visitors initially see the labelled Spending-pressure demo. This
+fictional RISK-DEMO household has €900 starting cash, €1,200 housing and €2,400
+salary near the 28th; growing purchases reduce its reserve. The Python engine
+produces a first negative central estimate on 3 November and a €1,744.32 largest
+shortfall on 26 November. The warning and details explicitly identify invented
+data. Its amount is an engine result, not hard-coded frontend financial math.
+The fictional warning is never assigned to CUST00003 or CUST00005. Google exports
+prefix this scenario's event titles with DEMO and identify fictional data.
+
+Warnings now use a rose-red palette. Ambiguous utility-date cards are hidden in
+this UI; their source explanation remains in Calendar details and the backend
+contract. Recorded utility transactions and forecast costs are not deleted.
+The Alerts checkbox controls the notification section in all three views.

@@ -1,0 +1,4702 @@
+{
+  "schemaVersion": "2.0",
+  "customerId": "RISK-DEMO",
+  "asOf": "2026-10-31",
+  "currency": "EUR",
+  "modelVersion": "calendar-scenarios-v1",
+  "rangeStart": "2026-11-01",
+  "rangeEnd": "2028-10-31",
+  "forecastStatus": "estimated",
+  "forecastThrough": "2026-11-30",
+  "events": [
+    {
+      "id": "recurring-853018bb0cd910e303",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "forecast",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-11-03",
+      "earliestDate": "2026-11-03",
+      "latestDate": "2026-11-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-c92fd37939741be3a5",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "forecast",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-11-12",
+      "earliestDate": "2026-11-12",
+      "latestDate": "2026-11-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-947ae4b4674f3ba2ca",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "forecast",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2026-11-18",
+      "earliestDate": "2026-11-18",
+      "latestDate": "2026-11-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6bdd621efa875bc154",
+      "seriesId": "814e2e26ec8cba5486",
+      "title": "Possible subscription \u00b7 Insurance",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "yearly",
+      "date": "2026-11-20",
+      "earliestDate": "2026-11-20",
+      "latestDate": "2026-11-20",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-insurance",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Insurance",
+      "evidenceIds": [
+        "risk-demo-tx-97",
+        "risk-demo-tx-206"
+      ],
+      "evidenceStrength": "limited",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        20,
+        20
+      ],
+      "historicalAmountRange": null,
+      "explanation": "One estimated yearly date based on 2 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4e600d99b043c20b00",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "forecast",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2026-11-28",
+      "earliestDate": "2026-11-28",
+      "latestDate": "2026-11-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": true,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4da8bc50957a484c52",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-12-03",
+      "earliestDate": "2026-12-03",
+      "latestDate": "2026-12-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-40888f8a18002b6718",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2026-12-12",
+      "earliestDate": "2026-12-12",
+      "latestDate": "2026-12-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-0acdbf28c3a63f162b",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2026-12-18",
+      "earliestDate": "2026-12-18",
+      "latestDate": "2026-12-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-3a48f1cdf3e1102efa",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2026-12-28",
+      "earliestDate": "2026-12-28",
+      "latestDate": "2026-12-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-89b9c4e393f90211c4",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-01-03",
+      "earliestDate": "2027-01-03",
+      "latestDate": "2027-01-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-22e846325920f41411",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-01-12",
+      "earliestDate": "2027-01-12",
+      "latestDate": "2027-01-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bc8b832f9551b044c2",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-01-18",
+      "earliestDate": "2027-01-18",
+      "latestDate": "2027-01-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-09fbb0464b54084183",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-01-28",
+      "earliestDate": "2027-01-28",
+      "latestDate": "2027-01-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-03bc759cd97f4a09f5",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-02-03",
+      "earliestDate": "2027-02-03",
+      "latestDate": "2027-02-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-18b1b2b03a9e7648ba",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-02-12",
+      "earliestDate": "2027-02-12",
+      "latestDate": "2027-02-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4738f86b36d371cd44",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-02-18",
+      "earliestDate": "2027-02-18",
+      "latestDate": "2027-02-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-9efa1010eb6c8c0065",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-02-28",
+      "earliestDate": "2027-02-28",
+      "latestDate": "2027-02-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-3d317ac797cfc444f2",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-03-03",
+      "earliestDate": "2027-03-03",
+      "latestDate": "2027-03-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-0593b622f775907065",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-03-12",
+      "earliestDate": "2027-03-12",
+      "latestDate": "2027-03-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-39527e8c9f2f644a99",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-03-18",
+      "earliestDate": "2027-03-18",
+      "latestDate": "2027-03-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4ce1bfdcbcef3a7a4c",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-03-28",
+      "earliestDate": "2027-03-28",
+      "latestDate": "2027-03-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-aa3635d248066cb346",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-04-03",
+      "earliestDate": "2027-04-03",
+      "latestDate": "2027-04-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-eb68bf4de1c6a623fc",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-04-12",
+      "earliestDate": "2027-04-12",
+      "latestDate": "2027-04-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d1a09fdfcf33372de9",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-04-18",
+      "earliestDate": "2027-04-18",
+      "latestDate": "2027-04-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-da937523c0700a8eba",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-04-28",
+      "earliestDate": "2027-04-28",
+      "latestDate": "2027-04-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-8bfcb4dc2fac449ea0",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-05-03",
+      "earliestDate": "2027-05-03",
+      "latestDate": "2027-05-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-8a12e02384659fdb8c",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-05-12",
+      "earliestDate": "2027-05-12",
+      "latestDate": "2027-05-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-638f77f18e8ad0211e",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-05-18",
+      "earliestDate": "2027-05-18",
+      "latestDate": "2027-05-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4e3a014f8a4b8493fa",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-05-28",
+      "earliestDate": "2027-05-28",
+      "latestDate": "2027-05-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-bb4a99fdc80614cbe0",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-06-03",
+      "earliestDate": "2027-06-03",
+      "latestDate": "2027-06-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-43a54f708f0a88a21b",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-06-12",
+      "earliestDate": "2027-06-12",
+      "latestDate": "2027-06-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-2e371ac28a51e78958",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-06-18",
+      "earliestDate": "2027-06-18",
+      "latestDate": "2027-06-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-781253af3f5273895f",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-06-28",
+      "earliestDate": "2027-06-28",
+      "latestDate": "2027-06-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-16d2098232449bd116",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-07-03",
+      "earliestDate": "2027-07-03",
+      "latestDate": "2027-07-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-e79b06cc05ddeb937c",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-07-12",
+      "earliestDate": "2027-07-12",
+      "latestDate": "2027-07-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7832a8765b04c6c99d",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-07-18",
+      "earliestDate": "2027-07-18",
+      "latestDate": "2027-07-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-db016091e88a45800b",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-07-28",
+      "earliestDate": "2027-07-28",
+      "latestDate": "2027-07-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-f837cb9d7b581598a5",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-08-03",
+      "earliestDate": "2027-08-03",
+      "latestDate": "2027-08-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b42f361015cbd4f3fe",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-08-12",
+      "earliestDate": "2027-08-12",
+      "latestDate": "2027-08-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d6d3da9c58230d1429",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-08-18",
+      "earliestDate": "2027-08-18",
+      "latestDate": "2027-08-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-045ade07b9def320f3",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-08-28",
+      "earliestDate": "2027-08-28",
+      "latestDate": "2027-08-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-296f4ae163fa0937b0",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-09-03",
+      "earliestDate": "2027-09-03",
+      "latestDate": "2027-09-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-831e41f03cca9cfbfa",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-09-12",
+      "earliestDate": "2027-09-12",
+      "latestDate": "2027-09-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-c6fb2f8ea9549e1c67",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-09-18",
+      "earliestDate": "2027-09-18",
+      "latestDate": "2027-09-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-2ca70f4420c4abb4bf",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-09-28",
+      "earliestDate": "2027-09-28",
+      "latestDate": "2027-09-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d4d0d1ab7cdd8fe5f6",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-10-03",
+      "earliestDate": "2027-10-03",
+      "latestDate": "2027-10-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-23b36b19cfa369fe61",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-10-12",
+      "earliestDate": "2027-10-12",
+      "latestDate": "2027-10-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-2782af7a7d830b1bdd",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-10-18",
+      "earliestDate": "2027-10-18",
+      "latestDate": "2027-10-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-99a2dbd8685fb557ed",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-10-28",
+      "earliestDate": "2027-10-28",
+      "latestDate": "2027-10-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-76b31caf3b17b24e41",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-11-03",
+      "earliestDate": "2027-11-03",
+      "latestDate": "2027-11-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-d1eca1d47f30576088",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-11-12",
+      "earliestDate": "2027-11-12",
+      "latestDate": "2027-11-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-96bd509517b688183d",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-11-18",
+      "earliestDate": "2027-11-18",
+      "latestDate": "2027-11-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-1ffc27acde9f161bea",
+      "seriesId": "814e2e26ec8cba5486",
+      "title": "Possible subscription \u00b7 Insurance",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "yearly",
+      "date": "2027-11-20",
+      "earliestDate": "2027-11-20",
+      "latestDate": "2027-11-20",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-insurance",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Insurance",
+      "evidenceIds": [
+        "risk-demo-tx-97",
+        "risk-demo-tx-206"
+      ],
+      "evidenceStrength": "limited",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        20,
+        20
+      ],
+      "historicalAmountRange": null,
+      "explanation": "One estimated yearly date based on 2 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-99da47f8cdcbadf244",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-11-28",
+      "earliestDate": "2027-11-28",
+      "latestDate": "2027-11-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-4f2b912320b46b6f40",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-12-03",
+      "earliestDate": "2027-12-03",
+      "latestDate": "2027-12-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-402ddeb99331f7d24f",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2027-12-12",
+      "earliestDate": "2027-12-12",
+      "latestDate": "2027-12-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-ef8511210985b6dc87",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2027-12-18",
+      "earliestDate": "2027-12-18",
+      "latestDate": "2027-12-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-23f421c2334a70d153",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2027-12-28",
+      "earliestDate": "2027-12-28",
+      "latestDate": "2027-12-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-807a5dfe202959ecf2",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-01-03",
+      "earliestDate": "2028-01-03",
+      "latestDate": "2028-01-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-18393afba702be1e22",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-01-12",
+      "earliestDate": "2028-01-12",
+      "latestDate": "2028-01-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-5475189389cc21e5e1",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-01-18",
+      "earliestDate": "2028-01-18",
+      "latestDate": "2028-01-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-2112e652baecf81532",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-01-28",
+      "earliestDate": "2028-01-28",
+      "latestDate": "2028-01-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-a2b99c23efef012b20",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-02-03",
+      "earliestDate": "2028-02-03",
+      "latestDate": "2028-02-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7e1ca79280bef6c25e",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-02-12",
+      "earliestDate": "2028-02-12",
+      "latestDate": "2028-02-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-8ca9b9c9e188dafa59",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-02-18",
+      "earliestDate": "2028-02-18",
+      "latestDate": "2028-02-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-263db31f79d26003cb",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-02-28",
+      "earliestDate": "2028-02-28",
+      "latestDate": "2028-02-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-3e6acae9747303f1d6",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-03-03",
+      "earliestDate": "2028-03-03",
+      "latestDate": "2028-03-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-9907bad21f71fe149a",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-03-12",
+      "earliestDate": "2028-03-12",
+      "latestDate": "2028-03-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-df5cd2850db71f499c",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-03-18",
+      "earliestDate": "2028-03-18",
+      "latestDate": "2028-03-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-837ec50db9478feae6",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-03-28",
+      "earliestDate": "2028-03-28",
+      "latestDate": "2028-03-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-7e1afb5b1a822e8494",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-04-03",
+      "earliestDate": "2028-04-03",
+      "latestDate": "2028-04-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-0e7576a9c450565ba9",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-04-12",
+      "earliestDate": "2028-04-12",
+      "latestDate": "2028-04-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-083ee3f1714229e2ff",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-04-18",
+      "earliestDate": "2028-04-18",
+      "latestDate": "2028-04-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-45bee310edf5f06858",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-04-28",
+      "earliestDate": "2028-04-28",
+      "latestDate": "2028-04-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-ad6f9b607d60e20eb4",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-05-03",
+      "earliestDate": "2028-05-03",
+      "latestDate": "2028-05-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-6db6e751c18fb160f4",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-05-12",
+      "earliestDate": "2028-05-12",
+      "latestDate": "2028-05-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-5ddcf8e331ec81797d",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-05-18",
+      "earliestDate": "2028-05-18",
+      "latestDate": "2028-05-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-59d8089e41ea4ea338",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-05-28",
+      "earliestDate": "2028-05-28",
+      "latestDate": "2028-05-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-20d21fb1d42f851589",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-06-03",
+      "earliestDate": "2028-06-03",
+      "latestDate": "2028-06-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-558aecc74d3a678271",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-06-12",
+      "earliestDate": "2028-06-12",
+      "latestDate": "2028-06-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-75e4f14de1a6d62479",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-06-18",
+      "earliestDate": "2028-06-18",
+      "latestDate": "2028-06-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-050f99128c9fbca106",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-06-28",
+      "earliestDate": "2028-06-28",
+      "latestDate": "2028-06-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-27209727ebbc555af3",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-07-03",
+      "earliestDate": "2028-07-03",
+      "latestDate": "2028-07-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-cc9647cb0e675e0d65",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-07-12",
+      "earliestDate": "2028-07-12",
+      "latestDate": "2028-07-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-1060ebd346e60358d3",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-07-18",
+      "earliestDate": "2028-07-18",
+      "latestDate": "2028-07-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-03939dba25e48145b0",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-07-28",
+      "earliestDate": "2028-07-28",
+      "latestDate": "2028-07-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-003c527e3487ffee45",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-08-03",
+      "earliestDate": "2028-08-03",
+      "latestDate": "2028-08-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-3bfacf4685e439bd40",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-08-12",
+      "earliestDate": "2028-08-12",
+      "latestDate": "2028-08-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-1dc561c4520e1cbf9d",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-08-18",
+      "earliestDate": "2028-08-18",
+      "latestDate": "2028-08-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-0e5216a65e524852a3",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-08-28",
+      "earliestDate": "2028-08-28",
+      "latestDate": "2028-08-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-a70a9603d40510d210",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-09-03",
+      "earliestDate": "2028-09-03",
+      "latestDate": "2028-09-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-90a7d65ae23ff3a5b6",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-09-12",
+      "earliestDate": "2028-09-12",
+      "latestDate": "2028-09-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-f1ea5f3cebf0294066",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-09-18",
+      "earliestDate": "2028-09-18",
+      "latestDate": "2028-09-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-206e5587bb8b67a292",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-09-28",
+      "earliestDate": "2028-09-28",
+      "latestDate": "2028-09-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-af302f2cfc5aa1e6e5",
+      "seriesId": "5fb67914eac7a7c714",
+      "title": "Housing payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-10-03",
+      "earliestDate": "2028-10-03",
+      "latestDate": "2028-10-03",
+      "amountCents": 120000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-landlord",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Housing",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        3,
+        3
+      ],
+      "historicalAmountRange": {
+        "medianCents": 120000,
+        "minCents": 120000,
+        "maxCents": 120000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-b2071477dc0c694bae",
+      "seriesId": "0389c3e564ca27e793",
+      "title": "Utilities payment",
+      "source": "history_pattern",
+      "kind": "bill",
+      "cadence": "monthly",
+      "date": "2028-10-12",
+      "earliestDate": "2028-10-12",
+      "latestDate": "2028-10-12",
+      "amountCents": 12000,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-energy",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Utilities",
+      "evidenceIds": [
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        12,
+        12
+      ],
+      "historicalAmountRange": {
+        "medianCents": 12000,
+        "minCents": 12000,
+        "maxCents": 12000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-c45b24e624ed425408",
+      "seriesId": "6b177e46444259a9f5",
+      "title": "Possible subscription \u00b7 Entertainment",
+      "source": "history_pattern",
+      "kind": "subscription",
+      "cadence": "monthly",
+      "date": "2028-10-18",
+      "earliestDate": "2028-10-18",
+      "latestDate": "2028-10-18",
+      "amountCents": 1599,
+      "direction": "outflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "merchant",
+      "merchantId": "demo-streaming",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Entertainment",
+      "evidenceIds": [
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        18,
+        18
+      ],
+      "historicalAmountRange": {
+        "medianCents": 1599,
+        "minCents": 1599,
+        "maxCents": 1599,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    },
+    {
+      "id": "recurring-93e57718fdcce9bb48",
+      "seriesId": "60c39fbad8d9459bea",
+      "title": "Salary",
+      "source": "history_pattern",
+      "kind": "income",
+      "cadence": "monthly",
+      "date": "2028-10-28",
+      "earliestDate": "2028-10-28",
+      "latestDate": "2028-10-28",
+      "amountCents": 240000,
+      "direction": "inflow",
+      "status": "estimated",
+      "isConfirmed": false,
+      "alreadyIncludedInForecast": null,
+      "scope": "account_type_category_aggregate",
+      "merchantId": null,
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "category": "Salary",
+      "evidenceIds": [
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "evidenceStrength": "strong",
+      "dateBasis": "Estimated from historical payment dates",
+      "observedDayRange": [
+        28,
+        28
+      ],
+      "historicalAmountRange": {
+        "medianCents": 240000,
+        "minCents": 240000,
+        "maxCents": 240000,
+        "medianAbsoluteDeviationCents": 0
+      },
+      "explanation": "One estimated monthly date based on 6 regular payments. Future dates and amounts may change; this is not a confirmed bank instruction."
+    }
+  ],
+  "daily": [
+    {
+      "date": "2026-11-01",
+      "expectedBalanceCents": 90000,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 90000,
+      "upperScenarioBalanceCents": 90000
+    },
+    {
+      "date": "2026-11-02",
+      "expectedBalanceCents": 90000,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 90000,
+      "upperScenarioBalanceCents": 90000
+    },
+    {
+      "date": "2026-11-03",
+      "expectedBalanceCents": -30000,
+      "expectedNetChangeCents": -120000,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -30000,
+      "upperScenarioBalanceCents": -30000
+    },
+    {
+      "date": "2026-11-04",
+      "expectedBalanceCents": -30000,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -30000,
+      "upperScenarioBalanceCents": -30000
+    },
+    {
+      "date": "2026-11-05",
+      "expectedBalanceCents": -30000,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -30000,
+      "upperScenarioBalanceCents": -30000
+    },
+    {
+      "date": "2026-11-06",
+      "expectedBalanceCents": -56167,
+      "expectedNetChangeCents": -26167,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -68000,
+      "upperScenarioBalanceCents": -50000
+    },
+    {
+      "date": "2026-11-07",
+      "expectedBalanceCents": -56167,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -68000,
+      "upperScenarioBalanceCents": -50000
+    },
+    {
+      "date": "2026-11-08",
+      "expectedBalanceCents": -56167,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -68000,
+      "upperScenarioBalanceCents": -50000
+    },
+    {
+      "date": "2026-11-09",
+      "expectedBalanceCents": -56167,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -68000,
+      "upperScenarioBalanceCents": -50000
+    },
+    {
+      "date": "2026-11-10",
+      "expectedBalanceCents": -56167,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -68000,
+      "upperScenarioBalanceCents": -50000
+    },
+    {
+      "date": "2026-11-11",
+      "expectedBalanceCents": -82333,
+      "expectedNetChangeCents": -26166,
+      "componentRoundingResidualCents": 1,
+      "lowerScenarioBalanceCents": -106000,
+      "upperScenarioBalanceCents": -70000
+    },
+    {
+      "date": "2026-11-12",
+      "expectedBalanceCents": -94333,
+      "expectedNetChangeCents": -12000,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -118000,
+      "upperScenarioBalanceCents": -82000
+    },
+    {
+      "date": "2026-11-13",
+      "expectedBalanceCents": -94333,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -118000,
+      "upperScenarioBalanceCents": -82000
+    },
+    {
+      "date": "2026-11-14",
+      "expectedBalanceCents": -94333,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -118000,
+      "upperScenarioBalanceCents": -82000
+    },
+    {
+      "date": "2026-11-15",
+      "expectedBalanceCents": -94333,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -118000,
+      "upperScenarioBalanceCents": -82000
+    },
+    {
+      "date": "2026-11-16",
+      "expectedBalanceCents": -94333,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -118000,
+      "upperScenarioBalanceCents": -82000
+    },
+    {
+      "date": "2026-11-17",
+      "expectedBalanceCents": -120500,
+      "expectedNetChangeCents": -26167,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -156000,
+      "upperScenarioBalanceCents": -102000
+    },
+    {
+      "date": "2026-11-18",
+      "expectedBalanceCents": -122099,
+      "expectedNetChangeCents": -1599,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -157599,
+      "upperScenarioBalanceCents": -103599
+    },
+    {
+      "date": "2026-11-19",
+      "expectedBalanceCents": -122099,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -157599,
+      "upperScenarioBalanceCents": -103599
+    },
+    {
+      "date": "2026-11-20",
+      "expectedBalanceCents": -122099,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -157599,
+      "upperScenarioBalanceCents": -103599
+    },
+    {
+      "date": "2026-11-21",
+      "expectedBalanceCents": -122099,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -157599,
+      "upperScenarioBalanceCents": -103599
+    },
+    {
+      "date": "2026-11-22",
+      "expectedBalanceCents": -122099,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -157599,
+      "upperScenarioBalanceCents": -103599
+    },
+    {
+      "date": "2026-11-23",
+      "expectedBalanceCents": -148266,
+      "expectedNetChangeCents": -26167,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -195599,
+      "upperScenarioBalanceCents": -123599
+    },
+    {
+      "date": "2026-11-24",
+      "expectedBalanceCents": -148266,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -195599,
+      "upperScenarioBalanceCents": -123599
+    },
+    {
+      "date": "2026-11-25",
+      "expectedBalanceCents": -148266,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -195599,
+      "upperScenarioBalanceCents": -123599
+    },
+    {
+      "date": "2026-11-26",
+      "expectedBalanceCents": -174432,
+      "expectedNetChangeCents": -26166,
+      "componentRoundingResidualCents": 1,
+      "lowerScenarioBalanceCents": -233599,
+      "upperScenarioBalanceCents": -143599
+    },
+    {
+      "date": "2026-11-27",
+      "expectedBalanceCents": -14432,
+      "expectedNetChangeCents": 160000,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": -203599,
+      "upperScenarioBalanceCents": 96401
+    },
+    {
+      "date": "2026-11-28",
+      "expectedBalanceCents": 65568,
+      "expectedNetChangeCents": 80000,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 6401,
+      "upperScenarioBalanceCents": 96401
+    },
+    {
+      "date": "2026-11-29",
+      "expectedBalanceCents": 65568,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 6401,
+      "upperScenarioBalanceCents": 96401
+    },
+    {
+      "date": "2026-11-30",
+      "expectedBalanceCents": 65568,
+      "expectedNetChangeCents": 0,
+      "componentRoundingResidualCents": 0,
+      "lowerScenarioBalanceCents": 6401,
+      "upperScenarioBalanceCents": 96401
+    }
+  ],
+  "bufferCents": 30000,
+  "belowBufferDates": [
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-09",
+    "2026-11-10",
+    "2026-11-11",
+    "2026-11-12",
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25",
+    "2026-11-26",
+    "2026-11-27"
+  ],
+  "possibleBelowBufferDates": [
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06",
+    "2026-11-07",
+    "2026-11-08",
+    "2026-11-09",
+    "2026-11-10",
+    "2026-11-11",
+    "2026-11-12",
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18",
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25",
+    "2026-11-26",
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30"
+  ],
+  "evidence": [
+    {
+      "id": "risk-demo-tx-206",
+      "date": "2025-11-20",
+      "amountCents": -12000,
+      "category": "Insurance",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-insurance"
+    },
+    {
+      "id": "risk-demo-tx-255",
+      "date": "2026-05-03",
+      "amountCents": -120000,
+      "category": "Housing",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "risk-demo-tx-258",
+      "date": "2026-05-12",
+      "amountCents": -12000,
+      "category": "Utilities",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-energy"
+    },
+    {
+      "id": "risk-demo-tx-260",
+      "date": "2026-05-18",
+      "amountCents": -1599,
+      "category": "Entertainment",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-streaming"
+    },
+    {
+      "id": "risk-demo-tx-263",
+      "date": "2026-05-28",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-264",
+      "date": "2026-06-03",
+      "amountCents": -120000,
+      "category": "Housing",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "risk-demo-tx-267",
+      "date": "2026-06-12",
+      "amountCents": -12000,
+      "category": "Utilities",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-energy"
+    },
+    {
+      "id": "risk-demo-tx-269",
+      "date": "2026-06-18",
+      "amountCents": -1599,
+      "category": "Entertainment",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-streaming"
+    },
+    {
+      "id": "risk-demo-tx-272",
+      "date": "2026-06-28",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-273",
+      "date": "2026-07-03",
+      "amountCents": -120000,
+      "category": "Housing",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "risk-demo-tx-276",
+      "date": "2026-07-12",
+      "amountCents": -12000,
+      "category": "Utilities",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-energy"
+    },
+    {
+      "id": "risk-demo-tx-278",
+      "date": "2026-07-18",
+      "amountCents": -1599,
+      "category": "Entertainment",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-streaming"
+    },
+    {
+      "id": "risk-demo-tx-281",
+      "date": "2026-07-28",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-282",
+      "date": "2026-08-03",
+      "amountCents": -120000,
+      "category": "Housing",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "risk-demo-tx-285",
+      "date": "2026-08-12",
+      "amountCents": -12000,
+      "category": "Utilities",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-energy"
+    },
+    {
+      "id": "risk-demo-tx-287",
+      "date": "2026-08-18",
+      "amountCents": -1599,
+      "category": "Entertainment",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-streaming"
+    },
+    {
+      "id": "risk-demo-tx-290",
+      "date": "2026-08-28",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-291",
+      "date": "2026-09-03",
+      "amountCents": -120000,
+      "category": "Housing",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "risk-demo-tx-292",
+      "date": "2026-09-06",
+      "amountCents": -32000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-293",
+      "date": "2026-09-11",
+      "amountCents": -32000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-294",
+      "date": "2026-09-12",
+      "amountCents": -12000,
+      "category": "Utilities",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-energy"
+    },
+    {
+      "id": "risk-demo-tx-295",
+      "date": "2026-09-17",
+      "amountCents": -32000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-296",
+      "date": "2026-09-18",
+      "amountCents": -1599,
+      "category": "Entertainment",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-streaming"
+    },
+    {
+      "id": "risk-demo-tx-297",
+      "date": "2026-09-23",
+      "amountCents": -32000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-298",
+      "date": "2026-09-26",
+      "amountCents": -32000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-299",
+      "date": "2026-09-28",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-300",
+      "date": "2026-10-03",
+      "amountCents": -120000,
+      "category": "Housing",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-landlord"
+    },
+    {
+      "id": "risk-demo-tx-301",
+      "date": "2026-10-06",
+      "amountCents": -38000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-302",
+      "date": "2026-10-11",
+      "amountCents": -38000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-303",
+      "date": "2026-10-12",
+      "amountCents": -12000,
+      "category": "Utilities",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-energy"
+    },
+    {
+      "id": "risk-demo-tx-304",
+      "date": "2026-10-17",
+      "amountCents": -38000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-305",
+      "date": "2026-10-18",
+      "amountCents": -1599,
+      "category": "Entertainment",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-streaming"
+    },
+    {
+      "id": "risk-demo-tx-306",
+      "date": "2026-10-23",
+      "amountCents": -38000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-307",
+      "date": "2026-10-26",
+      "amountCents": -38000,
+      "category": "Restaurants",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-308",
+      "date": "2026-10-28",
+      "amountCents": 240000,
+      "category": "Salary",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": null
+    },
+    {
+      "id": "risk-demo-tx-97",
+      "date": "2024-11-20",
+      "amountCents": -12000,
+      "category": "Insurance",
+      "accountId": "RISK-DEMO-ACCOUNT",
+      "merchantId": "demo-insurance"
+    }
+  ],
+  "warnings": [
+    "Only observed accounts are covered; external balances and commitments are unknown.",
+    "Recurring payments overlap category totals. Do not add both as separate expenses.",
+    "Evidence strength is a heuristic, not calibrated prediction accuracy.",
+    "Zero-activity months assume continuous export coverage after the first observed month.",
+    "Historical months are scenarios, not calibrated probabilities or guaranteed bounds.",
+    "The mean path can spread uncertain income across dates; it is not a promised payday.",
+    "Each source month repeats if the horizon crosses a month boundary; seasonal changes are not modeled.",
+    "Balances are end-of-day totals across observed accounts; intraday and individual-account shortfalls can differ.",
+    "Multiple-payment groups are replayed only on remaining dates; matching individual paid bills is not supported.",
+    "Unknown future one-off costs and external accounts are not covered. Do not use this alone to promise affordable savings."
+  ],
+  "omittedPatterns": [],
+  "notifications": [
+    {
+      "id": "ef88b7aaf6535ab4e70e",
+      "kind": "demo_shortfall",
+      "severity": "warning",
+      "title": "Spending could leave you short before payday",
+      "summary": "Fictional scenario: cash could run short on 3 November if this pattern continues. Review it before essential bills are due.",
+      "explanation": "This is an invented household, not a finding about a bank-data customer. It starts with \u20ac900 cash, pays \u20ac1,200 housing near the 3rd and receives \u20ac2,400 salary near the 28th. Flexible spending rose over the last three months. The existing Python cash-flow engine replays recent spending patterns and estimates a shortfall before payday; future outcomes remain uncertain. Annual reminders beyond the engine\u2019s recurring forecast flows may add further costs.",
+      "action": "Check whether funds are available elsewhere or contact the biller early to discuss payment options. Review nonessential purchases with the coach to reduce further pressure. No spending limit, saving or payment is changed automatically.",
+      "asOf": "2026-10-31",
+      "evidenceIds": [
+        "risk-demo-tx-255",
+        "risk-demo-tx-264",
+        "risk-demo-tx-273",
+        "risk-demo-tx-282",
+        "risk-demo-tx-291",
+        "risk-demo-tx-300",
+        "risk-demo-tx-258",
+        "risk-demo-tx-267",
+        "risk-demo-tx-276",
+        "risk-demo-tx-285",
+        "risk-demo-tx-294",
+        "risk-demo-tx-303",
+        "risk-demo-tx-260",
+        "risk-demo-tx-269",
+        "risk-demo-tx-278",
+        "risk-demo-tx-287",
+        "risk-demo-tx-296",
+        "risk-demo-tx-305",
+        "risk-demo-tx-263",
+        "risk-demo-tx-272",
+        "risk-demo-tx-281",
+        "risk-demo-tx-290",
+        "risk-demo-tx-299",
+        "risk-demo-tx-308"
+      ],
+      "metrics": [
+        {
+          "label": "Starting cash (fictional)",
+          "amountCents": 90000
+        },
+        {
+          "label": "Estimated shortfall on 2026-11-26",
+          "amountCents": 174432
+        },
+        {
+          "label": "Chosen reserve",
+          "amountCents": 30000
+        }
+      ],
+      "forecastDates": [
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27"
+      ],
+      "firstShortfallDate": "2026-11-03",
+      "isIllustrative": true
+    }
+  ],
+  "notice": "Only regular payments with a predictable date are shown. Dates and amounts are estimates. Irregular spending is excluded; reminders do not extend the balance forecast.",
+  "label": "Spending-pressure demo",
+  "isIllustrative": true,
+  "sourceNotice": "Fictional household \u00b7 illustrative spending scenario. These transactions and warnings are separate from the bank-data customers.",
+  "generatedAt": "2026-11-14T18:10:42Z"
+}

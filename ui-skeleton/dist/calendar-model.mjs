@@ -27,6 +27,8 @@ export function validateCalendar(value, expectedCustomer) {
     || !isDate(value.asOf) || !isDate(value.rangeStart) || !isDate(value.rangeEnd) || value.rangeStart <= value.asOf || value.rangeEnd < value.rangeStart
     || !['estimated', 'needs_review', 'insufficient_history'].includes(value.forecastStatus)
     || !Array.isArray(value.events) || value.events.length > 5000 || !Array.isArray(value.daily) || !Array.isArray(value.evidence)) throw new Error('Invalid calendar data');
+  if (value.isIllustrative !== undefined && typeof value.isIllustrative !== 'boolean') throw new Error('Invalid illustration state');
+  if (expectedCustomer === 'RISK-DEMO' && value.isIllustrative !== true) throw new Error('Demo must be labelled fictional');
   const cents = (amount) => Number.isSafeInteger(amount);
   if (!cents(value.bufferCents) || value.bufferCents < 0) throw new Error('Invalid buffer');
   for (const event of value.events) {
@@ -56,4 +58,38 @@ export function validateCalendar(value, expectedCustomer) {
     if (new Set(value.notifications.map(n => n.id)).size !== value.notifications.length) throw new Error('Duplicate notifications');
   }
   return value;
+}
+
+export const visibilityDefaults = Object.freeze({ income: true, bill: true, subscription: true, yearly: true, alerts: true });
+export function eventGroup(event) { return event.cadence === 'yearly' ? 'yearly' : event.kind; }
+export function visibleEvents(events, visibility) { return events.filter(event => visibility[eventGroup(event)] === true); }
+export function shiftDay(day, offset) {
+  if (!isDate(day) || !Number.isSafeInteger(offset)) throw new Error('Invalid day shift');
+  const date = new Date(`${day}T12:00:00Z`); date.setUTCDate(date.getUTCDate() + offset); return date.toISOString().slice(0, 10);
+}
+export function calendarPeriod(view, anchor) {
+  if (!isDate(anchor) || !['day', 'week', 'month'].includes(view)) throw new Error('Invalid view');
+  if (view === 'day') return { start: anchor, end: anchor, days: [anchor] };
+  if (view === 'week') {
+    const offset = (new Date(`${anchor}T12:00:00Z`).getUTCDay() + 6) % 7;
+    const start = shiftDay(anchor, -offset); const days = Array.from({ length: 7 }, (_, n) => shiftDay(start, n));
+    return { start, end: days[6], days };
+  }
+  const days = monthDays(anchor.slice(0, 7)); return { start: `${anchor.slice(0, 7)}-01`, end: days.at(-1), days };
+}
+export function movePeriod(view, anchor, offset) {
+  if (!Number.isSafeInteger(offset)) throw new Error('Invalid period shift');
+  calendarPeriod(view, anchor);
+  if (view !== 'month') return shiftDay(anchor, offset * (view === 'week' ? 7 : 1));
+  const month = shiftMonth(anchor.slice(0, 7), offset);
+  const day = Math.min(Number(anchor.slice(-2)), Number(monthDays(month).at(-1).slice(-2)));
+  return `${month}-${String(day).padStart(2, '0')}`;
+}
+export function restoreCalendarView(saved, rangeStart, rangeEnd) {
+  let state; try { state = JSON.parse(saved); } catch { /* Use defaults. */ }
+  return {
+    view: ['day','week','month'].includes(state?.view) ? state.view : 'month',
+    anchor: isDate(state?.anchor) && state.anchor >= rangeStart && state.anchor <= rangeEnd ? state.anchor : rangeStart,
+    visibility: Object.fromEntries(Object.entries(visibilityDefaults).map(([key, fallback]) => [key, typeof state?.visibility?.[key] === 'boolean' ? state.visibility[key] : fallback])),
+  };
 }

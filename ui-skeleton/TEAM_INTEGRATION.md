@@ -85,3 +85,10 @@ The month selector exposes 24 recorded months, October’s proposed plan, and No
 Home shows a plain-language plan status, not a numeric score. Current October status is Ready for your review because costs are unconfirmed and no October transactions are present. For matching actuals, status distinguishes over-limit categories, spending without a budget, unconfirmed proposals, and within-limits-so-far observations. It never promises that future bills fit merely because spending is currently below a limit.
 
 History explains the net monthly change and its largest category driver, including offsets from other categories. Review actions open the category and actual payments. The optional history bars also navigate between months. No historical budgets are invented and reduced spending is not called improved financial health. The calendar remains the latest shared frontend version; its selected sample profile is separate from the fixed Home budget account.
+
+
+Calendar views now share Day/Week/Month navigation and five checkboxes, checked
+by default. Example selection is in details. The initial RISK-DEMO calendar and
+its rose-red shortfall warning are explicitly fictional, with figures generated
+by the Python engine. Bank-data histories remain separate. Utility-date reminder
+cards are hidden; their underlying transactions/forecast costs remain intact.
