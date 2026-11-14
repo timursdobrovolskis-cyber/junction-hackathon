@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="A quiet place to understand your money. Interactive design sketch with illustrative figures.">
+  <title>S-Pankki — financial coach concept</title>
+  <link rel="icon" href="assets/s-pankki-logo.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="spendvest.css">
+  <script src="app.js" defer></script>
+  <script src="coach-ui.js" defer></script>
+</head>
+<body class="vest-theme">
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="i-coach" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H7l-4 3v-8a8 8 0 1 1 17-3Z"/><path d="M8 10h8m-8 4h5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4m8-4v4M4 11h16"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="app-header">
+    <a href="#home" class="wordmark" aria-label="S-Pankki concept home"><img class="bank-logo" src="assets/s-pankki-logo.svg" width="107" height="46" alt="S-Pankki"></a>
+    <button class="demo-label" id="about-preview"><span class="status-dot"></span>Demo<svg class="icon small"><use href="#i-info"/></svg></button>
+  </header>
+
+  <main id="main" class="main-shell">
+    <section id="home-page" class="page" aria-labelledby="home-title">
+      <div class="welcome"><div><p class="welcome-label">Your money, at a glance</p><h1 id="home-title">Make room for life.</h1></div><span class="day-badge">Sample<br><strong>Nov</strong></span></div>
+      <div class="balance-card">
+        <svg class="card-art" viewBox="0 0 200 200" aria-hidden="true"><path d="M25 170 115 80M65 190 155 100M10 80 100 170M50 40 140 130"/></svg>
+        <div class="card-top"><span>Available until payday</span><button class="icon-button subtle" id="amount-explanation" aria-label="How the sample amount is calculated"><svg class="icon small"><use href="#i-info"/></svg></button></div>
+        <p class="hero-amount" aria-label="640 euros">€640<span class="amount-decimals">.00</span></p>
+        <div class="payday-pill"><span class="live-dot"></span>Until 28 Nov · expected payday</div>
+        <div class="card-divider"></div>
+        <div class="card-bottom"><span>Bills, savings and buffer excluded.</span><span>EUR</span></div>
+      </div>
+      <button class="primary-button purchase-trigger" id="open-purchase">Check a purchase<svg class="icon"><use href="#i-arrow"/></svg></button>
+      <div class="set-aside" aria-label="Example money set aside">
+        <div><span class="tile-label"><svg class="icon small"><use href="#i-calendar"/></svg>Upcoming bills</span><strong>€240<span>.00</span></strong><small>Already accounted for</small></div>
+        <div><span class="tile-label"><svg class="icon small"><use href="#i-check"/></svg>Planned savings</span><strong>€160<span>.00</span></strong><small>A little for your future</small></div>
+      </div>
+      <div class="coach-note">
+        <div class="coach-heading"><span class="coach-symbol" aria-hidden="true"><svg class="icon"><use href="#i-coach"/></svg></span><span>Your coach</span><span class="sample-tag">Example</span></div>
+        <div class="coach-note-copy"><p>Your essentials have<br>their own space.</p><button class="inline-link" id="open-coach-note" aria-expanded="false" aria-controls="coach-note-details">See what’s set aside<svg class="icon tiny"><use href="#i-arrow"/></svg></button></div>
+        <div id="coach-note-details" class="coach-note-details" hidden><p>This example keeps €160 for savings and €300 as a cash buffer, alongside €240 for bills. The remaining €640 is the illustrative spending amount.</p><button class="inline-link" data-go-coach>Explore with your coach<svg class="icon tiny"><use href="#i-arrow"/></svg></button></div>
+      </div>
+      <div class="plan-section">
+        <button class="plan-toggle" id="plan-toggle" aria-expanded="false" aria-controls="plan-details"><span>View my plan</span><svg class="icon"><use href="#i-chevron"/></svg></button>
+        <section id="plan-details" class="plan-details" aria-label="Illustrative plan breakdown" hidden>
+          <p class="section-caption">An example of how it fits together</p>
+          <dl class="plan-rows">
+            <div><dt>Current balance</dt><dd>€1,340.00</dd></div>
+            <div><dt>Upcoming bills</dt><dd>− €240.00</dd></div>
+            <div><dt>Set aside for savings</dt><dd>− €160.00</dd></div>
+            <div><dt>Your cash buffer</dt><dd>− €300.00</dd></div>
+            <div class="plan-total"><dt>Available until payday</dt><dd>€640.00</dd></div>
+          </dl>
+          <p class="detail-footnote">Illustrative amounts for this design preview. Your personal estimate will come from your plan.</p>
+        </section>
+      </div>
+      <p class="home-footnote">Sample figures · Not connected to your account</p>
+      
+    </section>
+
+    <section id="coach-page" class="page coach-page" aria-labelledby="coach-title" hidden>
+      <div class="coach-page-heading"><span class="coach-avatar" aria-hidden="true"><svg class="icon"><use href="#i-coach"/></svg></span><div><p class="coach-kicker">Your money, talked through</p><h1 id="coach-title">A little clarity.</h1></div></div>
+      <div class="scenario-picker" role="group" aria-label="Choose the example to discuss"><button type="button" data-scenario="design" aria-pressed="true">Home example</button><button type="button" data-scenario="engine" aria-pressed="false">Transaction example</button></div>
+      <p id="coach-source" class="coach-source">Loading the example plan…</p>
+      <section class="coach-summary" aria-label="Selected example plan"><h2 id="coach-summary-title">Let’s look at your plan.</h2><div id="coach-facts" class="coach-facts"></div><details class="coach-detail"><summary>How this example works</summary><p id="coach-explanation"></p><div id="coach-details"></div></details></section>
+      <div class="conversation-heading"><h2>Talk it through</h2><button id="clear-chat" type="button">Clear chat</button></div>
+      <div id="chat-log" class="chat-log" tabindex="0" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation with your coach"></div>
+      <div class="quick-prompts" aria-label="Suggested questions"><button type="button" data-prompt="Explain this plan in simple words.">Explain my plan</button><button type="button" data-prompt="What should I consider before saving more?">Saving more</button><button type="button" data-prompt="I have an unexpected expense. What information would you need before updating this plan?">An upcoming cost</button></div>
+      <form id="chat-form" class="chat-form"><label for="chat-input">Ask about this example</label><div class="composer"><textarea id="chat-input" name="message" rows="2" maxlength="1200" placeholder="What’s on your mind?" required></textarea><button type="submit" id="chat-send" aria-label="Send message"><svg class="icon"><use href="#i-arrow"/></svg></button></div></form>
+      <p id="chat-status" class="chat-status" role="status">Connecting to your coach…</p><p id="chat-error" class="form-error" role="alert" hidden></p><button type="button" id="chat-retry" class="inline-link" hidden>Try again</button>
+      <p class="chat-privacy">Messages are sent to Google Gemini. Use demo information only. This chat explains the examples; it doesn’t save or change your plan.</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a href="#home" id="nav-home" class="nav-link active" aria-current="page"><svg class="icon"><use href="#i-home"/></svg><span>Home</span></a>
+    <a href="#coach" id="nav-coach" class="nav-link"><svg class="icon"><use href="#i-coach"/></svg><span>Coach</span></a>
+  </nav>
+
+  <dialog id="purchase-dialog" class="sheet purchase-sheet" aria-labelledby="purchase-title">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <header class="sheet-header"><span class="section-kicker">A LITTLE LOOK AHEAD</span><button class="icon-button close-button" data-close aria-label="Close purchase check"><svg class="icon"><use href="#i-close"/></svg></button></header>
+    <h2 id="purchase-title">Thinking of<br>something?</h2>
+    <p class="sheet-intro">See where a purchase could fit.</p>
+    <form id="purchase-form">
+      <label for="purchase-amount" class="field-label">How much?</label>
+      <div class="amount-field"><span aria-hidden="true">€</span><input id="purchase-amount" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0" value="200" maxlength="12" aria-describedby="purchase-error" required><span class="amount-currency">EUR</span></div>
+      <div class="date-field"><label for="purchase-date"><svg class="icon"><use href="#i-calendar"/></svg><span>When?</span></label><input id="purchase-date" name="date" type="date" value="2026-11-21" required></div>
+      <p id="purchase-error" class="form-error" role="alert" hidden></p>
+      <button type="submit" class="primary-button">Check the impact<svg class="icon"><use href="#i-arrow"/></svg></button>
+      <p class="sheet-footnote">Design preview · no money is moved</p>
+    </form>
+    <div id="purchase-preview-state" class="preview-state" role="status" hidden><span class="preview-state-icon"><svg class="icon"><use href="#i-check"/></svg></span><div><strong id="purchase-preview-title"></strong><p>The interaction is ready to try. Personalised results will appear here once connected to your plan.</p></div></div>
+  </dialog>
+
+  <dialog id="info-dialog" class="sheet info-sheet" aria-labelledby="info-title">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <header class="sheet-header"><span class="section-kicker">A FIRST LOOK</span><button class="icon-button close-button" data-close aria-label="Close information"><svg class="icon"><use href="#i-close"/></svg></button></header>
+    <h2 id="info-title">A little space<br>for your money.</h2>
+    <p id="info-copy">This is an interactive design sketch. All figures and dates are illustrative. It isn’t connected to an account, and no information is saved or sent.</p>
+    <a class="compare-link" href="index.html">View the original design</a>
+    <button class="primary-button" data-close>Got it<svg class="icon"><use href="#i-check"/></svg></button>
+  </dialog>
+</body>
+</html>
