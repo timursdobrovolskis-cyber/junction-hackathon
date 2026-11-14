@@ -1,0 +1,37 @@
+# Next frontend integrations
+
+## 1. Connect “Check a purchase” to the forecast
+
+Status: the Python engine already accepts `plannedPurchase` and returns `purchasePreview`. The deployed website only collects amount/date; it does not call that engine yet. See `src/purchase_preview.py`, `src/financial_engine.py` and `data/DEMO_WALKTHROUGH.md` in the main project checkout.
+
+- Use the same selected customer, as-of date, forecast and buffer for Home, purchase checks and Coach. Replace the hard-coded November Home amounts before wiring historical October forecasts into this screen.
+- Enter amount, date and category. Clarify whether this is extra spending beyond the forecast so planned spending is not counted twice.
+- Call the engine with `plannedPurchase: {date, amountCents, category}`. Keep all calculations on the server.
+- Show a compact before/after result: projected balance, lowest expected balance and date, buffer shortfall, and how much less could be saved. Expand for the daily path and assumptions.
+- Use `endingExpectedBalanceBeforeCents`, `endingExpectedBalanceAfterCents`, `lowestExpectedBalanceAfter`, `bufferShortfallAfterCents`, `savingsCapacityBeforeCents` and `savingsCapacityAfterCents` from `purchasePreview`.
+- Label the actual forecast end date. Only say “until payday” once the engine genuinely calculates that horizon. Current engine previews cover 30 days.
+- Handle missing data, out-of-window dates and withheld results. No positive affordability verdict when the engine cannot support one.
+- Let the customer change the amount/date or dismiss the preview. No transactions, savings transfers or saved-plan changes occur.
+- Pass the exact result to Coach for explanations; Gemini must not invent an alternative calculation.
+
+Acceptance: a dated extra purchase lowers the projected path only from that date; the interface matches engine output for comfortable, tight and insufficient-data cases; clearing the purchase restores the baseline.
+
+## 2. Keep the experience customer-facing
+
+- Use natural language such as “You have €640 until payday” and “€240 is set aside for bills”.
+- Keep sample-data provenance in one persistent label and the data-information panel, not repeated in every paragraph or coach reply.
+- Keep meaningful uncertainty, historical dates and unavailable actions explicit. Never imply a bank connection, a saved change or a calculated purchase result that does not exist.
+
+## 3. Finish shared plan integration
+
+- Connect the selected customer's results across Home and Coach.
+- Integrate the teammate's confirmed plan-change flow before claiming changes are saved.
+- Test the same customer through Home → purchase check → Coach, including failed requests and switching profiles.
+
+## Conversation integration completed
+
+Goals, buffers, priorities and dated expenses now use the teammate's structured confirmation flow inside the iPhone Coach screen. Gemini answers general questions with the selected plan and requested draft as separate context. Drafts and conversations persist on this browser per profile. They remain uncalculated. Next: deploy/connect the saved-plan service, preview changed inputs, then save only after explicit user choice.
+
+## Goals and Calendar integrated
+
+Home, Goals, Calendar and Coach now share the app navigation and phone preview. Short-term goals use the teammate’s original goal calculation and recovery option. Long-term projections expose contribution/rate/horizon assumptions without claiming safe surplus or enabling investment. Calendar preserves forecast windows, recurring candidates and evidence. The samples still represent different profiles; unifying all screens around one selected customer and connecting the saved-plan service remains next.
