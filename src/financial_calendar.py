@@ -229,7 +229,13 @@ def build_financial_calendar(transactions, result, months=24, *, subscriptions=N
     active_rules = [r for r in rules if (r.get("accountId"), r.get("merchantId")) not in overridden]
     notifications = calendar_insights(rows, customer, as_of, forecast, omitted, active_rules)
     ids = {i for event in events for i in event["evidenceIds"]} | {i for notice in notifications for i in notice["evidenceIds"]}
-    return {"schemaVersion": "2.0", "customerId": customer, "asOf": as_of, "currency": "EUR", "modelVersion": forecast["modelVersion"],
+    month_summaries = {}
+    for event in events:
+        month = event["date"][:7]
+        summary = month_summaries.setdefault(month, {"incomeCents": 0, "outflowCents": 0, "paymentCount": 0})
+        summary["incomeCents" if event["direction"] == "inflow" else "outflowCents"] += event["amountCents"]
+        summary["paymentCount"] += 1
+    return {"monthSummaries": month_summaries, "schemaVersion": "2.0", "customerId": customer, "asOf": as_of, "currency": "EUR", "modelVersion": forecast["modelVersion"],
             "rangeStart": (cutoff + timedelta(days=1)).isoformat(), "rangeEnd": end.isoformat(), "forecastStatus": forecast["status"],
             "forecastThrough": forecast.get("daily", [{}])[-1].get("date") if forecast.get("daily") else None,
             "events": sorted(events, key=lambda e: (e["date"], e["id"])), "daily": deepcopy(forecast.get("daily", [])),

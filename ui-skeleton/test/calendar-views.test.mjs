@@ -47,3 +47,33 @@ test('risk scenario is explicitly fictional, isolated and exportable as its own 
   assert.ok(!bank.evidence.some(e=>e.id.startsWith('risk-demo-')));
   const exported=await call(feed,'/api/calendar-feed?source=risk');assert.equal(exported.statusCode,200);assert.match(exported.body,/BEGIN:VEVENT/);
 });
+
+test('full household includes named monthly costs and annual renewals without duplicate reminders', () => {
+  const data = calendarExamples.risk;
+  const november = data.events.filter(e => e.date.startsWith('2026-11'));
+  assert.equal(november.length, 11);
+  for (const name of ['Netflix', 'Spotify Premium', 'iCloud+', 'Gym membership', 'Home internet', 'Phone plan', 'Water bill', 'Rent', 'Home insurance renewal']) {
+    assert.equal(november.filter(e => e.title === name).length, 1, name);
+  }
+  assert.deepEqual(data.monthSummaries['2026-11'], {incomeCents:240000, outflowCents:159576, paymentCount:11});
+  const warning = data.notifications[0];
+  assert.equal(warning.firstShortfallDate, '2026-11-03');
+  assert.equal(warning.firstShortfallCents, 30000);
+  assert.equal(warning.firstShortfallCents, -data.daily.find(d => d.date === warning.firstShortfallDate).expectedBalanceCents);
+  assert.deepEqual(warning.timeline.map(t => t.date), ['2026-10-31','2026-11-03','2026-11-28']);
+});
+
+test('calendar rejects malformed summary or warning timeline before rendering', async () => {
+  const {validateCalendar} = await import('../dist/calendar-model.mjs');
+  assert.equal(validateCalendar(calendarExamples.risk, 'RISK-DEMO').isIllustrative, true);
+  for (const change of [
+    data => { data.monthSummaries['2026-11'].outflowCents = -1; },
+    data => { data.monthSummaries['2026-13'] = data.monthSummaries['2026-11']; },
+    data => { data.notifications[0].timeline[0].amountCents = 1.25; },
+    data => { data.notifications[0].timeline[0].date = '2026-02-30'; },
+    data => { data.notifications[0].timeline[0].direction = 'transfer'; },
+  ]) {
+    const data = structuredClone(calendarExamples.risk); change(data);
+    assert.throws(() => validateCalendar(data, 'RISK-DEMO'));
+  }
+});

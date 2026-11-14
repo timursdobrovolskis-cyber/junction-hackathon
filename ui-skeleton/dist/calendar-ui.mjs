@@ -22,7 +22,7 @@ function showDialog(title, content, returnFocus) {
 
 function openEvent(event, returnFocus, back) {
   const content = [];
-  if (back) { const button = create('button', '← All payments on this date', 'calendar-subtle'); button.type = 'button'; button.addEventListener('click', back); content.push(button); }
+  if (back) { const button = create('button', '← Back to payments', 'calendar-subtle'); button.type = 'button'; button.addEventListener('click', back); content.push(button); }
   content.push(create('p', `${event.direction === 'inflow' ? '+' : '−'}${euro(event.amountCents)}`, 'calendar-detail-amount'));
   content.push(create('p', `${dateLabel(event.date, { day: 'numeric', month: 'long', year: 'numeric' })} · Estimated ${event.cadence} payment`));
   content.push(create('p', event.explanation));
@@ -65,9 +65,26 @@ function openDay(day) {
   showDialog(dateLabel(day, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), [list], returnFocus);
 }
 
+function openAllPayments() {
+  const period = calendarPeriod(view, anchor);
+  const entries = eventsInRange(visibleEvents(data.events, visibility), period.start, period.end);
+  const list = create('div', undefined, 'calendar-day-payments');
+  for (const event of entries) list.append(eventButton(event, () => openEvent(event, $('calendar-all-payments'), openAllPayments)));
+  showDialog(`${entries.length} payments · ${$('calendar-month').textContent}`, [create('p', 'Estimated dates · selected categories', 'calendar-detail-note'), list], $('calendar-all-payments'));
+}
+
 function openNotice(notice, button) {
   const content = [create('p', notice.summary, 'calendar-detail-note'), create('p', notice.explanation)];
   if (notice.isIllustrative) content.unshift(create('p', 'ILLUSTRATIVE SCENARIO · FICTIONAL DATA', 'calendar-demo-badge'));
+  if (notice.timeline?.length) {
+    content.push(create('h3', 'The dates that matter'));
+    const timeline = create('ol', undefined, 'calendar-timeline');
+    for (const item of notice.timeline) {
+      const row = create('li');
+      row.append(create('small', dateLabel(item.date, { day: 'numeric', month: 'short', year: 'numeric' })), create('span', item.label), create('strong', `${item.direction === 'inflow' ? '+' : item.direction === 'outflow' ? '−' : ''}${euro(item.amountCents)}`)); timeline.append(row);
+    }
+    content.push(timeline);
+  }
   if (notice.monthlyTotals?.length) {
     content.push(create('h3', 'How your spending changed'));
     const list = create('dl', undefined, 'calendar-notice-facts');
@@ -156,6 +173,17 @@ function render() {
   for (let optionMonth = data.rangeStart.slice(0, 7); optionMonth <= data.rangeEnd.slice(0, 7); optionMonth = shiftMonth(optionMonth, 1)) {
     const option = create('option', dateLabel(`${optionMonth}-01`, { month: 'long', year: 'numeric' })); option.value = optionMonth; option.selected = optionMonth === anchor.slice(0, 7); jump.append(option);
   }
+  const checked = Object.values(visibility).filter(Boolean).length;
+  $('calendar-filter-count').textContent = checked === 5 ? 'All shown' : `${checked} of 5 shown`;
+  const summary = $('calendar-month-summary'); summary.replaceChildren();
+  const totals = data.monthSummaries?.[anchor.slice(0, 7)];
+  summary.hidden = view !== 'month' || !totals;
+  if (totals && view === 'month') {
+    for (const [label, value] of [['Scheduled in', euro(totals.incomeCents)], ['Scheduled out', euro(totals.outflowCents)]]) {
+      const item = create('div'); item.append(create('small', label), create('strong', value)); summary.append(item);
+    }
+    summary.append(create('p', `${totals.paymentCount} payments · all categories · excludes irregular spending`));
+  }
   const shown = visibleEvents(data.events, visibility);
   const events = eventsInRange(shown, period.start, period.end);
   const grid = $('calendar-grid'); grid.replaceChildren(); grid.dataset.view = view;
@@ -173,8 +201,15 @@ function render() {
     if (day === today) { button.classList.add('is-today'); button.setAttribute('aria-current', 'date'); }
     const dots = create('span', undefined, 'calendar-dots');
     for (const kind of [...new Set(entries.map(eventGroup))]) dots.append(create('i', '', `dot-${kind}`));
+    if (entries.length > 1) button.append(create('small', String(entries.length), 'calendar-payment-count'));
+    if (entries.length) {
+      const shortNames = { 'Home internet': 'Internet', 'Phone plan': 'Phone', 'Water bill': 'Water', 'Gym membership': 'Gym', 'Spotify Premium': 'Spotify', 'Home insurance renewal': 'Insurance', 'Adobe Creative Cloud': 'Adobe' };
+      const first = entries.find(event => event.kind === 'income') ?? entries[0];
+      button.append(create('small', shortNames[first.title] ?? first.title, 'calendar-cell-label'));
+      button.title = entries.map(event => `${event.title} · ${euro(event.amountCents)}`).join(' / ');
+    }
     button.append(dots);
-    button.setAttribute('aria-label', `${dateLabel(day, { weekday: 'long', day: 'numeric', month: 'long' })}, ${entries.length} matching payments. Open date details`);
+    button.setAttribute('aria-label', `${dateLabel(day, { weekday: 'long', day: 'numeric', month: 'long' })}, ${entries.length} matching payments${entries.length ? `: ${entries.map(e => e.title).join(', ')}` : ''}. Open date details`);
     button.addEventListener('click', () => { anchor = day; saveView(); render(); openDay(day); });
     grid.append(button);
   }
@@ -184,7 +219,10 @@ function render() {
   if (!events.length) agenda.append(create('p', Object.entries(visibility).some(([key, checked]) => key !== 'alerts' && checked)
     ? 'No payments match your selection in this period. You can change the date or checked categories.'
     : 'No payment categories selected. Tick a box above to show payments.', 'calendar-empty'));
-  for (const event of events) agenda.append(eventButton(event, (button) => openEvent(event, button)));
+  for (const event of events.slice(0, 3)) agenda.append(eventButton(event, (button) => openEvent(event, button)));
+  $('calendar-all-payments').hidden = events.length <= 3;
+  $('calendar-all-payments').disabled = busy;
+  $('calendar-all-payments').textContent = `All ${events.length} payments →`;
   const omissions = data.omittedPatterns ?? [];
   $('calendar-warning').textContent = data.notice + (omissions.length ? ` Not scheduled: ${[...new Set(omissions.map((item) => item.title))].join(', ')} — the history does not establish a consistent date or amount.` : '');
   $('calendar-coverage').textContent = `History / schedule as of ${dateLabel(data.asOf, { day: 'numeric', month: 'short', year: 'numeric' })}. Available through ${dateLabel(data.rangeEnd, { month: 'long', year: 'numeric' })}.`;
@@ -217,8 +255,10 @@ async function load(source) {
 function changeDate(next) {
   if (!data || busy || !isDate(next)) return;
   anchor = clampDate(next); saveView(); render();
+  $('calendar-options').open = false;
 }
 $('calendar-connect').addEventListener('click', connectCalendar);
+$('calendar-all-payments').addEventListener('click', openAllPayments);
 $('calendar-source').addEventListener('change', (event) => load(event.target.value));
 $('calendar-retry').addEventListener('click', () => load($('calendar-source').value));
 $('calendar-prev').addEventListener('click', () => { if (data && canMove(-1)) changeDate(movePeriod(view, anchor, -1)); });
@@ -232,6 +272,8 @@ document.querySelectorAll('[data-calendar-view]').forEach(button => button.addEv
 document.querySelectorAll('[data-calendar-show]').forEach(input => input.addEventListener('change', () => {
   if (!data || busy) return; visibility[input.dataset.calendarShow] = input.checked; saveView(); render();
 }));
+document.addEventListener('click', event => { if (!$('calendar-options').contains(event.target)) $('calendar-options').open = false; });
+$('calendar-options').addEventListener('keydown', event => { if (event.key === 'Escape') { $('calendar-options').open = false; $('calendar-options').querySelector('summary').focus(); } });
 $('calendar-detail-close').addEventListener('click', () => $('calendar-detail').close());
 const savedSource = read('source'); if (Object.hasOwn(customers, savedSource)) $('calendar-source').value = savedSource;
 function activate() { if (location.hash === '#calendar' && !data && !busy) load($('calendar-source').value); }
