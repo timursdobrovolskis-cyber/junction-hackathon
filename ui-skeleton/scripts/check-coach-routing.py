@@ -6,6 +6,12 @@ with sync_playwright() as p:
  browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
  page=browser.new_page(viewport={'width':390,'height':844},ignore_https_errors=True)
  errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+ def memory_loading(route):
+  # Composer must remain unavailable while asynchronous code is loading.
+  assert page.locator('#chat-send').is_disabled()
+  assert page.locator('#chat-input').is_disabled()
+  route.continue_()
+ page.route('**/coach-memory.mjs',memory_loading)
  page.goto(base+'/spendvest.html#coach')
  def ready():page.wait_for_function("document.querySelector('#chat-send').disabled===false")
  def ask(message,source,expected):
