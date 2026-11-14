@@ -48,33 +48,69 @@ function GoalProgress({ progress, label }) {
   return <div className="progress-ring playful-ring" style={{ '--progress': `${progress}%` }}><div className="ring-inner"><span className="ring-check"><PiggyBank size={16} /></span><span className="ring-caption">SAVING FOR</span><strong>{label || 'Your goal'}</strong></div></div>;
 }
 
-function ShortTermGoal({ goal, updateGoal, removeGoal, result, baseline, mode, onEvidence, preview, setPreview }) {
+function ShortTermGoal({ goal, updateGoal, removeGoal, completeGoal, result, baseline, mode, onEvidence, preview, setPreview }) {
+  const [editing, setEditing] = useState(!goal.label);
+  const [showDetails, setShowDetails] = useState(false);
+  const [deposit, setDeposit] = useState('');
   const isFunded = goal.savedCents >= goal.targetCents;
-  const displayedCents = preview && result.recoveryOption ? result.recoveryOption.projectedSavedIfFollowedCents : result.projectedSavedCents;
-  const progress = Math.max(0, Math.min(100, Math.round(displayedCents / Math.max(1, goal.targetCents) * 100)));
+  const progress = Math.max(0, Math.min(100, Math.round(goal.savedCents / Math.max(1, goal.targetCents) * 100)));
   const remainingCents = Math.max(0, goal.targetCents - goal.savedCents);
   const neededMonthly = Math.ceil(remainingCents / monthsUntil(goal.targetDate));
   const recovered = preview && result.recoveryOption;
-  return <section className="card goal-card short-goal-card">
-    <div className="goal-section-heading"><span className="goal-emoji">{goal.complete ? '🎉' : '🌱'}</span><div><div className="eyebrow">SHORT-TERM GOAL</div><h2>{goal.label || 'Your next little big thing'}</h2></div>{removeGoal && <button className="goal-remove" onClick={removeGoal} aria-label={`Remove ${goal.label || 'goal'}`}><X size={17}/></button>}</div>
-    <p className="goal-description">Make it something you want. Set the amount and date, then update your saved balance as you go.</p>
-    <div className="goal-edit-grid">
+  const addDeposit = (event) => {
+    event.preventDefault();
+    const cents = euroToCents(deposit);
+    if (cents > 0) updateGoal({ savedCents: goal.savedCents + cents });
+    setDeposit('');
+  };
+  return <section className={`card goal-card short-goal-card compact-goal ${isFunded ? 'is-funded' : ''}`}>
+    <div className="goal-section-heading"><span className="goal-emoji">{isFunded ? '🎉' : '🌱'}</span><div><div className="eyebrow">BY {formatDate(goal.targetDate).toUpperCase()}</div><h2>{goal.label || 'New goal'}</h2></div><button className="goal-remove" onClick={removeGoal} aria-label={`Delete ${goal.label || 'goal'}`}><X size={17}/></button></div>
+    <div className="stack-progress" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress} aria-label={`${goal.label || 'Goal'} progress`}><span style={{ width: `${progress}%` }}/></div>
+    <div className="stack-amounts"><strong>{formatEuro(goal.savedCents)}</strong><span>of {formatEuro(goal.targetCents)} · {progress}%</span></div>
+    {isFunded
+      ? <button type="button" className="tick-off-button" onClick={completeGoal}><Check size={16}/> You made it — tick it off</button>
+      : <>
+          <div className="contribution-line"><span>{formatEuro(remainingCents)} to go</span><strong>{formatEuro(neededMonthly)} / month · {formatEuro(Math.ceil(neededMonthly / 4))} / week</strong></div>
+          <form className="deposit-row" onSubmit={addDeposit}><input inputMode="decimal" type="number" min="0" step="0.01" value={deposit} onChange={(event) => setDeposit(event.target.value)} placeholder="Add saved €" aria-label={`Add money saved toward ${goal.label || 'goal'}`}/><button type="submit" disabled={!euroToCents(deposit)}>Add</button></form>
+        </>}
+    <div className="goal-toggles"><button type="button" className="text-button" aria-expanded={editing} onClick={() => setEditing(!editing)}>{editing ? 'Done editing' : 'Edit goal'}</button><button type="button" className="text-button" aria-expanded={showDetails} onClick={() => setShowDetails(!showDetails)}>{showDetails ? 'Hide plan details' : 'Plan details'} <ChevronRight size={15}/></button></div>
+    {editing && <div className="goal-edit-grid">
       <label className="field-label">What are you saving for?<input value={goal.label} maxLength={32} onChange={(event) => updateGoal({ label: event.target.value })} placeholder="e.g. A weekend trip" /></label>
       <div className="goal-field-row">
         <label className="field-label">Target amount<input type="number" min="1" step="0.01" value={(goal.targetCents / 100).toFixed(2)} onChange={(event) => updateGoal({ targetCents: euroToCents(event.target.value) })} /></label>
         <label className="field-label">Saved so far<input type="number" min="0" step="0.01" value={(goal.savedCents / 100).toFixed(2)} onChange={(event) => updateGoal({ savedCents: euroToCents(event.target.value) })} /></label>
       </div>
       <label className="field-label">When would you like it?<input type="date" min={fixture.asOf} max="2027-11-14" value={goal.targetDate} onChange={(event) => event.target.value && updateGoal({ targetDate: event.target.value })} /></label>
-    </div>
-    <div className="goal-preview-row"><GoalProgress progress={progress} label={goal.label}/><div className="goal-numbers"><span className="eyebrow">DEMO CASH-FLOW PREVIEW</span><div className="projection">{formatEuro(displayedCents)}</div><div className="goal-target">toward your {formatEuro(goal.targetCents)} goal</div><div className="goal-badge"><span />{formatEuro(goal.savedCents)} already saved</div></div></div>
-    <div className={`insight ${mode === 'afterExpense' ? 'alert-insight' : ''}`}><span className="insight-icon">{mode === 'afterExpense' ? <Sparkles size={18} /> : <Leaf size={18} />}</span><p>{mode === 'afterExpense' ? <>The unexpected €60 expense brings this preview from <strong>{formatEuro(baseline.projectedSavedCents)}</strong> to <strong>{formatEuro(result.projectedSavedCents)}</strong>. You can try trimming three €10 delivery purchases to recover <strong>€30</strong>.</> : <>The current cash-flow preview reaches <strong>{formatEuro(result.projectedSavedCents)}</strong>. Keep adjusting your goal and timing to find a plan that feels right.</>}</p></div>
-    <div className="contribution-line"><span>To reach your goal by {formatDate(goal.targetDate)}</span><strong>{formatEuro(neededMonthly)} / month · {formatEuro(Math.ceil(neededMonthly / 4))} / week</strong></div>
-    <div className="goal-completion-row"><button type="button" className={`goal-check-button ${goal.complete ? 'checked' : ''}`} disabled={!isFunded && !goal.complete} aria-pressed={Boolean(goal.complete)} onClick={() => updateGoal({ complete: !goal.complete })}><span>{goal.complete && <Check size={15}/>}</span>{goal.complete ? 'Goal complete!' : isFunded ? 'Tick off this goal' : `Add ${formatEuro(remainingCents)} more to tick it off`}</button></div>
-    <div className="card-actions">{result.recoveryOption && <button className={`primary-button ${recovered ? 'active-preview' : ''}`} aria-pressed={Boolean(recovered)} onClick={() => setPreview(recovered ? null : goal.id)}>{recovered ? <><Check size={18} /> Recovery preview on</> : <>Try recovery idea <ArrowRight size={18} /></>}</button>}<button className="text-button" onClick={onEvidence}>Inspect Evidence <ChevronRight size={17} /></button></div>
-    {recovered && <div className="preview-note" role="status"><span className="preview-dot" /> Preview only: {result.recoveryOption.months.length} monthly delivery trims could add {formatEuro(result.recoveryOption.estimatedSavingsCents)} to the projection. No money moves.</div>}
-    <div className="safety-check"><ShieldCheck size={17}/><span><strong>Daily safety buffer check</strong><br/>A €500 floor is illustrative. This demo has no daily balance feed; confirm your live cash balance before saving.</span></div>
-    <div className="recovery-summary"><strong>What changed in the preview?</strong><span>Unexpected expense: −€60</span><span>Suggested category trim: 3 × €10 = +€30</span><span>Example projection: {formatEuro(result.projectedSavedCents)} → {formatEuro(result.recoveryOption?.projectedSavedIfFollowedCents ?? result.projectedSavedCents)}</span></div>
+    </div>}
+    {showDetails && <div className="goal-details">
+      <div className="goal-preview-row"><div className="goal-numbers"><span className="eyebrow">DEMO CASH-FLOW PREVIEW</span><div className="projection">{formatEuro(recovered ? result.recoveryOption.projectedSavedIfFollowedCents : result.projectedSavedCents)}</div><div className="goal-target">projected toward your {formatEuro(goal.targetCents)} goal</div></div></div>
+      <div className={`insight ${mode === 'afterExpense' ? 'alert-insight' : ''}`}><span className="insight-icon">{mode === 'afterExpense' ? <Sparkles size={18} /> : <Leaf size={18} />}</span><p>{mode === 'afterExpense' ? <>The unexpected €60 expense brings this preview from <strong>{formatEuro(baseline.projectedSavedCents)}</strong> to <strong>{formatEuro(result.projectedSavedCents)}</strong>. You can try trimming three €10 delivery purchases to recover <strong>€30</strong>.</> : <>The current cash-flow preview reaches <strong>{formatEuro(result.projectedSavedCents)}</strong>. Keep adjusting your goal and timing to find a plan that feels right.</>}</p></div>
+      <div className="card-actions">{result.recoveryOption && <button className={`primary-button ${recovered ? 'active-preview' : ''}`} aria-pressed={Boolean(recovered)} onClick={() => setPreview(recovered ? null : goal.id)}>{recovered ? <><Check size={18} /> Recovery preview on</> : <>Try recovery idea <ArrowRight size={18} /></>}</button>}<button className="text-button" onClick={onEvidence}>Inspect Evidence <ChevronRight size={17} /></button></div>
+      {recovered && <div className="preview-note" role="status"><span className="preview-dot" /> Preview only: {result.recoveryOption.months.length} monthly delivery trims could add {formatEuro(result.recoveryOption.estimatedSavingsCents)} to the projection. No money moves.</div>}
+      <div className="safety-check"><ShieldCheck size={17}/><span><strong>Daily safety buffer check</strong><br/>A €500 floor is illustrative. This demo has no daily balance feed; confirm your live cash balance before saving.</span></div>
+    </div>}
   </section>;
+}
+
+function NewGoalForm({ onAdd, onCancel }) {
+  const [label, setLabel] = useState('');
+  const [amount, setAmount] = useState('');
+  const [date, setDate] = useState('2027-02-14');
+  const targetCents = euroToCents(amount);
+  const submit = (event) => {
+    event.preventDefault();
+    if (!label.trim() || targetCents <= 0) return;
+    onAdd({ label: label.trim(), targetCents, targetDate: date });
+  };
+  return <form className="card new-goal-form" onSubmit={submit}>
+    <div className="eyebrow">NEW SHORT-TERM GOAL</div>
+    <label className="field-label">What do you want?<input autoFocus value={label} maxLength={32} onChange={(event) => setLabel(event.target.value)} placeholder="e.g. Concert tickets, new phone, trip to Tallinn"/></label>
+    <div className="goal-field-row">
+      <label className="field-label">How much (€)?<input inputMode="decimal" type="number" min="1" step="0.01" value={amount} onChange={(event) => setAmount(event.target.value)} placeholder="300"/></label>
+      <label className="field-label">By when?<input type="date" min={fixture.asOf} max="2027-11-14" value={date} onChange={(event) => event.target.value && setDate(event.target.value)}/></label>
+    </div>
+    <div className="new-goal-actions"><button type="button" className="text-button" onClick={onCancel}>Cancel</button><button type="submit" className="primary-button" disabled={!label.trim() || targetCents <= 0}>Add goal <ArrowRight size={16}/></button></div>
+  </form>;
 }
 
 function LongTermGoal({ goal, updateGoal, mode }) {
@@ -131,21 +167,32 @@ function LongTermGoal({ goal, updateGoal, mode }) {
   </section>;
 }
 
-function GoalPlanner({ goals, updateShort, removeShort, addShort, updateLong, mode, openEvidence, previewId, setPreviewId }) {
-  const shortMonthlyCents = goals.shortTermGoals.filter(goal => !goal.complete).reduce((sum, goal) => sum + Math.ceil(Math.max(0, goal.targetCents - goal.savedCents) / monthsUntil(goal.targetDate)), 0);
+function GoalPlanner({ goals, updateShort, removeShort, addShort, completeShort, restoreShort, updateLong, mode, openEvidence, previewId, setPreviewId }) {
+  const [adding, setAdding] = useState(false);
+  const [showAchieved, setShowAchieved] = useState(false);
+  const active = goals.shortTermGoals.filter(goal => !goal.complete);
+  const achieved = goals.shortTermGoals.filter(goal => goal.complete);
+  const shortMonthlyCents = active.reduce((sum, goal) => sum + Math.ceil(Math.max(0, goal.targetCents - goal.savedCents) / monthsUntil(goal.targetDate)), 0);
   const plannedMonthlyCents = shortMonthlyCents + goals.longTerm.monthlyCents;
   const safeMonthlyCents = safeSurplusCents(mode);
   return <div className="goal-sections">
-    <div className="goals-intro playful-intro"><strong>Two horizons, one plan ✨</strong><p>Add as many near-term goals as you like, then explore a monthly amount for the long term.</p><span><Check size={14}/> Your goals are saved on this device for Coach</span></div>
+    <div className="goals-intro playful-intro"><strong>Two horizons, one plan ✨</strong><p>Stack as many short-term goals as you like. When one is fully saved, tick it off and it moves to your achievements.</p><span><Check size={14}/> Your goals are saved on this device for Coach</span></div>
     <div className="goal-budget-strip"><div><small>GOALS’ MONTHLY PLAN</small><strong>{formatEuro(plannedMonthlyCents)}</strong></div><span>Demo safe surplus<br/><b>{formatEuro(safeMonthlyCents)} / month</b></span></div>
     {plannedMonthlyCents > safeMonthlyCents && <div className="surplus-warning" role="status"><Sparkles size={16}/><span>These goal amounts add up to more than the current demo surplus. Adjust the amounts or dates to keep your everyday cash buffer in mind.</span></div>}
-    <section className="short-goals-list"><div className="list-section-heading"><div><div className="eyebrow">SHORT-TERM · WEEKS TO 12 MONTHS</div><h2>Your goals, your way</h2></div><span className="goals-count">{goals.shortTermGoals.length} {goals.shortTermGoals.length === 1 ? 'goal' : 'goals'}</span></div>
-      {goals.shortTermGoals.map((goal) => {
+    <section className="short-goals-list"><div className="list-section-heading"><div><div className="eyebrow">SHORT-TERM · WEEKS TO 12 MONTHS</div><h2>Your goals, your way</h2></div><span className="goals-count">{active.length} active{achieved.length ? ` · ${achieved.length} done` : ''}</span></div>
+      {active.length === 0 && !adding && <div className="card goals-empty"><strong>No active goals</strong><p>Write down anything you want to save for — a trip, a gadget, a gift.</p></div>}
+      {active.map((goal) => {
         const result = makePlanResult(mode, goal);
         const baseline = makePlanResult('beforeExpense', goal);
-        return <ShortTermGoal key={goal.id} goal={goal} updateGoal={(patch) => updateShort(goal.id, patch)} removeGoal={goals.shortTermGoals.length > 1 ? () => removeShort(goal.id) : null} result={result} baseline={baseline} mode={mode} onEvidence={() => openEvidence(goal, result)} preview={previewId === goal.id} setPreview={setPreviewId}/>;
+        return <ShortTermGoal key={goal.id} goal={goal} updateGoal={(patch) => updateShort(goal.id, patch)} removeGoal={() => removeShort(goal.id)} completeGoal={() => completeShort(goal.id)} result={result} baseline={baseline} mode={mode} onEvidence={() => openEvidence(goal, result)} preview={previewId === goal.id} setPreview={setPreviewId}/>;
       })}
-      <button className="add-goal-button" onClick={addShort}><span>＋</span>Add another short-term goal</button>
+      {adding
+        ? <NewGoalForm onAdd={(goal) => { addShort(goal); setAdding(false); }} onCancel={() => setAdding(false)}/>
+        : <button className="add-goal-button" onClick={() => setAdding(true)}><span>＋</span>Add a goal</button>}
+      {achieved.length > 0 && <div className="achieved-goals">
+        <button type="button" className="achieved-toggle" aria-expanded={showAchieved} onClick={() => setShowAchieved(!showAchieved)}>🏆 Achieved ({achieved.length}) <ChevronRight size={15}/></button>
+        {showAchieved && <ul>{achieved.map(goal => <li key={goal.id}><Check size={14}/><span>{goal.label || 'Goal'} · {formatEuro(goal.targetCents)}</span><button type="button" className="text-button" onClick={() => restoreShort(goal.id)}>Undo</button></li>)}</ul>}
+      </div>}
     </section>
     <LongTermGoal goal={goals.longTerm} updateGoal={updateLong} mode={mode}/>
   </div>;
@@ -191,11 +238,13 @@ export default function App({ mode }) {
     if (updated.complete && updated.savedCents < updated.targetCents) updated.complete = false;
     return updated;
   }) }));
-  const addShort = () => setGoals((current) => ({ ...current, shortTermGoals: [...current.shortTermGoals, { id: `goal-${Date.now()}`, label: '', targetCents: 5000, savedCents: 0, targetDate: '2027-02-14', complete: false }] }));
+  const addShort = (goal) => setGoals((current) => ({ ...current, shortTermGoals: [...current.shortTermGoals, { id: `goal-${Date.now()}`, savedCents: 0, complete: false, ...goal }] }));
   const removeShort = (id) => setGoals((current) => ({ ...current, shortTermGoals: current.shortTermGoals.filter((goal) => goal.id !== id) }));
+  const completeShort = (id) => updateShort(id, { complete: true });
+  const restoreShort = (id) => setGoals((current) => ({ ...current, shortTermGoals: current.shortTermGoals.map((goal) => goal.id === id ? { ...goal, complete: false } : goal) }));
   const updateLong = (patch) => setGoals((current) => ({ ...current, longTerm: { ...current.longTerm, ...patch } }));
   return <>
-    <GoalPlanner goals={goals} updateShort={updateShort} removeShort={removeShort} addShort={addShort} updateLong={updateLong} mode={mode} openEvidence={(goal, result) => setEvidenceData({ goal, result, mode })} previewId={previewGoalId} setPreviewId={setPreviewGoalId}/>
+    <GoalPlanner goals={goals} updateShort={updateShort} removeShort={removeShort} addShort={addShort} completeShort={completeShort} restoreShort={restoreShort} updateLong={updateLong} mode={mode} openEvidence={(goal, result) => setEvidenceData({ goal, result, mode })} previewId={previewGoalId} setPreviewId={setPreviewGoalId}/>
     {evidenceData && <EvidenceModal result={evidenceData.result} goal={evidenceData.goal} mode={evidenceData.mode} onClose={() => setEvidenceData(null)}/>}
   </>;
 }

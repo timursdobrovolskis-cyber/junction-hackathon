@@ -195,3 +195,25 @@ button:focus-visible, a:focus-visible { outline: 3px solid #82ddb0; outline-offs
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+.compact-goal .goal-section-heading h2 { font-size:15px; }
+.stack-progress { height:10px; margin:10px 0 6px; border-radius:6px; background:#e7efe9; overflow:hidden; }
+.stack-progress span { display:block; height:100%; border-radius:6px; background:linear-gradient(90deg,#007841,#2fb064); transition:width .35s ease; }
+.is-funded .stack-progress span { background:linear-gradient(90deg,#2fb064,#91fa9b); }
+.stack-amounts { display:flex; align-items:baseline; gap:6px; font-size:11px; color:#60786a; }
+.stack-amounts strong { font:800 20px 'Plus Jakarta Sans',sans-serif; color:#18221c; }
+.deposit-row { display:flex; gap:6px; margin-top:8px; }
+.deposit-row input { flex:1; min-width:0; height:36px; padding:0 10px; border:1px solid #dce9df; border-radius:10px; font-size:12px; }
+.deposit-row button { height:36px; padding:0 14px; border:0; border-radius:10px; color:white; background:#007841; font-weight:700; font-size:12px; }
+.deposit-row button:disabled { background:#b9cdbf; }
+.tick-off-button { display:flex; width:100%; min-height:42px; margin-top:10px; align-items:center; justify-content:center; gap:7px; border:0; border-radius:12px; color:#18221c; background:#91fa9b; font-weight:800; font-size:12px; }
+.goal-toggles { display:flex; justify-content:space-between; margin-top:8px; }
+.goal-details { margin-top:6px; padding-top:8px; border-top:1px solid #edf3ef; }
+.new-goal-form { display:flex; flex-direction:column; gap:8px; border:1px solid #cfe5d6; }
+.new-goal-actions { display:flex; justify-content:flex-end; align-items:center; gap:10px; }
+.new-goal-actions .primary-button:disabled { opacity:.5; }
+.goals-empty { text-align:center; } .goals-empty p { margin:4px 0 0; font-size:11px; color:#60786a; }
+.achieved-goals { border-radius:12px; background:#f3f8f4; padding:6px 10px; }
+.achieved-toggle { display:flex; width:100%; align-items:center; justify-content:space-between; padding:6px 0; border:0; background:none; font-weight:700; font-size:12px; color:#287347; }
+.achieved-goals ul { margin:0; padding:0; list-style:none; }
+.achieved-goals li { display:flex; align-items:center; gap:6px; padding:6px 0; font-size:11px; color:#60786a; text-decoration:line-through; }
+.achieved-goals li span { flex:1; } .achieved-goals li .text-button { text-decoration:none; }
