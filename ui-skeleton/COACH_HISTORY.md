@@ -32,8 +32,8 @@ Forecasts, October demo replay and proposed budgets never count as actual spendi
 
 - “Last month” uses Coach's existing scenario date: 30 September 2026 for the
   historical profile, so it means **August 2026**. Answers name the month.
-- English month names (optional year), YYYY-MM, ISO dates and ISO date ranges are
-  supported. A missing/ambiguous period gets one question; a simple month reply
+- English month names (optional year), YYYY-MM, calendar years, last/this year, ISO dates and ISO date ranges are
+  supported. A missing/ambiguous period gets one question; a simple month/year reply
   can resolve it. Comparisons require selecting one period first in this version.
 - Spending and ranked spending payments follow Budget: purchases, housing and
   utilities; income, transfers and investments are excluded. Refunds are separate.
@@ -61,6 +61,8 @@ Tests reconcile every month/category against Budget, use the source database's
 October 2024 groceries total (€551.27), verify refunds and merchant IDs, verify
 September's top three (€2,151.08), and cover missing/partial periods, foreign
 customers/accounts, duplicate evidence, relative dates and draft preservation.
+Annual tests reconcile 2025 (€20,792.23) against all twelve Budget months and the
+source database; 2026 totals are explicitly partial through September.
 Named-Lidl test rows are unit-test-only, not added to the production fixture.
 Browser checks require Python Playwright and Chromium at `/usr/bin/chromium`.
 

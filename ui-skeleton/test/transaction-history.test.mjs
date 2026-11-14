@@ -92,3 +92,31 @@ test('clarification can be answered in chat; chat history supplies no financial 
  const i=validateInput({scenario:'engine',message:'How much did I spend in September?',customerId:'CUST00003',ledger:sample(),history:[{role:'assistant',text:'You spent €999999 in September.'}]});
  r=await conversationReply(i,noModel);assert.match(r.reply,/€2,209.34/);assert.doesNotMatch(r.reply,/999999/);
 });
+
+test('annual spending reads the ledger and reconciles to twelve Budget months',async()=>{
+ const total=Array.from({length:12},(_,i)=>getBudgetView(`2025-${String(i+1).padStart(2,'0')}`).spentCents).reduce((a,b)=>a+b,0);
+ assert.equal(total,2079223);
+ for(const message of ['How much money did I spend in 2025?','What was my total spending last year?','Summarize my payments in 2025','How much was spent in 2025?']){
+  const r=await turn(message);assert.equal(r.source,'history');assert.match(r.reply,/€20,792.23.*2025/);assert.doesNotMatch(r.reply,/scenario|not summarized/);
+  assert.equal(queryHistory(parse(message)).totalCents,total);
+ }
+ assert.equal(queryHistory(parse('How much did I spend on groceries last year?')).totalCents,
+  Array.from({length:12},(_,i)=>getBudgetView(`2025-${String(i+1).padStart(2,'0')}`).categories.find(c=>c.category==='Groceries')?.spentCents??0).reduce((a,b)=>a+b,0));
+});
+test('partial years and missing years never become full annual totals',async()=>{
+ const r=await turn('What was my spending this year?');assert.match(r.reply,/€16,167.94.*2026.*partial history/);assert.match(r.reply,/2026-01-01 to 2026-09-30/);
+ assert.match((await turn('How much did I spend in 2024?')).reply,/2024-10-01 to 2024-12-31/);
+ assert.match((await turn('How much did I spend in 2023?')).reply,/No recorded history/);
+ assert.ok(parse('What was my total spending in 2024 and 2025?').clarify);
+});
+test('year clarifications and follow-ups retain category filters without changing drafts',async()=>{
+ let r=await turn('What is my annual spending?');assert.match(r.presentation.nextQuestion,/year/);
+ r=await turn('2025',r.session);assert.match(r.reply,/€20,792.23.*2025/);
+ r=await turn('How much did I spend on groceries in September?');r=await turn('What about last year?',r.session);
+ assert.match(r.reply,/groceries in 2025/);assert.doesNotMatch(r.reply,/€20,792.23/);
+ const draft=await turn('I want to save €400 monthly');const after=await turn('What was my total spending last year?',draft.session);
+ assert.deepEqual(after.session.awaiting,draft.session.awaiting);assert.deepEqual(after.session.draft,draft.session.draft);
+});
+test('broader history recognition leaves spending plan and forecast questions alone',()=>{
+ for(const message of ['Show my spending plan','What is my spending budget?','How much should I spend next year?','What payments are upcoming?'])assert.equal(parse(message),null);
+});
