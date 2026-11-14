@@ -137,7 +137,7 @@
     el('chat-input').blur();
     el('coach-new-reply').hidden = true;
     const requestGeneration = generation; const user = addMessage('user', message);
-    const pending = addMessage('assistant', 'Thinking through your question…'); pending.classList.add('message-pending');
+    const pending = addMessage('assistant', 'Thinking through your question…'); pending.classList.add('message-pending'); const dots=document.createElement('span'); dots.className='typing-dots'; dots.setAttribute('aria-hidden','true'); dots.append(document.createElement('i'),document.createElement('i'),document.createElement('i')); pending.append(dots);
     el('chat-error').hidden = true; el('chat-retry').hidden = true; el('chat-status').textContent = 'Your coach is replying…'; setBusy(true);
     revealMessage(pending);
     let replyToReveal;
@@ -181,12 +181,14 @@
     for(const [label,value] of [['Category spending plan',money(account.spendingPlanCents)],['Savings target',money(account.savingsTargetCents)],['Cash buffer',money(account.bufferCents)],['Forecast period','1–30 October']]){const row=document.createElement('div');const dt=document.createElement('dt');dt.textContent=label;const dd=document.createElement('dd');dd.textContent=value;row.append(dt,dd);rows.append(row);}
   }
   const starters=[
-    ['Spending plan','See your category limits','Show my spending plan','↗'],
-    ['Upcoming bills','Know what’s due next','Show upcoming bills','▦'],
-    ['Save more','See what your plan allows','I want to save more','＋'],
-    ['Plan a cost','Add an upcoming expense','I have an expense coming up','↳'],
+    ['Can I afford it?','Check a purchase against your month','I want to buy a phone for €300','i-check','featured'],
+    ['Save more','What your plan allows','I want to save more','i-goal'],
+    ['Upcoming bills','What’s due next','Show upcoming bills','i-calendar'],
+    ['Spending plan','Your category limits','Show my spending plan','i-home'],
+    ['Plan a cost','Add an upcoming expense','I have an expense coming up','i-arrow'],
   ];
-  for(const [title,detail,prompt,icon] of starters){const button=document.createElement('button');button.type='button';button.dataset.prompt=prompt;button.className='coach-starter';const mark=document.createElement('span');mark.className='starter-icon';mark.textContent=icon;mark.setAttribute('aria-hidden','true');const strong=document.createElement('strong');strong.textContent=title;const small=document.createElement('span');small.textContent=detail;button.append(mark,strong,small);button.addEventListener('click',()=>{el('chat-input').value=prompt;submit(prompt);});el('coach-starters').append(button);}
+  const svgNS='http://www.w3.org/2000/svg';
+  for(const [title,detail,prompt,icon,variant] of starters){const button=document.createElement('button');button.type='button';button.dataset.prompt=prompt;button.className='coach-starter'+(variant?' coach-starter-'+variant:'');const mark=document.createElement('span');mark.className='starter-icon';mark.setAttribute('aria-hidden','true');const svg=document.createElementNS(svgNS,'svg');svg.setAttribute('class','icon small');const use=document.createElementNS(svgNS,'use');use.setAttribute('href','#'+icon);svg.append(use);mark.append(svg);const strong=document.createElement('strong');strong.textContent=title;const small=document.createElement('span');small.textContent=detail;button.append(mark,strong,small);button.addEventListener('click',()=>{el('chat-input').value=prompt;submit(prompt);});el('coach-starters').append(button);}
   async function load() {
     setBusy(true);
     try { const response = await fetch('/api/coach', { cache: 'no-store' }); if (!response.ok) throw new Error(); const data = await response.json();
