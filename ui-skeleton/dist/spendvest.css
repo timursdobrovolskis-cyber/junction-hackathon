@@ -37,7 +37,7 @@
 
 /* The coach has one reading surface and a composer that stays within reach. */
 .vest-theme.coach-open{display:flex;flex-direction:column;height:calc(var(--coach-viewport,100dvh) - 56px);min-height:0;overflow:hidden}
-.vest-theme.coach-open .app-header{flex-shrink:0}
+.vest-theme.coach-open .app-header{flex-shrink:0;width:100%;margin:0}
 .vest-theme.coach-open .main-shell{display:flex;flex:1;min-height:0;padding:0;overflow:hidden}
 .vest-theme.coach-open .coach-page{display:flex;flex-direction:column;flex:1;min-height:0;min-width:0;padding:0}
 .coach-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#acd8b9 transparent;padding:15px 22px 20px;overflow-anchor:none}
