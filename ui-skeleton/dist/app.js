@@ -50,7 +50,7 @@ function navigate() {
     if (active || (name === 'home' && current === 'budget')) $('nav-' + name).setAttribute('aria-current', 'page');
     else $('nav-' + name).removeAttribute('aria-current');
   });
-  document.title = ({ home: 'Your money', goals: 'Your goals', calendar: 'Financial calendar', coach: 'Your coach', budget: 'Your budget' })[current] + ' — S-Pankki concept';
+  document.title = ({ home: 'Your money', goals: 'Your goals', calendar: 'Financial calendar', coach: 'Your coach', budget: 'Your budget' })[current] + ' — S-Fin';
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 window.addEventListener('hashchange', navigate);

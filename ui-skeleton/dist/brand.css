@@ -1,0 +1,4 @@
+/* Preserve the existing green symbol; crop only the old lettering. */
+.sfin-symbol{display:block;width:20px;height:40px;overflow:hidden;flex:0 0 20px}
+.sfin-symbol img{display:block;width:93.04px;max-width:none;height:40px}
+.wordmark .sfin-name,.preview-brand .sfin-name{color:#00aa46;font-size:24px;font-weight:760;letter-spacing:-1.1px;white-space:nowrap}
